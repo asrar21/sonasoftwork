@@ -14,7 +14,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "help": "npm install -g typescript && npm install grommet grommet-icons styled-components --save && npm install"
   },
   "eslintConfig": {
     "extends": "react-app"
