@@ -1,0 +1,16 @@
+*{
+    margin: 0px
+}
+
+.navbar{
+    height: 40px;
+    background-color: #163552;
+    border-bottom: 5px solid #EE8031
+}
+
+.navbar h1{
+    font-family: Segoe UI;
+    line-height: normal;
+    color: #D1D5DD;
+}
+

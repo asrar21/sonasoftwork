@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
-import Login from './Screens/Login/login';
+import React, { Component } from 'react'
+//imported homescreen from screens folder
+import  HomeScreen from './Screens/HomeScreen/HomeScreen'
+import LogIn from './Screens/Login/login';
 
-class App extends Component {
+export default class App extends Component {
+
   render() {
     return (
-      <Login/>
+      <div>    
+        <LogIn/>    
+      </div>
     )
   }
 }
-
-export default App;
