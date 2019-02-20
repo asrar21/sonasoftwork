@@ -1,14 +1,28 @@
 import React, { Component } from 'react'
-import "./navbar.css"
+import { Grommet, Box, Heading } from "grommet";
 
-export default class Navbar extends Component {
+class Navbar extends Component {
   render() {
     return (
       <div>
-        <div className="navbar" >
-            <h1>SonaVault</h1>
-        </div>
+        <Grommet>
+          <Box
+            pad="small"
+            background="#163552"
+            // gap="none"
+            border={{side: "bottom",
+            color: "#EE8031",
+            size: "medium"}}
+          >
+          <Heading margin="none" level="3" size="medium" style={{fontSize: "30px"}}>SonaVault</Heading>
+
+          </Box>
+        </Grommet>               
       </div>
     )
   }
 }
+
+
+
+export default Navbar;
