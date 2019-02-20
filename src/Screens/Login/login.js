@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Grommet, Box, ResponsiveContext,Button,Image, Text , Heading, TextInput, Markdown} from "grommet";
-import sonaLogo from "../src/images/sonaLogo.png"
+import sonaLogo from "../../assets/Icons/sonaLogo.png"
 import { Login,CircleInformation } from 'grommet-icons';
+
 
 class LogIn extends Component {
   constructor(props){
@@ -9,7 +10,7 @@ class LogIn extends Component {
     this.state = {}
   }
 
-
+  
   render() {
     const myTheme = {
       global:{
@@ -96,7 +97,7 @@ class LogIn extends Component {
                     label="sign in"
                     alignSelf="start"
                     plain="True"
-                    onClick={() => {}}
+                    onClick={() => this.props.navigateToHomeScreen()}
                   />
                 </Box>
               </Box>

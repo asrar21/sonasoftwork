@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 //importing iconimages from icons floder
-import information_blue from '../../Icons/information_blue.png';
-import identification_blue from '../../Icons/identification_blue.png';
-import preservation_blue from '../../Icons/preservation_blue.png';
-import processing_blue from '../../Icons/processing_blue.png';
-import review_blue from '../../Icons/review_blue.png';
-import analysis_blue from '../../Icons/analysis_blue.png';
-import production_blue from '../../Icons/production_blue.png';
-import reporting_blue from '../../Icons/reporting_blue.png';
-import profile_gray from '../../Icons/profile_gray.png'
+import information_blue from '../../assets/Icons/information_blue.png';
+import identification_blue from '../../assets/Icons/identification_blue.png';
+import preservation_blue from '../../assets/Icons/preservation_blue.png';
+import processing_blue from '../../assets/Icons/processing_blue.png';
+import review_blue from '../../assets/Icons/review_blue.png';
+import analysis_blue from '../../assets/Icons/analysis_blue.png';
+import production_blue from '../../assets/Icons/production_blue.png';
+import reporting_blue from '../../assets/Icons/reporting_blue.png';
+import profile_gray from '../../assets/Icons/profile_gray.png'
 //imported some components from Gromet
 import { Grommet, Box, Grid, Text ,Image,Paragraph} from "grommet";
 //impoter theme from grommet
