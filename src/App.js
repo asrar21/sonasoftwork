@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Grommet, Box, Collapsible, ResponsiveContext, Text } from "grommet";
-import Navbar from "./Containers/Navbar/navbar"
+import { Grommet, Box, ResponsiveContext, Image, Paragraph } from "grommet";
+import sonaLogo from "./assets/images/sonaLogo.png"
 
 class App extends Component {
   constructor(props){
@@ -10,7 +10,6 @@ class App extends Component {
 
 
   render() {
-    const open = this.state
     return (
       <div>
         <Grommet full>
@@ -21,17 +20,40 @@ class App extends Component {
             direction="row"
             align="stretch"
             alignContent="stretch"
-            // justify="evenly"
-            
           >
             <ResponsiveContext.Consumer>
               {(size) => (
-                size == "medium" ?  <Box fill background="#2e3c54"  margin="none" pad="xlarge" basis="1/4" ></Box> : null 
+                size == "medium" ?  (
+                
+                <Box 
+                  fill 
+                  margin="none" 
+                  pad="medium" 
+                  background="#2e3c54"  
+                  direction="column"
+                  justify="center"
+                  align="center"
+                  alignContent="start"
+                  basis="1/4" >
+                  <Image src={sonaLogo} fit="contain" margin="medium" width="150px"/>
+                  <Paragraph>Version 6.5.0.0</Paragraph>
+                </Box>  
+                
+                
+                )
+                : null 
                 
               )}
             </ResponsiveContext.Consumer>
             
-            <Box background="grey" pad="xlarge" margin="none" basis="1" width={"100%"} ></Box>
+            <Box 
+              background="grey" 
+              pad="xlarge" 
+              margin="none" 
+              basis="1" 
+              width={"100%"} 
+            >
+            </Box>
 
           </Box>
         </Grommet>
