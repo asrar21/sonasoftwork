@@ -9,7 +9,6 @@ class Navbar extends Component {
           <Box
             pad="small"
             background="#163552"
-            // gap="none"
             border={{side: "bottom",
             color: "#EE8031",
             size: "medium"}}
