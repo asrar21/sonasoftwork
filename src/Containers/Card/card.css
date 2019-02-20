@@ -1,0 +1,16 @@
+.card{
+    display:flex;
+    background-color: rgba(209,2013,221,0.22);
+    height:250px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:15px;
+    margin-top: 70px;
+    
+}
+
+.card h3{
+    border-bottom: 1px solid #EE8031;
+    
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import { Grommet, Box, Heading } from "grommet";
 
 class Navbar extends Component {
@@ -17,11 +18,11 @@ class Navbar extends Component {
 
           </Box>
         </Grommet>               
+
       </div>
     )
   }
 }
 
-
-
 export default Navbar;
+
