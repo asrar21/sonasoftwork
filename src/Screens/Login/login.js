@@ -12,7 +12,9 @@ class LogIn extends Component {
     super(props)
     this.state = {}
   }
-
+Homescreen=()=>{
+  this.props.history.push("/homescreen")
+}
   
   render() {
     const myTheme = {
@@ -131,7 +133,7 @@ class LogIn extends Component {
                     label="sign in"
                     alignSelf="start"
                     plain="True"
-                    onClick={() => this.props.navigateToHomeScreen()}
+                    onClick={ this.Homescreen}
                   />
                 </Box>
               </Box>
