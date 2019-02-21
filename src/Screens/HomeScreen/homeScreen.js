@@ -1,20 +1,13 @@
 import React, { Component } from "react";
 //importing iconimages from icons floder
-import information_blue from '../../assets/Icons/information_blue.png';
-import identification_blue from '../../assets/Icons/identification_blue.png';
-import preservation_blue from '../../assets/Icons/preservation_blue.png';
-import processing_blue from '../../assets/Icons/processing_blue.png';
-import review_blue from '../../assets/Icons/review_blue.png';
-import analysis_blue from '../../assets/Icons/analysis_blue.png';
-import production_blue from '../../assets/Icons/production_blue.png';
-import reporting_blue from '../../assets/Icons/reporting_blue.png';
-import profile_gray from '../../assets/Icons/profile_gray.png'
+import * as Icons from "./homeScreenIcons"
 //imported some components from Gromet
 import { Grommet, Box, Grid, Text ,Image,Paragraph} from "grommet";
 //impoter theme from grommet
 import { grommet } from "grommet/themes";
+import Navbar from "../../Containers/Navbar/navbar";
 
- export default class HomeScreen extends Component {
+ export default class Grommets extends Component {
 
 
   render() {
@@ -23,7 +16,7 @@ import { grommet } from "grommet/themes";
        // wrapping all the box component in a grommet component 
       <Grommet full theme={grommet}>
       {/* using grid for positioning the header and main content */}
-        <Grid
+        {/* <Grid
           fill
           rows={["auto", "flex"]}
           columns={["auto", "flex"]}
@@ -34,9 +27,15 @@ import { grommet } from "grommet/themes";
             // { name: "footer", start: [0,0], end: [1,1 ] },
             
           ]}
-        >
-        {/* the  header box */}
+        > */}
+        {/* the  header box */} 
           <Box
+          gridArea="header"
+          pad="none"
+          >
+            <Navbar />
+          </Box>
+          {/* <Box
             gridArea="header"
             direction="row"
             align="center"
@@ -48,20 +47,26 @@ import { grommet } from "grommet/themes";
           >
             
               <Text color="lightgrey"  size="xxlarge" weight="bold">SonaVault</Text>
-              <Image src={profile_gray} width="50px" height="50px"/>
+              <Image src={Icons.profile_gray} width="50px" height="50px"/>
           
-          </Box>
+          </Box> */}
           
         {/* the wrapper box which contains all the 8 boxes */}
       <Box   
           
-      direction="row-responsive"
-      justify="center"
+      direction="row"
+      justify="start"
       align="center"
-      pad="xxsmall"
+      // pad={{left:"medium"}}
+      // pad="medium"
+      margin="none"
+      pad="none"
+      border={{side:"all", color:"orange", size:"small"}}
       background="transparent"
       wrap={true}
-      gap="22.53px">
+      fill
+      gap="100px"
+      >
         {/* box for information governance */}
       <Box
         pad="medium"
@@ -69,44 +74,48 @@ import { grommet } from "grommet/themes";
         align="center"
         alignContent="center"
         background={{ color: "light-2", opacity: "strong" }}
-        width={"280px"}
-        height={"250px"}
+        width={"235px"}
+        margin="none"
+        // margin={{left:"40px"}}
+        height={"235px"}
         gap="none"
       >
-      <Image src={information_blue} fit="contain" />
+      <Image src={Icons.information_blue} fit="contain" />
        
-       <Text size="small" color=" #362969"> INFORMATION GOVERNANCE</Text>
-       <Paragraph margin="none" color=" #362969"
+       <Text size="small" color=" #362969" border={{side:"bottom", color: "orange"}}> INFORMATION GOVERNANCE</Text>
+       <Paragraph size="small" margin="none" color=" #362969"
                >
         DashBoard
        
         
          </Paragraph>
 
-       <Paragraph margin="none" color=" #362969">
+       <Paragraph size="small" margin="none" color=" #362969">
        Content Identification
 
        </Paragraph>
-       <Paragraph margin="none" color=" #362969">
+       <Paragraph size="small" margin="none" color=" #362969">
        Data Disposition
 
        </Paragraph>
        
        
       </Box>
-      {/* box for identification */}
+       {/*box for identification */}
       <Box
-        pad="medium"
+        pad="small"
         direction="column"
         align="center"
         alignContent="center"
         background={{ color: "light-2", opacity: "strong" }}
-        width={"280px"}
-        height={"250px"}
+        width={"235px"}
+        // margin={{left:"33px"}}
+        margin="none"
+        height={"235px"}
         
         gap="none"
       >
-      <Image src={identification_blue} fit="contain" />
+      <Image src={Icons.identification_blue} fit="contain" />
        
        <Text size="small"  color=" #362969"> IDENTIFICATION</Text>
        <Paragraph margin="none"
@@ -125,17 +134,19 @@ import { grommet } from "grommet/themes";
       </Box>
       {/* box for preservation */}
 
-      <Box
+      {<Box
         pad="medium"
         direction="column"
         align="center"
         alignContent="center"
         background={{ color: "light-2", opacity: "strong" }}
-        width={"280px"}
-        height={"250px"}
+        width={"235px"}
+        // margin={{left:"33px"}}
+        margin="none"
+        height={"235px"}
         gap="none"
       >
-      <Image src={preservation_blue} fit="contain" />
+      <Image src={Icons.preservation_blue} fit="contain" />
        
        <Text size="small" color=" #362969"> PRESERVATION</Text>
        <Paragraph margin="none"
@@ -152,18 +163,20 @@ import { grommet } from "grommet/themes";
       
        
       </Box>
-      {/* box for processing */}
+      /* box for processing */}
       <Box
         pad="medium"
         direction="column"
         align="center"
         alignContent="center"
         background={{ color: "light-2", opacity: "strong" }}
-        width={"280px"}
-        height={"250px"}
+        width={"235px"}
+        // margin={{left:"33px"}}
+        margin="none"
+        height={"235px"}
         gap="none"
       >
-      <Image src={processing_blue} fit="contain" />
+      <Image src={Icons.processing_blue} fit="contain" />
        
        <Text size="small" color=" #362969"> PROCESSING</Text>
        <Paragraph margin="none"
@@ -188,11 +201,13 @@ import { grommet } from "grommet/themes";
         align="center"
         alignContent="center"
         background={{ color: "light-2", opacity: "strong" }}
-        width={"280px"}
-        height={"250px"}
+        width={"235px"}
+        // margin={{left:"33px"}}
+        margin="none"
+        height={"235px"}
         gap="none"
       >
-      <Image src={review_blue} fit="contain" />
+      <Image src={Icons.review_blue} fit="contain" />
        
        <Text size="small" color=" #362969"> REVIEW</Text>
        <Paragraph margin="none"
@@ -216,12 +231,14 @@ import { grommet } from "grommet/themes";
         align="center"
         alignContent="center"
         background={{ color: "light-2", opacity: "strong" }}
-        width={"280px"}
-        height={"250px"}
+        width={"235px"}
+        // margin={{left:"33px"}}
+        margin="none"
+        height={"235px"}
         gap="none"
       >
       
-      <Image src={analysis_blue} fit="contain" />
+      <Image src={Icons.analysis_blue} fit="contain" />
        
        <Text size="small" color=" #362969"> ANALYSIS</Text>
        <Paragraph margin="none"
@@ -245,11 +262,13 @@ import { grommet } from "grommet/themes";
         align="center"
         alignContent="center"
         background={{ color: "light-2", opacity: "strong" }}
-        width={"280px"}
-        height={"250px"}
+        width={"235px"}
+        // margin={{left:"33px"}}
+        margin="none"
+        height={"235px"}
         gap="none"
       >
-      <Image src={production_blue} fit="contain" />
+      <Image src={Icons.production_blue} fit="contain" />
        
        <Text size="small" color=" #362969"> PRODUCTION</Text>
        <Paragraph margin="none"
@@ -274,11 +293,13 @@ import { grommet } from "grommet/themes";
         align="center"
         alignContent="center"
         background={{ color: "light-2", opacity: "strong" }}
-        width={"280px"}
-        height={"250px"}
+        width={"235px"}
+        // margin={{left:"33px"}}
+        margin="none"
+        height={"235px"}
         gap="none"
       >
-      <Image src={reporting_blue} fit="contain" />
+      <Image src={Icons.reporting_blue} fit="contain" />
        
        <Text size="small" color=" #362969"> REPORTING</Text>
        <Paragraph margin="none"
@@ -295,11 +316,11 @@ import { grommet } from "grommet/themes";
       
        
     
-        </Box>
+        </Box> 
           </Box>
          
         
-        </Grid>
+        {/* </Grid> */}
        
        
       </Grommet>

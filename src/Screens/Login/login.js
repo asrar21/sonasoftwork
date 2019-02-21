@@ -61,10 +61,9 @@ Homescreen=()=>{
                   alignContent="start"
                   alignSelf="stretch"
                   basis="1/4" >
-                  
-                  <Box height="small" width="small"  >
-                  <Image src={sonaLogo} fit="contain" margin="xsmall" alignSelf="between"/>
-                  <Text textAlign="center">Version 6.5.0.0</Text>
+                  <Box height="small" pad="small" width="small"  >
+                  <Image src={sonaLogo} fit="contain" margin="small" alignSelf="center"/>
+                  <Text textAlign="center" size="small">Version 6.5.0.0</Text>
                   </Box>
 
                 </Box>  
@@ -87,7 +86,7 @@ Homescreen=()=>{
               align="start"
               direction="column"
               background="white" 
-              pad="large" 
+              pad="small" 
               margin="none" 
               basis="1" 
           
@@ -96,22 +95,26 @@ Homescreen=()=>{
             >
            
                 
-           <Box 
-              
+           <Box  
               justify="end"
-              align="end"
-             width={"300%"}
-             height="none"
+              align="start"
+              alignContent="start"
+             width={"100%"}
+              // basis="1"
               direction="row"
-              margin="none">
-              <CircleInformation textDecoration="none" />
+              margin="none"
+              pad="none"
+              
+            >
+              <CircleInformation margin="none" pad="none" textDecoration="none" />
               </Box>
              
               <Box 
                 basis="1" 
                 height="medium" 
                 width="300px"
-                justify="center"
+                justify="end"
+                margin="medium"
               // align="end"
               alignSelf="center" 
                
