@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+//importing components from grommet
 import { Grommet, Box, ResponsiveContext,Button,Image, Text , Heading, TextInput, Markdown} from "grommet";
+//imported icon from assets/Icons Folder
 import sonaLogo from "../../assets/Icons/sonaLogo.png"
+//imported icon from grommeticons library
 import { Login,CircleInformation } from 'grommet-icons';
 
 
@@ -26,7 +29,11 @@ class LogIn extends Component {
     }
     return (
       <div>
+        {/* using Grommet to wrap all the grommet component */}
         <Grommet full theme={myTheme}>
+        
+       
+        {/* main Box which holds all the boxes */}
           <Box
             fill
             pad="none"
@@ -35,11 +42,11 @@ class LogIn extends Component {
             align="stretch"
             alignContent="stretch"
           >
-          
+          {/* to make the box responsive we used this */}
             <ResponsiveContext.Consumer>
               {(size) => (
                 size === "medium" ?  (
-                
+            // sidebar box
                 <Box 
                   fill 
                   margin="none" 
@@ -47,13 +54,17 @@ class LogIn extends Component {
                   background="#2e3c54"  
                   direction="column"
                   justify="center"
+                  height="xxlarge"
                   align="center"
                   alignContent="start"
+                  alignSelf="stretch"
                   basis="1/4" >
+                  
                   <Box height="small" width="small"  >
-                  <Image src={sonaLogo} fit="contain" margin="xsmall" alignSelf="center"/>
+                  <Image src={sonaLogo} fit="contain" margin="xsmall" alignSelf="between"/>
                   <Text textAlign="center">Version 6.5.0.0</Text>
                   </Box>
+
                 </Box>  
                 
                 
@@ -62,24 +73,47 @@ class LogIn extends Component {
                 
               )}
             </ResponsiveContext.Consumer>
+          
             
+             
+              
+            
+            {/* box which contain textboxes ,labeling and icon button */}
             <Box 
             
-              justify="end"
-              align="center"
+              justify="start"
+              align="start"
+              direction="column"
               background="white" 
-              pad="xlarge" 
+              pad="large" 
               margin="none" 
               basis="1" 
+          
               width={"100%"} 
+            
             >
-              <Box >
-                <CircleInformation color='plain' size='medium' /> 
+           
+                
+           <Box 
+              
+              justify="end"
+              align="end"
+             width={"300%"}
+             height="none"
+              direction="row"
+              margin="none">
+              <CircleInformation textDecoration="none" />
               </Box>
+             
               <Box 
                 basis="1" 
                 height="medium" 
-                width="300px" 
+                width="300px"
+                justify="center"
+              // align="end"
+              alignSelf="center" 
+               
+                
               >
                 <Heading  
                   size="small" 
@@ -101,8 +135,14 @@ class LogIn extends Component {
                   />
                 </Box>
               </Box>
+              
             </Box>
-          </Box>
+            
+           
+           </Box>
+            
+          
+         
         </Grommet>
       </div>
     )

@@ -14,7 +14,7 @@ import { Grommet, Box, Grid, Text ,Image,Paragraph} from "grommet";
 //impoter theme from grommet
 import { grommet } from "grommet/themes";
 
- export default class Grommets extends Component {
+ export default class HomeScreen extends Component {
 
 
   render() {
