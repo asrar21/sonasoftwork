@@ -84,7 +84,7 @@ class LogIn extends Component {
               align="start"
               direction="column"
               background="white" 
-              pad="large" 
+              pad="small" 
               margin="none" 
               basis="1" 
           
@@ -93,22 +93,26 @@ class LogIn extends Component {
             >
            
                 
-           <Box 
-              
+           <Box  
               justify="end"
-              align="end"
-             width={"300%"}
-             height="none"
+              align="start"
+              alignContent="start"
+             width={"100%"}
+              // basis="1"
               direction="row"
-              margin="none">
-              <CircleInformation textDecoration="none" />
+              margin="none"
+              pad="none"
+              
+            >
+              <CircleInformation margin="none" pad="none" textDecoration="none" />
               </Box>
              
               <Box 
                 basis="1" 
                 height="medium" 
                 width="300px"
-                justify="center"
+                justify="end"
+                margin="medium"
               // align="end"
               alignSelf="center" 
                

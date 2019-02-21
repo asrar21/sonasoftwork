@@ -26,7 +26,7 @@ export default class Card extends Component {
           width={"100%"}
           // height={"40%"}
         >
-          <Image src={require(IconName)} fit="contain" />
+          <Image src={IconName} fit="contain" />
           <Anchor pad="none" margin="none" href="#" as="h1" primary label={heading} />
           <Anchor pad="none" margin="none" href="#" as="p" primary label={link1} />
           <Anchor pad="none" margin="none" href="#" as="p" primary label={link2} />
