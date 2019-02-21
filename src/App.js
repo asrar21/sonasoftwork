@@ -15,8 +15,8 @@ export default class App extends Component {
     const homeScreen = this.state
     return (
       <div>    
-        {/* {!homeScreen && <LogIn navigateToHomeScreen={this.navigateToHomeScreen}/>}     */}
-        {!homeScreen && <HomeScreen />}
+        {!homeScreen && <LogIn navigateToHomeScreen={this.navigateToHomeScreen}/>}    
+        {homeScreen && <HomeScreen />}
       </div>
     )
   }
