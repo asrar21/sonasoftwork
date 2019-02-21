@@ -50,9 +50,9 @@ class LogIn extends Component {
                   align="center"
                   alignContent="start"
                   basis="1/4" >
-                  <Box height="small" width="small"  >
-                  <Image src={sonaLogo} fit="contain" margin="xsmall" alignSelf="center"/>
-                  <Text textAlign="center">Version 6.5.0.0</Text>
+                  <Box height="small" pad="small" width="small"  >
+                  <Image src={sonaLogo} fit="contain" margin="small" alignSelf="center"/>
+                  <Text textAlign="center" size="small">Version 6.5.0.0</Text>
                   </Box>
                 </Box>  
                 
