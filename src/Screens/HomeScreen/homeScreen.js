@@ -8,8 +8,6 @@ import Card from "../../Containers/Card/card"
 import { grommet } from "grommet/themes";
 import Navbar from "../../Containers/Navbar/navbar";
 
-
-
 class homeScreen extends Component {
   render() {
     return (
