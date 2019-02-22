@@ -13,7 +13,11 @@ Do the following steps to run the project otherwise you may not be able to run i
        1) download rethinkdb exe file run it by clicking on it
      2)than go to server folder and than write command node app.js
         3) than run your react app
-
+          4)i added following  data in rethinkdb so you can sign in according to it
+# Data
+#    {name:"Syed Mohammad asrar alam",Email:"asrara@sonasoft.com",pasword:"abc123"},
+#      {name:"Faizan Khurshid",Email:"faizan@sonasoft.com",pasword:"faizan123"},
+ #     {name:"Hafsa",Email:"hafsan@sonasoft.com",pasword:"hafsa123"},
 
 # sv-ui2.0
 
