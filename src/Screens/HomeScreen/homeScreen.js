@@ -2,8 +2,8 @@ import React, { Component } from "react";
 //importing iconimages from icons floder
 import * as Icons from "./homeScreenIcons"
 //imported some components from Gromet
-import { Grommet, Box, Grid, Text ,Image,Paragraph} from "grommet";
-//impoter theme from grommet
+import { Grommet, Box,  Text ,Image,Paragraph} from "grommet";
+//impoted theme from grommet
 import { grommet } from "grommet/themes";
 import Navbar from "../../Containers/Navbar/navbar";
 
@@ -35,34 +35,20 @@ import Navbar from "../../Containers/Navbar/navbar";
           >
             <Navbar />
           </Box>
-          {/* <Box
-            gridArea="header"
-            direction="row"
-            align="center"
-            justify="between"
-            pad={{ horizontal: "medium", vertical: "small" }}
-            background="#163552"
-            
-            border={{side:"bottom",color:"orange" ,size:"medium"}}
-          >
-            
-              <Text color="lightgrey"  size="xxlarge" weight="bold">SonaVault</Text>
-              <Image src={Icons.profile_gray} width="50px" height="50px"/>
-          
-          </Box> */}
-          
+         
         {/* the wrapper box which contains all the 8 boxes */}
+        
       <Box   
           
       direction="row"
-      justify="start"
+      justify="center"
       align="center"
-      // pad={{left:"medium"}}
-      // pad="medium"
-      margin="none"
-      pad="none"
-      border={{side:"all", color:"orange", size:"small"}}
-      background="transparent"
+      // // pad={{left:"medium"}}
+      pad="medium"
+      // // margin="none"
+      // // pad="none"
+      // border={{side:"all", color:"orange", size:"small"}}
+      // background="transparent"
       wrap={true}
       fill
       gap="100px"
