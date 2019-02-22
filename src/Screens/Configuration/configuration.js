@@ -14,7 +14,8 @@ import {
     Tabs,
     CheckBox,
     DataTable,
-    Image
+    Image,
+    Grid
 
 } from "grommet";
 //importing grommet themes 
@@ -44,7 +45,7 @@ const columns = [
         header: "Status",
         render: datum => (
             <Box pad={{ vertical: "xsmall" }}>
-                <Image src={Icons.review_blue} width="80px" height="80px" />
+                <Image src={Icons.review_blue} width="20px" height="20px" />
             </Box>
         )
     },
@@ -93,7 +94,8 @@ class Configuration extends Component {
             //getting selected string through props
             selected: props.selected,
             //pencil icon flag which opens sidedrawer with a form
-            Editopen: false
+            Editopen: false,
+            index: 3
         };
     }
     //handling changed value in a checkbox
@@ -127,16 +129,13 @@ class Configuration extends Component {
 
     render() {
         //calling all the variables of state
-        const { checked } = this.state;
-        const { open, Editopen } = this.state;
-        const { selected } = this.state;
-
+        const { checked, open, Editopen, selected, index } = this.state;
 
         return (
             <Grommet theme={grommet} full>
                 <Box fill>
                     {/* using tabs component of groommet to to show different forms in different tabs */}
-                    <Tabs flex>
+                    <Tabs activeIndex={index} onActive={index => index > 2 ? this.setState({index}) : null } flex>
                         {/* General tab */}
                         <Tab title="General">
 
@@ -342,7 +341,7 @@ class Configuration extends Component {
                                             header: '',
                                             render: datum => (
                                                 <Box pad={{ vertical: "xsmall" }}>
-                                                    <Edit onClick={this.editopen} />
+                                                    <Edit cursor="pointer" onClick={this.editopen} />
                                                 </Box>
 
                                             ),
@@ -354,7 +353,7 @@ class Configuration extends Component {
                                     sortable
                                     size="medium"
                                 />
-                                <Box>
+                                <Box margin="20px" direction="row-responsive">
                                     <Button label="Add" onClick={this.onOpen} />
                                     <Button label="Enable" />
                                     <Button label="Disable" />
@@ -364,29 +363,34 @@ class Configuration extends Component {
                             </Box>
                         </Tab>
                         {/* SSO Setting tab with form */}
-                        <Tab title="SSO Setting">
-                            <Box justify="center" align="start" direction="row">
-                                <Box  >
-                                    <Text>Identity Provider URL : </Text>
-                                    <TextInput></TextInput>
+                        <Tab title="SSO Setting"  >
 
-                                    <Text>Service Provider URL :  </Text>
-                                    <TextInput></TextInput>
-                                    <Text>Issuer :  </Text>
-                                    <TextInput></TextInput>
-                                    <Text>Public Certificate :  </Text>
-                                    <TextInput></TextInput><Button label="Browse"
-                                        onClick={() => { }}
-                                    />
-                                    <Text>Enable :  </Text>
-                                    <CheckBox></CheckBox>
-                                    <Box>
-                                        <Button label="Save" /><Button label="Cancel" />
 
-                                    </Box>
+                           
+                             <Box justify="center" margin="large" align="start" direction="column">
+                                 
+                                     <Text>Identity Provider URL : </Text>
+                                     <TextInput size="small" ></TextInput>
 
-                                </Box>
-                            </Box>
+                                     <Text>Service Provider URL :  </Text>
+                                     <TextInput></TextInput>
+                                     <Text>Issue :  </Text>
+                                     <TextInput></TextInput>
+                                     <Text>Public Certificate :  </Text>
+                                     <TextInput></TextInput>
+                                     
+                                     <Button label="Browse"
+                                         onClick={() => { }}
+                                     />
+                                     <Text>Enable :  </Text>
+                                     <CheckBox></CheckBox>
+                                     <Box>
+                                         <Button label="Save" /><Button label="Cancel" />
+
+                                     </Box>
+
+                                
+                             </Box>
 
 
 
