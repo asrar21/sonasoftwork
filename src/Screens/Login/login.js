@@ -1,6 +1,17 @@
   import React, { Component } from 'react';
   //importing components from grommet
-  import { Grommet, Box, ResponsiveContext,Button,Image, Text , Heading, TextInput, Markdown} from "grommet";
+  import { 
+    Grommet,
+     Box, 
+     ResponsiveContext,
+     Button,
+     Image, 
+     Text , 
+     Heading, 
+     TextInput, 
+     Markdown,
+     Anchor
+    } from "grommet";
   //imported icon from assets/Icons Folder
   import sonaLogo from "../../assets/Icons/sonaLogo.png"
   //imported icon from grommeticons library
@@ -95,6 +106,7 @@
                     width={"100%"}
                     direction="row"
                   >
+                    <Anchor href="./configuration">go to configuration</Anchor>
                     <CircleInformation cursor="pointer" textDecoration="none" />
                 </Box>
               
@@ -120,7 +132,7 @@
                           label="sign in"
                           alignSelf="start"
                           plain="True"
-                          onClick={() => this.props.navigateToHomeScreen()}
+                          onClick={() => this.props.history.push("/homescreen")}
                         />
                     </Box>
                 </Box>
