@@ -6,10 +6,13 @@ Do the following steps to run the project otherwise you may not be able to run i
  npm run help
 3) let the magic done
 4) once all are dependencies are installed run npm start
-For Server Setup follow steps
-1) download rethinkdb exe file run it by clicking on it
-2)than go to server folder and than write command node app.js
-3) than run your react app
+
+
+
+             By Asrar For Server Setup follow steps
+       1) download rethinkdb exe file run it by clicking on it
+     2)than go to server folder and than write command node app.js
+        3) than run your react app
 
 
 # sv-ui2.0
