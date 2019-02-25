@@ -2,83 +2,165 @@ import React, { Component } from 'react';
 //importing components from grommet
 import {
     Box,
-
-
+    
+    Heading,
+    
+   
     Grommet,
-    TextInput,
+    
     Text,
     Button,
-    Tab,
-    Tabs,
+  
     CheckBox,
     DataTable,
-    Image,
-    Grid,
-   
-    RadioButton,
+    
 
 } from "grommet";
 //importing grommet themes 
 import { grommet } from "grommet/themes";
 //importing icons from home screen folder
-import * as Icons from '../HomeScreen/homeScreenIcons';
+import * as Icons from '../../HomeScreen/homeScreenIcons';
 //importing grommet icons
-import { Edit, } from 'grommet-icons';
-import Ssosetting from './SsoSetting'
-import SideModal from '../../Modal/sidemodal';
-import Deploymentsetting from './Deploymentsetting'
-
+import { Edit, Close } from 'grommet-icons';
+import NotificationSideModal from '../../../Modal/Notificationsidemodal'
 
 
 
 //defining columns for Data table component
 const columns = [
     {
-        property: "Domain",
-        header: <Text>Name</Text>,
+        property: "Notification_type",
+        header: <Text>Notification_type</Text>,
         primary: true,
 
     },
     {
-        property: "UserName",
-        header: "UserName"
+        property: "To",
+        header: "To"
+    },
+    {
+        property: "Cc",
+        header: "Cc"
     },
 
-    {
-        property: "Status",
-        header: "Status",
-        render: datum => (
-            <Box pad={{ vertical: "xsmall" }}>
-                <Image src={Icons.review_blue} width="25px" height="25px" />
-            </Box>
-        )
-    },
+
+   
 
 ];
+
 
 
 //putting our data into to an DATA Array
 const DATA = [
     {
-        Domain: "192.168.1.2",
-        UserName: 'Administrator',
+        
+        Notification_type: 'Activate Products',
+        To:'neilk@sonasoft.com',
+        Cc:'vijayk@sonasoft.com'
 
     },
     {
-        Domain: "sonansoft.onmicrosoft.com",
-        UserName: 'vijayk@sonasoft.com',
+        
+        Notification_type: 'Activate Products',
+        To:'neilk@sonasoft.com',
+        Cc:'vijayk@sonasoft.com'
+
+    },
+    {
+        
+        Notification_type: 'Activate Products',
+        To:'neilk@sonasoft.com',
+        Cc:'vijayk@sonasoft.com'
+
+    },
+    {
+        
+        Notification_type: 'Activate Products',
+        To:'neilk@sonasoft.com',
+        Cc:'vijayk@sonasoft.com'
+
+    },
+    {
+        
+        Notification_type: 'Activate Products',
+        To:'neilk@sonasoft.com',
+        Cc:'vijayk@sonasoft.com'
+
+    },
+    {
+        
+        Notification_type: 'Activate Products',
+        To:'neilk@sonasoft.com',
+        Cc:'vijayk@sonasoft.com'
+
+    },
+    {
+        
+        Notification_type: 'Activate Products',
+        To:'neilk@sonasoft.com',
+        Cc:'vijayk@sonasoft.com'
+
+    },
+    {
+        
+        Notification_type: 'Activate Products',
+        To:'neilk@sonasoft.com',
+        Cc:'vijayk@sonasoft.com'
+
+    },
+    {
+        
+        Notification_type: 'Activate Products',
+        To:'neilk@sonasoft.com,makr@sonasoft.com',
+        Cc:'vijayk@sonasoft.com'
+
+    },
+    {
+        
+        Notification_type: 'Activate Products',
+        To:'neilk@sonasoft.com,makr@sonasoft.com',
+        Cc:'vijayk@sonasoft.com'
+
+    },
+    {
+        
+        Notification_type: 'Activate Products',
+        To:'neilk@sonasoft.com,makr@sonasoft.com',
+        Cc:'vijayk@sonasoft.com'
+
+    },
+    {
+        
+        Notification_type: 'Activate Products',
+        To:'neilk@sonasoft.com,makr@sonasoft.com',
+        Cc:'vijayk@sonasoft.com'
+
+    },
+    {
+        
+        Notification_type: 'Activate Products',
+        To:'neilk@sonasoft.com,makr@sonasoft.com',
+        Cc:'vijayk@sonasoft.com'
+
+    },
+    {
+        
+        Notification_type: 'Activate Products',
+        To:'neilk@sonasoft.com,makr@sonasoft.com',
+        Cc:'vijayk@sonasoft.com'
 
     },
 
 
 ];
 //extracting data from colums using map in to a variable called controlledColums
-const controlledColumns = columns.map(col => Object.assign({}, col));
+const controlledColumns = columns.map(col => Object.assign({}, col))
 
 
 
 
-class Configuration extends Component {
+
+class Notification extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -91,9 +173,7 @@ class Configuration extends Component {
             //getting selected string through props
             selected: props.selected,
             //pencil icon flag which opens sidedrawer with a form
-            Editopen: false,
-            
-         
+            Editopen: false
         };
     }
     //handling changed value in a checkbox
@@ -104,6 +184,7 @@ class Configuration extends Component {
         if (event.target.checked) {
             checked.push(value);
             this.setState({ checked });
+            console.log('checked',checked)
         } else {
             this.setState({ checked: checked.filter(item => item !== value) });
         }
@@ -111,7 +192,7 @@ class Configuration extends Component {
     //check all the event triggered in Data table
     onCheckAll = event =>
         this.setState({
-            checked: event.target.checked ? DATA.map(datum => datum.name) : []
+            checked: event.target.checked ? DATA.map(datum => datum.Notification_type) : []
         });
     //opens Add form on the rigth side
     onOpen = () => this.setState({ open: true });
@@ -123,11 +204,11 @@ class Configuration extends Component {
     //opens Edit form on the right side when clicked in edit button
     editopen = () => this.setState({ Editopen: true });
 
-    
+
 
     render() {
         //calling all the variables of state
-        const { checked, multiArchive, centralArchive } = this.state;
+        const { checked } = this.state;
         const { open, Editopen } = this.state;
         const { selected } = this.state;
 
@@ -135,55 +216,33 @@ class Configuration extends Component {
         return (
             <Grommet theme={grommet} full>
                 <Box fill>
-                    {/* using tabs component of groommet to to show different forms in different tabs */}
-                    <Tabs activeIndex={index} onActive={index => index > 2 ? this.setState({index}) : null } flex>
-                        {/* General tab */}
-                        <Tab title="General">
-
-                        </Tab>
-                        {/* Smtp Tabs */}
-                        <Tab title="SMTP Configuration">
-                            <Box >
-
-                            </Box>
-                        </Tab>
-                        {/* Deployment Tab */}
-                        <Tab title="Deployment Setting">
-
-                           <Deploymentsetting/>
-
-
-
-
-
-
-
-
-                        </Tab>
-                        {/* Ad Setting tab */}
-                        <Tab title="AD Setting">
+                <Heading>
+                    Notification
+                </Heading>
+                    
+                        
                             <Box align="center" justify="center" pad="medium">
                                 {/* using flag and layer component of to open Add form on the rightside */}
                                 {open && (
-                                    <SideModal header="ADD AD Setting" close={this.onClose} />
+                                    <NotificationSideModal header="Add Notification" close={this.onClose}/>
                                 )}
 
                                 {/* using flag and layer component to open edit Form on the rigth side */}
                                 {Editopen && (
-                                    <SideModal header="Edit Ad Setting" close={this.onClose} />
+                                   <NotificationSideModal header="Edit Notification" close={this.onClose}/>
                                 )}
                                 {/* using datatable component of groommet to show datalist */}
-                                <DataTable size="small"
+                                <DataTable
                                     columns={[
 
 
                                         {
                                             property: "checkbox",
                                             render: datum => (
-                                                <CheckBox
-                                                    key={datum.name}
-                                                    checked={checked.indexOf(datum.name) !== -1}
-                                                    onChange={e => this.onCheck(e, datum.name)}
+                                                 <CheckBox
+                                                    key={datum.Notification_type}
+                                                    checked={checked.indexOf(datum.Notification_type) !== -1}
+                                                    onChange={e => this.onCheck(e, datum.Notification_type)}
                                                 />
                                             ),
 
@@ -194,7 +253,7 @@ class Configuration extends Component {
                                                     indeterminate={
                                                         checked.length > 0 && checked.length < DATA.length
                                                     }
-                                                    onChange={this.onCheckAll}
+                                                    onChange={e=>this.onCheckAll(e)}
                                                 />
                                             ),
                                             sortable: false
@@ -204,7 +263,7 @@ class Configuration extends Component {
                                             header: '',
                                             render: datum => (
                                                 <Box pad={{ vertical: "xsmall" }}>
-                                                    <Edit cursor="pointer" onClick={this.editopen} />
+                                                    <Edit onClick={this.editopen} />
                                                 </Box>
 
                                             ),
@@ -216,33 +275,22 @@ class Configuration extends Component {
                                     sortable
                                     size="medium"
                                 />
-                                <Box direction="row-responsive" gap="medium" pad="medium">
+                                <Box direction="row-responsive" gap="medium">
                                     <Button label="Add" onClick={this.onOpen} />
-                                    <Button label="Enable" />
-                                    <Button label="Disable" />
+                                    
                                     <Button label="Delete" />
                                 </Box>
 
                             </Box>
-                        </Tab>
-                        {/* SSO Setting tab with form  browse button remaining*/}
-                        <Tab title="SSO Setting" justify="start" align="start">
-                          <Ssosetting/>
-
-
-
-
-
-
-
-                        </Tab>
-                    </Tabs>
+                        
+                        
+                        
                 </Box>
             </Grommet>
         )
     }
 }
 
-export default Configuration;
+export default Notification;
 
 
