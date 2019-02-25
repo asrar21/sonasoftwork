@@ -10,12 +10,13 @@
      Heading, 
      TextInput, 
      Markdown,
-     Anchor
+     Anchor,
+     Menu
     } from "grommet";
   //imported icon from assets/Icons Folder
   import sonaLogo from "../../assets/Icons/sonaLogo.png"
   //imported icon from grommeticons library
-  import { Login, CircleInformation } from 'grommet-icons';
+  import { Login, CircleInformation, Windows } from 'grommet-icons';
 
 
   class LogIn extends Component {
@@ -101,13 +102,25 @@
             
                   
                 <Box  
-                    justify="end"
+                    justify="between"
                     align="start"
                     width={"100%"}
                     direction="row"
                   >
-                    <Anchor href="./configuration">go to configuration</Anchor>
-                    <Anchor href="./settings/emailServer">go to Settings</Anchor>
+                   <Menu
+                    label="Configuration & Notification by Asrar"
+                    items={[
+                      { label: 'configuration', onClick: () => {window.location.pathname = "/configuration"} },
+                      { label: 'notification', onClick: () => { window.location.pathname = "/notification"} },
+                    ]}
+                  />
+                    <Menu
+                      label="Setting's Email server & content Identification Policy By Faizan"
+                      items={[
+                        { label: 'Email Server', onClick: () => { window.location.pathname = "settings/emailServer"} },
+                        { label: 'Content Identification Policy', onClick: () => { window.location.pathname = "settings/contentIdentificationPolicy"} },
+                      ]}
+                  />
                     <CircleInformation cursor="pointer" textDecoration="none" />
                 </Box>
               

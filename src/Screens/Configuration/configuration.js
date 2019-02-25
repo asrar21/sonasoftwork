@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 //importing components from grommet
 import {
     Box,
-
-
     Grommet,
     TextInput,
     Text,
@@ -24,9 +22,9 @@ import { grommet } from "grommet/themes";
 import review_blue from "../../assets/Icons/review_blue.png"
 //importing grommet icons
 import { Edit, } from 'grommet-icons';
-import Ssosetting from './SsoSetting'
+import Ssosetting from './configComponents/SsoSetting'
 import SideModal from '../../Modal/sidemodal';
-import Deploymentsetting from './Deploymentsetting'
+import Deploymentsetting from './configComponents/Deploymentsetting'
 
 
 
@@ -49,7 +47,7 @@ const columns = [
         header: "Status",
         render: datum => (
             <Box pad={{ vertical: "xsmall" }}>
-                <Image src={Icons.review_blue} width="25px" height="25px" />
+                <Image src={review_blue} width="25px" height="25px" />
             </Box>
         )
     },
