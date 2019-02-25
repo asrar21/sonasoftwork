@@ -94,7 +94,7 @@ class Configuration extends Component {
             selected: props.selected,
             //pencil icon flag which opens sidedrawer with a form
             Editopen: false,
-            index: 3
+            
         };
     }
     //handling changed value in a checkbox
@@ -128,13 +128,13 @@ class Configuration extends Component {
 
     render() {
         //calling all the variables of state
-        const { checked, open, Editopen, selected, index } = this.state;
+        const { checked, open, Editopen, selected } = this.state;
 
         return (
             <Grommet theme={grommet} full>
                 <Box fill>
                     {/* using tabs component of groommet to to show different forms in different tabs */}
-                    <Tabs activeIndex={index} onActive={index => index > 2 ? this.setState({index}) : null } flex>
+                    <Tabs flex>
                         {/* General tab */}
                         <Tab title="General">
 

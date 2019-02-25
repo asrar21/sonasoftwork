@@ -4,6 +4,7 @@ import SecondaryNavbar from "../../Containers/SecondaryNavbar/secodaryNavbar";
 import { Edit } from "grommet-icons";
 import  Tick from "../../assets/Icons/submit_purple.png";
 import Cross from "../../assets/Icons/cancel_purple.png"
+import EmailServerModal from "../../Containers/Modal/emailServerModal"
 
 const emailServerData = [{
   emailServer: 'mail2010',
@@ -40,9 +41,18 @@ class emailServer extends Component {
     this.state = {
       data : [],
       selectAll: false,
-      checkBox: true
+      checkBox: true,
+      AddServerModal:false
+
       
     }
+  }
+
+  openAddServerModal = () => {
+    console.log("faizan")
+    this.setState({
+      AddServerModal :!this.state.AddServerModal
+    })
   }
 
   selectAllData(e){
@@ -69,7 +79,7 @@ componentWillMount(){
   emailServerData.map(value => {
     data.push({
       checkBox: <CheckBox checked={this.state.checkBox}  name={value.emailServer} onChange={(e) => this.toggleCheckBox(e)} />,
-      edit: <Edit />,
+      edit: <Edit cursor="pointer" onClick={this.openAddServerModal} />,
       emailServer: value.emailServer,
       journalLogin: value.journalLogon,
       status: value.status ? <Image src={Tick} width="25px" height="25px" />: <Image src={Cross}  width="25px" height="25px"  /> ,
@@ -84,17 +94,23 @@ componentWillMount(){
   })
   };
 
+  AddServerModalClose = () => {
+    this.setState({
+      AddServerModal : false
+    })
+  }
+
 
 
 
   render(){
-    
+    const { AddServerModal } = this.state
     return (
       <Grommet>
         <Box>
           <SecondaryNavbar pageName="Email Server" pageIcon="emailServer" />   
         </Box>
-
+        {AddServerModal ===true? <EmailServerModal header="Add New Server Modal" close={() => this.AddServerModalClose()} />:null}
         <Box margin="small">
             <DataTable
               columns={[
@@ -146,7 +162,7 @@ componentWillMount(){
             />  
 
             <Box direction="row" justify="center" margin="large" gap="medium">
-              <Button label="Add" />
+              <Button label="Add" onClick={this.openAddServerModal}/>
               <Button label="Enable" />
               <Button label="Disable" />
               

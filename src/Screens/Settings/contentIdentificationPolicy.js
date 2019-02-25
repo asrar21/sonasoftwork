@@ -5,6 +5,7 @@ import { Edit } from "grommet-icons";
 import Tick from "../../assets/Icons/submit_purple.png";
 import Cross from "../../assets/Icons/cancel_purple.png";
 import { FormDown, FormUp } from "grommet-icons";
+import ContentPageModal from "../../Containers/Modal/contentIdentificationModal";
 
 
 const ContentPageData = [{
@@ -68,6 +69,18 @@ class contentIdentificationPolicy extends Component {
             })
       }
 
+      closeAddPolicyModal = () => {
+            this.setState({
+                  addPolicyModal: false
+            })
+      }
+
+      openNewPolicyForm = () => {
+            this.setState({
+                  addPolicyModal: true
+            })
+      }
+
       storeOptionsChanged = event => {
             const options = ['allStores', 'activeStoreOnly']
             options.map(value => {
@@ -85,7 +98,7 @@ class contentIdentificationPolicy extends Component {
             ContentPageData.map(value => {
               data.push({
                 checkBox: <CheckBox checked={this.state.checkBox}  name={value.emailServer} onChange={(e) => this.toggleCheckBox(e)} />,
-                edit: <Edit />,
+                edit: <Edit onClick={this.openNewPolicyForm} />,
                 name: value.name,
                 notificationType: value.notificationType,
                 notificationDelay: value.notificationDelay,
@@ -94,13 +107,13 @@ class contentIdentificationPolicy extends Component {
             })
       }
   render() {
-        const {activeStoreOnly, allStores, collapse} = this.state
+        const {activeStoreOnly, allStores, collapse, addPolicyModal} = this.state
     return (
       <Grommet>
             <Box>
                   <SecondaryNavbar pageName="Conent Identification Policy" pageIcon="FlagPolicy"  />
             </Box>
-
+            {addPolicyModal && <ContentPageModal header="Add New Content Identification Policy" close={this.closeAddPolicyModal}/>}
             <Box>
                   <DataTable 
                         columns={[
@@ -140,7 +153,7 @@ class contentIdentificationPolicy extends Component {
                   
                   <Box direction="row" justify="center" margin="large" gap="medium">
 
-                        <Button label="Add" />
+                        <Button label="Add" onClick={this.openNewPolicyForm}/>
                         <Button label="Enable" />
                         <Button label="Disable" />
                         <Button label="Delete" />
