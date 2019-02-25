@@ -107,6 +107,7 @@
                     direction="row"
                   >
                     <Anchor href="./configuration">go to configuration</Anchor>
+                    <Anchor href="./settings/emailServer">go to Settings</Anchor>
                     <CircleInformation cursor="pointer" textDecoration="none" />
                 </Box>
               
