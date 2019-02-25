@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 //importing components from grommet
 import {
     Box,
-    Layer,
-    Heading,
-    FormField,
-    RadioButton,
+
+
     Grommet,
     TextInput,
     Text,
@@ -15,6 +13,9 @@ import {
     CheckBox,
     DataTable,
     Image,
+    Grid,
+   
+    RadioButton,
 
 } from "grommet";
 //importing grommet themes 
@@ -22,7 +23,11 @@ import { grommet } from "grommet/themes";
 //importing icons from home screen folder
 import review_blue from "../../assets/Icons/review_blue.png"
 //importing grommet icons
-import { Edit, Close } from 'grommet-icons';
+import { Edit, } from 'grommet-icons';
+import Ssosetting from './SsoSetting'
+import SideModal from '../../Modal/sidemodal';
+import Deploymentsetting from './Deploymentsetting'
+
 
 
 
@@ -44,21 +49,14 @@ const columns = [
         header: "Status",
         render: datum => (
             <Box pad={{ vertical: "xsmall" }}>
-                <Image src={review_blue} width="20px" height="20px" />
+                <Image src={Icons.review_blue} width="25px" height="25px" />
             </Box>
         )
     },
 
 ];
 
-//pushing data into data array
-const data = [];
-for (let i = 0; i < 40; i += 1) {
-    data.push({
-        Domain: `Domain`,
-        UserName: 'UserName'
-    });
-}
+
 //putting our data into to an DATA Array
 const DATA = [
     {
@@ -95,6 +93,7 @@ class Configuration extends Component {
             //pencil icon flag which opens sidedrawer with a form
             Editopen: false,
             
+         
         };
     }
     //handling changed value in a checkbox
@@ -124,11 +123,14 @@ class Configuration extends Component {
     //opens Edit form on the right side when clicked in edit button
     editopen = () => this.setState({ Editopen: true });
 
-
+    
 
     render() {
         //calling all the variables of state
-        const { checked, open, Editopen, selected } = this.state;
+        const { checked, multiArchive, centralArchive } = this.state;
+        const { open, Editopen } = this.state;
+        const { selected } = this.state;
+
 
         return (
             <Grommet theme={grommet} full>
@@ -148,168 +150,30 @@ class Configuration extends Component {
                         {/* Deployment Tab */}
                         <Tab title="Deployment Setting">
 
+                           <Deploymentsetting/>
+
+
+
+
+
+
+
+
                         </Tab>
                         {/* Ad Setting tab */}
                         <Tab title="AD Setting">
                             <Box align="center" justify="center" pad="medium">
                                 {/* using flag and layer component of to open Add form on the rightside */}
                                 {open && (
-                                    <Layer
-                                        position="right"
-                                        full="vertical"
-                                        modal
-                                        onClickOutside={this.onClose}
-                                        onEsc={this.onClose}>
-                                        <Box
-                                            as="form"
-                                            fill="vertical"
-                                            overflow="auto"
-                                            width="medium"
-                                            pad="medium"
-                                            onSubmit={this.onClose}>
-                                            <Box flex={false} direction="row" justify="between">
-                                                <Heading level={2} margin="none">
-                                                    Add Ad Setting
-                                                 </Heading>
-                                                <Button icon={<Close />} onClick={this.onClose} />
-                                            </Box>
-                                            <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
-                                                <FormField label="Domain">
-                                                    <TextInput />
-                                                </FormField>
-                                                <FormField label="UserName">
-                                                    <TextInput />
-                                                </FormField>
-                                                <FormField label="Password">
-                                                    <TextInput />
-                                                </FormField>
-                                                <FormField label="Enable Sync">
-                                                    <CheckBox />
-                                                </FormField>
-                                                <FormField label="Azure Users?">
-                                                    <CheckBox />
-                                                </FormField>
-                                                <FormField label="Discover Organizational units">
-                                                    <Box align="" pad="" >
-                                                        <RadioButton
-                                                            label="All"
-                                                            name="radio"
-                                                            value="c1"
-                                                            checked={selected === "c2"}
-                                                            onChange={this.onChange}
-                                                            {...this.props}
-                                                        />
-                                                        <RadioButton
-                                                            label="Selected"
-                                                            name="radio"
-                                                            value="c2"
-                                                            checked={selected === "c2"}
-                                                            onChange={this.onChange}
-                                                            {...this.props}
-                                                        />
-                                                    </Box>
-                                                </FormField>
-                                            </Box>
-                                            <Box flex={false} as="footer" align="start">
-                                                <Button
-                                                    type="save"
-                                                    label="Save"
-                                                    onClick={this.onClose}
-                                                    primary
-                                                />
-                                            </Box>
-                                            <Box flex={false} as="footer" align="start">
-                                                <Button
-                                                    type="Cancel"
-                                                    label="Cancel"
-                                                    onClick={this.onClose}
-                                                    Default
-                                                />
-                                            </Box>
-                                        </Box>
-                                    </Layer>
+                                    <SideModal header="ADD AD Setting" close={this.onClose} />
                                 )}
 
                                 {/* using flag and layer component to open edit Form on the rigth side */}
                                 {Editopen && (
-                                    <Layer
-                                        position="right"
-                                        full="vertical"
-                                        modal
-                                        onClickOutside={this.onClose}
-                                        onEsc={this.onClose}>
-                                        <Box
-                                            as="form"
-                                            fill="vertical"
-                                            overflow="auto"
-                                            width="medium"
-                                            pad="medium"
-                                            onSubmit={this.onClose}
-                                        >
-                                            <Box flex={false} direction="row" justify="between">
-                                                <Heading level={2} margin="none">
-                                                    Edit AD Setting
-                                                  </Heading>
-                                                <Button icon={<Close />} onClick={this.onClose} />
-                                            </Box>
-                                            <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
-                                                <FormField label="Domain">
-                                                    <TextInput />
-                                                </FormField>
-                                                <FormField label="UserName">
-                                                    <TextInput />
-                                                </FormField>
-                                                <FormField label="Password">
-                                                    <TextInput />
-                                                </FormField>
-                                                <FormField label="Enable Sync">
-                                                    <CheckBox />
-                                                </FormField>
-                                                <FormField label="Azure Users?">
-                                                    <CheckBox />
-                                                </FormField>
-                                                <FormField label="Discover Organizational units">
-                                                    <Box align="" pad="" >
-                                                        <RadioButton
-                                                            label="All"
-                                                            name="radio"
-                                                            value="c1"
-                                                            checked={selected === "c2"}
-                                                            onChange={this.onChange}
-                                                            {...this.props}
-                                                        />
-                                                        <RadioButton
-                                                            label="Selected"
-                                                            name="radio"
-                                                            value="c2"
-                                                            checked={selected === "c2"}
-                                                            onChange={this.onChange}
-                                                            {...this.props}
-                                                        />
-                                                    </Box>
-                                                </FormField>
-                                            </Box>
-                                            <Box flex={false} as="footer" align="start">
-                                                <Button
-                                                    type="save"
-                                                    label="Save"
-                                                    onClick={this.onClose}
-                                                    primary
-                                                />
-                                            </Box>
-                                            <Box flex={false} as="footer" align="start">
-                                                <Button
-                                                    type="Cancel"
-                                                    label="Cancel"
-                                                    onClick={this.onClose}
-                                                    Default
-                                                />
-                                            </Box>
-                                        </Box>
-                                    </Layer>
+                                    <SideModal header="Edit Ad Setting" close={this.onClose} />
                                 )}
                                 {/* using datatable component of groommet to show datalist */}
-                                <DataTable
+                                <DataTable size="small"
                                     columns={[
 
 
@@ -352,7 +216,7 @@ class Configuration extends Component {
                                     sortable
                                     size="medium"
                                 />
-                                <Box margin="20px" direction="row-responsive">
+                                <Box direction="row-responsive" gap="medium" pad="medium">
                                     <Button label="Add" onClick={this.onOpen} />
                                     <Button label="Enable" />
                                     <Button label="Disable" />
@@ -361,35 +225,12 @@ class Configuration extends Component {
 
                             </Box>
                         </Tab>
-                        {/* SSO Setting tab with form */}
-                        <Tab title="SSO Setting"  >
+                        {/* SSO Setting tab with form  browse button remaining*/}
+                        <Tab title="SSO Setting" justify="start" align="start">
+                          <Ssosetting/>
 
 
-                           
-                             <Box justify="center" margin="large" align="start" direction="column">
-                                 
-                                     <Text>Identity Provider URL : </Text>
-                                     <TextInput size="small" ></TextInput>
 
-                                     <Text>Service Provider URL :  </Text>
-                                     <TextInput></TextInput>
-                                     <Text>Issue :  </Text>
-                                     <TextInput></TextInput>
-                                     <Text>Public Certificate :  </Text>
-                                     <TextInput></TextInput>
-                                     
-                                     <Button label="Browse"
-                                         onClick={() => { }}
-                                     />
-                                     <Text>Enable :  </Text>
-                                     <CheckBox></CheckBox>
-                                     <Box>
-                                         <Button label="Save" /><Button label="Cancel" />
-
-                                     </Box>
-
-                                
-                             </Box>
 
 
 

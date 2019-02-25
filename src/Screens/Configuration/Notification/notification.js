@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 //importing components from grommet
 import {
     Box,
-    Layer,
+    
     Heading,
-    FormField,
+    
    
     Grommet,
-    TextInput,
+    
     Text,
     Button,
   
@@ -19,8 +19,10 @@ import {
 //importing grommet themes 
 import { grommet } from "grommet/themes";
 //importing icons from home screen folder
+import * as Icons from '../../HomeScreen/homeScreenIcons';
 //importing grommet icons
 import { Edit, Close } from 'grommet-icons';
+import NotificationSideModal from '../../../Modal/Notificationsidemodal'
 
 
 
@@ -46,15 +48,8 @@ const columns = [
 
 ];
 
-//pushing data into data array
-const data = [];
-for (let i = 0; i < 40; i += 1) {
-    data.push({
-        Notification_type: 'Activate Products',
-        To:'neilk@sonasoft.com',
-        Cc:'vijayk@sonasoft.com'
-    });
-}
+
+
 //putting our data into to an DATA Array
 const DATA = [
     {
@@ -159,7 +154,8 @@ const DATA = [
 
 ];
 //extracting data from colums using map in to a variable called controlledColums
-const controlledColumns = columns.map(col => Object.assign({}, col));
+const controlledColumns = columns.map(col => Object.assign({}, col))
+
 
 
 
@@ -188,6 +184,7 @@ class Notification extends Component {
         if (event.target.checked) {
             checked.push(value);
             this.setState({ checked });
+            console.log('checked',checked)
         } else {
             this.setState({ checked: checked.filter(item => item !== value) });
         }
@@ -195,7 +192,7 @@ class Notification extends Component {
     //check all the event triggered in Data table
     onCheckAll = event =>
         this.setState({
-            checked: event.target.checked ? DATA.map(datum => datum.name) : []
+            checked: event.target.checked ? DATA.map(datum => datum.Notification_type) : []
         });
     //opens Add form on the rigth side
     onOpen = () => this.setState({ open: true });
@@ -227,112 +224,12 @@ class Notification extends Component {
                             <Box align="center" justify="center" pad="medium">
                                 {/* using flag and layer component of to open Add form on the rightside */}
                                 {open && (
-                                     <Layer
-                                     position="right"
-                                     full="vertical"
-                                     modal
-                                     onClickOutside={this.onClose}
-                                     onEsc={this.onClose}>
-                                     <Box
-                                         as="form"
-                                         fill="vertical"
-                                         overflow="auto"
-                                         width="medium"
-                                         pad="medium"
-                                         onSubmit={this.onClose}
-                                     >
-                                         <Box flex={false} direction="row" justify="between">
-                                             <Heading level={2} margin="none">
-                                                 Edit Notification
-                                               </Heading>
-                                             <Button icon={<Close />} onClick={this.onClose} />
-                                         </Box>
-                                         <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
-                                             <FormField label="Notification type">
-                                                 <TextInput />
-                                             </FormField>
-                                             <FormField label="To">
-                                                 <TextInput />
-                                             </FormField>
-                                             <FormField label="Cc">
-                                                 <TextInput />
-                                             </FormField>
-                                             
-                                             
-                                         </Box>
-                                         <Box flex={false} as="footer" align="start">
-                                             <Button
-                                                 type="save"
-                                                 label="Save"
-                                                 onClick={this.onClose}
-                                                 primary
-                                             />
-                                         </Box>
-                                         <Box flex={false} as="footer" align="start">
-                                             <Button
-                                                 type="Cancel"
-                                                 label="Cancel"
-                                                 onClick={this.onClose}
-                                                 Default
-                                             />
-                                         </Box>
-                                     </Box>
-                                 </Layer>
+                                    <NotificationSideModal header="Add Notification" close={this.onClose}/>
                                 )}
 
                                 {/* using flag and layer component to open edit Form on the rigth side */}
                                 {Editopen && (
-                                    <Layer
-                                        position="right"
-                                        full="vertical"
-                                        modal
-                                        onClickOutside={this.onClose}
-                                        onEsc={this.onClose}>
-                                        <Box
-                                            as="form"
-                                            fill="vertical"
-                                            overflow="auto"
-                                            width="medium"
-                                            pad="medium"
-                                            onSubmit={this.onClose}
-                                        >
-                                            <Box flex={false} direction="row" justify="between">
-                                                <Heading level={2} margin="none">
-                                                    Edit Notification
-                                                  </Heading>
-                                                <Button icon={<Close />} onClick={this.onClose} />
-                                            </Box>
-                                            <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
-                                                <FormField label="Notification type">
-                                                    <TextInput />
-                                                </FormField>
-                                                <FormField label="To">
-                                                    <TextInput />
-                                                </FormField>
-                                                <FormField label="Cc">
-                                                    <TextInput />
-                                                </FormField>
-                                                
-                                                
-                                            </Box>
-                                            <Box flex={false} as="footer" align="start">
-                                                <Button
-                                                    type="save"
-                                                    label="Save"
-                                                    onClick={this.onClose}
-                                                    primary
-                                                />
-                                            </Box>
-                                            <Box flex={false} as="footer" align="start">
-                                                <Button
-                                                    type="Cancel"
-                                                    label="Cancel"
-                                                    onClick={this.onClose}
-                                                    Default
-                                                />
-                                            </Box>
-                                        </Box>
-                                    </Layer>
+                                   <NotificationSideModal header="Edit Notification" close={this.onClose}/>
                                 )}
                                 {/* using datatable component of groommet to show datalist */}
                                 <DataTable
@@ -342,10 +239,10 @@ class Notification extends Component {
                                         {
                                             property: "checkbox",
                                             render: datum => (
-                                                <CheckBox
-                                                    key={datum.name}
-                                                    checked={checked.indexOf(datum.name) !== -1}
-                                                    onChange={e => this.onCheck(e, datum.name)}
+                                                 <CheckBox
+                                                    key={datum.Notification_type}
+                                                    checked={checked.indexOf(datum.Notification_type) !== -1}
+                                                    onChange={e => this.onCheck(e, datum.Notification_type)}
                                                 />
                                             ),
 
@@ -356,7 +253,7 @@ class Notification extends Component {
                                                     indeterminate={
                                                         checked.length > 0 && checked.length < DATA.length
                                                     }
-                                                    onChange={this.onCheckAll}
+                                                    onChange={e=>this.onCheckAll(e)}
                                                 />
                                             ),
                                             sortable: false
@@ -378,7 +275,7 @@ class Notification extends Component {
                                     sortable
                                     size="medium"
                                 />
-                                <Box>
+                                <Box direction="row-responsive" gap="medium">
                                     <Button label="Add" onClick={this.onOpen} />
                                     
                                     <Button label="Delete" />
