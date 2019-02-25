@@ -14,7 +14,8 @@ import {
     Tabs,
     CheckBox,
     DataTable,
-    Image
+    Image,
+    Grid
 
 } from "grommet";
 //importing grommet themes 
@@ -44,21 +45,30 @@ const columns = [
         header: "Status",
         render: datum => (
             <Box pad={{ vertical: "xsmall" }}>
-                <Image src={Icons.review_blue} width="80px" height="80px" />
+                <Image src={Icons.review_blue} width="25px" height="25px" />
             </Box>
         )
     },
 
 ];
+const column = [
+    {
+      property: "SiteName",
+      header: "SiteName",
+      primary: true,
+      
+    },
+    {
+      property: "SearchUrl",
+      header: 'SearchUrl'
+    },
+    {
+      property: "Remove",
+      header: "Remove",
+    }
+];
 
-//pushing data into data array
-const data = [];
-for (let i = 0; i < 40; i += 1) {
-    data.push({
-        Domain: `Domain`,
-        UserName: 'UserName'
-    });
-}
+
 //putting our data into to an DATA Array
 const DATA = [
     {
@@ -93,7 +103,8 @@ class Configuration extends Component {
             //getting selected string through props
             selected: props.selected,
             //pencil icon flag which opens sidedrawer with a form
-            Editopen: false
+            Editopen: false,
+            deployment:false
         };
     }
     //handling changed value in a checkbox
@@ -123,7 +134,12 @@ class Configuration extends Component {
     //opens Edit form on the right side when clicked in edit button
     editopen = () => this.setState({ Editopen: true });
 
-
+     Show=()=>{
+         let pflag=this.state.deployment
+         this.setState({
+             deployment:!pflag
+         })
+     }
 
     render() {
         //calling all the variables of state
@@ -149,6 +165,77 @@ class Configuration extends Component {
                         </Tab>
                         {/* Deployment Tab */}
                         <Tab title="Deployment Setting">
+                          
+                                <Box  >
+                                    <Box pad="medium"direction="row-responsive">
+                                    <Box pad="medium" gap="large">
+                                        <Text>SitePrefix:  </Text></Box> <Box pad="medium" gap="large"><TextInput value="SNS"></TextInput></Box>
+                                        
+                                    </Box>
+                                    <Box pad="medium"direction="row-responsive">
+                                    <Box pad="medium" gap="large">
+                                        <Text>Archival Topology:  </Text></Box> <Box pad="medium" gap="large" direction="row-responsive"> <RadioButton
+                                                            label="Central Archive"
+                                                            name="radio"
+                                                            onChange={this.Show}
+                                                           />
+                                                        <RadioButton
+                                                            label="Multi Archive"
+                                                            name="radio"
+                                                            onChange={this.Show}
+
+                                                            
+                                                        />
+                                                        </Box>
+                                    </Box>
+                                    
+
+
+                                </Box>
+                                { this.state.deployment===true?
+                                <Box>
+                                
+                                <Box  >
+                                    <Box pad="medium"direction="row-responsive">
+                                    <Box pad="medium" gap="large">
+                                        <Text>Site URL:  </Text></Box> 
+                                        <Box pad="medium" gap="large">
+                                        <TextInput value=""></TextInput></Box>
+                                        
+                                    </Box>
+                                    <Box pad="medium"direction="row-responsive">
+                                    <Box pad="medium" gap="">
+                                        <Text>AuthorizedKey:  </Text></Box> 
+                                        <Box pad="medium" gap="">
+                                        <TextInput></TextInput>
+                                                           
+                                                        </Box>
+                                    </Box>
+                                    <Box pad="medium"direction="row-responsive">
+                                    <Box pad="medium" gap="">
+                                        <Text>AuthenthicationRequired:  </Text></Box> 
+                                        <Box pad="medium" gap="" >
+                                       <CheckBox></CheckBox>
+                                       <Button label="Add"></Button>
+                                                           
+                                                        </Box>
+                                    </Box>
+                                    
+
+
+                                </Box>
+                                </Box>:null
+                                }
+                                <Box align="center" justify="center" direction="row-responsive">
+                                    <Button label="save"/> <Button  label="cancel"/>
+                                </Box>
+
+                               
+                                
+                         
+
+
+
 
                         </Tab>
                         {/* Ad Setting tab */}
@@ -212,21 +299,23 @@ class Configuration extends Component {
                                                     </Box>
                                                 </FormField>
                                             </Box>
-                                            <Box flex={false} as="footer" align="start">
-                                                <Button
-                                                    type="save"
-                                                    label="Save"
-                                                    onClick={this.onClose}
-                                                    primary
-                                                />
-                                            </Box>
-                                            <Box flex={false} as="footer" align="start">
-                                                <Button
-                                                    type="Cancel"
-                                                    label="Cancel"
-                                                    onClick={this.onClose}
-                                                    Default
-                                                />
+                                            <Box direction="row-responsive">
+                                                <Box flex={false} as="footer" align="start">
+                                                    <Button
+                                                        type="save"
+                                                        label="Save"
+                                                        onClick={this.onClose}
+                                                        primary
+                                                    />
+                                                </Box>
+                                                <Box flex={false} as="footer" align="start">
+                                                    <Button
+                                                        type="Cancel"
+                                                        label="Cancel"
+                                                        onClick={this.onClose}
+                                                        Default
+                                                    />
+                                                </Box>
                                             </Box>
                                         </Box>
                                     </Layer>
@@ -291,27 +380,29 @@ class Configuration extends Component {
                                                     </Box>
                                                 </FormField>
                                             </Box>
-                                            <Box flex={false} as="footer" align="start">
-                                                <Button
-                                                    type="save"
-                                                    label="Save"
-                                                    onClick={this.onClose}
-                                                    primary
-                                                />
-                                            </Box>
-                                            <Box flex={false} as="footer" align="start">
-                                                <Button
-                                                    type="Cancel"
-                                                    label="Cancel"
-                                                    onClick={this.onClose}
-                                                    Default
-                                                />
+                                            <Box direction="row-responsive">
+                                                <Box flex={false} as="footer" align="start">
+                                                    <Button
+                                                        type="save"
+                                                        label="Save"
+                                                        onClick={this.onClose}
+                                                        primary
+                                                    />
+                                                </Box>
+                                                <Box flex={false} as="footer" align="start">
+                                                    <Button
+                                                        type="Cancel"
+                                                        label="Cancel"
+                                                        onClick={this.onClose}
+                                                        Default
+                                                    />
+                                                </Box>
                                             </Box>
                                         </Box>
                                     </Layer>
                                 )}
                                 {/* using datatable component of groommet to show datalist */}
-                                <DataTable
+                                <DataTable size="small"
                                     columns={[
 
 
@@ -354,7 +445,7 @@ class Configuration extends Component {
                                     sortable
                                     size="medium"
                                 />
-                                <Box>
+                                <Box direction="row-responsive">
                                     <Button label="Add" onClick={this.onOpen} />
                                     <Button label="Enable" />
                                     <Button label="Disable" />
@@ -363,30 +454,68 @@ class Configuration extends Component {
 
                             </Box>
                         </Tab>
-                        {/* SSO Setting tab with form */}
-                        <Tab title="SSO Setting">
-                            <Box justify="center" align="start" direction="row">
-                                <Box  >
-                                    <Text>Identity Provider URL : </Text>
-                                    <TextInput></TextInput>
+                        {/* SSO Setting tab with form  browse button remaining*/}
+                        <Tab title="SSO Setting" justify="start" align="start">
+                            <Grid
+                                fill
+                                areas={[
+                                    { name: "nav", start: [0, 0], end: [0, 0] },
+                                    { name: "main", start: [1, 0], end: [1, 0] }
+                                ]}
+                                columns={["small", "flex"]}
+                                rows={["flex"]}
+                                gap="small"
+                            >
+                                <Box gridArea="nav">
+                                    <Box pad="medium" gap="">
+                                        <Text>Identity Provider URL  </Text>
+                                    </Box>
+                                    <Box pad="medium" gap="">
+                                        <Text>Service Provider URL </Text>
+                                    </Box>
+                                    <Box pad="medium" gap="">
+                                        <Text>Issuer:</Text>
+                                    </Box>
+                                    <Box pad="medium" margin="small" gap="">
+                                        <Text>Public Certificate :</Text>
+                                    </Box>
+                                    <Box pad="medium" margin="small" gap="">
+                                        <Text>Enable </Text>
+                                    </Box>
+                                </Box>
 
-                                    <Text>Service Provider URL :  </Text>
-                                    <TextInput></TextInput>
-                                    <Text>Issuer :  </Text>
-                                    <TextInput></TextInput>
-                                    <Text>Public Certificate :  </Text>
-                                    <TextInput></TextInput><Button label="Browse"
-                                        onClick={() => { }}
-                                    />
-                                    <Text>Enable :  </Text>
-                                    <CheckBox></CheckBox>
-                                    <Box>
-                                        <Button label="Save" /><Button label="Cancel" />
-
+                                <Box gridArea="main"  >
+                                    <Box pad="medium" gap="">
+                                        <TextInput></TextInput>
+                                    </Box>
+                                    <Box pad="medium" gap="">
+                                        <TextInput></TextInput>
+                                    </Box>
+                                    <Box pad="medium" gap="">
+                                        <TextInput></TextInput>
                                     </Box>
 
+                                    <Box pad="medium">
+                                        <TextInput></TextInput>
+
+                                    </Box>
+                                    <Box pad="medium">
+                                        <Box pad="medium">
+                                            <CheckBox></CheckBox>
+                                        </Box>
+                                    </Box>
+                                    <Box pad="" direction="row-responsive" align="center" justify="center">
+                                        <Button label="Save" /><Button label="Cancel" />
+                                    </Box>
+
+
+
                                 </Box>
-                            </Box>
+
+                            </Grid>
+
+
+
 
 
 

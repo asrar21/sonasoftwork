@@ -47,15 +47,8 @@ const columns = [
 
 ];
 
-//pushing data into data array
-const data = [];
-for (let i = 0; i < 40; i += 1) {
-    data.push({
-        Notification_type: 'Activate Products',
-        To:'neilk@sonasoft.com',
-        Cc:'vijayk@sonasoft.com'
-    });
-}
+
+
 //putting our data into to an DATA Array
 const DATA = [
     {
@@ -160,7 +153,8 @@ const DATA = [
 
 ];
 //extracting data from colums using map in to a variable called controlledColums
-const controlledColumns = columns.map(col => Object.assign({}, col));
+const controlledColumns = columns.map(col => Object.assign({}, col))
+
 
 
 
@@ -189,6 +183,7 @@ class Notification extends Component {
         if (event.target.checked) {
             checked.push(value);
             this.setState({ checked });
+            console.log('checked',checked)
         } else {
             this.setState({ checked: checked.filter(item => item !== value) });
         }
@@ -196,7 +191,7 @@ class Notification extends Component {
     //check all the event triggered in Data table
     onCheckAll = event =>
         this.setState({
-            checked: event.target.checked ? DATA.map(datum => datum.name) : []
+            checked: event.target.checked ? DATA.map(datum => datum.Notification_type) : []
         });
     //opens Add form on the rigth side
     onOpen = () => this.setState({ open: true });
@@ -261,6 +256,7 @@ class Notification extends Component {
                                              
                                              
                                          </Box>
+                                         <Box direction="row-responsive">
                                          <Box flex={false} as="footer" align="start">
                                              <Button
                                                  type="save"
@@ -276,6 +272,7 @@ class Notification extends Component {
                                                  onClick={this.onClose}
                                                  Default
                                              />
+                                         </Box>
                                          </Box>
                                      </Box>
                                  </Layer>
@@ -316,6 +313,7 @@ class Notification extends Component {
                                                 
                                                 
                                             </Box>
+                                            <Box direction="row-responsive">
                                             <Box flex={false} as="footer" align="start">
                                                 <Button
                                                     type="save"
@@ -332,6 +330,7 @@ class Notification extends Component {
                                                     Default
                                                 />
                                             </Box>
+                                            </Box>
                                         </Box>
                                     </Layer>
                                 )}
@@ -343,10 +342,10 @@ class Notification extends Component {
                                         {
                                             property: "checkbox",
                                             render: datum => (
-                                                <CheckBox
-                                                    key={datum.name}
-                                                    checked={checked.indexOf(datum.name) !== -1}
-                                                    onChange={e => this.onCheck(e, datum.name)}
+                                                 <CheckBox
+                                                    key={datum.Notification_type}
+                                                    checked={checked.indexOf(datum.Notification_type) !== -1}
+                                                    onChange={e => this.onCheck(e, datum.Notification_type)}
                                                 />
                                             ),
 
@@ -357,7 +356,7 @@ class Notification extends Component {
                                                     indeterminate={
                                                         checked.length > 0 && checked.length < DATA.length
                                                     }
-                                                    onChange={this.onCheckAll}
+                                                    onChange={e=>this.onCheckAll(e)}
                                                 />
                                             ),
                                             sortable: false
@@ -379,7 +378,7 @@ class Notification extends Component {
                                     sortable
                                     size="medium"
                                 />
-                                <Box>
+                                <Box direction="row-responsive">
                                     <Button label="Add" onClick={this.onOpen} />
                                     
                                     <Button label="Delete" />
