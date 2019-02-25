@@ -5,7 +5,7 @@ import LogIn from '../Screens/Login/login';
 //importing Configuration from screens and configuration folder
 import Configuration from '../Screens/Configuration/configuration';
 //importing notification from screens and configuration folder
-import Notification from '../Screens/Configuration/notification'
+import Notification from '../Screens/Configuration/Notification/notification'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 

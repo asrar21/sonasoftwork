@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 //importing components from grommet
 import {
     Box,
-    Layer,
+    
     Heading,
-    FormField,
+    
    
     Grommet,
-    TextInput,
+    
     Text,
     Button,
   
@@ -19,9 +19,10 @@ import {
 //importing grommet themes 
 import { grommet } from "grommet/themes";
 //importing icons from home screen folder
-import * as Icons from '../HomeScreen/homeScreenIcons';
+import * as Icons from '../../HomeScreen/homeScreenIcons';
 //importing grommet icons
 import { Edit, Close } from 'grommet-icons';
+import NotificationSideModal from '../../../Modal/Notificationsidemodal'
 
 
 
@@ -223,116 +224,12 @@ class Notification extends Component {
                             <Box align="center" justify="center" pad="medium">
                                 {/* using flag and layer component of to open Add form on the rightside */}
                                 {open && (
-                                     <Layer
-                                     position="right"
-                                     full="vertical"
-                                     modal
-                                     onClickOutside={this.onClose}
-                                     onEsc={this.onClose}>
-                                     <Box
-                                         as="form"
-                                         fill="vertical"
-                                         overflow="auto"
-                                         width="medium"
-                                         pad="medium"
-                                         onSubmit={this.onClose}
-                                     >
-                                         <Box flex={false} direction="row" justify="between">
-                                             <Heading level={2} margin="none">
-                                                 Edit Notification
-                                               </Heading>
-                                             <Button icon={<Close />} onClick={this.onClose} />
-                                         </Box>
-                                         <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
-                                             <FormField label="Notification type">
-                                                 <TextInput />
-                                             </FormField>
-                                             <FormField label="To">
-                                                 <TextInput />
-                                             </FormField>
-                                             <FormField label="Cc">
-                                                 <TextInput />
-                                             </FormField>
-                                             
-                                             
-                                         </Box>
-                                         <Box direction="row-responsive">
-                                         <Box flex={false} as="footer" align="start">
-                                             <Button
-                                                 type="save"
-                                                 label="Save"
-                                                 onClick={this.onClose}
-                                                 primary
-                                             />
-                                         </Box>
-                                         <Box flex={false} as="footer" align="start">
-                                             <Button
-                                                 type="Cancel"
-                                                 label="Cancel"
-                                                 onClick={this.onClose}
-                                                 Default
-                                             />
-                                         </Box>
-                                         </Box>
-                                     </Box>
-                                 </Layer>
+                                    <NotificationSideModal header="Add Notification" close={this.onClose}/>
                                 )}
 
                                 {/* using flag and layer component to open edit Form on the rigth side */}
                                 {Editopen && (
-                                    <Layer
-                                        position="right"
-                                        full="vertical"
-                                        modal
-                                        onClickOutside={this.onClose}
-                                        onEsc={this.onClose}>
-                                        <Box
-                                            as="form"
-                                            fill="vertical"
-                                            overflow="auto"
-                                            width="medium"
-                                            pad="medium"
-                                            onSubmit={this.onClose}
-                                        >
-                                            <Box flex={false} direction="row" justify="between">
-                                                <Heading level={2} margin="none">
-                                                    Edit Notification
-                                                  </Heading>
-                                                <Button icon={<Close />} onClick={this.onClose} />
-                                            </Box>
-                                            <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
-                                                <FormField label="Notification type">
-                                                    <TextInput />
-                                                </FormField>
-                                                <FormField label="To">
-                                                    <TextInput />
-                                                </FormField>
-                                                <FormField label="Cc">
-                                                    <TextInput />
-                                                </FormField>
-                                                
-                                                
-                                            </Box>
-                                            <Box direction="row-responsive">
-                                            <Box flex={false} as="footer" align="start">
-                                                <Button
-                                                    type="save"
-                                                    label="Save"
-                                                    onClick={this.onClose}
-                                                    primary
-                                                />
-                                            </Box>
-                                            <Box flex={false} as="footer" align="start">
-                                                <Button
-                                                    type="Cancel"
-                                                    label="Cancel"
-                                                    onClick={this.onClose}
-                                                    Default
-                                                />
-                                            </Box>
-                                            </Box>
-                                        </Box>
-                                    </Layer>
+                                   <NotificationSideModal header="Edit Notification" close={this.onClose}/>
                                 )}
                                 {/* using datatable component of groommet to show datalist */}
                                 <DataTable
@@ -378,7 +275,7 @@ class Notification extends Component {
                                     sortable
                                     size="medium"
                                 />
-                                <Box direction="row-responsive">
+                                <Box direction="row-responsive" gap="medium">
                                     <Button label="Add" onClick={this.onOpen} />
                                     
                                     <Button label="Delete" />
