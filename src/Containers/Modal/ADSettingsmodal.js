@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 //importing components from grommet
 import {
-   
     Layer,
     Box,
-   Heading,
+    Heading,
     FormField,
     RadioButton,
     TextInput,
-    Text,
     Button,
     CheckBox,
 } from "grommet";
@@ -24,8 +22,7 @@ class ADSettingsModal extends Component {
                 full="vertical"
                 modal
                 onClickOutside={this.props.close}
-                onEsc={this.props.close}
-            >
+                onEsc={this.props.close}>
                 <Box
                     as="form"
                     fill="vertical"
@@ -49,35 +46,24 @@ class ADSettingsModal extends Component {
                         <FormField label="Password">
                             <TextInput />
                         </FormField>
-                        <Box direction="row-responsive"  gap="medium" margin={{top:"large"}}>
-
-                        <Text>Enable Sync</Text>
-                        
+                        <FormField label="Enable Sync">
                             <CheckBox />
-                        </Box>
-                        
-                        <Box direction="row-responsive" gap="medium" margin={{top:"large"}}>
-                            <Text>Azure Users</Text>
-                        
+                        </FormField>
+                        <FormField label="Azure Users?">
                             <CheckBox />
+                        </FormField>
+                        <FormField label="Discover Organizational units">
+                            <Box align="" pad="" >
+                                <RadioButton
+                                    label="All"
+                                    name="radio"
+                                />
+                                <RadioButton
+                                    label="Selected"
+                                    name="radio"
+                                />
                             </Box>
-                        
-                        
-                        <Box align="" margin={{top:"large"}} direction="column" gap="1px">
-                    
-                            <Text>Discover Organizational units</Text>
-                            
-                            <RadioButton
-                                label="All"
-                                name="radio"
-                                
-                            
-                            />
-                            <RadioButton
-                                label="Selected"
-                                name="radio"
-                            />
-                        </Box>
+                        </FormField>
                     </Box>
                     <Box direction="row-responsive">
                         <Box flex={false} as="footer" align="start">
@@ -103,4 +89,4 @@ class ADSettingsModal extends Component {
     }
 };
   
-  export default ADSettingsModal;
+export default ADSettingsModal;
