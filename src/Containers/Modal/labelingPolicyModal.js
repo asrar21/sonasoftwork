@@ -120,7 +120,7 @@ class labelingPolicyModal extends Component {
                         </FormField>
                         
 
-                        <Box direction="row" justify="between">
+                        <Box direction="row" border="bottom" justify="between">
                             <Box > 
                                 <Box flex={false}  margin="small" align="start">
                                     <Button
@@ -161,6 +161,7 @@ class labelingPolicyModal extends Component {
                                     />
                                 </Box>
                             </Box>
+                            
                         </Box>
                         
                         <Box direction="column">

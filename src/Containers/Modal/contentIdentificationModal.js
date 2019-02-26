@@ -106,7 +106,8 @@ class contentPageModal extends Component {
                                     {label: "Attachement", onClick: (e) => {this.changeConditionName("Attachement")}},
                                     {label: "Expiry Date", onClick: (e) => {this.changeConditionName("Expiry Date")}},
                                     {label: "Standard Body", onClick: (e) => {this.changeConditionName("Standard Body")}},
-                                ]} />
+                                ]} 
+                            />
                         </Box>
                         <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
                             <Menu dropBackground={{color: "#f0f2f7"}}  label="Condition Type" items={[
@@ -118,7 +119,7 @@ class contentPageModal extends Component {
                             <TextInput />
                         </FormField>
                         
-                        <Box direction="row" justify="between">
+                        <Box direction="row" border="bottom" justify="between">
                             <Box > 
                                 <Box flex={false}  margin="small" align="start">
                                     <Button
