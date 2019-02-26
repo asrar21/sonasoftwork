@@ -26,7 +26,7 @@ import SideModal from '../../Modal/sidemodal';
 // import Deploymentsetting from './Deploymentsetting';
 import SMTPConfiguration from './Smtpconfiguration';
 import General from './general'
-import SecondaryNavBar from '../../Containers/secondarynavbar/secondarynavbar'
+import SecondaryNavBar from '../../Containers/SecondaryNavbar/secondaryNavbar'
 
 
 
