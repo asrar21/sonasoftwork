@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Grommet, Box, Heading, Text } from "grommet";
+import { Grommet, Box, Text } from "grommet";
 
 class Navbar extends Component {
   render() {
@@ -15,7 +15,7 @@ class Navbar extends Component {
                     size: "medium"
                   }}
           >
-          <Text color="lightgrey"  size="xxlarge" weight="bold">SonaVault</Text>
+              <Text color="lightgrey"  size="xxlarge" weight="bold">SonaVault</Text>
 
           </Box>
         </Grommet>               

@@ -5,8 +5,6 @@ import Routers from './Routes/routes'
 
 
 export default class App extends Component {
- 
-  
 
   render() {
    
@@ -16,7 +14,11 @@ export default class App extends Component {
         <Routers/>
       </div>
       
-     
+    <div>
+    
+     <Routers/>
+      
+    </div>
   
     )
   }

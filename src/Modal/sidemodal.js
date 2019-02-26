@@ -4,20 +4,21 @@ import {
    
     Layer,
     Box,
+<<<<<<< HEAD
    Heading,
+=======
+    Heading,
+>>>>>>> master
     FormField,
     RadioButton,
-   
     TextInput,
-    
     Button,
+<<<<<<< HEAD
     Text,
    
+=======
+>>>>>>> master
     CheckBox,
-    
-    
-    
-
 } from "grommet";
 
 import {  Close } from 'grommet-icons';

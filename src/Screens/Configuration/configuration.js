@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 //importing components from grommet
 import {
     Box,
-
-
     Grommet,
   
     Text,
@@ -20,10 +18,10 @@ import {
 //importing grommet themes 
 import { grommet } from "grommet/themes";
 //importing icons from home screen folder
-import * as Icons from '../HomeScreen/homeScreenIcons';
+import review_blue from "../../assets/Icons/review_blue.png"
 //importing grommet icons
 import { Edit, } from 'grommet-icons';
-import Ssosetting from './SsoSetting'
+import Ssosetting from './configComponents/SsoSetting'
 import SideModal from '../../Modal/sidemodal';
 import Deploymentsetting from './Deploymentsetting';
 import SMTPConfiguration from './Smtpconfiguration';
@@ -210,7 +208,7 @@ class Configuration extends Component {
                                             header: '',
                                             render: datum => (
                                                 <Box pad={{ vertical: "xsmall" }}>
-                                                    <Edit onClick={this.editopen} />
+                                                    <Edit cursor="pointer" onClick={this.editopen} />
                                                 </Box>
 
                                             ),

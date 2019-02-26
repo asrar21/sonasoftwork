@@ -18,8 +18,7 @@ import {
 } from "grommet";
 //importing grommet themes 
 import { grommet } from "grommet/themes";
-//importing icons from home screen folder
-import * as Icons from '../../HomeScreen/homeScreenIcons';
+
 //importing grommet icons
 import { Edit, Close } from 'grommet-icons';
 import NotificationSideModal from '../../../Modal/Notificationsidemodal';
