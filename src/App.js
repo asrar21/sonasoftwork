@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import Routers from './Routes/routes'
 
 
-export default class App extends Component {
+class App extends Component {
 
   render() {
     
@@ -18,4 +18,6 @@ export default class App extends Component {
   
     )
   }
-}
+};
+
+export default App;

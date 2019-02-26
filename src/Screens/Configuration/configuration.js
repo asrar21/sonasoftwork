@@ -11,10 +11,6 @@ import {
     CheckBox,
     DataTable,
     Image,
-    Grid,
-   
-    RadioButton,
-
 } from "grommet";
 //importing grommet themes 
 import { grommet } from "grommet/themes";
@@ -23,7 +19,7 @@ import review_blue from "../../assets/Icons/review_blue.png"
 //importing grommet icons
 import { Edit, } from 'grommet-icons';
 import Ssosetting from './configComponents/SsoSetting'
-import SideModal from '../../Modal/sidemodal';
+import ADSettingsModal from '../../Containers/Modal/ADSettingsModal';
 import Deploymentsetting from './configComponents/Deploymentsetting'
 
 
@@ -163,12 +159,12 @@ class Configuration extends Component {
                             <Box align="center" justify="center" pad="medium">
                                 {/* using flag and layer component of to open Add form on the rightside */}
                                 {open && (
-                                    <SideModal header="ADD AD Setting" close={this.onClose} />
+                                    <ADSettingsModal header="ADD AD Setting" close={this.onClose} />
                                 )}
 
                                 {/* using flag and layer component to open edit Form on the rigth side */}
                                 {Editopen && (
-                                    <SideModal header="Edit Ad Setting" close={this.onClose} />
+                                    <ADSettingsModal header="Edit Ad Setting" close={this.onClose} />
                                 )}
                                 {/* using datatable component of groommet to show datalist */}
                                 <DataTable size="small"

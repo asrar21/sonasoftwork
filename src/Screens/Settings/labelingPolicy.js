@@ -82,7 +82,7 @@ class labelingPolicy extends Component {
                   <Box>
                         <SecondaryNavbar pageName="Labelling Policy" pageIcon="LabellingPolicy" />
                   </Box>
-                  {labelingPolicyModal && <LabelingPolicyModal header="Add New" close={this.closeLabelingPolicyModal} />}
+                  {labelingPolicyModal && <LabelingPolicyModal header="Add New Labeling Policy" close={this.closeLabelingPolicyModal} />}
                   <Box margin="medium">
                         <DataTable 
                               columns={[

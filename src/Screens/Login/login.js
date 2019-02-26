@@ -105,23 +105,18 @@
                     align="start"
                     width={"100%"}
                     direction="row"
-                  >
-                   <Menu
-                    label="Configuration & Notification by Asrar"
+                >
+                  <Menu
+                    label="Screens Links"
                     items={[
-                      { label: 'configuration', onClick: () => {window.location.pathname = "/configuration"} },
-                      { label: 'notification', onClick: () => { window.location.pathname = "/notification"} },
+                      { label: 'configuration(Asrar)', onClick: () => {window.location.pathname = "/configuration"} },
+                      { label: 'notification(Asrar)', onClick: () => { window.location.pathname = "/notification"} },
+                      { label: 'Email Server(Faizan)', onClick: () => { window.location.pathname = "settings/emailServer"} },
+                      { label: 'Content Identification Policy(Faizan)', onClick: () => { window.location.pathname = "settings/contentIdentificationPolicy"} },
+                      { label: 'Labeling Policy(Faizan)', onClick: () => { window.location.pathname = "settings/labelingPolicy" } }
                     ]}
                   />
-                    <Menu
-                      label="Setting's Screens By Faizan"
-                      items={[
-                        { label: 'Email Server', onClick: () => { window.location.pathname = "settings/emailServer"} },
-                        { label: 'Content Identification Policy', onClick: () => { window.location.pathname = "settings/contentIdentificationPolicy"} },
-                        { label: 'Labeling Policy', onClick: () => { window.location.pathname = "settings/labelingPolicy" } }
-                      ]}
-                  />
-                    <CircleInformation cursor="pointer" textDecoration="none" />
+                  <CircleInformation cursor="pointer" textDecoration="none" />
                 </Box>
               
                 <Box 
