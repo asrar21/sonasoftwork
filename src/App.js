@@ -5,19 +5,18 @@ import Routers from './Routes/routes'
 
 
 export default class App extends Component {
-
+ 
   
 
   render() {
+   
     
     return (
+      <div>
+        <Routers/>
+      </div>
       
-    <div>
-      
-
-     <Routers/>
-      
-    </div>
+     
   
     )
   }

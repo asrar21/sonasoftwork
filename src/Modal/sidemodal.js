@@ -3,23 +3,15 @@ import React, { Component } from 'react';
 import {
    
     Layer,
-   
-   
-   
-
-  
-   
-  
-    
     Box,
-   
-    Heading,
+   Heading,
     FormField,
     RadioButton,
    
     TextInput,
     
     Button,
+    Text,
    
     CheckBox,
     
@@ -67,14 +59,24 @@ export default class SideModal extends Component {
                 <FormField label="Password">
                     <TextInput />
                 </FormField>
-                <FormField label="Enable Sync">
+                <Box direction="row-responsive"  gap="medium" margin={{top:"large"}}>
+
+                <Text>Enable Sync</Text>
+                
                     <CheckBox />
-                </FormField>
-                <FormField label="Azure Users?">
+                   </Box>
+                
+                <Box direction="row-responsive" gap="medium" margin={{top:"large"}}>
+                    <Text>Azure Users</Text>
+                
                     <CheckBox />
-                </FormField>
-                <FormField label="Discover Organizational units">
-                    <Box align="" pad="" >
+                    </Box>
+                
+                
+                <Box align="" margin={{top:"large"}} direction="column" gap="1px">
+               
+                <Text>Discover Organizational units</Text>
+                    
                         <RadioButton
                             label="All"
                             name="radio"
@@ -84,11 +86,11 @@ export default class SideModal extends Component {
                         <RadioButton
                             label="Selected"
                             name="radio"
-                           
-                           
                         />
-                    </Box>
-                </FormField>
+                       
+                    
+               
+                </Box>
             </Box>
             <Box direction="row-responsive">
                 <Box flex={false} as="footer" align="start">

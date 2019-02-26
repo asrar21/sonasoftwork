@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import {
     Box,
     
-    Heading,
+
     
    
     Grommet,
@@ -22,7 +22,8 @@ import { grommet } from "grommet/themes";
 import * as Icons from '../../HomeScreen/homeScreenIcons';
 //importing grommet icons
 import { Edit, Close } from 'grommet-icons';
-import NotificationSideModal from '../../../Modal/Notificationsidemodal'
+import NotificationSideModal from '../../../Modal/Notificationsidemodal';
+import SecondaryNavBar from '../../../Containers/secondarynavbar/secondarynavbar'
 
 
 
@@ -31,7 +32,7 @@ const columns = [
     {
         property: "Notification_type",
         header: <Text>Notification_type</Text>,
-        primary: true,
+      
 
     },
     {
@@ -215,13 +216,11 @@ class Notification extends Component {
 
         return (
             <Grommet theme={grommet} full>
+             <SecondaryNavBar pageName="Notification" pageIcon="Notifications"/>
                 <Box fill>
-                <Heading>
-                    Notification
-                </Heading>
-                    
+              
                         
-                            <Box align="center" justify="center" pad="medium">
+                            <Box align="center" justify="center" pad="medium" size="small">
                                 {/* using flag and layer component of to open Add form on the rightside */}
                                 {open && (
                                     <NotificationSideModal header="Add Notification" close={this.onClose}/>
@@ -274,6 +273,7 @@ class Notification extends Component {
                                     data={DATA}
                                     sortable
                                     size="medium"
+                                  
                                 />
                                 <Box direction="row-responsive" gap="medium">
                                     <Button label="Add" onClick={this.onOpen} />
