@@ -50,7 +50,6 @@ class contentIdentificationPolicy extends Component {
             this.state = {
                   selectAll : false,
                   data: [],
-                  
                   allStores: false,
                   activeStoreOnly: true
                   

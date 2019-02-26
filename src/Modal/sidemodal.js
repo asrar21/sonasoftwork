@@ -3,29 +3,13 @@ import React, { Component } from 'react';
 import {
    
     Layer,
-   
-   
-   
-
-  
-   
-  
-    
     Box,
-   
     Heading,
     FormField,
     RadioButton,
-   
     TextInput,
-    
     Button,
-   
     CheckBox,
-    
-    
-    
-
 } from "grommet";
 
 import {  Close } from 'grommet-icons';

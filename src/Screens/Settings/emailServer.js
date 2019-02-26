@@ -42,7 +42,7 @@ class emailServer extends Component {
       data : [],
       selectAll: false,
       checkBox: true,
-      AddServerModal:false
+      AddServerModal:true
 
       
     }
@@ -110,7 +110,7 @@ componentWillMount(){
         <Box>
           <SecondaryNavbar pageName="Email Server" pageIcon="emailServer" />   
         </Box>
-        {AddServerModal ===true? <EmailServerModal header="Add New Server Modal" close={() => this.AddServerModalClose()} />:null}
+        { AddServerModal && <EmailServerModal header="Add New Server Modal" close={() => this.AddServerModalClose()} /> }
         <Box margin="small">
             <DataTable
               columns={[

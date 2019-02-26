@@ -1,31 +1,36 @@
 import React, { Component } from 'react';
 //importing components from grommet
 import {
-   
     Layer,
     Box,
-   
     Heading,
     FormField,
-    
     TextInput,
-   
     Button,
-    
-    
-    
-
+    Menu,
+    CheckBox
 } from "grommet";
 
 import {  Close } from 'grommet-icons';
 
 
 class emailServerModal extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            domainName: "Domain Name"
+        }
+    }
 
+    changeDomainName(value){
+        this.setState({
+            domainName: value
+        })
+    }
     
  
     render() {
-      
+      const { domainName } = this.state;
       return (
         <Layer
         position="right"
@@ -48,9 +53,27 @@ class emailServerModal extends Component {
                 <Button icon={<Close />} onClick={this.props.close} />
             </Box>
             <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
+                <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
+                        <Menu dropBackground={{color: "#f0f2f7"}} label={domainName} items={[
+                                {label: "SONASOFT.ONMICROSOFT.COM", onClick: (e) => {this.changeDomainName("SONASOFT.ONMICROSOFT.COM")}},
+                                {label: "SONASAFE", onClick: (e) => {this.changeDomainName("SONASAFE")}}
+                        ]}/>
+                </Box>
                 <FormField label="Email Server">
                     <TextInput />
                 </FormField>
+                <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
+                        <Menu dropBackground={{color: "#f0f2f7"}} label={domainName} items={[
+                                {label: "SONASOFT.ONMICROSOFT.COM", onClick: (e) => {this.changeDomainName("SONASOFT.ONMICROSOFT.COM")}},
+                                {label: "SONASAFE", onClick: (e) => {this.changeDomainName("SONASAFE")}}
+                        ]}/>
+                </Box>
+                <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
+                        <Menu dropBackground={{color: "#f0f2f7"}} label={domainName} items={[
+                                {label: "SONASOFT.ONMICROSOFT.COM", onClick: (e) => {this.changeDomainName("SONASOFT.ONMICROSOFT.COM")}},
+                                {label: "SONASAFE", onClick: (e) => {this.changeDomainName("SONASAFE")}}
+                        ]}/>
+                </Box>
                 <FormField label="Journal Mailbox">
                     <TextInput />
                 </FormField>
@@ -60,26 +83,41 @@ class emailServerModal extends Component {
                 <FormField label="Journal Password">
                     <TextInput />
                 </FormField>
+                <FormField label="Frequency(Seconds)">
+                    <TextInput type="number" />
+                </FormField>
+                <Box margin="medium">
+                    <CheckBox label="Enable: " reverse={true} onChange={(event) => {/* event.target.checked */}}/>
+                </Box>
+                <Box margin="medium">
+                    <CheckBox label="Archive Public Folder:" reverse={true} onChange={(event) => {/* event.target.checked */}}/>
+                </Box>
+                <Box margin="medium">
+                    <CheckBox label="Enable Stub: " reverse={true} onChange={(event) => {/* event.target.checked */}}/>
+                </Box>
+                <Box margin="medium">
+                    <CheckBox label="Exclude Hours: " reverse={true} onChange={(event) => {/* event.target.checked */}}/>
+                </Box>
                 
                 
             </Box>
-            <Box direction="row-responsive">
-            <Box flex={false} as="footer" align="start">
-                <Button
-                    type="save"
-                    label="Save"
-                    onClick={this.onClose}
-                    primary
-                />
-            </Box>
-            <Box flex={false} as="footer" align="start">
-                <Button
-                    type="Cancel"
-                    label="Cancel"
-                    onClick={this.onClose}
-                    Default
-                />
-            </Box>
+            <Box direction="row" justify="between">
+                    <Box > 
+                        <Box flex={false} as="footer" margin="small" align="start">
+                            <Button
+                                label="Add"
+                            />
+                        </Box>
+                        <Box flex={false} as="footer" margin="small"  align="start">
+                            <Button
+                                label="Cancel"
+                                onClick={() => this.props.close()}
+                                
+                            />
+                        </Box>
+                    </Box>
+
+                    
             </Box>
         </Box>
     </Layer>
