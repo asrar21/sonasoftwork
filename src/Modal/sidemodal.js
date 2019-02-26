@@ -4,20 +4,12 @@ import {
    
     Layer,
     Box,
-<<<<<<< HEAD
    Heading,
-=======
-    Heading,
->>>>>>> master
     FormField,
     RadioButton,
     TextInput,
-    Button,
-<<<<<<< HEAD
     Text,
-   
-=======
->>>>>>> master
+    Button,
     CheckBox,
 } from "grommet";
 

@@ -23,7 +23,7 @@ import review_blue from "../../assets/Icons/review_blue.png"
 import { Edit, } from 'grommet-icons';
 import Ssosetting from './configComponents/SsoSetting'
 import SideModal from '../../Modal/sidemodal';
-import Deploymentsetting from './Deploymentsetting';
+// import Deploymentsetting from './Deploymentsetting';
 import SMTPConfiguration from './Smtpconfiguration';
 import General from './general'
 import SecondaryNavBar from '../../Containers/secondarynavbar/secondarynavbar'
@@ -49,7 +49,7 @@ const columns = [
         header: "Status",
         render: datum => (
             <Box pad={{ vertical: "xsmall" }}>
-                <Image src={Icons.review_blue} width="20px" height="20px" />
+                <Image src={review_blue} width="20px" height="20px" />
             </Box>
         )
     },
@@ -154,7 +154,7 @@ class Configuration extends Component {
                         {/* Deployment Tab */}
                         <Tab title="Deployment Setting">
 
-                           <Deploymentsetting/>
+                           {/* <Deploymentsetting/> */}
 
 
 
