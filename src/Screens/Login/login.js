@@ -121,6 +121,14 @@
                         { label: 'Content Identification Policy', onClick: () => { window.location.pathname = "settings/contentIdentificationPolicy"} },
                       ]}
                   />
+                    <Menu
+                        label="Maintenance & Setting's Archival Policy By Hafsa"
+                        items={[
+                          { label: 'Activate Product', onClick: () => { window.location.pathname = "activateProduct"} },
+                          { label: 'Purge Policy', onClick: () => { window.location.pathname = "purgePolicy"} },
+                          { label: 'Archival Policy', onClick: () => { window.location.pathname = "settings/archivalPolicy"} },
+                        ]}
+                    />
                     <CircleInformation cursor="pointer" textDecoration="none" />
                 </Box>
               
