@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Grommet, Box, Heading } from "grommet";
+import { Grommet, Box, Text } from "grommet";
 
 class Navbar extends Component {
   render() {
@@ -11,10 +11,11 @@ class Navbar extends Component {
             pad="small"
             background="#163552"
             border={{side: "bottom",
-            color: "#EE8031",
-            size: "medium"}}
+                    color: "#EE8031",
+                    size: "medium"
+                  }}
           >
-          <Heading margin="none" level="3" size="medium" style={{fontSize: "30px"}}>SonaVault</Heading>
+              <Text color="lightgrey"  size="xxlarge" weight="bold">SonaVault</Text>
 
           </Box>
         </Grommet>               

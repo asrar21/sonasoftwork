@@ -1,112 +1,172 @@
-import React, { Component } from 'react';
-import { Grommet, Box, ResponsiveContext,Button,Image, Text , Heading, TextInput, Markdown} from "grommet";
-import sonaLogo from "../../assets/Icons/sonaLogo.png"
-import { Login,CircleInformation } from 'grommet-icons';
+  import React, { Component } from 'react';
+  //importing components from grommet
+  import { 
+    Grommet,
+     Box, 
+     ResponsiveContext,
+     Button,
+     Image, 
+     Text , 
+     Heading, 
+     TextInput, 
+     Markdown,
+     Anchor,
+     Menu
+    } from "grommet";
+  //imported icon from assets/Icons Folder
+  import sonaLogo from "../../assets/Icons/sonaLogo.png"
+  //imported icon from grommeticons library
+  import { Login, CircleInformation, Windows } from 'grommet-icons';
 
 
-class LogIn extends Component {
-  constructor(props){
-    super(props)
-    this.state = {}
-  }
+  class LogIn extends Component {
+    constructor(props){
+      super(props)
+      this.state = {}
+    }
 
-  
-  render() {
-    const myTheme = {
-      global:{
-        font: {
-          family: 'Roboto',
-        },
-        control:{
-          border:{
-            width: "2px",
+    
+    render() {
+      const myTheme = {
+        global:{
+          font: {
+            family: 'Roboto',
+          },
+          control:{
+            border:{
+              width: "2px",
+            },
           },
         },
-      },
-    }
-    return (
-      <div>
-        <Grommet full theme={myTheme}>
-          <Box
-            fill
-            pad="none"
-            margin="none"
-            direction="row"
-            align="stretch"
-            alignContent="stretch"
-          >
+      }
+      return (
+        <div>
+          {/* using Grommet to wrap all the grommet component */}
+          <Grommet full theme={myTheme}>
           
-            <ResponsiveContext.Consumer>
-              {(size) => (
-                size === "medium" ?  (
-                
-                <Box 
-                  fill 
-                  margin="none" 
-                  pad="medium" 
-                  background="#2e3c54"  
-                  direction="column"
-                  justify="center"
-                  align="center"
-                  alignContent="start"
-                  basis="1/4" >
-                  <Box height="small" width="small"  >
-                  <Image src={sonaLogo} fit="contain" margin="xsmall" alignSelf="center"/>
-                  <Text textAlign="center">Version 6.5.0.0</Text>
-                  </Box>
-                </Box>  
-                
-                
-                )
-                : null 
-                
-              )}
-            </ResponsiveContext.Consumer>
-            
-            <Box 
-            
-              justify="end"
-              align="center"
-              background="white" 
-              pad="xlarge" 
-              margin="none" 
-              basis="1" 
-              width={"100%"} 
+        
+          {/* main Box which holds all the boxes */}
+            <Box
+              fill
+              pad="none"
+              margin="none"
+              direction="row"
+              align="stretch"
+              alignContent="stretch"
             >
-              <Box >
-                <CircleInformation color='plain' size='medium' /> 
-              </Box>
-              <Box 
-                basis="1" 
-                height="medium" 
-                width="300px" 
-              >
-                <Heading  
-                  size="small" 
-                  alignSelf ="start" 
-                >
-                <Markdown>**SonaVault Login**</Markdown>
-                </Heading>
-                <Text alignSelf="start"  size="medium">Email :</Text>
-                <TextInput size="small" placeholder="Enter your email" name="Email" onChange={(event) => {/* event.target.value */}} />
-                <Text  alignSelf="start"  size="medium">Password :</Text>
-                <TextInput size="small" placeholder="Enter your password" name="Password" onChange={(event) => {/* event.target.value */}} />
-                <Box pad ="20px">
-                  <Button 
-                    icon={<Login />}
-                    label="sign in"
-                    alignSelf="start"
-                    plain="True"
-                    onClick={() => this.props.navigateToHomeScreen()}
-                  />
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-        </Grommet>
-      </div>
-    )
-  }
-}
+            {/* to make the box responsive we used this */}
+              <ResponsiveContext.Consumer>
+                {(size) => (
+                  size === "medium" ?  (
+              // sidebar box
+                  <Box 
+                    fill 
+                    pad="medium" 
+                    background="#2e3c54"  
+                    direction="column"
+                    justify="center"
+                    align="center"
+                    basis="1/4" 
+                  >
+                      <Box height="small" pad="small" width="small"  >
+                        <Image src={sonaLogo} fit="contain" margin="small" alignSelf="center"/>
+                          <Text textAlign="center" size="small">Version 6.5.0.0</Text>
+                      </Box>
 
-export default LogIn;
+                  </Box>  
+                  
+                  
+                  )
+                  : null 
+                  
+                )}
+              </ResponsiveContext.Consumer>
+            
+              
+              
+                
+              
+              {/* box which contain textboxes ,labeling and icon button */}
+              <Box 
+                justify="start"
+                align="start"
+                direction="column"
+                background="white" 
+                pad="small" 
+                margin="none" 
+                basis="1" 
+            
+                width={"100%"} 
+              
+              >
+            
+                  
+                <Box  
+                    justify="between"
+                    align="start"
+                    width={"100%"}
+                    direction="row"
+                  >
+                   <Menu
+                    label="Configuration & Notification by Asrar"
+                    items={[
+                      { label: 'configuration', onClick: () => {window.location.pathname = "/configuration"} },
+                      { label: 'notification', onClick: () => { window.location.pathname = "/notification"} },
+                    ]}
+                  />
+                    <Menu
+                      label="Setting's Email server & content Identification Policy By Faizan"
+                      items={[
+                        { label: 'Email Server', onClick: () => { window.location.pathname = "settings/emailServer"} },
+                        { label: 'Content Identification Policy', onClick: () => { window.location.pathname = "settings/contentIdentificationPolicy"} },
+                      ]}
+                  />
+                    <Menu
+                        label="Maintenance & Setting's Archival Policy By Hafsa"
+                        items={[
+                          { label: 'Activate Product', onClick: () => { window.location.pathname = "activateProduct"} },
+                          { label: 'Purge Policy', onClick: () => { window.location.pathname = "purgePolicy"} },
+                          { label: 'Archival Policy', onClick: () => { window.location.pathname = "settings/archivalPolicy"} },
+                        ]}
+                    />
+                    <CircleInformation cursor="pointer" textDecoration="none" />
+                </Box>
+              
+                <Box 
+                  height="medium" 
+                  width="300px"
+                  justify="end"
+                  alignSelf="center" 
+                >
+                    <Heading  
+                      size="small" 
+                      alignSelf ="start" 
+                    >
+                        <Markdown>**SonaVault Login**</Markdown>
+                    </Heading>
+                    <Text alignSelf="start"  size="medium">Email :</Text>
+                    <TextInput size="small" placeholder="Enter your email" name="Email" onChange={(event) => {/* event.target.value */}} />
+                    <Text  alignSelf="start"  size="medium">Password :</Text>
+                    <TextInput size="small" type="password" placeholder="Enter your password" name="Password" onChange={(event) => {/* event.target.value */}} />
+                    <Box pad ="20px">
+                        <Button 
+                          icon={<Login />}
+                          label="sign in"
+                          alignSelf="start"
+                          plain="True"
+                          onClick={() => this.props.history.push("/homescreen")}
+                        />
+                    </Box>
+                </Box>
+                
+              </Box>
+          
+            </Box>
+              
+          </Grommet>
+        </div>
+      )
+    }
+  }
+
+  export default LogIn;
