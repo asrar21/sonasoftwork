@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 //importing components from grommet
 import {
     Box,
-    Grommet,
-    TextInput,
+    Grommet,  
     Text,
     Button,
     Tab,
@@ -19,18 +18,18 @@ import review_blue from "../../assets/Icons/review_blue.png"
 //importing grommet icons
 import { Edit, } from 'grommet-icons';
 import Ssosetting from './configComponents/SsoSetting'
-import ADSettingsModal from '../../Containers/Modal/ADSettingsModal';
-import Deploymentsetting from './configComponents/Deploymentsetting'
-
-
-
+import ADSettingsModal from '../../Containers/Modal/ADSettingsmodal';
+import Deploymentsetting from '../Configuration/configComponents/Deploymentsetting';
+import SMTPConfiguration from './configComponents/Smtpconfiguration';
+import General from './configComponents/general'
+import SecondaryNavBar from '../../Containers/secondaryNavbar/secondaryNavbar'
 
 //defining columns for Data table component
 const columns = [
     {
         property: "Domain",
         header: <Text>Name</Text>,
-        primary: true,
+      
 
     },
     {
@@ -43,7 +42,7 @@ const columns = [
         header: "Status",
         render: datum => (
             <Box pad={{ vertical: "xsmall" }}>
-                <Image src={review_blue} width="25px" height="25px" />
+                <Image src={review_blue} width="20px" height="20px" />
             </Box>
         )
     },
@@ -121,23 +120,27 @@ class Configuration extends Component {
 
     render() {
         //calling all the variables of state
-        const { checked, multiArchive, centralArchive } = this.state;
+        const { checked, } = this.state;
         const { open, Editopen } = this.state;
         const { selected } = this.state;
 
 
         return (
             <Grommet theme={grommet} full>
+             <SecondaryNavBar pageName="Configuration" pageIcon="configuration"/>
+
                 <Box fill>
                     {/* using tabs component of groommet to to show different forms in different tabs */}
                     <Tabs flex>
                         {/* General tab */}
                         <Tab title="General">
+                        <General/>
 
                         </Tab>
                         {/* Smtp Tabs */}
                         <Tab title="SMTP Configuration">
                             <Box >
+                                <SMTPConfiguration/>
 
                             </Box>
                         </Tab>
@@ -167,7 +170,7 @@ class Configuration extends Component {
                                     <ADSettingsModal header="Edit Ad Setting" close={this.onClose} />
                                 )}
                                 {/* using datatable component of groommet to show datalist */}
-                                <DataTable size="small"
+                                <DataTable 
                                     columns={[
 
 
@@ -208,7 +211,10 @@ class Configuration extends Component {
                                     ].map(col => ({ ...col }))}
                                     data={DATA}
                                     sortable
-                                    size="medium"
+                                    size="small"
+                                   resizeable="true"
+
+                                    
                                 />
                                 <Box direction="row-responsive" gap="medium" pad="medium">
                                     <Button label="Add" onClick={this.onOpen} />

@@ -1,35 +1,38 @@
 import React, { Component } from 'react';
 //importing components from grommet
 import {
+   
     Layer,
     Box,
-    Heading,
+   Heading,
     FormField,
+    RadioButton,
     TextInput,
+    Text,
     Button,
+    CheckBox,
 } from "grommet";
 
 import {  Close } from 'grommet-icons';
 
 
-class NotificationSideModal extends Component {
- 
-    render(){
+class ADSettingsModal extends Component {
+    render() {
         return (
             <Layer
                 position="right"
                 full="vertical"
                 modal
                 onClickOutside={this.props.close}
-                onEsc={this.props.close}>
+                onEsc={this.props.close}
+            >
                 <Box
                     as="form"
                     fill="vertical"
                     overflow="auto"
                     width="medium"
                     pad="medium"
-                    onSubmit={this.props.close}
-                >
+                    onSubmit={this.onClose}>
                     <Box flex={false} direction="row" justify="between">
                         <Heading level={2} margin="none">
                             {this.props.header}
@@ -37,17 +40,44 @@ class NotificationSideModal extends Component {
                         <Button icon={<Close />} onClick={this.props.close} />
                     </Box>
                     <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
-                        <FormField label="Notification type">
+                        <FormField label="Domain">
                             <TextInput />
                         </FormField>
-                        <FormField label="To">
+                        <FormField label="UserName">
                             <TextInput />
                         </FormField>
-                        <FormField label="Cc">
+                        <FormField label="Password">
                             <TextInput />
                         </FormField>
+                        <Box direction="row-responsive"  gap="medium" margin={{top:"large"}}>
+
+                        <Text>Enable Sync</Text>
+                        
+                            <CheckBox />
+                        </Box>
+                        
+                        <Box direction="row-responsive" gap="medium" margin={{top:"large"}}>
+                            <Text>Azure Users</Text>
+                        
+                            <CheckBox />
+                            </Box>
                         
                         
+                        <Box align="" margin={{top:"large"}} direction="column" gap="1px">
+                    
+                            <Text>Discover Organizational units</Text>
+                            
+                            <RadioButton
+                                label="All"
+                                name="radio"
+                                
+                            
+                            />
+                            <RadioButton
+                                label="Selected"
+                                name="radio"
+                            />
+                        </Box>
                     </Box>
                     <Box direction="row-responsive">
                         <Box flex={false} as="footer" align="start">
@@ -68,9 +98,9 @@ class NotificationSideModal extends Component {
                         </Box>
                     </Box>
                 </Box>
-        </Layer>
+            </Layer>
         )
     }
 };
   
-export default NotificationSideModal;
+  export default ADSettingsModal;

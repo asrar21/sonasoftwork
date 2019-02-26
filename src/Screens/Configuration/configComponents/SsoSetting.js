@@ -1,29 +1,15 @@
 import React, { Component } from 'react';
 //importing components from grommet
 import {
-   
- 
-   
-
-  
-   
-  
     Grid,
     Text,
     Box,
-   
-   
-   
-    TextInput,
+   TextInput,
     
     Button,
    
     CheckBox,
-    
-    
-    
-
-} from "grommet";
+    } from "grommet";
 
 
 
@@ -43,9 +29,9 @@ export default class Ssosetting extends Component {
         ]}
         columns={["small", "flex"]}
         rows={["flex"]}
-        gap="small"
+       
     >
-        <Box gridArea="nav">
+        <Box gridArea="nav" border={{side:"all",color:"black"}}>
             <Box pad="medium" gap="">
                 <Text>Identity Provider URL  </Text>
             </Box>
@@ -55,15 +41,15 @@ export default class Ssosetting extends Component {
             <Box pad="medium" gap="">
                 <Text>Issuer:</Text>
             </Box>
-            <Box pad="medium" margin="small" gap="">
+            <Box pad="medium" >
                 <Text>Public Certificate :</Text>
             </Box>
-            <Box pad="medium" margin="small" gap="">
+            <Box pad="medium" >
                 <Text>Enable </Text>
             </Box>
         </Box>
 
-        <Box gridArea="main"  >
+        <Box gridArea="main"  border={{side:"all",color:"black"}} >
             <Box pad="medium" gap="">
                 <TextInput></TextInput>
             </Box>
@@ -78,8 +64,8 @@ export default class Ssosetting extends Component {
                 <TextInput></TextInput>
 
             </Box>
-            <Box pad="medium">
-                <Box pad="medium">
+            <Box pad="">
+                <Box pad="" margin={{left:"medium"}}>
                     <CheckBox></CheckBox>
                 </Box>
             </Box>
