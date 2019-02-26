@@ -18,11 +18,11 @@ import review_blue from "../../assets/Icons/review_blue.png"
 //importing grommet icons
 import { Edit, } from 'grommet-icons';
 import Ssosetting from './configComponents/SsoSetting'
-import SideModal from '../../Modal/sidemodal';
+import ADSettingsModal from '../../Containers/Modal/ADSettingsmodal';
 import Deploymentsetting from '../Configuration/configComponents/Deploymentsetting';
-import SMTPConfiguration from './Smtpconfiguration';
-import General from './general'
-import SecondaryNavBar from '../../Containers/secondarynavbar/secondarynavbar'
+import SMTPConfiguration from './configComponents/Smtpconfiguration';
+import General from './configComponents/general'
+import SecondaryNavBar from '../../Containers/secondaryNavbar/secondaryNavbar'
 
 //defining columns for Data table component
 const columns = [
@@ -162,12 +162,12 @@ class Configuration extends Component {
                             <Box align="center" justify="center" pad="medium">
                                 {/* using flag and layer component of to open Add form on the rightside */}
                                 {open && (
-                                    <SideModal header="ADD AD Setting" close={this.onClose} />
+                                    <ADSettingsModal header="ADD AD Setting" close={this.onClose} />
                                 )}
 
                                 {/* using flag and layer component to open edit Form on the rigth side */}
                                 {Editopen && (
-                                    <SideModal header="Edit Ad Setting" close={this.onClose} />
+                                    <ADSettingsModal header="Edit Ad Setting" close={this.onClose} />
                                 )}
                                 {/* using datatable component of groommet to show datalist */}
                                 <DataTable 

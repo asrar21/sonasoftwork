@@ -11,16 +11,10 @@ export default class App extends Component {
     
     return (
       <div>
-      <div>
+      
         <Routers/>
+      
       </div>
-      
-    {/* <div>
-    
-     <Routers/>
-      
-    </div> */}
-    </div>
   
     )
   }

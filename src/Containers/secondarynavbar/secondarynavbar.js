@@ -10,7 +10,6 @@ export default class SecondaryNavbar extends Component {
       }
       render() {
             const { pageName, pageIcon } = this.props
-            console.log(`../../assets/otherIcons/${pageIcon}.png`)
       return (
             <Grommet>
                   <Box
@@ -20,7 +19,7 @@ export default class SecondaryNavbar extends Component {
                   border={{side: "bottom", color: "black", size:"xsmall"}}
                   >
                         <Box direction="row">
-                              <Image src={require(`../../assets/othericon/${pageIcon}.png`)} />
+                              <Image src={require(`../../assets/otherIcons/${pageIcon}.png`)} />
                               <Text size="large" weight="bold">{pageName}</Text>
                         </Box>
                   <Box direction="row" gap="10px" >
