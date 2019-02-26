@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 //importing components from grommet
 import {
     Box,
-    Grommet,
-  
+    Grommet,  
     Text,
     Button,
     Tab,
@@ -11,9 +10,6 @@ import {
     CheckBox,
     DataTable,
     Image,
-    
-  
-
 } from "grommet";
 //importing grommet themes 
 import { grommet } from "grommet/themes";
@@ -23,13 +19,10 @@ import review_blue from "../../assets/Icons/review_blue.png"
 import { Edit, } from 'grommet-icons';
 import Ssosetting from './configComponents/SsoSetting'
 import SideModal from '../../Modal/sidemodal';
-// import Deploymentsetting from './Deploymentsetting';
+import Deploymentsetting from '../Configuration/configComponents/Deploymentsetting';
 import SMTPConfiguration from './Smtpconfiguration';
 import General from './general'
-import SecondaryNavBar from '../../Containers/SecondaryNavbar/secondaryNavbar'
-
-
-
+import SecondaryNavBar from '../../Containers/secondarynavbar/secondarynavbar'
 
 //defining columns for Data table component
 const columns = [
@@ -154,7 +147,7 @@ class Configuration extends Component {
                         {/* Deployment Tab */}
                         <Tab title="Deployment Setting">
 
-                           {/* <Deploymentsetting/> */}
+                           <Deploymentsetting/>
 
 
 
