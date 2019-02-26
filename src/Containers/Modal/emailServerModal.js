@@ -18,7 +18,9 @@ class emailServerModal extends Component {
     constructor(props){
         super(props)
         this.state = {
-            domainName: "Domain Name"
+            domainName: "Domain Name",
+            exchangeVersion: "Exchange Version",
+            exchangeServicePack: "Exchange Service Pack"
         }
     }
 
@@ -27,10 +29,22 @@ class emailServerModal extends Component {
             domainName: value
         })
     }
+
+    changeExchangeVersion(value){
+        this.setState({
+            exchangeVersion: value
+        })
+    }
+
+    changeExchangeServicePack(value){
+        this.setState({
+            exchangeServicePack: value
+        })
+    }
     
  
     render() {
-      const { domainName } = this.state;
+      const { domainName, exchangeVersion, exchangeServicePack } = this.state;
       return (
         <Layer
         position="right"
@@ -63,15 +77,15 @@ class emailServerModal extends Component {
                     <TextInput />
                 </FormField>
                 <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
-                        <Menu dropBackground={{color: "#f0f2f7"}} label={domainName} items={[
-                                {label: "SONASOFT.ONMICROSOFT.COM", onClick: (e) => {this.changeDomainName("SONASOFT.ONMICROSOFT.COM")}},
-                                {label: "SONASAFE", onClick: (e) => {this.changeDomainName("SONASAFE")}}
+                        <Menu dropBackground={{color: "#f0f2f7"}} label={exchangeVersion} items={[
+                                {label: "SONASOFT.ONMICROSOFT.COM", onClick: (e) => {this.changeExchangeVersion("SONASOFT.ONMICROSOFT.COM")}},
+                                {label: "SONASAFE", onClick: (e) => {this.changeExchangeVersion("SONASAFE")}}
                         ]}/>
                 </Box>
                 <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
-                        <Menu dropBackground={{color: "#f0f2f7"}} label={domainName} items={[
-                                {label: "SONASOFT.ONMICROSOFT.COM", onClick: (e) => {this.changeDomainName("SONASOFT.ONMICROSOFT.COM")}},
-                                {label: "SONASAFE", onClick: (e) => {this.changeDomainName("SONASAFE")}}
+                        <Menu dropBackground={{color: "#f0f2f7"}} label={exchangeServicePack} items={[
+                                {label: "SONASOFT.ONMICROSOFT.COM", onClick: (e) => {this.changeExchangeServicePack("SONASOFT.ONMICROSOFT.COM")}},
+                                {label: "SONASAFE", onClick: (e) => {this.changeExchangeServicePack("SONASAFE")}}
                         ]}/>
                 </Box>
                 <FormField label="Journal Mailbox">

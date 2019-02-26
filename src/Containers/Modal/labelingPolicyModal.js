@@ -15,19 +15,19 @@ import {
 import {  Close, FormUp, FormDown } from 'grommet-icons';
 
 
-class contentPageModal extends Component {
+class labelingPolicyModal extends Component {
     constructor(props){
         super(props)
         this.state = {
-            notificationOption: "Notification Option",
+            label: "Label",
             conditionName: "Condition Name",
             collapse: true
         }
     }
 
-    changeNotificationOption(value){
+    changeLabel(value){
         this.setState({
-            notificationOption: value
+            label: value
         })
     }
 
@@ -44,7 +44,7 @@ class contentPageModal extends Component {
   }
  
     render() {
-        const { notificationOption, conditionName, collapse } = this.state
+        const { label, conditionName, collapse } = this.state
       return (
         <Layer
             position="center"
@@ -70,19 +70,20 @@ class contentPageModal extends Component {
                 <FormField label="Policy Name">
                     <TextInput />
                 </FormField>
-                <FormField label="Policy Description">
-                    <TextInput />
-                </FormField>
+                <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
+                    <Menu dropBackground={{color: "#f0f2f7"}} label={label} items={[
+                            {label: "Add New", onClick: (e) => {this.changeLabel("Add New")}},
+                            {label: "test", onClick: () => {this.changeLabel("test")}},
+                            {label: "test2", onClick: () => {this.changeLabel("test2")}},
+                            {label: "Crowdfunder", onClick: () => {this.changeLabel("Crowdfunder")}},
+                            {label: "ActOn", onClick: () => {this.changeLabel("ActOn")}},
+                            {label: "DELL", onClick: () => {this.changeLabel("DELL")}},
+                            {label: "King School", onClick: () => {this.changeLabel("King School")}},
+                            {label: "Daily Inspiration", onClick: () => {this.changeLabel("Daily Inspiration")}}
+                        ]} />
+                </Box>
                 <Box margin="medium">
                     <CheckBox label="Enable: " reverse={true} onChange={(event) => {/* event.target.checked */}}/>
-                </Box>
-                <FormField></FormField>
-                <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
-                    <Menu dropBackground={{color: "#f0f2f7"}} label={notificationOption} items={[
-                            {label: "Don't Notify", onClick: (e) => {this.changeNtificationOption(e)}},
-                            {label: "Notify Immediately", onClick: () => {}},
-                            {label: "Delayed Notification", onClick: () => {}}
-                        ]} />
                 </Box>
                 <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
                     <Menu dropBackground={{color: "#f0f2f7"}} label={conditionName} items={[
@@ -110,7 +111,7 @@ class contentPageModal extends Component {
                 </Box>
                 <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
                     <Menu dropBackground={{color: "#f0f2f7"}}  label="Condition Type" items={[
-                            {label: "Select One", onClick: (e) => {this.changeNotificationOption("Select One")}},
+                            {label: "Select One", onClick: (e) => {}},
                         ]} />
                 </Box>
 
@@ -212,6 +213,6 @@ class contentPageModal extends Component {
     }
   };
 
-  export default contentPageModal;
+  export default labelingPolicyModal;
   
   
