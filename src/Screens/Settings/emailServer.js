@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { Grommet, Box, Image, DataTable, CheckBox, Button } from "grommet";
 import SecondaryNavbar from "../../Containers/SecondaryNavbar/secondaryNavbar";
-import { Edit } from "grommet-icons";
-import  Tick from "../../assets/Icons/submit_purple.png";
-import Cross from "../../assets/Icons/cancel_purple.png";
+import { Edit, Checkmark, Close } from "grommet-icons";
 import EmailServerModal from "../../Containers/Modal/emailServerModal"
 
 const emailServerData = [{
@@ -81,10 +79,10 @@ componentWillMount(){
       edit: <Edit cursor="pointer" onClick={this.openAddServerModal} />,
       emailServer: value.emailServer,
       journalLogin: value.journalLogon,
-      status: value.status ? <Image src={Tick} width="25px" height="25px" />: <Image src={Cross}  width="25px" height="25px"  /> ,
-      archivepublicFolder: value.archivepublicFolder ? <Image src={Tick} width="25px" height="25px" />: <Image src={Cross}  width="25px" height="25px"  /> ,
-      stubEnabled: value.stubEnabled ? <Image src={Tick} width="25px" height="25px" />: <Image src={Cross}  width="25px" height="25px"  /> ,
-      excludeHours: value.excludeHours ? <Image src={Tick} width="25px" height="25px" />: <Image src={Cross}  width="25px" height="25px"  /> ,
+      status: value.status ? <Checkmark />: <Close /> ,
+      archivepublicFolder: value.archivepublicFolder ? <Checkmark />: <Close   /> ,
+      stubEnabled: value.stubEnabled ? <Checkmark />: <Close   /> ,
+      excludeHours: value.excludeHours ? <Checkmark />: <Close   /> ,
       domainName: value.domainName
     })
   })

@@ -274,15 +274,13 @@ class Notification extends Component {
                                     size="medium"
                                   
                                 />
-                                <Box direction="row-responsive" gap="medium">
+                                
+                            </Box>
+                            <Box direction="row-responsive" justify="center" gap="medium">
                                     <Button label="Add" onClick={this.onOpen} />
                                     
                                     <Button label="Delete" />
-                                </Box>
-
                             </Box>
-                        
-                        
                         
                 </Box>
             </Grommet>

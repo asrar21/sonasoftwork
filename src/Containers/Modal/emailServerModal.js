@@ -112,26 +112,17 @@ class emailServerModal extends Component {
                         <Box margin="medium">
                             <CheckBox label="Exclude Hours: " reverse={true} onChange={(event) => {/* event.target.checked */}}/>
                         </Box>
-                        
-                        
-                    </Box>
-                    <Box direction="row" justify="between">
-                            <Box > 
-                                <Box flex={false} as="footer" margin="small" align="start">
-                                    <Button
-                                        label="Add"
-                                    />
-                                </Box>
-                                <Box flex={false} as="footer" margin="small"  align="start">
-                                    <Button
-                                        label="Cancel"
-                                        onClick={() => this.props.close()}
-                                        
-                                    />
-                                </Box>
-                            </Box>
+                        <Box direction="row" justify="center" margin="small" align="center" gap="medium">                            
+                            <Button
+                                label="Add"
+                            />
+                            <Button
+                                label="Cancel"
+                                onClick={() => this.props.close()}
+                                
+                            />
+                        </Box>
 
-                            
                     </Box>
                 </Box>
             </Layer>
