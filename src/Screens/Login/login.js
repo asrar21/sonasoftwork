@@ -113,10 +113,13 @@
                       { label: 'notification(Asrar)', onClick: () => { window.location.pathname = "/notification"} },
                       { label: 'Email Server(Faizan)', onClick: () => { window.location.pathname = "settings/emailServer"} },
                       { label: 'Content Identification Policy(Faizan)', onClick: () => { window.location.pathname = "settings/contentIdentificationPolicy"} },
-                      { label: 'Labeling Policy(Faizan)', onClick: () => { window.location.pathname = "settings/labelingPolicy" } }
+                      { label: 'Labeling Policy(Faizan)', onClick: () => { window.location.pathname = "settings/labelingPolicy" } },
+                      { label: 'Activate Product(Hafsa)', onClick: () => { window.location.pathname = "activateProduct"} },
+                      { label: 'Purge Policy(Hafsa)', onClick: () => { window.location.pathname = "purgePolicy"} },
+                      { label: 'Archival Policy(Hafsa)', onClick: () => { window.location.pathname = "settings/archivalPolicy"} },
                     ]}
                   />
-                  <CircleInformation cursor="pointer" textDecoration="none" />
+                    <CircleInformation cursor="pointer" textDecoration="none" />
                 </Box>
               
                 <Box 
