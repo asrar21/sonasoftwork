@@ -61,15 +61,17 @@ export default class SMTPconfiguration extends Component {
         return (
             <div>
                 <Box direction="row"
-                    border={{ color: "light-3" }}>
+                    >
                     <Box width="medium"
-                        border={{ color: "light-3" }}>
+                         margin={{ left: "medium" }}>
+                         <Box margin={{top:"small"}}>
                         <Text>
                             Senders Email:
                                     </Text>
+                                    </Box>
                     </Box>
                     <Box direction="row">
-                        <Box>
+                        <Box margin={{top:"small"}}>
                             <TextInput value="bilala@sonasoft.com"></TextInput>
                         </Box>
 
@@ -77,45 +79,51 @@ export default class SMTPconfiguration extends Component {
                     </Box>
 
                     <Box direction="row"
-                    border={{ color: "light-3" }}>
+                    >
                     <Box width="medium"
-                        border={{ color: "light-3" }}>
+                         margin={{ left: "medium" }}>
+                         <Box margin={{top:"small"}}>
                         <Text>
                             SMTP Host:
                                     </Text>
+                                    </Box>
                     </Box>
                     <Box direction="row">
-                        <Box>
+                        <Box margin={{top:"small"}}>
                             <TextInput value="smtp.office365.com"></TextInput>
                         </Box>
 
                     </Box>
                     </Box>
                     <Box direction="row"
-                    border={{ color: "light-3" }}>
+                    >
                     <Box width="medium"
-                        border={{ color: "light-3" }}>
+                         margin={{ left: "medium" }}>
+                         <Box margin={{top:"small"}}>
                         <Text>
                             Port:
                                     </Text>
+                                    </Box>
                     </Box>
                     <Box direction="row">
-                        <Box  width={"20%"}>
+                        <Box  width={"20%"} margin={{top:"small"}}>
                             <TextInput ></TextInput>
                         </Box>
 
                     </Box>
                     </Box>
                     <Box direction="row"
-                    border={{ color: "light-3" }}>
+                    >
                     <Box width="medium"
-                        border={{ color: "light-3" }}>
+                         margin={{ left: "medium" }}>
+                         <Box margin={{top:"small"}}>
                         <Text>
                             Authenthication Required:
                                     </Text>
+                                    </Box>
                     </Box>
                     <Box direction="row">
-                        <Box>
+                        <Box margin={{top:"small"}}>
                            <CheckBox
                              checked={this.state.ischecked}
                              onChange={(event) => this.setState({ischecked:event.target.checked})}/>
@@ -123,41 +131,45 @@ export default class SMTPconfiguration extends Component {
 
                     </Box>
                     </Box>
-                     <Box >
+                     <Box margin={{left:"small"}}>
                                 <Heading size="small">Cerendials</Heading>
                             </Box>
 
                             <Box direction="row"
-                    border={{ color: "light-3" }}>
+                    >
                     <Box width="medium"
-                        border={{ color: "light-3" }}>
+                         margin={{ left: "medium" }}>
+                         <Box margin={{top:"small"}}>
                         <Text>
                             UserName:
                                     </Text>
+                                    </Box>
                     </Box>
                     <Box direction="row">
-                        <Box>
+                        <Box margin={{top:"small"}}>
                            <TextInput value="bilala@sonasoft.com"></TextInput>
                         </Box>
 
                     </Box>
                     </Box>
                     <Box direction="row"
-                    border={{ color: "light-3" }}>
+                    >
                     <Box width="medium"
-                        border={{ color: "light-3" }}>
+                         margin={{ left: "medium" }}>
+                         <Box margin={{top:"small"}}>
                         <Text>
                             Password:
                                     </Text>
+                                    </Box>
                     </Box>
                     <Box direction="row">
-                        <Box>
+                        <Box margin={{top:"small"}}>
                            <TextInput value="*******"></TextInput>
                         </Box>
 
                     </Box>
                     </Box>
-                    <Box justify="center" align="center" direction="row-responsive">
+                    <Box justify="center" align="center" direction="row-responsive" margin={{top:"small"}} gap="small">
                         <Button label="Save">
 
                         </Button>

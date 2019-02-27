@@ -80,24 +80,24 @@ export default class General extends Component {
                     {collapsetemp &&
                         <Box>
                             <Box direction="row"
-                                border={{ color: "light-3" }}>
+                                >
                                 <Box width="medium"
-                                    border={{ color: "light-3" }}>
+                                     margin={{ left: "medium" }}>
                                     <Text>
                                         Site prefix:
                                         </Text>
                                 </Box>
                                 <Box direction="row">
-                                    <Box width="200%">
+                                    <Box >
                                         <TextInput value="E:\Program Files (x86)\Sonasoft\sonaarc\temp"></TextInput>
                                     </Box>
 
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                border={{ color: "light-3" }}>
+                                >
                                 <Box width="medium"
-                                    border={{ color: "light-3" }}>
+                                     margin={{ left: "medium" }}>
                                     <Text>
                                         Export:
                                     </Text>
@@ -128,9 +128,9 @@ export default class General extends Component {
                     {collapsedefault &&
                         <Box>
                             <Box direction="row"
-                                border={{ color: "light-3" }}>
+                                >
                                 <Box width="medium"
-                                    border={{ color: "light-3" }}>
+                                     margin={{ left: "medium" }}>
                                     <Text>
                                         Export:
                                          </Text>
@@ -167,9 +167,9 @@ export default class General extends Component {
                     {collapseother &&
                         <Box>
                             <Box direction="row"
-                                border={{ color: "light-3" }}>
+                                >
                                 <Box width="medium"
-                                    border={{ color: "light-3" }}>
+                                     margin={{ left: "medium" }}>
                                     <Text>
                                     Archive Store Rollover period for PSTUtility :
                                          </Text>
@@ -187,9 +187,9 @@ export default class General extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                border={{ color: "light-3" }}>
+                                >
                                 <Box width="medium"
-                                    border={{ color: "light-3" }}>
+                                     margin={{ left: "medium" }}>
                                     <Text>
                                     Delete TaskLogs older Than :
                                          </Text>
@@ -202,9 +202,9 @@ export default class General extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                border={{ color: "light-3" }}>
+                                >
                                 <Box width="medium"
-                                    border={{ color: "light-3" }}>
+                                     margin={{ left: "medium" }}>
                                     <Text>
                                     Number of Emails per Export file : 
                                          </Text>
@@ -217,9 +217,9 @@ export default class General extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                border={{ color: "light-3" }}>
+                                >
                                 <Box width="medium"
-                                    border={{ color: "light-3" }}>
+                                     margin={{ left: "medium" }}>
                                     <Text>
                                     Export/Forward Folder Size : 
                                          </Text>
@@ -232,9 +232,9 @@ export default class General extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                border={{ color: "light-3" }}>
+                                >
                                 <Box width="medium"
-                                    border={{ color: "light-3" }}>
+                                     margin={{ left: "medium" }}>
                                     <Text>
                                     Number of Parallel Export Tasks : 
                                          </Text>
@@ -247,9 +247,9 @@ export default class General extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                border={{ color: "light-3" }}>
+                                >
                                 <Box width="medium"
-                                    border={{ color: "light-3" }}>
+                                     margin={{ left: "medium" }}>
                                     <Text>
                                     Keep Export File For : 
                                          </Text>
@@ -262,9 +262,9 @@ export default class General extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                border={{ color: "light-3" }}>
+                                >
                                 <Box width="medium"
-                                    border={{ color: "light-3" }}>
+                                     margin={{ left: "medium" }}>
                                     <Text>
                                     Check if Message already exists before Archiving from Journal Mailbox? : 
                                          </Text>
@@ -280,9 +280,9 @@ export default class General extends Component {
                             </Box>
 
                             <Box direction="row"
-                                border={{ color: "light-3" }}>
+                                >
                                 <Box width="medium"
-                                    border={{ color: "light-3" }}>
+                                     margin={{ left: "medium" }}>
                                     <Text>
                                     Notify Retention Expiry before : 
                                          </Text>
@@ -295,9 +295,9 @@ export default class General extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                border={{ color: "light-3" }}>
+                                >
                                 <Box width="medium"
-                                    border={{ color: "light-3" }}>
+                                     margin={{ left: "medium" }}>
                                     <Text>
                                     Notify if emails are not archived for more than : 
                                          </Text>
@@ -310,9 +310,9 @@ export default class General extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                border={{ color: "light-3" }}>
+                                >
                                 <Box width="medium"
-                                    border={{ color: "light-3" }}>
+                                     margin={{ left: "medium" }}>
                                     <Text>
                                     Notify if public folder items are not archived for more than : 
                                          </Text>
@@ -325,10 +325,10 @@ export default class General extends Component {
                                 </Box>
                             </Box>
 
-                            <Box direction="row"
-                                border={{ color: "light-3" }}>
+                            <Box direction="row">
+                                
                                 <Box width="medium"
-                                    border={{ color: "light-3" }}>
+                                 margin={{ left: "medium" }}>
                                     <Text>
                                     Maximum number of resend trials :
                                          </Text>
@@ -342,9 +342,9 @@ export default class General extends Component {
                             </Box>
 
                             <Box direction="row"
-                                border={{ color: "light-3" }}>
+                                >
                                 <Box width="medium"
-                                    border={{ color: "light-3" }}>
+                                     margin={{ left: "medium" }}>
                                     <Text>
                                     Child DB Size:
                                          </Text>
@@ -357,9 +357,9 @@ export default class General extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                border={{ color: "light-3" }}>
+                                >
                                 <Box width="medium"
-                                    border={{ color: "light-3" }}>
+                                     margin={{ left: "medium" }}>
                                     <Text>
                                     Report Error at (HH:mm) :
                                          </Text>
@@ -372,9 +372,9 @@ export default class General extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                border={{ color: "light-3" }}>
+                                >
                                 <Box width="medium"
-                                    border={{ color: "light-3" }}>
+                                     margin={{ left: "medium" }}>
                                     <Text>
                                     Enable WORM Journaling :
                                          </Text>

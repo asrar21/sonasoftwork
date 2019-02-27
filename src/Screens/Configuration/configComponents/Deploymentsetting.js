@@ -95,15 +95,17 @@ export default class Deploymentsetting extends Component {
         return (
             <div>
                 <Box direction="row"
-                    border={{ color: "light-3" }}>
+                    >
                     <Box width="medium"
-                        border={{ color: "light-3" }}>
+                         margin={{ left: "medium" }}>
+                         <Box margin={{top:"small"}}>
                         <Text>
                             Site prefix:
                                     </Text>
+                                    </Box>
                     </Box>
                     <Box direction="row">
-                        <Box>
+                        <Box margin={{top:"small"}}>
                             <TextInput></TextInput>
                         </Box>
 
@@ -111,15 +113,17 @@ export default class Deploymentsetting extends Component {
                 </Box>
 
                 <Box direction="row"
-                    border={{ color: "light-3" }}>
+                   >
                     <Box width="medium"
-                        border={{ color: "light-3" }}>
+                         margin={{ left: "medium" }}>
+                         <Box margin={{top:"small"}}>
                         <Text>
                             Archival Topology:
                                     </Text>
+                                    </Box>
                     </Box>
                     <Box direction="row">
-                        <Box direction="row-responsive">
+                        <Box direction="row-responsive" margin={{top:"small"}} gap="small">
                             <RadioButton label="central Archive" value="centralArchive" checked={centralArchive} name="archiveOptions" onChange={(e) => this.Show(e)}>
 
                             </RadioButton>
@@ -138,45 +142,51 @@ export default class Deploymentsetting extends Component {
                             </Box>
 
                             <Box direction="row"
-                                border={{ color: "light-3" }}>
+                                >
                                 <Box width="medium"
-                                    border={{ color: "light-3" }}>
+                                     margin={{ left: "medium" }}>
+                                     <Box margin={{top:"small"}}>
                                     <Text>
                                         Site Url:
                                     </Text>
+                                    </Box>
                                 </Box>
                                 <Box direction="row">
-                                    <Box>
+                                    <Box margin={{top:"small"}}>
                                         <TextInput></TextInput>
                                     </Box>
 
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                border={{ color: "light-3" }}>
+                                >
                                 <Box width="medium"
-                                    border={{ color: "light-3" }}>
-                                    <Text>
+                                     margin={{ left: "medium" }}>
+                                     <Box>
+                                    <Text margin={{top:"small"}}>
                                         Authorization Key:
                                     </Text>
+                                    </Box>
                                 </Box>
                                 <Box direction="row">
-                                    <Box>
+                                    <Box margin={{top:"small"}}>
                                         <TextInput></TextInput>
                                     </Box>
 
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                border={{ color: "light-3" }}>
+                                >
                                 <Box width="medium"
-                                    border={{ color: "light-3" }}>
+                                    margin={{ left: "medium" }}>
+                                    <Box margin={{top:"small"}}>
                                     <Text>
                                         Authenthication Required:
                                     </Text>
+                                    </Box>
                                 </Box>
                                 <Box direction="row">
-                                    <Box>
+                                    <Box margin={{top:"small"}}>
                                         <CheckBox 
                                           checked={this.state.ischecked}
                                           onChange={(event) => this.setState({ischecked:event.target.checked})}/>

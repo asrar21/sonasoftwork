@@ -22,7 +22,8 @@ import ADSettingsModal from '../../Containers/Modal/ADSettingsmodal';
 import Deploymentsetting from '../Configuration/configComponents/Deploymentsetting';
 import SMTPConfiguration from './configComponents/Smtpconfiguration';
 import General from './configComponents/general'
-import SecondaryNavBar from '../../Containers/SecondaryNavbar/SecondaryNavbar'
+import SecondaryNavBar from '../../Containers/SecondaryNavbar/SecondaryNavbar';
+import axios from 'axios'
 
 //defining columns for Data table component
 const columns = [
@@ -51,20 +52,7 @@ const columns = [
 
 
 //putting our data into to an DATA Array
-const DATA = [
-    {
-        Domain: "192.168.1.2",
-        UserName: 'Administrator',
 
-    },
-    {
-        Domain: "sonansoft.onmicrosoft.com",
-        UserName: 'vijayk@sonasoft.com',
-
-    },
-
-
-];
 //extracting data from colums using map in to a variable called controlledColums
 const controlledColumns = columns.map(col => Object.assign({}, col));
 
@@ -85,6 +73,7 @@ class Configuration extends Component {
             selected: props.selected,
             //pencil icon flag which opens sidedrawer with a form
             Editopen: false,
+            data:[]
             
          
         };
@@ -104,7 +93,7 @@ class Configuration extends Component {
     //check all the event triggered in Data table
     onCheckAll = event =>
         this.setState({
-            checked: event.target.checked ? DATA.map(datum => datum.name) : []
+            checked: event.target.checked ? this.state.data.map(datum => datum.name) : []
         });
     //opens Add form on the rigth side
     onOpen = () => this.setState({ open: true });
@@ -115,7 +104,20 @@ class Configuration extends Component {
     };
     //opens Edit form on the right side when clicked in edit button
     editopen = () => this.setState({ Editopen: true });
+    componentWillMount(){
+        axios.get("http://localhost:4001/adsettings")
+        .then(response=>{
+            console.log("AD response",response.data.Data)
+             this.setState({
+                 data:response.data.Data
+             })
 
+        })
+        
+        .catch(error=>{
+            console.log("error",error)
+        })
+    }
     
 
     render() {
@@ -187,9 +189,9 @@ class Configuration extends Component {
 
                                             header: (
                                                 <CheckBox
-                                                    checked={checked.length === DATA.length}
+                                                    checked={checked.length === this.state.data.length}
                                                     indeterminate={
-                                                        checked.length > 0 && checked.length < DATA.length
+                                                        checked.length > 0 && checked.length < this.state.data.length
                                                     }
                                                     onChange={this.onCheckAll}
                                                 />
@@ -209,7 +211,7 @@ class Configuration extends Component {
                                         },
                                         ...controlledColumns
                                     ].map(col => ({ ...col }))}
-                                    data={DATA}
+                                    data={this.state.data}
                                     sortable
                                     size="small"
                                    resizeable="true"

@@ -7,6 +7,7 @@ import Configuration from '../Screens/Configuration/configuration';
 //importing notification from screens and configuration folder
 import Notification from '../Screens/Configuration/Notification/notification';
 import * as settings from "../Screens/Settings";
+import ArchivalEmail from '../Screens/Report/ArchivalEmail/ArchivalEmail'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 
@@ -26,6 +27,7 @@ export default class Routers extends Component {
       <Route path="/settings/emailServer" component={settings.emailServer} />
       <Route path="/settings/contentIdentificationPolicy" component={settings.contentIdentificationPolicy} />
       <Route path="/settings/labelingPolicy" component={settings.labelingPolicy} />
+      <Route path="/ArchivalEmail" component={ArchivalEmail} />
     </div>
   </Router>
     )

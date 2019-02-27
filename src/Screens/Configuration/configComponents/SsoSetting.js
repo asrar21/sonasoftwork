@@ -61,21 +61,21 @@ class SSOSetting extends Component {
                 
                 <Box 
                 direction="row"
-                border={{color:"light-3"}}
+                
                 
                 >
                     <Box width="medium" 
-                         border={{color:"light-3"}}
+                         margin={{ left: "medium" }}
                     >
-                     
+                     <Box margin={{top:"small"}}>
                      <Text>Identity Provider URL:</Text>
-                      
+                     </Box>
                     </Box>
                    
                     <Box>  
                      
                         <Box direction="row">
-                        <Box>
+                        <Box margin={{top:"small"}}>
                          <TextInput></TextInput>
                         </Box>
                         
@@ -85,21 +85,21 @@ class SSOSetting extends Component {
                 </Box>
                 <Box 
                 direction="row"
-                border={{color:"light-3"}}
+               
                 
                 >
                     <Box width="medium" 
-                         border={{color:"light-3"}}
+                          margin={{ left: "medium" }}
                     >
-                     
+                     <Box margin={{top:"small"}}>
                      <Text>Service Provider URL:</Text>
-                      
+                     </Box>
                     </Box>
                    
                     <Box>  
                      
                         <Box direction="row">
-                        <Box>
+                        <Box margin={{top:"small"}}>
                          <TextInput></TextInput>
                         </Box>
                         
@@ -110,21 +110,22 @@ class SSOSetting extends Component {
 
                 <Box 
                 direction="row"
-                border={{color:"light-3"}}
+               
                 
                 >
                     <Box width="medium" 
-                         border={{color:"light-3"}}
+                          margin={{ left: "medium" }}
                     >
+                    <Box  margin={{top:"small"}}>
                      
                      <Text>Issuer:</Text>
-                      
+                     </Box>
                     </Box>
                    
                     <Box>  
                      
-                        <Box direction="row">
-                        <Box>
+                        <Box direction="row" >
+                        <Box  margin={{top:"small"}}>
                          <TextInput></TextInput>
                         </Box>
                         
@@ -134,21 +135,21 @@ class SSOSetting extends Component {
                 </Box>
                 <Box 
                 direction="row"
-                border={{color:"light-3"}}
+               
                 
                 >
                     <Box width="medium" 
-                         border={{color:"light-3"}}
+                          margin={{ left: "medium" }}
                     >
-                     
+                     <Box margin={{top:"small"}}>
                      <Text>Public Certificate :</Text>
-                      
+                     </Box>
                     </Box>
                    
                     <Box>  
                      
                         <Box direction="row">
-                        <Box direction="row-responsive">
+                        <Box direction="row-responsive" margin={{top:"small"}} gap="small">
                          <TextInput></TextInput>
                          <Button label="Add"></Button>
                         </Box>
@@ -160,21 +161,21 @@ class SSOSetting extends Component {
 
                 <Box 
                 direction="row"
-                border={{color:"light-3"}}
+               
                 
                 >
                     <Box width="medium" 
-                         border={{color:"light-3"}}
+                          margin={{ left: "medium" }}
                     >
-                     
+                     <Box margin={{top:"small"}}>
                      <Text>Enable:</Text>
-                      
+                     </Box>
                     </Box>
                    
                     <Box>  
                      
                         <Box direction="row">
-                        <Box>
+                        <Box margin={{top:"small"}}>
                          <CheckBox
                           checked={this.state.ischecked}
                           onChange={(event) => this.setState({ischecked:event.target.checked})}
@@ -187,7 +188,7 @@ class SSOSetting extends Component {
                 </Box>
 
                 <Box 
-                border={{color:"light-4"}} 
+                
                 align="center"
                 >
                   <Box  direction="row" >

@@ -23,6 +23,7 @@ import { grommet } from "grommet/themes";
 import { Edit, Close } from 'grommet-icons';
 import NotificationSideModal from '../../../Containers/Modal/Notificationsidemodal';
 import SecondaryNavBar from '../../../Containers/SecondaryNavbar/SecondaryNavbar';
+import axios from 'axios';
 
 
 
@@ -51,108 +52,7 @@ const columns = [
 
 
 //putting our data into to an DATA Array
-const DATA = [
-    {
-        
-        Notification_type: 'Activate Products',
-        To:'neilk@sonasoft.com',
-        Cc:'vijayk@sonasoft.com'
 
-    },
-    {
-        
-        Notification_type: 'Activate Products',
-        To:'neilk@sonasoft.com',
-        Cc:'vijayk@sonasoft.com'
-
-    },
-    {
-        
-        Notification_type: 'Activate Products',
-        To:'neilk@sonasoft.com',
-        Cc:'vijayk@sonasoft.com'
-
-    },
-    {
-        
-        Notification_type: 'Activate Products',
-        To:'neilk@sonasoft.com',
-        Cc:'vijayk@sonasoft.com'
-
-    },
-    {
-        
-        Notification_type: 'Activate Products',
-        To:'neilk@sonasoft.com',
-        Cc:'vijayk@sonasoft.com'
-
-    },
-    {
-        
-        Notification_type: 'Activate Products',
-        To:'neilk@sonasoft.com',
-        Cc:'vijayk@sonasoft.com'
-
-    },
-    {
-        
-        Notification_type: 'Activate Products',
-        To:'neilk@sonasoft.com',
-        Cc:'vijayk@sonasoft.com'
-
-    },
-    {
-        
-        Notification_type: 'Activate Products',
-        To:'neilk@sonasoft.com',
-        Cc:'vijayk@sonasoft.com'
-
-    },
-    {
-        
-        Notification_type: 'Activate Products',
-        To:'neilk@sonasoft.com,makr@sonasoft.com',
-        Cc:'vijayk@sonasoft.com'
-
-    },
-    {
-        
-        Notification_type: 'Activate Products',
-        To:'neilk@sonasoft.com,makr@sonasoft.com',
-        Cc:'vijayk@sonasoft.com'
-
-    },
-    {
-        
-        Notification_type: 'Activate Products',
-        To:'neilk@sonasoft.com,makr@sonasoft.com',
-        Cc:'vijayk@sonasoft.com'
-
-    },
-    {
-        
-        Notification_type: 'Activate Products',
-        To:'neilk@sonasoft.com,makr@sonasoft.com',
-        Cc:'vijayk@sonasoft.com'
-
-    },
-    {
-        
-        Notification_type: 'Activate Products',
-        To:'neilk@sonasoft.com,makr@sonasoft.com',
-        Cc:'vijayk@sonasoft.com'
-
-    },
-    {
-        
-        Notification_type: 'Activate Products',
-        To:'neilk@sonasoft.com,makr@sonasoft.com',
-        Cc:'vijayk@sonasoft.com'
-
-    },
-
-
-];
 //extracting data from colums using map in to a variable called controlledColums
 const controlledColumns = columns.map(col => Object.assign({}, col))
 
@@ -173,7 +73,8 @@ class Notification extends Component {
             //getting selected string through props
             selected: props.selected,
             //pencil icon flag which opens sidedrawer with a form
-            Editopen: false
+            Editopen: false,
+            data:[]
         };
     }
     //handling changed value in a checkbox
@@ -192,7 +93,7 @@ class Notification extends Component {
     //check all the event triggered in Data table
     onCheckAll = event =>
         this.setState({
-            checked: event.target.checked ? DATA.map(datum => datum.Notification_type) : []
+            checked: event.target.checked ? this.state.data.map(datum => datum.Notification_type) : []
         });
     //opens Add form on the rigth side
     onOpen = () => this.setState({ open: true });
@@ -203,6 +104,21 @@ class Notification extends Component {
     };
     //opens Edit form on the right side when clicked in edit button
     editopen = () => this.setState({ Editopen: true });
+
+    componentWillMount(){
+        axios.get("http://localhost:4001/notification")
+        .then(response=>{
+            console.log("AD response",response.data.Data)
+             this.setState({
+                 data:response.data.Data
+             })
+
+        })
+        
+        .catch(error=>{
+            console.log("error",error)
+        })
+    }
 
 
 
@@ -247,9 +163,9 @@ class Notification extends Component {
 
                                             header: (
                                                 <CheckBox
-                                                    checked={checked.length === DATA.length}
+                                                    checked={checked.length === this.state.data.length}
                                                     indeterminate={
-                                                        checked.length > 0 && checked.length < DATA.length
+                                                        checked.length > 0 && checked.length < this.state.data.length
                                                     }
                                                     onChange={e=>this.onCheckAll(e)}
                                                 />
@@ -269,7 +185,7 @@ class Notification extends Component {
                                         },
                                         ...controlledColumns
                                     ].map(col => ({ ...col }))}
-                                    data={DATA}
+                                    data={this.state.data}
                                     sortable
                                     size="medium"
                                   
