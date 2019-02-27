@@ -31,10 +31,12 @@ export default class Routers extends Component {
       <Route path="/activateProduct" component={ActivateProduct} />
       <Route path="/purgePolicy" component={PurgePolicy} />
       <Route path="/settings/labelingPolicy" component={settings.labelingPolicy} />
+      <Route path="/settings/retentionPolicy" component={settings.retentionPolicy} />
     </div>
   </Router>
     )
   }
 }
+
 
 
