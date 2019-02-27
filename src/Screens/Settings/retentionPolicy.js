@@ -237,19 +237,19 @@ class retentionPolicy extends Component {
                                                                         <Box background="#d3d9e2" pad="small" align="end">
                                                                               <Edit cursor="pointer" onClick={() => this.editDefaultPolicy()} />
                                                                         </Box>
-                                                                        <Box direction="row" justify="around">
-                                                                              <Paragraph margin="xsmall">Policy Name:</Paragraph>
-                                                                              {<Paragraph margin="xsmall"  >Default</Paragraph>}
-                                                                        </Box>
-                                                                        <Box direction="row" justify="around">
-                                                                              <Paragraph margin="xsmall">Retention Period(Days):</Paragraph>
-                                                                              {!editPolicySettings && <Paragraph margin="xsmall" >3650 Days</Paragraph>}
-                                                                              {editPolicySettings && <Box width="small" ><TextInput type="number"></TextInput></Box>}
-                                                                        </Box>
-                                                                        <Box direction="row" justify="around">
-                                                                              <Paragraph margin="xsmall">Retention Grace Period(Days):</Paragraph>
-                                                                              {!editPolicySettings && <Paragraph margin="xsmall">7 Days</Paragraph>}
-                                                                              {editPolicySettings && <Box width="small" pad={{top:"small"}} ><TextInput type="number"></TextInput></Box>}
+                                                                        <Box justify="center" direction="row">
+                                                                              <Box direction="column" justify="between" height="200px">
+                                                                                    <Paragraph>Policy Name:</Paragraph>  
+                                                                                    <Paragraph>Retention Period(Days):</Paragraph>
+                                                                                    <Paragraph>Retention Grace Period(Days):</Paragraph>
+                                                                              </Box>
+                                                                              <Box direction="column" justify="between" margin={{left: "large"}} height="190px">
+                                                                                    <Paragraph>Default</Paragraph>
+                                                                                    {!editPolicySettings && <Paragraph margin={{top: "25px"}}>3650 Days</Paragraph>}
+                                                                                    {editPolicySettings && <Box width="small"><TextInput type="number"></TextInput></Box>}
+                                                                                    {!editPolicySettings && <Paragraph margin={{top: "25px"}}>7 Days</Paragraph>}
+                                                                                    {editPolicySettings && <Box width="small"><TextInput type="number"></TextInput></Box>}
+                                                                              </Box>
                                                                         </Box>
                                                                         {editPolicySettings && 
                                                                               <Box direction="row" gap="medium" justify="center" margin="medium">

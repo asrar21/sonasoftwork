@@ -42,10 +42,16 @@ class RetentionPolicyModel extends Component {
         this.setState({
               collapse: !this.state.collapse
         })
-  }
+    }
+
+    toggleActiveCheckbox(){
+        this.setState({
+            activeCheckbox: !this.state.activeCheckbox
+        })
+    }
  
     render() {
-        const { notificationOption, conditionName, collapse } = this.state
+        const { notificationOption, conditionName, collapse, activeCheckbox } = this.state
         return (
             <Layer
                 position="center"
@@ -58,7 +64,7 @@ class RetentionPolicyModel extends Component {
                     as="form"
                     fill="vertical"
                     overflow="auto"
-                    pad={{left: "xlarge", right: "xlarge", top: "small"}}
+                    pad={{left: "xlarge", right: "xlarge", top: "meium"}}
                     onSubmit={this.props.close}
                 >
                     <Box flex={false} direction="row" justify="between">
@@ -71,7 +77,7 @@ class RetentionPolicyModel extends Component {
                         <Text weight="bold">Policy Details</Text>
                     </Box>
                     <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
-                        <Box border="all" pad='medium' >
+                        <Box border="all" pad={{top:"medium", left: "xlarge", right: "xlarge", bottom: "medium"}} >
                               <FormField label="Policy Name">
                                     <TextInput />
                               </FormField>
@@ -82,10 +88,10 @@ class RetentionPolicyModel extends Component {
                                     <TextInput type="number"></TextInput>
                               </FormField>
                               <Box margin="medium">
-                                    <CheckBox label="Active: " reverse={true} onChange={(event) => {/* event.target.checked */}}/>
+                                    <CheckBox checked={activeCheckbox} label="Active: " reverse={true} onChange={(e) => { this.toggleActiveCheckbox(e) }}/>
                               </Box>
                         </Box>
-                        <Box border="all" pad="medium" margin={{top: 'medium'}} >
+                        <Box border="all" pad={{top:"medium", left: "xlarge", right: "xlarge", bottom: "medium"}} margin={{top: 'medium'}} >
                               <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
                               <Menu dropBackground={{color: "#f0f2f7"}} label={conditionName} items={[
                                           {label: "Sender", onClick: () => {this.changeConditionName("Sender")}},
@@ -198,7 +204,7 @@ class RetentionPolicyModel extends Component {
                                         />
                                     </Box>
                                     <Box width="200px" alignSelf="center" pad="small" height="200px" >
-                                        <Button label="Remove Last Criterea"  primary />
+                                        <Button label="Remove Last Criterea" />
                                     </Box>
                                 </div>
                             }
