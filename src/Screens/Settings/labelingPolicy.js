@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Grommet, Box, DataTable, CheckBox, Image, Button } from "grommet";
-import SecondaryNavbar from "../../Containers/SecondaryNavbar/SecondaryNavbar";
+import SecondaryNavbar from "../../Containers/SecondaryNavbar/secondaryNavbar";
 import { Edit } from "grommet-icons";
 import  Tick from "../../assets/Icons/submit_purple.png";
 import Cross from "../../assets/Icons/cancel_purple.png";
