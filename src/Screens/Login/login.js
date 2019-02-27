@@ -10,20 +10,12 @@
      Heading, 
      TextInput, 
      Markdown,
-<<<<<<< HEAD
-     Anchor,
-=======
->>>>>>> master
      Menu
     } from "grommet";
   //imported icon from assets/Icons Folder
   import sonaLogo from "../../assets/Icons/sonaLogo.png"
   //imported icon from grommeticons library
-<<<<<<< HEAD
-  import { Login, CircleInformation, Windows } from 'grommet-icons';
-=======
   import { Login, CircleInformation } from 'grommet-icons';
->>>>>>> master
 
 
   class LogIn extends Component {

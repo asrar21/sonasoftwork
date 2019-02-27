@@ -3,11 +3,6 @@ import React, { Component } from 'react';
 import {
     Box,
     
-<<<<<<< HEAD
-    Heading,
-=======
-
->>>>>>> master
     
    
     Grommet,
@@ -25,12 +20,8 @@ import { grommet } from "grommet/themes";
 
 //importing grommet icons
 import { Edit, Close } from 'grommet-icons';
-<<<<<<< HEAD
-import NotificationSideModal from '../../../Modal/Notificationsidemodal'
-=======
 import NotificationSideModal from '../../../Containers/Modal/Notificationsidemodal';
 import SecondaryNavBar from '../../../Containers/SecondaryNavbar/secondaryNavbar';
->>>>>>> master
 
 
 
@@ -39,11 +30,7 @@ const columns = [
     {
         property: "Notification_type",
         header: <Text>Notification_type</Text>,
-<<<<<<< HEAD
-        primary: true,
-=======
       
->>>>>>> master
 
     },
     {
@@ -227,21 +214,11 @@ class Notification extends Component {
 
         return (
             <Grommet theme={grommet} full>
-<<<<<<< HEAD
-                <Box fill>
-                <Heading>
-                    Notification
-                </Heading>
-                    
-                        
-                            <Box align="center" justify="center" pad="medium">
-=======
              <SecondaryNavBar pageName="Notification" pageIcon="Notifications"/>
                 <Box fill>
               
                         
                             <Box align="center" justify="center" pad="medium" size="small">
->>>>>>> master
                                 {/* using flag and layer component of to open Add form on the rightside */}
                                 {open && (
                                     <NotificationSideModal header="Add Notification" close={this.onClose}/>
@@ -294,10 +271,7 @@ class Notification extends Component {
                                     data={DATA}
                                     sortable
                                     size="medium"
-<<<<<<< HEAD
-=======
                                   
->>>>>>> master
                                 />
                                 <Box direction="row-responsive" gap="medium">
                                     <Button label="Add" onClick={this.onOpen} />

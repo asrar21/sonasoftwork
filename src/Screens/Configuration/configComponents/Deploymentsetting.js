@@ -28,11 +28,6 @@ const column = [
     }
 ];
 const DATA = [
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> master
 
 
 ];
@@ -42,22 +37,12 @@ export default class Deploymentsetting extends Component {
     constructor(props) {
         super(props);
         this.state = {
-<<<<<<< HEAD
-            
-            
-=======
 
 
->>>>>>> master
             centralArchive: true,
             multiArchive: false
         };
     }
-<<<<<<< HEAD
-   
-=======
-
->>>>>>> master
 
     Show = (e) => {
         const options = ['multiArchive', 'centralArchive']
