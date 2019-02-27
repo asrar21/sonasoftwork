@@ -25,6 +25,7 @@ export default class Routers extends Component {
       <Route path="/notification" component={Notification} />
       <Route path="/settings/emailServer" component={settings.emailServer} />
       <Route path="/settings/contentIdentificationPolicy" component={settings.contentIdentificationPolicy} />
+      <Route path="/settings/labelingPolicy" component={settings.labelingPolicy} />
     </div>
   </Router>
     )

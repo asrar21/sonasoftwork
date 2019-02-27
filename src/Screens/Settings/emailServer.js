@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Grommet, Box, Image, DataTable, CheckBox, Button } from "grommet";
-import SecondaryNavbar from "../../Containers/secondarynavbar/secodaryNavbar";
+import SecondaryNavbar from "../../Containers/SecondaryNavbar/secondaryNavbar";
 import { Edit } from "grommet-icons";
 import  Tick from "../../assets/Icons/submit_purple.png";
-import Cross from "../../assets/Icons/cancel_purple.png"
+import Cross from "../../assets/Icons/cancel_purple.png";
 import EmailServerModal from "../../Containers/Modal/emailServerModal"
 
 const emailServerData = [{
@@ -42,8 +42,7 @@ class emailServer extends Component {
       data : [],
       selectAll: false,
       checkBox: true,
-      AddServerModal:true
-
+      AddServerModal:false
       
     }
   }
@@ -110,7 +109,7 @@ componentWillMount(){
         <Box>
           <SecondaryNavbar pageName="Email Server" pageIcon="emailServer" />   
         </Box>
-        { AddServerModal && <EmailServerModal header="Add New Server Modal" close={() => this.AddServerModalClose()} /> }
+        { AddServerModal && <EmailServerModal header="Add New" close={() => this.AddServerModalClose()} /> }
         <Box margin="small">
             <DataTable
               columns={[
@@ -130,7 +129,7 @@ componentWillMount(){
                 {
                   property: 'emailServer',
                   header: 'Email Server',
-                  primary: true,
+                  
                 },
                 {
                   property: "journalLogin",

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SecondaryNavbar from "../../Containers/secondarynavbar/secodaryNavbar";
+import SecondaryNavbar from "../../Containers/SecondaryNavbar/secondaryNavbar";
 import { Grommet, Box, DataTable, CheckBox,Image, Button, Text, Paragraph, RadioButton } from 'grommet';
 import { Edit } from "grommet-icons";
 import Tick from "../../assets/Icons/submit_purple.png";
@@ -51,7 +51,8 @@ class contentIdentificationPolicy extends Component {
                   selectAll : false,
                   data: [],
                   allStores: false,
-                  activeStoreOnly: true
+                  activeStoreOnly: true,
+                  
                   
             }
       }
@@ -97,7 +98,7 @@ class contentIdentificationPolicy extends Component {
             ContentPageData.map(value => {
               data.push({
                 checkBox: <CheckBox checked={this.state.checkBox}  name={value.emailServer} onChange={(e) => this.toggleCheckBox(e)} />,
-                edit: <Edit onClick={this.openNewPolicyForm} />,
+                edit: <Edit cursor="pointer" onClick={this.openNewPolicyForm} />,
                 name: value.name,
                 notificationType: value.notificationType,
                 notificationDelay: value.notificationDelay,
@@ -127,7 +128,7 @@ class contentIdentificationPolicy extends Component {
                               },
                               {
                                     property: "edit",
-                                    header: ""
+                                    header: "Edit"
                               },
                               {
                                     property: "name",
@@ -157,7 +158,7 @@ class contentIdentificationPolicy extends Component {
                         <Button label="Disable" />
                         <Button label="Delete" />
                   </Box>
-                  <Box direction="column"  border={{side: "all", color:"grey", size:"small"}}>
+                  <Box direction="column" >
                        <Box justify="between" direction="row" pad="small" margin="small" background="#d3d9e2">
                               <Text margin={{left:"40%"}}>Content Identification Policy Settings</Text>
                               <Box>
@@ -167,28 +168,30 @@ class contentIdentificationPolicy extends Component {
                         </Box> 
                         { collapse && 
                               <div>
-                                    <Box margin={{left: "small", right: "small"}} justify="between" direction="row">
-                                          <Paragraph margin="none">Apply Content Identification Policy To :</Paragraph>
-                                          <Box direction="row" gap="small" >
-                                                <RadioButton
-                                                      checked = {activeStoreOnly}
-                                                      name="storeOptions"
-                                                      label= "Active Store Only"
-                                                      value= "activeStoreOnly" 
-                                                      onChange={(e) => this.storeOptionsChanged(e)}
-                                                />
-                                                <RadioButton
-                                                      checked = {allStores}
-                                                      name="storeOptions"
-                                                      label= "All Stores"
-                                                      value= "allStores" 
-                                                      onChange={(e) => this.storeOptionsChanged(e)}
-                                                />
+                                    <Box margin={{left:"small", right: "small"}}>
+                                          <Box margin={{left: "small", right: "small"}} justify="between" direction="row">
+                                                <Paragraph margin="none">Apply Content Identification Policy To :</Paragraph>
+                                                <Box direction="row" gap="small" >
+                                                      <RadioButton
+                                                            checked = {activeStoreOnly}
+                                                            name="storeOptions"
+                                                            label= "Active Store Only"
+                                                            value= "activeStoreOnly" 
+                                                            onChange={(e) => this.storeOptionsChanged(e)}
+                                                      />
+                                                      <RadioButton
+                                                            checked = {allStores}
+                                                            name="storeOptions"
+                                                            label= "All Stores"
+                                                            value= "allStores" 
+                                                            onChange={(e) => this.storeOptionsChanged(e)}
+                                                      />
+                                                </Box>
+                                          </Box> 
+                                          <Box direction="row" gap="medium" justify="center" margin="medium">
+                                                <Button label="Save" />
+                                                <Button label="Cancel" />
                                           </Box>
-                                    </Box> 
-                                    <Box direction="row" gap="medium" justify="center" margin="medium">
-                                          <Button label="Save" />
-                                          <Button label="Cancel" />
                                     </Box>
                               </div>
                         }

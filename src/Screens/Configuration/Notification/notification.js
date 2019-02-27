@@ -21,8 +21,8 @@ import { grommet } from "grommet/themes";
 
 //importing grommet icons
 import { Edit, Close } from 'grommet-icons';
-import NotificationSideModal from '../../../Modal/Notificationsidemodal';
-import SecondaryNavBar from '../../../Containers/secondarynavbar/secondarynavbar'
+import NotificationSideModal from '../../../Containers/Modal/Notificationsidemodal';
+import SecondaryNavBar from '../../../Containers/SecondaryNavbar/secondaryNavbar';
 
 
 
