@@ -8,37 +8,26 @@ import {
     TextInput,
     Button,
     CheckBox,
-<<<<<<< HEAD
-    Menu
-} from "grommet";
-
-import {  Close } from 'grommet-icons';
-=======
     Menu,
     DataTable
 } from "grommet";
 
 import {  Close, FormUp, FormDown } from 'grommet-icons';
->>>>>>> master
 
 
-class contentPageModal extends Component {
+class labelingPolicyModal extends Component {
     constructor(props){
         super(props)
         this.state = {
-            notificationOption: "Notification Option",
-<<<<<<< HEAD
-            conditionName: "Condition Name"
-=======
+            label: "Label",
             conditionName: "Condition Name",
             collapse: true
->>>>>>> master
         }
     }
 
-    changeNotificationOption(value){
+    changeLabel(value){
         this.setState({
-            notificationOption: value
+            label: value
         })
     }
 
@@ -47,139 +36,6 @@ class contentPageModal extends Component {
             conditionName: value
         })
     }
-<<<<<<< HEAD
- 
-    render() {
-        const { notificationOption, conditionName } = this.state
-      return (
-        <Layer
-            position="right"
-            full="vertical"
-            modal
-            onClickOutside={this.props.close}
-            onEsc={this.props.close}
-        >
-        <Box
-            as="form"
-            fill="vertical"
-            overflow="auto"
-            width="medium"
-            pad="medium"
-            onSubmit={this.props.close}
-        >
-            <Box flex={false} direction="row" justify="between">
-                <Heading level={2} margin="none">
-                    {this.props.header}
-                  </Heading>
-                <Button icon={<Close />} onClick={this.props.close} />
-            </Box>
-            <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
-                <FormField label="Policy Name">
-                    <TextInput />
-                </FormField>
-                <FormField label="Policy Description">
-                    <TextInput />
-                </FormField>
-                <Box margin="medium">
-                    <CheckBox label="Enable: " reverse={true} onChange={(event) => {/* event.target.checked */}}/>
-                </Box>
-                <FormField></FormField>
-                <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
-                    <Menu dropBackground={{color: "#f0f2f7"}} label={notificationOption} items={[
-                            {label: "Don't Notify", onClick: (e) => {this.changeNtificationOption(e)}},
-                            {label: "Notify Immediately", onClick: () => {}},
-                            {label: "Delayed Notification", onClick: () => {}}
-                        ]} />
-                </Box>
-                <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
-                    <Menu dropBackground={{color: "#f0f2f7"}} label={conditionName} items={[
-                            {label: "Sender", onClick: () => {this.changeConditionName("Sender")}},
-                            {label: "Sender Date", onClick: (e) => {this.changeConditionName("Sender Date")}},
-                            {label: "Subject", onClick: (e) => {this.changeConditionName("Subject")}},
-                            {label: "Mail Size", onClick: (e) => {this.changeConditionName("Mail Size")}},
-                            {label: "Priority", onClick: (e) => {this.changeConditionName("Priority")}},
-                            {label: "Received Date", onClick: (e) => {this.changeConditionName("Received Date")}},
-                            {label: "Attachement Count", onClick: (e) => {this.changeConditionName("Attachement Count")}},
-                            {label: "Lock Option", onClick: (e) => {this.changeConditionName("Lock Option")}},
-                            {label: "Public Folder Option", onClick: (e) => {this.changeConditionName("Public Folder Option")}},
-                            {label: "Message Expiry Option", onClick: (e) => {this.changeConditionName("Message Expiry Option")}},
-                            {label: "To", onClick: (e) => {this.changeConditionName("To")}},
-                            {label: "Cc", onClick: (e) => {this.changeConditionName("Cc")}},
-                            {label: "Bcc", onClick: (e) => {this.changeConditionName("Bcc")}},
-                            {label: "Label", onClick: (e) => {this.changeConditionName("Label")}},
-                            {label: "Body", onClick: (e) => {this.changeConditionName("Body")}},
-                            {label: "Attachment Name", onClick: (e) => {this.changeConditionName("Attachment Name")}},
-                            {label: "Attachement Size", onClick: (e) => {this.changeConditionName("Attachement Size")}},
-                            {label: "Attachement", onClick: (e) => {this.changeConditionName("Attachement")}},
-                            {label: "Expiry Date", onClick: (e) => {this.changeConditionName("Expiry Date")}},
-                            {label: "Standard Body", onClick: (e) => {this.changeConditionName("Standard Body")}},
-                        ]} />
-                </Box>
-                <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
-                    <Menu dropBackground={{color: "#f0f2f7"}}  label="Condition Type" items={[
-                            {label: "Select One", onClick: (e) => {this.changeNotificationOption("Select One")}},
-                        ]} />
-                </Box>
-
-                <FormField label="Condition Value">
-                    <TextInput />
-                </FormField>
-                
-                
-            </Box>
-                <Box direction="row" justify="between">
-                    <Box > 
-                        <Box flex={false} as="footer" margin="small" align="start">
-                            <Button
-                                label="Add"
-                            />
-                        </Box>
-                        <Box flex={false} as="footer" margin="small"  align="start">
-                            <Button
-                                label="Cancel"
-                                onClick={() => this.props.close()}
-                                
-                            />
-                        </Box>
-                    </Box>
-
-                    <Box > 
-                        <Box flex={false} as="footer" margin="small"  align="start">
-                            <Button
-                                label="And"
-                            />
-                        </Box>
-                        <Box flex={false} as="footer" margin="small" align="start">
-                            <Button
-                                label="OR"
-                            />
-                        </Box>
-                    </Box>
-
-                    <Box > 
-                        <Box flex={false} as="footer" margin="small"  align="start">
-                            <Button
-                                label="("
-                            />
-                        </Box>
-                        <Box flex={false} as="footer" margin="small" align="start">
-                            <Button
-                                label=")"
-                            />
-                        </Box>
-                    </Box>
-            </Box>
-            
-        </Box>
-    </Layer>
-      
-    
-      )
-    }
-  };
-
-  export default contentPageModal;
-=======
 
     collapsePolicySettings(){
         this.setState({
@@ -188,7 +44,7 @@ class contentPageModal extends Component {
   }
  
     render() {
-        const { notificationOption, conditionName, collapse } = this.state
+        const { label, conditionName, collapse } = this.state
         return (
             <Layer
                 position="center"
@@ -214,19 +70,20 @@ class contentPageModal extends Component {
                         <FormField label="Policy Name">
                             <TextInput />
                         </FormField>
-                        <FormField label="Policy Description">
-                            <TextInput />
-                        </FormField>
+                        <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
+                            <Menu dropBackground={{color: "#f0f2f7"}} label={label} items={[
+                                    {label: "Add New", onClick: (e) => {this.changeLabel("Add New")}},
+                                    {label: "test", onClick: () => {this.changeLabel("test")}},
+                                    {label: "test2", onClick: () => {this.changeLabel("test2")}},
+                                    {label: "Crowdfunder", onClick: () => {this.changeLabel("Crowdfunder")}},
+                                    {label: "ActOn", onClick: () => {this.changeLabel("ActOn")}},
+                                    {label: "DELL", onClick: () => {this.changeLabel("DELL")}},
+                                    {label: "King School", onClick: () => {this.changeLabel("King School")}},
+                                    {label: "Daily Inspiration", onClick: () => {this.changeLabel("Daily Inspiration")}}
+                                ]} />
+                        </Box>
                         <Box margin="medium">
                             <CheckBox label="Enable: " reverse={true} onChange={(event) => {/* event.target.checked */}}/>
-                        </Box>
-                        <FormField></FormField>
-                        <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
-                            <Menu dropBackground={{color: "#f0f2f7"}} label={notificationOption} items={[
-                                    {label: "Don't Notify", onClick: (e) => {this.changeNtificationOption(e)}},
-                                    {label: "Notify Immediately", onClick: () => {}},
-                                    {label: "Delayed Notification", onClick: () => {}}
-                                ]} />
                         </Box>
                         <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
                             <Menu dropBackground={{color: "#f0f2f7"}} label={conditionName} items={[
@@ -250,12 +107,11 @@ class contentPageModal extends Component {
                                     {label: "Attachement", onClick: (e) => {this.changeConditionName("Attachement")}},
                                     {label: "Expiry Date", onClick: (e) => {this.changeConditionName("Expiry Date")}},
                                     {label: "Standard Body", onClick: (e) => {this.changeConditionName("Standard Body")}},
-                                ]} 
-                            />
+                                ]} />
                         </Box>
                         <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
                             <Menu dropBackground={{color: "#f0f2f7"}}  label="Condition Type" items={[
-                                    {label: "Select One", onClick: (e) => {this.changeNotificationOption("Select One")}},
+                                    {label: "Select One", onClick: (e) => {}},
                                 ]} />
                         </Box>
 
@@ -263,6 +119,7 @@ class contentPageModal extends Component {
                             <TextInput />
                         </FormField>
                         
+
                         <Box direction="row" border="bottom" justify="between">
                             <Box > 
                                 <Box flex={false}  margin="small" align="start">
@@ -304,6 +161,7 @@ class contentPageModal extends Component {
                                     />
                                 </Box>
                             </Box>
+                            
                         </Box>
                         
                         <Box direction="column">
@@ -343,14 +201,13 @@ class contentPageModal extends Component {
                                 </div>
                             }
                         </Box>
-                    </Box>   
+                    </Box>
                 </Box>
-            </Layer>      
+            </Layer>
         )
     }
 };
 
-export default contentPageModal;
->>>>>>> master
+export default labelingPolicyModal;
   
   
