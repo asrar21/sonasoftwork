@@ -22,7 +22,7 @@ import ADSettingsModal from '../../Containers/Modal/ADSettingsmodal';
 import Deploymentsetting from '../Configuration/configComponents/Deploymentsetting';
 import SMTPConfiguration from './configComponents/Smtpconfiguration';
 import General from './configComponents/general'
-import SecondaryNavBar from '../../Containers/SecondaryNavbar/secondaryNavbar'
+import SecondaryNavBar from '../../Containers/SecondaryNavbar/SecondaryNavbar'
 
 //defining columns for Data table component
 const columns = [

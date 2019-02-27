@@ -4,7 +4,7 @@ import { Grommet, Box} from "grommet";
 //impoter theme from grommet
 import { grommet } from "grommet/themes";
 import Navbar from "../../Containers/Navbar/navbar";
-import HomeScreenCard from "../../Containers/HomescreenCard/homeScreenCard"
+import HomeScreenCard from "../../Containers/homescreenCard/homeScreenCard"
 
  class HomeScreen extends Component {
   render() {
