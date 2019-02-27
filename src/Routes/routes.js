@@ -30,6 +30,7 @@ export default class Routers extends Component {
       <Route path="/settings/contentIdentificationPolicy" component={settings.contentIdentificationPolicy} />
       <Route path="/activateProduct" component={ActivateProduct} />
       <Route path="/purgePolicy" component={PurgePolicy} />
+      <Route path="/settings/labelingPolicy" component={settings.labelingPolicy} />
     </div>
   </Router>
     )

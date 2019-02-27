@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Grommet, Box, Text, Paragraph, Image } from "grommet";
-import { CircleInformation, User } from 'grommet-icons';
+import { CircleInformation } from 'grommet-icons';
 
-class secodaryNavbar extends Component {
+export default class SecondaryNavbar extends Component {
       constructor(props){
             super(props)
             this.state = {}
@@ -10,7 +10,6 @@ class secodaryNavbar extends Component {
       }
       render() {
             const { pageName, pageIcon } = this.props
-            console.log(`../../assets/otherIcons/${pageIcon}.png`)
       return (
             <Grommet>
                   <Box
@@ -24,10 +23,9 @@ class secodaryNavbar extends Component {
                               <Text size="large" weight="bold">{pageName}</Text>
                         </Box>
                   <Box direction="row" gap="10px" >
-                        <Box direction="row" >
-                              <CircleInformation cursor="pointer" textDecoration="none" />
-                              <Paragraph margin="none" >Help</Paragraph>
-                        </Box>
+
+                        <CircleInformation cursor="pointer" textDecoration="none" />
+                        <Paragraph margin="none" >Help</Paragraph>
                         <Image src={require(`../../assets/Icons/profile_purple.png`)} width="25px" height="25px" />
 
                   </Box>
@@ -38,4 +36,4 @@ class secodaryNavbar extends Component {
       }
 }
 
-export default secodaryNavbar; 
+ 

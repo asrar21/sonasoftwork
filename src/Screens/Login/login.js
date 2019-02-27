@@ -10,13 +10,12 @@
      Heading, 
      TextInput, 
      Markdown,
-     Anchor,
      Menu
     } from "grommet";
   //imported icon from assets/Icons Folder
   import sonaLogo from "../../assets/Icons/sonaLogo.png"
   //imported icon from grommeticons library
-  import { Login, CircleInformation, Windows } from 'grommet-icons';
+  import { Login, CircleInformation } from 'grommet-icons';
 
 
   class LogIn extends Component {
@@ -106,29 +105,20 @@
                     align="start"
                     width={"100%"}
                     direction="row"
-                  >
-                   <Menu
-                    label="Configuration & Notification by Asrar"
+                >
+                  <Menu
+                    label="Screens Links"
                     items={[
-                      { label: 'configuration', onClick: () => {window.location.pathname = "/configuration"} },
-                      { label: 'notification', onClick: () => { window.location.pathname = "/notification"} },
+                      { label: 'configuration(Asrar)', onClick: () => {window.location.pathname = "/configuration"} },
+                      { label: 'notification(Asrar)', onClick: () => { window.location.pathname = "/notification"} },
+                      { label: 'Email Server(Faizan)', onClick: () => { window.location.pathname = "settings/emailServer"} },
+                      { label: 'Content Identification Policy(Faizan)', onClick: () => { window.location.pathname = "settings/contentIdentificationPolicy"} },
+                      { label: 'Labeling Policy(Faizan)', onClick: () => { window.location.pathname = "settings/labelingPolicy" } },
+                      { label: 'Activate Product(Hafsa)', onClick: () => { window.location.pathname = "activateProduct"} },
+                      { label: 'Purge Policy(Hafsa)', onClick: () => { window.location.pathname = "purgePolicy"} },
+                      { label: 'Archival Policy(Hafsa)', onClick: () => { window.location.pathname = "settings/archivalPolicy"} },
                     ]}
                   />
-                    <Menu
-                      label="Setting's Email server & content Identification Policy By Faizan"
-                      items={[
-                        { label: 'Email Server', onClick: () => { window.location.pathname = "settings/emailServer"} },
-                        { label: 'Content Identification Policy', onClick: () => { window.location.pathname = "settings/contentIdentificationPolicy"} },
-                      ]}
-                  />
-                    <Menu
-                        label="Maintenance & Setting's Archival Policy By Hafsa"
-                        items={[
-                          { label: 'Activate Product', onClick: () => { window.location.pathname = "activateProduct"} },
-                          { label: 'Purge Policy', onClick: () => { window.location.pathname = "purgePolicy"} },
-                          { label: 'Archival Policy', onClick: () => { window.location.pathname = "settings/archivalPolicy"} },
-                        ]}
-                    />
                     <CircleInformation cursor="pointer" textDecoration="none" />
                 </Box>
               
