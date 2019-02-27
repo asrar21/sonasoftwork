@@ -8,6 +8,8 @@ import Configuration from '../Screens/Configuration/configuration';
 import Notification from '../Screens/Configuration/Notification/notification';
 import * as settings from "../Screens/Settings";
 import ArchivalEmail from '../Screens/Report/ArchivalEmail/ArchivalEmail'
+import ActivateProduct from '../Screens/Maintenance/activateProduct'
+import PurgePolicy from '../Screens/Maintenance/purgePolicy'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 
@@ -25,13 +27,18 @@ export default class Routers extends Component {
       <Route path="/configuration" component={Configuration} />
       <Route path="/notification" component={Notification} />
       <Route path="/settings/emailServer" component={settings.emailServer} />
+      <Route path="/settings/archivalPolicy" component={settings.ArchivalPolicy} />
       <Route path="/settings/contentIdentificationPolicy" component={settings.contentIdentificationPolicy} />
+      <Route path="/activateProduct" component={ActivateProduct} />
+      <Route path="/purgePolicy" component={PurgePolicy} />
       <Route path="/settings/labelingPolicy" component={settings.labelingPolicy} />
       <Route path="/ArchivalEmail" component={ArchivalEmail} />
+      <Route path="/settings/retentionPolicy" component={settings.retentionPolicy} />
     </div>
   </Router>
     )
   }
 }
+
 
 
