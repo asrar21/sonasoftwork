@@ -89,7 +89,7 @@ export default class General extends Component {
                                 </Box>
                                 <Box direction="row">
                                     <Box >
-                                        <TextInput value="E:\Program Files (x86)\Sonasoft\sonaarc\temp"></TextInput>
+                                        <TextInput ></TextInput>
                                     </Box>
 
                                 </Box>
@@ -104,7 +104,7 @@ export default class General extends Component {
                                 </Box>
                                 <Box direction="row">
                                     <Box width="200%">
-                                        <TextInput value="E:\Program Files (x86)\Sonasoft\sonaarc\temp"></TextInput>
+                                        <TextInput ></TextInput>
                                     </Box>
 
                                 </Box>
@@ -139,7 +139,7 @@ export default class General extends Component {
                                     <Box width="200%">
                                         <Select
                                             options={['EAS USER ONLY ACCESS', 'EAS NO UI ACCESS', 'EAS GENERAL USERS', 'NO simple Search', 'No Public Folder', 'Search Exports']}
-                                            value={'EAS GENERAL USERS'}
+                                            
                                             onChange={({ option }) => { }}
 
                                         />
@@ -178,7 +178,7 @@ export default class General extends Component {
                                     <Box >
                                         <Select size="small"
                                             options={[1,2,3,4,6]}
-                                            value={1}
+                                           
                                             onChange={({ option }) => { }}
 
                                         />
