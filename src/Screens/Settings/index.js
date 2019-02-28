@@ -1,13 +1,15 @@
-import emailServer from "./emailServer";
-import contentIdentificationPolicy from "./contentIdentificationPolicy";
+import EmailServer from "./emailServer";
+import ContentIdentificationPolicy from "./contentIdentificationPolicy";
 import ArchivalPolicy from "./archivalPolicy"
-import labelingPolicy from "./labelingPolicy";
-import retentionPolicy from "./retentionPolicy";
+import LabelingPolicy from "./labelingPolicy";
+import RetentionPolicy from "./retentionPolicy";
+import ArchiveStore from "./archiveStore";
 
 export {
-      emailServer,
-      contentIdentificationPolicy,
+      EmailServer,
+      ContentIdentificationPolicy,
       ArchivalPolicy,
-      labelingPolicy,
-      retentionPolicy
+      LabelingPolicy,
+      RetentionPolicy,
+      ArchiveStore
 }
