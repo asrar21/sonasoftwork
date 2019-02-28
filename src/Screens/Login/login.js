@@ -115,6 +115,7 @@
                       { label: 'Content Identification Policy(Faizan)', onClick: () => { window.location.pathname = "settings/contentIdentificationPolicy"} },
                       { label: 'Labeling Policy(Faizan)', onClick: () => { window.location.pathname = "settings/labelingPolicy" } },
                       { label: 'Retention Policy(Faizan)', onClick: () => { window.location.pathname = "settings/retentionPolicy" } },
+                      { label: 'Archive Store(Faizan)', onClick: () => { window.location.pathname = "settings/archiveStore" } },
                       { label: 'Activate Product(Hafsa)', onClick: () => { window.location.pathname = "activateProduct"} },
                       { label: 'Purge Policy(Hafsa)', onClick: () => { window.location.pathname = "purgePolicy"} },
                       { label: 'Archival Policy(Hafsa)', onClick: () => { window.location.pathname = "settings/archivalPolicy"} },
