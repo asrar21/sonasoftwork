@@ -123,7 +123,170 @@ r.connect({host:'localhost',port:28015},function(err,conn){
            
         })
     })
+
+    //Email Server
+    r.db('test').tableCreate('EmailServer').run(conn, (err,res)=>{
+        if(err) throw err;
+        console.log(res)
+        app.post('/EmailServer',(req,res)=>{
+            let data=[
+                {
+                    domainName: req.body.domainName,
+                    exchangeVersion: req.body.exchangeVersion,
+                    exchangeServicePack: req.body.exchangeServicePack,
+                    EmailServer:req.body.EmailServer,
+                    JournalMailbox:req.body.JournalMailbox,
+                   
+                    JournalPassword:req.body.JournalPassword,
+                    Frequency:req.body.Frequency,
+                    Enable:req.body.Enable,
+                    Archive:req.body.Archive,
+                    EnableStub:req.body.EnableStub,
+                    Exclude:req.body.Exclude,
+                    journalLogon: req.body.journalLogon,
+                   status:req.body.status
+                  },
     
+            ]
+            r.table('EmailServer').insert(data).run(conn,(err,result)=>{
+               
+                    if(err) throw err;
+                    if(result){
+                        console.log(" Email server data is inserted")
+                    }
+               
+            })
+            app.get('/EmailServer',(req,res)=>{
+                r.table('EmailServer').run(conn,(err,result)=>{
+                    if(err) throw err
+                    result.toArray((err,Data)=>{
+                        if(err){
+                            res.status(404).json({
+                                error:"no data"
+        
+                            })
+                        }
+                        if(Data){
+                            res.status(200).json({
+                                Data
+                            })
+                        }
+                    })
+                })
+            })
+
+    });
+    
+
+})
+//content identification
+r.db('test').tableCreate('ContentIdentification').run(conn, (err,res)=>{
+    if(err) throw err;
+    console.log(res)
+    app.post('/ContentIdentification',(req,res)=>{
+        let data=[
+            {
+                notificationOption: req.body.notificationOption,
+            conditionName: req.body.conditionName,
+            
+            PolicyName:req.body.PolicyName,
+            Conditionalvalue:req.body.Conditionalvalue,
+           
+            PolicyDescription:req.body.PolicyDescription,
+            PolicyName:req.body.PolicyName,
+              name: req.body.PolicyName,
+            notificationType:req.body.notificationOption,
+              notificationDelay: "-",
+             enabled: req.body.enabled,
+          },
+
+        ]
+        r.table('ContentIdentification').insert(data).run(conn,(err,result)=>{
+           
+                if(err) throw err;
+                if(result){
+                    console.log(" Contentidentification data is inserted")
+                }
+           
+        })
+        app.get('/ContentIdentification',(req,res)=>{
+            r.table('ContentIdentification').run(conn,(err,result)=>{
+                if(err) throw err
+                result.toArray((err,Data)=>{
+                    if(err){
+                        res.status(404).json({
+                            error:"no data"
+    
+                        })
+                    }
+                    if(Data){
+                        res.status(200).json({
+                            Data
+                        })
+                    }
+                })
+            })
+        })
+
+});
+
+
+})
+//labeling policy
+r.db('test').tableCreate('LabelingPolicy').run(conn, (err,res)=>{
+    if(err) throw err;
+    console.log(res)
+    app.post('/LabelingPolicy',(req,res)=>{
+        let data=[
+            {
+                policyName: req.body.policyName,
+                LabelName: req.body.LabelName,
+                status: req.body.status,
+                conditionName:req.body.conditionName,
+                Enable:req.body.Enable,
+            Conditionvalue:req.body.Conditionvalue
+          },
+
+        ]
+        r.table('LabelingPolicy').insert(data).run(conn,(err,result)=>{
+           
+                if(err) throw err;
+                if(result){
+                    console.log(" LabelingPolicy data is inserted")
+                }
+           
+        })
+        app.get('/LabelingPolicy',(req,res)=>{
+            r.table('LabelingPolicy').run(conn,(err,result)=>{
+                if(err) throw err
+                result.toArray((err,Data)=>{
+                    if(err){
+                        res.status(404).json({
+                            error:"no data"
+    
+                        })
+                    }
+                    if(Data){
+                        res.status(200).json({
+                            Data
+                        })
+                    }
+                })
+            })
+        })
+
+});
+
+
+})
+r.db('test').tableCreate('AD_setting').run(conn, (err,res)=>{
+    if(err) throw err;
+    console.log(res)
+})
+r.db('test').tableCreate('Notification').run(conn, (err,res)=>{
+    if(err) throw err;
+    console.log(res)
+})
 
 })
    

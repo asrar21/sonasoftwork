@@ -13,15 +13,20 @@ import {
 } from "grommet";
 
 import {  Close, FormUp, FormDown } from 'grommet-icons';
+import axios from 'axios'
 
 
 class labelingPolicyModal extends Component {
     constructor(props){
         super(props)
         this.state = {
-            label: "Label",
+            LabelName: "Label",
             conditionName: "Condition Name",
-            collapse: true
+            collapse: true,
+            policyName:"",
+            Enable:false,
+            Conditionvalue:"",
+            status:true
         }
     }
 
@@ -42,6 +47,24 @@ class labelingPolicyModal extends Component {
               collapse: !this.state.collapse
         })
   }
+  onsubmit=()=>{
+        
+        
+    axios({
+        method: 'post',
+        url: 'http://localhost:4001/LabelingPolicy',
+        data: {
+            LabelName: this.state.LabelName,
+            conditionName:this.state.conditionName,
+            status:this.state.status,
+            policyName:this.state.PolicyName,
+            Enable:this.state.Enable,
+            Conditionvalue:this.state.Conditionvalue
+        },
+        header:{'Content-Type': 'application/json'}
+      });
+    }
+
  
     render() {
         const { label, conditionName, collapse } = this.state
@@ -68,7 +91,7 @@ class labelingPolicyModal extends Component {
                     </Box>
                     <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
                         <FormField label="Policy Name">
-                            <TextInput />
+                            <TextInput onChange={(e)=>{this.setState({PolicyName:e.target.value})}} />
                         </FormField>
                         <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
                             <Menu dropBackground={{color: "#f0f2f7"}} label={label} items={[
@@ -83,7 +106,7 @@ class labelingPolicyModal extends Component {
                                 ]} />
                         </Box>
                         <Box margin="medium">
-                            <CheckBox label="Enable: " reverse={true} onChange={(event) => {/* event.target.checked */}}/>
+                            <CheckBox label="Enable: " reverse={true} onChange={(event) => {this.setState({Enable:true})}}/>
                         </Box>
                         <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
                             <Menu dropBackground={{color: "#f0f2f7"}} label={conditionName} items={[
@@ -116,7 +139,7 @@ class labelingPolicyModal extends Component {
                         </Box>
 
                         <FormField label="Condition Value">
-                            <TextInput />
+                            <TextInput  onChange={(e)=>{this.setState({Conditionvalue:e.target.value})}}/>
                         </FormField>
                         
 
@@ -125,6 +148,7 @@ class labelingPolicyModal extends Component {
                                 <Box flex={false}  margin="small" align="start">
                                     <Button
                                         label="Add"
+                                        onClick={this.onsubmit}
                                     />
                                 </Box>
                                 <Box flex={false}  margin="small"  align="start">
