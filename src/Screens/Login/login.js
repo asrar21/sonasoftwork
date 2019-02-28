@@ -111,6 +111,12 @@
                     items={[
                       { label: 'configuration(Asrar)', onClick: () => {window.location.pathname = "/configuration"} },
                       { label: 'notification(Asrar)', onClick: () => { window.location.pathname = "/notification"} },
+                      { label: 'ArchivalEmail(Asrar)', onClick: () => { window.location.pathname = "/ArchivalEmail"} },
+                      { label: 'EmailStatistics(Asrar)', onClick: () => { window.location.pathname = "/EmailStatistic"} },
+                      { label: 'Attachment(Asrar)', onClick: () => { window.location.pathname = "/Attachments"} },
+                      { label: 'Compliance(Asrar)', onClick: () => { window.location.pathname = "/Compliances"} },
+                      { label: 'AccessControl(Asrar)', onClick: () => { window.location.pathname = "/AccessControls"} },
+                      { label: 'ArchiveStoreStatistics(Asrar)', onClick: () => { window.location.pathname = "/ArchiveStore"} },
                       { label: 'Email Server(Faizan)', onClick: () => { window.location.pathname = "settings/emailServer"} },
                       { label: 'Content Identification Policy(Faizan)', onClick: () => { window.location.pathname = "settings/contentIdentificationPolicy"} },
                       { label: 'Labeling Policy(Faizan)', onClick: () => { window.location.pathname = "settings/labelingPolicy" } },

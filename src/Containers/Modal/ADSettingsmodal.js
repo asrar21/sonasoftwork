@@ -9,12 +9,66 @@ import {
     TextInput,
     Button,
     CheckBox,
+    Text
 } from "grommet";
 
 import {  Close } from 'grommet-icons';
+import axios from 'axios';
 
 
 class ADSettingsModal extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            
+           Domain:"",
+           UserName:"",
+           Password:"",
+           Enable:false,
+           Azure:false,
+           All:false,
+           Selected:false
+        };
+    }
+
+    changehandlernoti=(e)=>{
+        e.preventDefault();
+        console.log("notification",e.target.value)
+        this.setState({
+            Notification_type:e.target.value
+        })
+    }
+    changehandlerTo=(e)=>{
+        e.preventDefault();
+        console.log("To",e.target.value)
+        this.setState({
+            To:e.target.value
+        })
+    }
+    changehandlerCc=(e)=>{
+        e.preventDefault();
+        console.log("Cc",e.target.value)
+        this.setState({
+            Cc:e.target.value
+        })
+    }
+    onsubmit=()=>{
+        axios({
+            method: 'post',
+            url: 'http://localhost:4001/adsettings',
+            data: {
+                Domain:this.state.Domain,
+           UserName:this.state.UserName,
+           Password:this.state.Password,
+           Enable:this.state.Enable,
+           Azure:this.state.Azure,
+           All:this.state.All,
+           Selected:this.state.Selected
+            },
+            header:{'Content-Type': 'application/json'}
+          });
+        }
+ 
     render() {
         return (
             <Layer
@@ -38,39 +92,51 @@ class ADSettingsModal extends Component {
                     </Box>
                     <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
                         <FormField label="Domain">
-                            <TextInput />
+                            <TextInput onChange={(e)=>this.setState({Domain:e.target.value})}/>
                         </FormField>
                         <FormField label="UserName">
-                            <TextInput />
+                            <TextInput onChange={(e)=>this.setState({UserName:e.target.value})}/>
                         </FormField>
                         <FormField label="Password">
-                            <TextInput />
+                            <TextInput type="password" onChange={(e)=>this.setState({Password:e.target.value})}/>
                         </FormField>
-                        <FormField label="Enable Sync">
-                            <CheckBox />
-                        </FormField>
-                        <FormField label="Azure Users?">
-                            <CheckBox />
-                        </FormField>
-                        <FormField label="Discover Organizational units">
+                        <Box direction="row-responsive">
+                        <Text>Enable Sync:</Text>
+
+                        
+                            <CheckBox  checked={this.state.Enable}
+                                  onChange={(event) => this.setState({ Enable:'Enable sync' ,  })}/>
+                            </Box>
+                           < Box direction="row-responsive">
+                        <Text>Azure Users?:</Text>
+
+                        
+                            <CheckBox checked={this.state.Azure}
+                                  onChange={(event) => this.setState({ Azure:'Azure user' ,  })}/>
+                            </Box>
+                        <Box> 
+                            <Text>Discover Organizational units</Text>
                             <Box align="" pad="" >
                                 <RadioButton
                                     label="All"
                                     name="radio"
+                                    checked={this.state.All}
+                                  onChange={(event) => this.setState({ All:'All' ,  })}
                                 />
                                 <RadioButton
                                     label="Selected"
-                                    name="radio"
+                                    checked={this.state.Seleted}
+                                   onChange={(event) => this.setState({ Selected: 'Selected',  })}
                                 />
                             </Box>
-                        </FormField>
+                            </Box>
                     </Box>
                     <Box direction="row-responsive">
                         <Box flex={false} as="footer" align="start">
                             <Button
                                 type="save"
                                 label="Save"
-                                onClick={this.onClose}
+                                onClick={this.onsubmit}
                                 primary
                             />
                         </Box>

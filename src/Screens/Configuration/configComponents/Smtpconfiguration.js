@@ -72,7 +72,7 @@ export default class SMTPconfiguration extends Component {
                     </Box>
                     <Box direction="row">
                         <Box margin={{top:"small"}}>
-                            <TextInput value="bilala@sonasoft.com"></TextInput>
+                            <TextInput ></TextInput>
                         </Box>
 
                     </Box>
@@ -90,7 +90,7 @@ export default class SMTPconfiguration extends Component {
                     </Box>
                     <Box direction="row">
                         <Box margin={{top:"small"}}>
-                            <TextInput value="smtp.office365.com"></TextInput>
+                            <TextInput ></TextInput>
                         </Box>
 
                     </Box>
@@ -147,7 +147,7 @@ export default class SMTPconfiguration extends Component {
                     </Box>
                     <Box direction="row">
                         <Box margin={{top:"small"}}>
-                           <TextInput value="bilala@sonasoft.com"></TextInput>
+                           <TextInput ></TextInput>
                         </Box>
 
                     </Box>
@@ -164,7 +164,7 @@ export default class SMTPconfiguration extends Component {
                     </Box>
                     <Box direction="row">
                         <Box margin={{top:"small"}}>
-                           <TextInput value="*******"></TextInput>
+                           <TextInput ></TextInput>
                         </Box>
 
                     </Box>

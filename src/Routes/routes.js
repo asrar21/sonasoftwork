@@ -8,6 +8,11 @@ import Configuration from '../Screens/Configuration/configuration';
 import Notification from '../Screens/Configuration/Notification/notification';
 import * as settings from "../Screens/Settings";
 import ArchivalEmail from '../Screens/Report/ArchivalEmail/ArchivalEmail'
+import EmailStatistic from '../Screens/Report/EmailStatistics/EmailStatistics';
+import ArchiveStoreStatistics from '../Screens/Report/ArchiveStoreStatistics/ArchiveStoreStatistics'
+import Attachment from '../Screens/Report/Attachment/Attachment'
+import Compliance from '../Screens/Report/Compliance/Compliance'
+import AccessControl from '../Screens/Report/AccessControl/AccessControl'
 import ActivateProduct from '../Screens/Maintenance/activateProduct'
 import PurgePolicy from '../Screens/Maintenance/purgePolicy'
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -31,10 +36,15 @@ export default class Routers extends Component {
       <Route path="/settings/contentIdentificationPolicy" component={settings.ContentIdentificationPolicy} />
       <Route path="/activateProduct" component={ActivateProduct} />
       <Route path="/purgePolicy" component={PurgePolicy} />
-      <Route path="/settings/labelingPolicy" component={settings.LabelingPolicy} />
+      <Route path="/settings/labelingPolicy" component={settings.labelingPolicy} />
       <Route path="/ArchivalEmail" component={ArchivalEmail} />
-      <Route path="/settings/retentionPolicy" component={settings.RetentionPolicy} />
-      <Route path="/settings/archiveStore" component={settings.ArchiveStore} />
+      <Route path="/EmailStatistic" component={EmailStatistic} />
+      <Route path="/ArchiveStore" component={ArchiveStoreStatistics} />
+      <Route path="/Attachments" component={Attachment} />
+      <Route path="/Compliances" component={Compliance} />
+      <Route path="/AccessControls" component={AccessControl} />
+
+      <Route path="/settings/retentionPolicy" component={settings.retentionPolicy} />
     </div>
   </Router>
     )

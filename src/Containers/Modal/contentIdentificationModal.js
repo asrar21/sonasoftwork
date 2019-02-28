@@ -13,6 +13,7 @@ import {
 } from "grommet";
 
 import {  Close, FormUp, FormDown } from 'grommet-icons';
+import axios from 'axios'
 
 
 class contentPageModal extends Component {
@@ -21,7 +22,12 @@ class contentPageModal extends Component {
         this.state = {
             notificationOption: "Notification Option",
             conditionName: "Condition Name",
-            collapse: true
+            collapse: true,
+            PolicyName:"",
+            Conditionalvalue:"",
+            Enable:false,
+            PolicyDescription:"",
+            PolicyName:""
         }
     }
 
@@ -42,7 +48,30 @@ class contentPageModal extends Component {
               collapse: !this.state.collapse
         })
   }
- 
+  add=()=>{
+        
+        
+    axios({
+        method: 'post',
+        url: 'http://localhost:4001/ContentIdentification',
+        data: {
+            notificationOption: this.state.notificationOption,
+            conditionName: this.state.conditionName,
+            
+            PolicyName:this.state.PolicyName,
+            Conditionalvalue:this.state.Conditionalvalue,
+           
+            PolicyDescription:this.state.PolicyDescription,
+            PolicyName:this.state.PolicyName,
+              name: this.state.PolicyName,
+            notificationType:this.state.notificationOption,
+            notificationDelay: "-",
+             enabled: this.state.Enable,
+
+        },
+        header:{'Content-Type': 'application/json'}
+      });
+    }
     render() {
         const { notificationOption, conditionName, collapse } = this.state
         return (
@@ -68,13 +97,13 @@ class contentPageModal extends Component {
                     </Box>
                     <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
                         <FormField label="Policy Name">
-                            <TextInput />
+                            <TextInput onChange={(e)=>{this.setState({PolicyName:e.target.value})}} />
                         </FormField>
                         <FormField label="Policy Description">
-                            <TextInput />
+                            <TextInput onChange={(e)=>{this.setState({PolicyDescription:e.target.value})}}/>
                         </FormField>
                         <Box margin="medium">
-                            <CheckBox label="Enable: " reverse={true} onChange={(event) => {/* event.target.checked */}}/>
+                            <CheckBox label="Enable: " reverse={true} onChange={(event) => {this.setState({Enable:"true"})}}/>
                         </Box>
                         <FormField></FormField>
                         <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
@@ -116,7 +145,7 @@ class contentPageModal extends Component {
                         </Box>
 
                         <FormField label="Condition Value">
-                            <TextInput />
+                            <TextInput  onChange={(e)=>{this.setState({Conditionalvalue:e.target.value})}}/>
                         </FormField>
                         
                         <Box direction="row" border="bottom" justify="between">
@@ -124,6 +153,7 @@ class contentPageModal extends Component {
                                 <Box flex={false}  margin="small" align="start">
                                     <Button
                                         label="Add"
+                                        onClick={this.add}
                                     />
                                 </Box>
                                 <Box flex={false}  margin="small"  align="start">

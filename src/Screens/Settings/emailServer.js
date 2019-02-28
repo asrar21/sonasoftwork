@@ -4,7 +4,8 @@ import SecondaryNavbar from "../../Containers/SecondaryNavbar/secondaryNavbar";
 import { Edit } from "grommet-icons";
 import  Tick from "../../assets/Icons/submit_purple.png";
 import Cross from "../../assets/Icons/cancel_purple.png";
-import EmailServerModal from "../../Containers/Modal/emailServerModal"
+import EmailServerModal from "../../Containers/Modal/emailServerModal";
+import axios from 'axios'
 
 const emailServerData = [{
   emailServer: 'mail2010',
@@ -42,7 +43,8 @@ class emailServer extends Component {
       data : [],
       selectAll: false,
       checkBox: true,
-      AddServerModal:false
+      AddServerModal:false,
+      data1:[]
       
     }
   }
@@ -74,8 +76,20 @@ toggleCheckBox(e){
 }
 
 componentWillMount(){
-  const { data } = this.state 
-  emailServerData.map(value => {
+  const { data ,data1} = this.state 
+  axios.get("http://localhost:4001/EmailServer")
+    .then(response=>{
+        console.log("AD response",response.data.Data)
+         this.setState({
+             data1:response.data.Data
+         })
+
+    })
+    
+    .catch(error=>{
+        console.log("error",error)
+    })
+  data1.map(value => {
     data.push({
       checkBox: <CheckBox checked={this.state.checkBox}  name={value.emailServer} onChange={(e) => this.toggleCheckBox(e)} />,
       edit: <Edit cursor="pointer" onClick={this.openAddServerModal} />,
@@ -98,7 +112,7 @@ componentWillMount(){
       AddServerModal : false
     })
   }
-
+  
 
 
 

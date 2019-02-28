@@ -105,7 +105,7 @@ class Notification extends Component {
     //opens Edit form on the right side when clicked in edit button
     editopen = () => this.setState({ Editopen: true });
 
-    componentWillMount(){
+    componentDidMount(){
         axios.get("http://localhost:4001/notification")
         .then(response=>{
             console.log("AD response",response.data.Data)
