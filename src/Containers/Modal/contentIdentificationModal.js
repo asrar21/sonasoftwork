@@ -62,7 +62,7 @@ class contentPageModal extends Component {
             Conditionalvalue:this.state.Conditionalvalue,
            
             PolicyDescription:this.state.PolicyDescription,
-            PolicyName:this.state.PolicyName,
+           
               name: this.state.PolicyName,
             notificationType:this.state.notificationOption,
             notificationDelay: "-",

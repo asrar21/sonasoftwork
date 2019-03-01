@@ -75,7 +75,7 @@ class RetentionPolicyModel extends Component {
     }
 
     render() {
-        const { notificationOption, conditionName, collapse, activeCheckbox } = this.state
+        const {  conditionName, collapse, activeCheckbox } = this.state
         return (
             <Layer
                 position="center"

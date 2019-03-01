@@ -3,18 +3,18 @@ import React, { Component } from 'react';
 import {
     Box,
     Grommet,  
-    Text,
+    
     Button,
     Tab,
     Tabs,
     CheckBox,
     DataTable,
-    Image,
+    
 } from "grommet";
 //importing grommet themes 
 import { grommet } from "grommet/themes";
 //importing icons from home screen folder
-import review_blue from "../../assets/Icons/review_blue.png"
+
 //importing grommet icons
 import { Edit, } from 'grommet-icons';
 import Ssosetting from './configComponents/SsoSetting'

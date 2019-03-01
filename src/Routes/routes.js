@@ -15,8 +15,10 @@ import Compliance from '../Screens/Report/Compliance/Compliance'
 import AccessControl from '../Screens/Report/AccessControl/AccessControl';
 import ConfigurationManagemnt from '../Screens/Report/ConfigurationManagement/ConfigurationManagement';
 import DataInformationLeakagePrevention from '../Screens/Report/DataInformation&Leakage/DataInformation&Leakage';
-import Purge_Policy from '../Screens/Report/PurgePolicy/PurgePolicy'
-import ActivateProduct from '../Screens/Maintenance/activateProduct'
+import Purge_Policy from '../Screens/Report/PurgePolicy/PurgePolicy';
+import Retention_Policy from '../Screens/Report/RetentionPolicy/RetentionPolicy'
+import ActivateProduct from '../Screens/Maintenance/activateProduct';
+import NonQualifiedEmails  from '../Screens/Report/Non-QualifiedEmails/Non-QualifiedEmails'
 import PurgePolicy from '../Screens/Maintenance/purgePolicy'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -49,6 +51,9 @@ export default class Routers extends Component {
       <Route path="/ConfigurationManagemnt" component={ConfigurationManagemnt}/>
       <Route path="/DataInformationLeakagePrevention" component={DataInformationLeakagePrevention}/>
       <Route path="/Purge_Policy" component={Purge_Policy}/>
+      <Route path="/Retention_Policy" component={Retention_Policy}/>
+      <Route path="/NonQualifiedEmails" component={NonQualifiedEmails}/>
+
 
       <Route path="/settings/retentionPolicy" component={settings.retentionPolicy} />
     </div>

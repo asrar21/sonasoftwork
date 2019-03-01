@@ -94,13 +94,13 @@ class ADSettingsModal extends Component {
                     </Box>
                     <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
                         <FormField label="Domain">
-                            <TextInput onChange={(e)=>this.setState({Domain:e.target.value,Domain:this.props.Datum.Domain})} value={this.props.Datum.Domain} />
+                            <TextInput onChange={(e)=>this.setState({Domain:e.target.value})} value={this.props.Datum.Domain} />
                         </FormField>
                         <FormField label="UserName">
-                            <TextInput onChange={(e)=>this.setState({UserName:e.target.value,UserName:this.props.Datum.UserName})} value={this.props.Datum.UserName}/>
+                            <TextInput onChange={(e)=>this.setState({UserName:e.target.value})} value={this.props.Datum.UserName}/>
                         </FormField>
                         <FormField label="Password">
-                            <TextInput type="password" onChange={(e)=>this.setState({Password:e.target.value,Password:this.props.Datum.Password})} value={this.props.Datum.Password}  />
+                            <TextInput type="password" onChange={(e)=>this.setState({Password:e.target.value})} value={this.props.Datum.Password}  />
                         </FormField>
                         <Box direction="row-responsive">
                         <Text>Enable Sync:</Text>
