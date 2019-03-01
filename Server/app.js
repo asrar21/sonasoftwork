@@ -65,12 +65,13 @@ r.connect({host:'localhost',port:28015},function(err,conn){
         let data=[
             {
                 Domain:req.body.Domain,
-                UserName:req.body.UserName,
+                Username:req.body.UserName,
                 Password:req.body.Password,
                 Enable:req.body.Enable,
                 Azure:req.body.Azure,
                 All:req.body.All,
-                Selected:req.body.Selected
+                Selected:req.body.Selected,
+                status:req.body.status
             }
 
         ]
@@ -258,6 +259,55 @@ r.db('test').tableCreate('LabelingPolicy').run(conn, (err,res)=>{
         })
         app.get('/LabelingPolicy',(req,res)=>{
             r.table('LabelingPolicy').run(conn,(err,result)=>{
+                if(err) throw err
+                result.toArray((err,Data)=>{
+                    if(err){
+                        res.status(404).json({
+                            error:"no data"
+    
+                        })
+                    }
+                    if(Data){
+                        res.status(200).json({
+                            Data
+                        })
+                    }
+                })
+            })
+        })
+
+});
+
+
+})
+//Retention Policy
+r.db('test').tableCreate('RetentionPolicy').run(conn, (err,res)=>{
+    if(err) throw err;
+    console.log(res)
+    app.post('/retentionPolicyData',(req,res)=>{
+        let data=[
+            {
+                notificationOption:req.body.notificationOption,
+                conditionName: req.body.conditionName,
+                
+                retentionPeriod: req.body.retentionPeriod,
+                name:req.body.name,
+                retentionGracePeriod: req.body.retentionGracePeriod,
+                conditionValue: req.body.conditionValue,
+                status: req.body.status
+          },
+
+        ]
+        r.table('RetentionPolicy').insert(data).run(conn,(err,result)=>{
+           
+                if(err) throw err;
+                if(result){
+                    console.log("Retention Policy data is inserted")
+                }
+           
+        })
+        app.get('/retentionPolicyData',(req,res)=>{
+            r.table('RetentionPolicy').run(conn,(err,result)=>{
                 if(err) throw err
                 result.toArray((err,Data)=>{
                     if(err){

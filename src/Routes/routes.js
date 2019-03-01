@@ -12,7 +12,10 @@ import EmailStatistic from '../Screens/Report/EmailStatistics/EmailStatistics';
 import ArchiveStoreStatistics from '../Screens/Report/ArchiveStoreStatistics/ArchiveStoreStatistics'
 import Attachment from '../Screens/Report/Attachment/Attachment'
 import Compliance from '../Screens/Report/Compliance/Compliance'
-import AccessControl from '../Screens/Report/AccessControl/AccessControl'
+import AccessControl from '../Screens/Report/AccessControl/AccessControl';
+import ConfigurationManagemnt from '../Screens/Report/ConfigurationManagement/ConfigurationManagement';
+import DataInformationLeakagePrevention from '../Screens/Report/DataInformation&Leakage/DataInformation&Leakage';
+import Purge_Policy from '../Screens/Report/PurgePolicy/PurgePolicy'
 import ActivateProduct from '../Screens/Maintenance/activateProduct'
 import PurgePolicy from '../Screens/Maintenance/purgePolicy'
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -43,6 +46,9 @@ export default class Routers extends Component {
       <Route path="/Attachments" component={Attachment} />
       <Route path="/Compliances" component={Compliance} />
       <Route path="/AccessControls" component={AccessControl} />
+      <Route path="/ConfigurationManagemnt" component={ConfigurationManagemnt}/>
+      <Route path="/DataInformationLeakagePrevention" component={DataInformationLeakagePrevention}/>
+      <Route path="/Purge_Policy" component={Purge_Policy}/>
 
       <Route path="/settings/retentionPolicy" component={settings.retentionPolicy} />
     </div>

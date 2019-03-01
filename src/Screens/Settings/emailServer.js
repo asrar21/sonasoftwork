@@ -41,10 +41,11 @@ class emailServer extends Component {
     super(props)
     this.state = {
       data : [],
+      Data: {},
       selectAll: false,
       checkBox: true,
       AddServerModal:false,
-      data1:[]
+      
       
     }
   }
@@ -74,14 +75,13 @@ toggleCheckBox(e){
     checkBox: !this.state.checkBox
   })
 }
-
-componentWillMount(){
-  const { data ,data1} = this.state 
+componentDidMount(){
   axios.get("http://localhost:4001/EmailServer")
+  
     .then(response=>{
         console.log("AD response",response.data.Data)
          this.setState({
-             data1:response.data.Data
+          Data:response.data.Data[0]
          })
 
     })
@@ -89,7 +89,16 @@ componentWillMount(){
     .catch(error=>{
         console.log("error",error)
     })
-  data1.map(value => {
+}
+
+componentWillMount(){
+  const { data } = this.state
+  
+  
+    console.log("data1",this.state.Data)
+    this.state.Data && this.state.Data.length
+    && this.state.Data.map(value => {
+      console.log("value",value)
     data.push({
       checkBox: <CheckBox checked={this.state.checkBox}  name={value.emailServer} onChange={(e) => this.toggleCheckBox(e)} />,
       edit: <Edit cursor="pointer" onClick={this.openAddServerModal} />,

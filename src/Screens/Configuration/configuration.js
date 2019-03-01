@@ -23,13 +23,14 @@ import Deploymentsetting from '../Configuration/configComponents/Deploymentsetti
 import SMTPConfiguration from './configComponents/Smtpconfiguration';
 import General from './configComponents/general'
 import SecondaryNavBar from '../../Containers/SecondaryNavbar/SecondaryNavbar';
-import axios from 'axios'
+import axios from 'axios';
+import {   Checkmark, Close } from "grommet-icons";
 
 //defining columns for Data table component
 const columns = [
     {
         property: "Domain",
-        header: <Text>Name</Text>,
+        header: "Name",
       
 
     },
@@ -39,13 +40,19 @@ const columns = [
     },
 
     {
-        property: "Status",
+        property: "status",
         header: "Status",
         render: datum => (
-            <Box pad={{ vertical: "xsmall" }}>
-                <Image src={review_blue} width="20px" height="20px" />
-            </Box>
-        )
+            datum.status ? 
+                  <Box>
+                        <Checkmark />
+                  </Box>
+            :
+                  <Box>
+                        <Close />
+                  </Box>
+
+      )
     },
 
 ];
@@ -73,7 +80,8 @@ class Configuration extends Component {
             selected: props.selected,
             //pencil icon flag which opens sidedrawer with a form
             Editopen: false,
-            data:[]
+            data:[],
+            AD:[]
             
          
         };
@@ -103,7 +111,9 @@ class Configuration extends Component {
         this.setState({ open: undefined, Editopen: undefined });
     };
     //opens Edit form on the right side when clicked in edit button
-    editopen = () => this.setState({ Editopen: true });
+    editopen = (data) => {
+        this.setState({ Editopen: true,AD:data })
+    }
     componentWillMount(){
         axios.get("http://localhost:4001/adsettings")
         .then(response=>{
@@ -169,7 +179,7 @@ class Configuration extends Component {
 
                                 {/* using flag and layer component to open edit Form on the rigth side */}
                                 {Editopen && (
-                                    <ADSettingsModal header="Edit Ad Setting" close={this.onClose} />
+                                    <ADSettingsModal header="Edit Ad Setting" close={this.onClose} Datum={this.state.AD} />
                                 )}
                                 {/* using datatable component of groommet to show datalist */}
                                 <DataTable 
@@ -203,7 +213,7 @@ class Configuration extends Component {
                                             header: '',
                                             render: datum => (
                                                 <Box pad={{ vertical: "xsmall" }}>
-                                                    <Edit cursor="pointer" onClick={this.editopen} />
+                                                    <Edit cursor="pointer" onClick={()=>this.editopen(datum)} />
                                                 </Box>
 
                                             ),

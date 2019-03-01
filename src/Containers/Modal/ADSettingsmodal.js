@@ -27,7 +27,8 @@ class ADSettingsModal extends Component {
            Enable:false,
            Azure:false,
            All:false,
-           Selected:false
+           Selected:false,
+           status:true
         };
     }
 
@@ -63,7 +64,8 @@ class ADSettingsModal extends Component {
            Enable:this.state.Enable,
            Azure:this.state.Azure,
            All:this.state.All,
-           Selected:this.state.Selected
+           Selected:this.state.Selected,
+           status:this.state.status
             },
             header:{'Content-Type': 'application/json'}
           });
@@ -92,27 +94,27 @@ class ADSettingsModal extends Component {
                     </Box>
                     <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
                         <FormField label="Domain">
-                            <TextInput onChange={(e)=>this.setState({Domain:e.target.value})}/>
+                            <TextInput onChange={(e)=>this.setState({Domain:e.target.value,Domain:this.props.Datum.Domain})} value={this.props.Datum.Domain} />
                         </FormField>
                         <FormField label="UserName">
-                            <TextInput onChange={(e)=>this.setState({UserName:e.target.value})}/>
+                            <TextInput onChange={(e)=>this.setState({UserName:e.target.value,UserName:this.props.Datum.UserName})} value={this.props.Datum.UserName}/>
                         </FormField>
                         <FormField label="Password">
-                            <TextInput type="password" onChange={(e)=>this.setState({Password:e.target.value})}/>
+                            <TextInput type="password" onChange={(e)=>this.setState({Password:e.target.value,Password:this.props.Datum.Password})} value={this.props.Datum.Password}  />
                         </FormField>
                         <Box direction="row-responsive">
                         <Text>Enable Sync:</Text>
 
                         
                             <CheckBox  checked={this.state.Enable}
-                                  onChange={(event) => this.setState({ Enable:'Enable sync' ,  })}/>
+                                  onChange={(event) => this.setState({ Enable:true ,  })} value={this.props.Datum.Enable}/>
                             </Box>
                            < Box direction="row-responsive">
                         <Text>Azure Users?:</Text>
 
                         
                             <CheckBox checked={this.state.Azure}
-                                  onChange={(event) => this.setState({ Azure:'Azure user' ,  })}/>
+                                  onChange={(event) => this.setState({ Azure:'Azure user' ,  })} value={this.props.Datum.Azure}/>
                             </Box>
                         <Box> 
                             <Text>Discover Organizational units</Text>

@@ -7,28 +7,28 @@ import Cross from "../../assets/Icons/cancel_purple.png";
 import LabelingPolicyModal from "../../Containers/Modal/labelingPolicyModal";
 import axios from 'axios'
 
-const labelingPolicyData = [
-      {
-            policyName: "Policy 1",
-            LabelName: "Crowdfunder",
-            status: true
-      },
-      {
-            policyName: "ActOn Policy",
-            LabelName: "ActOn",
-            status: true
-      },
-      {
-            policyName: "Dell Policy",
-            LabelName: "Dell",
-            status: true
-      },
-      {
-            policyName: "Daily Inspiration",
-            LabelName: "Daily Inspiration",
-            status: true
-      }
-]
+// const labelingPolicyData = [
+//       {
+//             policyName: "Policy 1",
+//             LabelName: "Crowdfunder",
+//             status: true
+//       },
+//       {
+//             policyName: "ActOn Policy",
+//             LabelName: "ActOn",
+//             status: true
+//       },
+//       {
+//             policyName: "Dell Policy",
+//             LabelName: "Dell",
+//             status: true
+//       },
+//       {
+//             policyName: "Daily Inspiration",
+//             LabelName: "Daily Inspiration",
+//             status: true
+//       }
+// ]
 
 class labelingPolicy extends Component {
       constructor(props) {

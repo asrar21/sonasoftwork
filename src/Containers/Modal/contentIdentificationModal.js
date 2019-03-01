@@ -27,7 +27,7 @@ class contentPageModal extends Component {
             Conditionalvalue:"",
             Enable:false,
             PolicyDescription:"",
-            PolicyName:""
+            
         }
     }
 

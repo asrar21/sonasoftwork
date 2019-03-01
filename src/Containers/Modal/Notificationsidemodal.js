@@ -7,11 +7,12 @@ import {
     FormField,
     TextInput,
     Button,
-    Text,
+    
 } from "grommet";
 
 import {  Close } from 'grommet-icons';
 import axios from 'axios'
+import { Z_DEFAULT_COMPRESSION } from 'zlib';
 
 
 class NotificationSideModal extends Component {
@@ -82,21 +83,23 @@ class NotificationSideModal extends Component {
                         <Heading level={2} margin="none">
                             {this.props.header}
                         </Heading>
+                        
                         <Button icon={<Close />} onClick={this.props.close} />
                     </Box>
                     <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
                         <FormField label="Notification type">
-                            <TextInput  onChange={(e)=>this.changehandlernoti(e)}/>
+                            <TextInput  onChange={(e)=>this.changehandlernoti(e)} value={this.props.Datum.Notification_type}/>
                         </FormField>
                         <FormField label="To">
-                            <TextInput onChange={(e)=>this.changehandlerTo(e)}/>
+                            <TextInput onChange={(e)=>this.changehandlerTo(e)} value={this.props.Datum.To}/>
                         </FormField>
                         <FormField label="Cc">
-                            <TextInput  onChange={(e)=>this.changehandlerCc(e)}/>
+                            <TextInput  onChange={(e)=>this.changehandlerCc(e)} value={this.props.Datum.Cc}/>
                         </FormField>
                         
                         
                     </Box>
+                    
                    
                     <Box direction="row-responsive">
                         <Box flex={false} as="footer" align="start">

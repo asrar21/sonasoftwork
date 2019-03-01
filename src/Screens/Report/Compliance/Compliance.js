@@ -42,11 +42,11 @@ export default class Compliance extends Component {
                     {collapseCompliance &&
                         <Box>
                             <Box direction="row"
-                            >
+                            border={{ color: "light-3" }}>
                                 <Box width="large"
-                                    margin={{ left: "medium" }} direction="row-responsive" >
-                                    <Box >
-                                        <Text>Compliance Type</Text>
+                                    border={{ color: "light-3" }} margin={{ left: "medium" }} direction="row-responsive" >
+                                    <Box  justify="center" align="center">
+                                        <Text>Compliance Type:</Text>
                                     </Box>
 
 
@@ -59,7 +59,7 @@ export default class Compliance extends Component {
                                 <Box direction="row">
                                     <Box direction="row-responsive" gap="small" >
 
-                                        <Box width="medium" height="small">
+                                        <Box width="medium" height="small" justify="center" align="center">
                                             <TextArea ></TextArea>
                                         </Box>
 
@@ -72,9 +72,9 @@ export default class Compliance extends Component {
 
                             <Box
                                 direction="row" margin={{bottom:"xxlarge"}}
-                                                 >
+                                border={{ color: "light-3" }} >
                                 <Box width="large"
-                                    margin={{ left: "medium" }}
+                                   border={{ color: "light-3" }} margin={{ left: "medium" }}
                                 >
                                     <Box direction="row-responsive">
 
