@@ -105,7 +105,8 @@ class Notification extends Component {
     //opens Edit form on the right side when clicked in edit button
     editopen = () => this.setState({ Editopen: true });
 
-    componentDidMount(){
+    fetchData(){
+        console.log("data fetched")
         axios.get("http://localhost:4001/notification")
         .then(response=>{
             console.log("AD response",response.data.Data)
@@ -121,10 +122,15 @@ class Notification extends Component {
     }
 
 
+    componentDidMount(){
+        this.fetchData()
+    }
+
+
 
     render() {
         //calling all the variables of state
-        const { checked } = this.state;
+        const { checked, data } = this.state;
         const { open, Editopen } = this.state;
         const { selected } = this.state;
 
@@ -138,7 +144,7 @@ class Notification extends Component {
                             <Box align="center" justify="center" pad="medium" size="small">
                                 {/* using flag and layer component of to open Add form on the rightside */}
                                 {open && (
-                                    <NotificationSideModal header="Add Notification" close={this.onClose}/>
+                                    <NotificationSideModal header="Add Notification" updateData={() => this.fetchData()} close={this.onClose}/>
                                 )}
 
                                 {/* using flag and layer component to open edit Form on the rigth side */}
@@ -146,7 +152,7 @@ class Notification extends Component {
                                    <NotificationSideModal header="Edit Notification" close={this.onClose}/>
                                 )}
                                 {/* using datatable component of groommet to show datalist */}
-                                <DataTable
+                                {data && <DataTable
                                     columns={[
 
 
@@ -185,11 +191,11 @@ class Notification extends Component {
                                         },
                                         ...controlledColumns
                                     ].map(col => ({ ...col }))}
-                                    data={this.state.data}
+                                    data={data}
                                     sortable
                                     size="medium"
                                   
-                                />
+                                />}
                             </Box>
                             <Box direction="row-responsive" justify="center" gap="medium">
                                     <Button label="Add" onClick={this.onOpen} />

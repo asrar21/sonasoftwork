@@ -36,15 +36,14 @@ export default class Routers extends Component {
       <Route path="/settings/contentIdentificationPolicy" component={settings.ContentIdentificationPolicy} />
       <Route path="/activateProduct" component={ActivateProduct} />
       <Route path="/purgePolicy" component={PurgePolicy} />
-      <Route path="/settings/labelingPolicy" component={settings.labelingPolicy} />
+      <Route path="/settings/labelingPolicy" component={settings.LabelingPolicy} />
       <Route path="/ArchivalEmail" component={ArchivalEmail} />
       <Route path="/EmailStatistic" component={EmailStatistic} />
       <Route path="/ArchiveStore" component={ArchiveStoreStatistics} />
       <Route path="/Attachments" component={Attachment} />
       <Route path="/Compliances" component={Compliance} />
       <Route path="/AccessControls" component={AccessControl} />
-
-      <Route path="/settings/retentionPolicy" component={settings.retentionPolicy} />
+      <Route path="/settings/retentionPolicy" component={settings.RetentionPolicy} />
     </div>
   </Router>
     )

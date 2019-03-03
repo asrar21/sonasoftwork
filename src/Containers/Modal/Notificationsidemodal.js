@@ -24,6 +24,8 @@ class NotificationSideModal extends Component {
             Cc:"",
             error:""
         };
+        this.submit = this.submit.bind(this)
+        this.ssubmit = this.ssubmit.bind(this)
     }
 
     changehandlernoti=(e)=>{
@@ -47,9 +49,7 @@ class NotificationSideModal extends Component {
             Cc:e.target.value
         })
     }
-    ssubmit=()=>{
-        
-        
+    submit= () => {   
         axios({
             method: 'post',
             url: 'http://localhost:4001/notification',
@@ -59,8 +59,17 @@ class NotificationSideModal extends Component {
                Cc:this.state.Cc
             },
             header:{'Content-Type': 'application/json'}
-          });
-        }
+          })
+          
+    }
+
+    ssubmit = async () => {
+        this.submit()
+        .then( () => this.props.updateData())
+        .catch(error => {
+            console.log(error)
+        })
+    }
    
     render(){
         return (
