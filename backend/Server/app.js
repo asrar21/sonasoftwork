@@ -41,7 +41,7 @@ r.connect({host:'localhost',port:28015},function(err,conn){
                 })
             })
       
-    });
+        })
 
      app.get('/adsettings',(req,res)=>{
          r.table('AD_setting').run(conn,(err,result)=>{
@@ -126,9 +126,9 @@ r.connect({host:'localhost',port:28015},function(err,conn){
     })
 
     //Email Server
-    r.db('test').tableCreate('EmailServer').run(conn, (err,res)=>{
-        if(err) throw err;
-        console.log(res)
+    // r.db('test').tableCreate('EmailServer').run(conn, (err,res)=>{
+    //     if(err) throw err;
+    //     console.log(res)
         app.post('/EmailServer',(req,res)=>{
             let data=[
                 {
@@ -179,11 +179,11 @@ r.connect({host:'localhost',port:28015},function(err,conn){
     });
     
 
-})
+
 //content identification
-r.db('test').tableCreate('ContentIdentification').run(conn, (err,res)=>{
-    if(err) throw err;
-    console.log(res)
+// r.db('test').tableCreate('ContentIdentification').run(conn, (err,res)=>{
+//     if(err) throw err;
+//     console.log(res)
     app.post('/ContentIdentification',(req,res)=>{
         let data=[
             {
@@ -232,11 +232,11 @@ r.db('test').tableCreate('ContentIdentification').run(conn, (err,res)=>{
 });
 
 
-})
+
 //labeling policy
-r.db('test').tableCreate('LabelingPolicy').run(conn, (err,res)=>{
-    if(err) throw err;
-    console.log(res)
+// r.db('test').tableCreate('LabelingPolicy').run(conn, (err,res)=>{
+//     if(err) throw err;
+//     console.log(res)
     app.post('/LabelingPolicy',(req,res)=>{
         let data=[
             {
@@ -279,11 +279,11 @@ r.db('test').tableCreate('LabelingPolicy').run(conn, (err,res)=>{
 });
 
 
-})
+
 //Retention Policy
-r.db('test').tableCreate('RetentionPolicy').run(conn, (err,res)=>{
-    if(err) throw err;
-    console.log(res)
+// r.db('test').tableCreate('RetentionPolicy').run(conn, (err,res)=>{
+//     if(err) throw err;
+//     console.log(res)
     app.post('/retentionPolicyData',(req,res)=>{
         let data=[
             {
@@ -325,22 +325,22 @@ r.db('test').tableCreate('RetentionPolicy').run(conn, (err,res)=>{
             })
         })
 
-});
 
 
+
 })
-r.db('test').tableCreate('user').run(conn, (err,res)=>{
-    if(err) throw err;
-    console.log(res)
-})
-r.db('test').tableCreate('AD_setting').run(conn, (err,res)=>{
-    if(err) throw err;
-    console.log(res)
-})
-r.db('test').tableCreate('Notification').run(conn, (err,res)=>{
-    if(err) throw err;
-    console.log(res)
-})
+// r.db('test').tableCreate('user').run(conn, (err,res)=>{
+//     if(err) throw err;
+//     console.log(res)
+// })
+// r.db('test').tableCreate('AD_setting').run(conn, (err,res)=>{
+//     if(err) throw err;
+//     console.log(res)
+// })
+// r.db('test').tableCreate('Notification').run(conn, (err,res)=>{
+//     if(err) throw err;
+//     console.log(res)
+// })
 
 
 
