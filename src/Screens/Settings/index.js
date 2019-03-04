@@ -4,6 +4,7 @@ import ArchivalPolicy from "./archivalPolicy"
 import LabelingPolicy from "./labelingPolicy";
 import RetentionPolicy from "./retentionPolicy";
 import ArchiveStore from "./archiveStore";
+import StubPolicy from "./stubPolicy";
 
 export {
       EmailServer,
@@ -11,5 +12,6 @@ export {
       ArchivalPolicy,
       LabelingPolicy,
       RetentionPolicy,
-      ArchiveStore
+      ArchiveStore,
+      StubPolicy
 }

@@ -3,7 +3,7 @@ import { Grommet, Box, DataTable, Text, Paragraph, TextInput, Button, RadioButto
 import { Edit, FormUp, FormDown } from "grommet-icons";
 import SecondaryNavbar from "../../Containers/SecondaryNavbar/secondaryNavbar";
 
-const columns = [
+const archiveStoreColumns = [
       {
             property: "archiveStore",
             header: "Archive Store"
@@ -33,13 +33,41 @@ const columns = [
             header: "Status"
       }
 ]
-const controlledColumns = columns.map(col => Object.assign({}, col));
+
+const viewHistoryColumns = [
+      {
+            property: "type",
+            header: "Type"
+      },
+      {
+            property: "size",
+            header: "Size (MB)"
+      },
+      {
+            property: "period",
+            header: "Period (Days)"
+      },
+      {
+            property: "createdOn",
+            header: "Created On"
+      },
+      {
+            property: "createdBy",
+            header: "Created By"
+      }
+]
+
+
+
+const controlledarchiveStoreColumns = archiveStoreColumns.map(col => Object.assign({}, col));
+const controlledviewHistoryColumns = viewHistoryColumns.map(col => Object.assign({}, col));
+
 
 class archiveStore extends Component {
       constructor(props){
             super(props)
             this.state = {
-                  
+                  policyTypeSize: true
             }
       }
 
@@ -54,8 +82,27 @@ class archiveStore extends Component {
                   rolloverPolicyCollapsed: !this.state.rolloverPolicyCollapsed    
             })
       }
+
+      collapseViewHistory(){
+            this.setState({
+                  viewHistoryCollapsed : !this.state.viewHistoryCollapsed    
+            })
+      }
+
+      changeType(event){
+            const options = ['policyTypeSize', 'policyTypePeriod']
+            options.map(value => {
+                  this.setState({
+                        [value] : false
+                  })
+            })
+            this.setState({
+                  [event.target.value] : true
+            })
+      };
+
       render() {
-            const { locationInfoCollapsed, rolloverPolicyCollapsed } = this.state
+            const { locationInfoCollapsed, rolloverPolicyCollapsed, viewHistoryCollapsed, policyTypeSize, policyTypePeriod } = this.state
             return (
                   <Grommet>
                         <Box>
@@ -74,7 +121,7 @@ class archiveStore extends Component {
                                                       </Box>
                                                 )
                                           },
-                                          ...controlledColumns
+                                          ...controlledarchiveStoreColumns
                                     ].map(col => ({ ...col }))}
                                     sortable
                                     // data={}
@@ -118,7 +165,7 @@ class archiveStore extends Component {
                                                       </Box>
                                                       <Box direction="row" gap="medium" justify="center" margin="small">
                                                             <Button label="Save" />
-                                                            <Button label="Cancel" onClick={() => this.cancelEditPolicy()} />
+                                                            <Button label="Cancel"  />
                                                       </Box>
                                                 </Box>
                                           </Box>
@@ -137,16 +184,29 @@ class archiveStore extends Component {
                                     {!rolloverPolicyCollapsed &&
                                           <Box>
                                                 <Box align="center" fill="horizontal" direction="column">
-                                                      <Box direction="row" gap="large" fill justify="center" align="center">
-                                                            <Box justify="start" align="start" >
-                                                                  <Paragraph>Type &nbsp;&nbsp;:</Paragraph>  
+                                                      <Box direction="row" justify="between" gap="large">
+                                                            <Box>
+                                                                  <Paragraph>Type :</Paragraph>  
                                                             </Box>
                                                             <Box direction="row-responsive" gap="medium" >
-                                                                  <RadioButton label= "Enable"  />
-                                                                  <RadioButton label= "Disable"  />
+                                                                  <RadioButton 
+                                                                        label= "Size" 
+                                                                        name="type" 
+                                                                        value="policyTypeSize" 
+                                                                        onChange={(e) => this.changeType(e)} 
+                                                                        checked={policyTypeSize}
+                                                                  />
+                                                                  <RadioButton 
+                                                                        label="Period" 
+                                                                        name="type" 
+                                                                        value="policyTypePeriod" 
+                                                                        onChange={(e) => this.changeType(e)}  
+                                                                        checked={policyTypePeriod}
+                                                                  />
                                                             </Box>
+                                                            <Box></Box>
                                                       </Box>
-                                                      <Box direction="row" gap="large" fill justify="center" align="center">
+                                                      <Box direction="row" gap="large" align="center" >
                                                             <Box justify="start" align="start">
                                                                   <Paragraph>Size(MB)</Paragraph>  
                                                             </Box>
@@ -156,12 +216,34 @@ class archiveStore extends Component {
                                                       </Box>
                                                       <Box direction="row" gap="medium" justify="center" margin="small">
                                                             <Button label="Save" />
-                                                            <Button label="Cancel" onClick={() => this.cancelEditPolicy()} />
+                                                            <Button label="Cancel"  />
                                                       </Box>
                                                 </Box>
                                           </Box>
                                     }
                               </Box> 
+                              
+                              <Box direction="column" margin="medium" >
+                                    <Box justify="between" direction="row" pad="small" margin="small" background="#d3d9e2">
+                                          <Text margin={{left:"47%"}}>View History</Text>
+                                          <Box>
+                                                {!viewHistoryCollapsed && <FormUp onClick={() => this.collapseViewHistory()} />}
+                                                {viewHistoryCollapsed && <FormDown onClick={() => this.collapseViewHistory()} />}
+                                          </Box>
+                                    </Box>
+                                    {!viewHistoryCollapsed &&
+                                          <DataTable
+                                                margin="medium" 
+                                                columns= {[
+                                                      ...controlledviewHistoryColumns
+                                                ].map(col => ({ ...col }))}
+                                                sortable
+                                                // data={}
+                                          />
+                                          
+                                    }
+                              </Box> 
+
 
                         </Box>
                   </Grommet>
