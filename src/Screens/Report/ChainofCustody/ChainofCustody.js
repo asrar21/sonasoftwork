@@ -1,52 +1,52 @@
 import React, { Component } from 'react'
 
 
-import SecondaryNavBar from '../../../Containers/SecondaryNavbar/secondaryNavbar'
+import SecondaryNavBar from '../../../Containers/SecondaryNavbar/SecondaryNavbar'
 import { Box, Text, Button, Grommet, TextArea, TextInput } from "grommet";
 import { FormUp, FormDown } from 'grommet-icons';
-export default class Compliance extends Component {
+export default class ChainofCustody extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            collapseCompliance: false,
+            collapseChainofCustody: false,
 
 
         }
 
     }
-    CollapseCompliance = () => {
-        let toggle = this.state.collapseCompliance
+    CollapseReviewManagement = () => {
+        let toggle = this.state.collapseChainofCustody
         this.setState({
-            collapseCompliance: !toggle
+            collapseChainofCustody: !toggle
         })
     }
 
     render() {
-        const { collapseCompliance } = this.state;
+        const { collapseChainofCustody } = this.state;
 
 
         return (
 
             <Grommet>
-                <SecondaryNavBar pageName="Compliance" pageIcon="Compliance" />
+                <SecondaryNavBar pageName="Chain of Custody "  />
 
                 {/* //   Search */}
                 <Box direction="column" >
                     <Box justify="between" direction="row" pad="small" margin="small" background="#d3d9e2">
                         <Text margin={{ left: "40%" }}>Search Criteria</Text>
                         <Box>
-                            {collapseCompliance && <FormUp onClick={() => this.CollapseCompliance()} />}
-                            {!collapseCompliance && <FormDown onClick={() => this.CollapseCompliance()} />}
+                            {collapseChainofCustody && <FormUp onClick={() => this.CollapseChainofCustody()} />}
+                            {!collapseChainofCustody && <FormDown onClick={() => this.CollapseChainofCustody()} />}
                         </Box>
                     </Box>
-                    {collapseCompliance &&
+                    {collapseChainofCustody &&
                         <Box>
                             <Box direction="row"
                             border={{ color: "light-3" }}>
                                 <Box width="large"
                                     border={{ color: "light-3" }} margin={{ left: "medium" }} direction="row-responsive" >
                                     <Box  justify="center" align="center">
-                                        <Text>Compliance Type:</Text>
+                                        <Text>Enter MailBox Name:</Text>
                                     </Box>
 
 
@@ -59,8 +59,8 @@ export default class Compliance extends Component {
                                 <Box direction="row">
                                     <Box direction="row-responsive" gap="small" >
 
-                                        <Box width="medium" height="small" justify="center" align="center">
-                                            <TextArea ></TextArea>
+                                        <Box width="medium" >
+                                           <TextInput/>
                                         </Box>
 
                                     </Box>

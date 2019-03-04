@@ -48,12 +48,14 @@ class retentionPolicy extends Component {
             this.state= {
                   selectAll: false,
                   addRetentionPolicy: false,
+                  EditRetentionPolicy:false,
                   retentionPolicyDisable: true,
                   retentionPolicyEnable: false,
                   collapseDefaultPolicy: true,
                   collapseRetentionPolicy: true,
                   priority: true,
-                  messageReceivedDate: true
+                  messageReceivedDate: true,
+                  retention:[]
 
             }
       }
@@ -66,13 +68,20 @@ class retentionPolicy extends Component {
 
       closeAddRetentionModal = () => {
             this.setState({
-                  addRetentionPolicy: false
+                  addRetentionPolicy: false,
+                  EditRetentionPolicy:false
             })
       }
 
       openAddRetentionModal = () => {
             this.setState({
                   addRetentionPolicy: true
+            })
+      }
+      EditForm=(data)=>{
+            this.setState({
+                  EditRetentionPolicy: true,
+                  retention:data
             })
       }
 
@@ -147,11 +156,22 @@ class retentionPolicy extends Component {
                   console.log(err)
             })
       }
+      componentDidUpdate(){
+            axios.get("http://localhost:4001/retentionPolicyData")
+            .then((res) => {
+                  this.setState({
+                        data: res.data.Data
+                  })
+            })
+            .catch(err => {
+                  console.log(err)
+            })
+      }
 
       render() {
             const { addRetentionPolicy, collapseDefaultPolicy, retentionPolicyEnable, 
                   retentionPolicyDisable, editPolicySettings, collapseRetentionPolicy,messageReceivedDate,
-                  ingestionDate, maximumRetentionPeriod, priority
+                  ingestionDate, maximumRetentionPeriod, priority,EditRetentionPolicy
                   } = this.state
             console.log(this.state.data)
             return (
@@ -160,6 +180,7 @@ class retentionPolicy extends Component {
                               <SecondaryNavbar pageName="Retention Policy" pageIcon="RetentionPolicy" />
                         </Box>
                         {addRetentionPolicy && <RetentionPolicyModel header="Add New Content Identification Policy" close={this.closeAddRetentionModal}/>}
+                        {EditRetentionPolicy && <RetentionPolicyModel header="Edit New Content Identification Policy" close={this.closeAddRetentionModal} Datum={this.state.retention}/>}
                         <Box>
                               <DataTable 
                                     columns={[
@@ -179,9 +200,9 @@ class retentionPolicy extends Component {
                                           {
                                                 property: "edit",
                                                 header: "Edit",
-                                                render: () => (
+                                                render: (datum) => (
                                                       <Box>
-                                                            <Edit cursor="pointer" />
+                                                            <Edit cursor="pointer"  onClick={()=>this.EditForm(datum)}/>
                                                       </Box>
                                                 )
                                           },

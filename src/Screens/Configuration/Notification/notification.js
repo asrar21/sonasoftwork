@@ -74,7 +74,8 @@ class Notification extends Component {
             selected: props.selected,
             //pencil icon flag which opens sidedrawer with a form
             Editopen: false,
-            data:[]
+            data:[],
+            Notify:[]
         };
     }
     //handling changed value in a checkbox
@@ -103,10 +104,28 @@ class Notification extends Component {
         this.setState({ open: undefined, Editopen: undefined });
     };
     //opens Edit form on the right side when clicked in edit button
-    editopen = () => this.setState({ Editopen: true });
+    editopen = (data) => {
+        console.log("DATA",data)
+        
+        this.setState({ Editopen: true ,Notify:data});
+}
 
     fetchData(){
         console.log("data fetched")
+        axios.get("http://localhost:4001/notification")
+        .then(response=>{
+            console.log("AD response",response.data.Data)
+             this.setState({
+                 data:response.data.Data
+             })
+
+        })
+        
+        .catch(error=>{
+            console.log("error",error)
+        })
+    }
+    componentDidUpdate(){
         axios.get("http://localhost:4001/notification")
         .then(response=>{
             console.log("AD response",response.data.Data)
@@ -149,7 +168,7 @@ class Notification extends Component {
 
                                 {/* using flag and layer component to open edit Form on the rigth side */}
                                 {Editopen && (
-                                   <NotificationSideModal header="Edit Notification" close={this.onClose}/>
+                                   <NotificationSideModal header="Edit Notification" close={this.onClose} Datum={this.state.Notify}/>
                                 )}
                                 {/* using datatable component of groommet to show datalist */}
                                 {data && <DataTable
@@ -183,7 +202,7 @@ class Notification extends Component {
                                             header: '',
                                             render: datum => (
                                                 <Box pad={{ vertical: "xsmall" }}>
-                                                    <Edit onClick={this.editopen} />
+                                                    <Edit onClick={()=>{this.editopen(datum)}} />
                                                 </Box>
 
                                             ),

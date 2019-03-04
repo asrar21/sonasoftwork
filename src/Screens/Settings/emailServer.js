@@ -1,12 +1,89 @@
 import React, { Component } from 'react'
 import { Grommet, Box, Image, DataTable, CheckBox, Button } from "grommet";
-import SecondaryNavbar from "../../Containers/SecondaryNavbar/secondaryNavbar";
-import { Edit } from "grommet-icons";
-import  Tick from "../../assets/Icons/submit_purple.png";
-import Cross from "../../assets/Icons/cancel_purple.png";
+import SecondaryNavbar from "../../Containers/SecondaryNavbar/SecondaryNavbar";
+import { Edit ,Checkmark,Close} from "grommet-icons";
+
 import EmailServerModal from "../../Containers/Modal/emailServerModal";
 import axios from 'axios'
+const columns=[
 
+  
+  {
+    property: 'emailServer',
+    header: 'Email Server',
+    
+  },
+  {
+    property: "journalLogin",
+    header: "Journal Logon"
+  },
+  {
+    property: "status",
+    header: "Status",
+    render: datum => (
+      datum.status ? 
+            <Box>
+                  <Checkmark />
+            </Box>
+      :
+            <Box>
+                  <Close />
+            </Box>
+
+)
+  },
+  {
+    property: "archivepublicFolder",
+    header: "Archive Public Folder",
+    align: "center",
+    render: datum => (
+      datum.archivepublicFolder ? 
+            <Box>
+                  <Checkmark />
+            </Box>
+      :
+            <Box>
+                  <Close />
+            </Box>
+
+)
+  },
+  {
+    property: "stubEnabled",
+    header: "Stub Enabled",
+    render: datum => (
+      datum.stubEnabled ? 
+            <Box>
+                  <Checkmark />
+            </Box>
+      :
+            <Box>
+                  <Close />
+            </Box>
+
+)
+  },
+  {
+    property: "excludeHours",
+    header: "Exlude Hours",
+    render: datum => (
+      datum.excludeHours ? 
+            <Box>
+                  <Checkmark />
+            </Box>
+      :
+            <Box>
+                  <Close />
+            </Box>
+
+)
+  },
+  {
+    property: "domainName",
+    header: "Domain Name",
+    
+  }
+]
 const emailServerData = [{
   emailServer: 'mail2010',
   journalLogon: 'sj_makmail2010',
@@ -35,16 +112,18 @@ const emailServerData = [{
   domainName: 'SONASAFE'
 }
 ]
+const controlledColumns = columns.map(col => Object.assign({}, col));
 
 class emailServer extends Component {
   constructor(props){
     super(props)
     this.state = {
-      data : [],
+      data1 : [],
+     
       selectAll: false,
       checkBox: true,
       AddServerModal:false,
-      data1:[]
+      
       
     }
   }
@@ -60,7 +139,7 @@ class emailServer extends Component {
     this.setState({
       selectAll: !this.state.selectAll
     })
-    emailServerData.map(value => {
+  this.state.data1.map(value => {
       this.setState({
         [value.emailServer] : !this.state[value.emailServer]
       })
@@ -74,14 +153,13 @@ toggleCheckBox(e){
     checkBox: !this.state.checkBox
   })
 }
-
-componentWillMount(){
-  const { data ,data1} = this.state 
+componentDidMount(){
   axios.get("http://localhost:4001/EmailServer")
+  
     .then(response=>{
         console.log("AD response",response.data.Data)
          this.setState({
-             data1:response.data.Data
+          data1:response.data.Data
          })
 
     })
@@ -89,23 +167,24 @@ componentWillMount(){
     .catch(error=>{
         console.log("error",error)
     })
-  data1.map(value => {
-    data.push({
-      checkBox: <CheckBox checked={this.state.checkBox}  name={value.emailServer} onChange={(e) => this.toggleCheckBox(e)} />,
-      edit: <Edit cursor="pointer" onClick={this.openAddServerModal} />,
-      emailServer: value.emailServer,
-      journalLogin: value.journalLogon,
-      status: value.status ? <Image src={Tick} width="25px" height="25px" />: <Image src={Cross}  width="25px" height="25px"  /> ,
-      archivepublicFolder: value.archivepublicFolder ? <Image src={Tick} width="25px" height="25px" />: <Image src={Cross}  width="25px" height="25px"  /> ,
-      stubEnabled: value.stubEnabled ? <Image src={Tick} width="25px" height="25px" />: <Image src={Cross}  width="25px" height="25px"  /> ,
-      excludeHours: value.excludeHours ? <Image src={Tick} width="25px" height="25px" />: <Image src={Cross}  width="25px" height="25px"  /> ,
-      domainName: value.domainName
+}
+componentDidUpdate(){
+  axios.get("http://localhost:4001/EmailServer")
+  
+    .then(response=>{
+        console.log("AD response",response.data.Data)
+         this.setState({
+          data1:response.data.Data
+         })
+
     })
-  })
-  this.setState({
-    data
-  })
-  };
+    
+    .catch(error=>{
+        console.log("error",error)
+    })
+}
+
+
 
   AddServerModalClose = () => {
     this.setState({
@@ -126,52 +205,32 @@ componentWillMount(){
         { AddServerModal && <EmailServerModal header="Add New" close={() => this.AddServerModalClose()} /> }
         <Box margin="small">
             <DataTable
-              columns={[
+               columns={[
                 {
-                  property: 'checkBox',
-                  header: <CheckBox
-                              checked={this.state.selectAll}
-                              // label="interested?"
-                              onChange={(event) =>  this.selectAllData(event)}
-                          />,
-                  
+                      property: 'checkBox',
+                      header: <CheckBox
+                            checked={this.state.selectAll}
+                            // label="interested?"
+                            onChange={(event) => this.selectAllData(event)}
+                      />,
+
                 },
                 {
-                  property: 'edit',
-                  header: 'Edit',
+                      property: "edit",
+                      header: "Edit",
+                      render: (datum) => (
+                            <Box>
+                                  <Edit cursor="pointer"  onClick={()=>this.EditForm(datum)}/>
+                            </Box>
+                      )
                 },
-                {
-                  property: 'emailServer',
-                  header: 'Email Server',
-                  
-                },
-                {
-                  property: "journalLogin",
-                  header: "Journal Logon"
-                },
-                {
-                  property: "status",
-                  header: "Status"
-                },
-                {
-                  property: "archivepublicFolder",
-                  header: "Archive Public Folder",
-                  align: "center"
-                },
-                {
-                  property: "stubEnabled",
-                  header: "Stub Enabled"
-                },
-                {
-                  property: "excludeHours",
-                  header: "Exlude Hours"
-                },
-                {
-                  property: "domainName",
-                  header: "Domain Name"
-                }
-              ]}
-              data={this.state.data}
+               
+       
+          ...controlledColumns
+    ].map(col => ({ ...col }))}
+    data={this.state.data1}
+    sortable
+
             />  
 
             <Box direction="row" justify="center" margin="large" gap="medium">

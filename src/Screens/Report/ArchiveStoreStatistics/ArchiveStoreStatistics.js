@@ -42,9 +42,9 @@ export default class ArchiveStoreStatistics extends Component {
                     {collapseArchiveStoreStatistics &&
                         <Box>
                             <Box direction="row"
-                                >
+                               border={{ color: "light-3" }} >
                                 <Box width="large"
-                                    margin={{ left: "medium" }} direction="row-responsive" gap="small">
+                                   border={{ color: "light-3" }}  margin={{ left: "medium" }} direction="row-responsive" gap="small">
                                    <Box >
                                             <Text>Archive Store:</Text>
                                             </Box>

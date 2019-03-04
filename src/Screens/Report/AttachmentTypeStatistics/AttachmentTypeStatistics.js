@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
 
-import SecondaryNavBar from '../../../Containers/SecondaryNavbar/secondaryNavbar'
+import SecondaryNavBar from '../../../Containers/SecondaryNavbar/SecondaryNavbar'
 import { Box, Text, Button, Grommet, TextArea, TextInput } from "grommet";
 import { FormUp, FormDown } from 'grommet-icons';
-export default class Attachment extends Component {
+export default class AttachmentTypeStatistics extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -14,32 +14,32 @@ export default class Attachment extends Component {
         }
 
     }
-    CollapseAttachment = () => {
-        let toggle = this.state.collapseAttachment
+    CollapseAttachmentTypeStatistics = () => {
+        let toggle = this.state.collapseAttachmentTypeStatistics
         this.setState({
-            collapseAttachment: !toggle
+            collapseAttachmentTypeStatistics: !toggle
         })
     }
 
     render() {
-        const { collapseAttachment } = this.state;
+        const { collapseAttachmentTypeStatistics } = this.state;
 
 
         return (
 
             <Grommet>
-                <SecondaryNavBar pageName="Attachment" pageIcon="Attachment" />
+                <SecondaryNavBar pageName="Attachment Type Statistics" pageIcon="AttachmentTypeStatsReport" />
 
                 {/* //   Search */}
                 <Box direction="column" >
                     <Box justify="between" direction="row" pad="small" margin="small" background="#d3d9e2">
                         <Text margin={{ left: "40%" }}>Search Criteria</Text>
                         <Box>
-                            {collapseAttachment && <FormUp onClick={() => this.CollapseAttachment()} />}
-                            {!collapseAttachment && <FormDown onClick={() => this.CollapseAttachment()} />}
+                            {collapseAttachmentTypeStatistics && <FormUp onClick={() => this.CollapseAttachmentTypeStatistics()} />}
+                            {!collapseAttachmentTypeStatistics && <FormDown onClick={() => this.CollapseAttachmentTypeStatistics()} />}
                         </Box>
                     </Box>
-                    {collapseAttachment &&
+                    {collapseAttachmentTypeStatistics &&
                         <Box>
                             <Box direction="row"
                             border={{ color: "light-3" }}>
@@ -70,34 +70,7 @@ export default class Attachment extends Component {
 
                             </Box>
 
-                            <Box
-                                direction="row" margin={{bottom:"xxlarge"}}
-                                border={{ color: "light-3" }} >
-                                <Box width="large"
-                                   border={{ color: "light-3" }} margin={{ left: "medium" }}
-                                >
-                                    <Box direction="row-responsive">
-
-                                        <Text>From:</Text>
-                                        <Box width="small">
-                                            <TextInput type="date"></TextInput>
-                                        </Box>
-                                    </Box>
-                                </Box>
-
-                                <Box>
-
-                                    <Box direction="row" >
-                                        <Box direction="row-responsive">
-                                            <Text>To:</Text>
-                                            <TextInput type="date"></TextInput>
-                                        </Box>
-
-                                    </Box>
-
-                                </Box>
-                            </Box>
-
+                            
                             <Box align="center" justify="center" direction="row-responsive" gap="medium" pad="medium">
                                 <Button label="Submit" /> <Button label="Clear" />
                             </Box>

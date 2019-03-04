@@ -104,12 +104,15 @@
                     justify="between"
                     align="start"
                     width={"100%"}
-                    direction="row"
+                    direction="row-responsive"
                 >
-                  <Menu
-                    label="Screens Links"
-                    items={[
-                      { label: 'configuration(Asrar)', onClick: () => {window.location.pathname = "/configuration"} },
+                  
+                   <Box  justify="between"
+                    align="start"
+                    width={"100%"}
+                    direction="column">
+                      <Menu label="Report screens (Asrar)" items={[
+                        { label: 'configuration(Asrar)', onClick: () => {window.location.pathname = "/configuration"} },
                       { label: 'notification(Asrar)', onClick: () => { window.location.pathname = "/notification"} },
                       { label: 'ArchivalEmail(Asrar)', onClick: () => { window.location.pathname = "/ArchivalEmail"} },
                       { label: 'EmailStatistics(Asrar)', onClick: () => { window.location.pathname = "/EmailStatistic"} },
@@ -117,6 +120,16 @@
                       { label: 'Compliance(Asrar)', onClick: () => { window.location.pathname = "/Compliances"} },
                       { label: 'AccessControl(Asrar)', onClick: () => { window.location.pathname = "/AccessControls"} },
                       { label: 'ArchiveStoreStatistics(Asrar)', onClick: () => { window.location.pathname = "/ArchiveStore"} },
+                      { label: 'ConfigurationManagemnt(Asrar)', onClick: () => { window.location.pathname = "/ConfigurationManagemnt"} },
+                      { label: 'DataInformationLeakagePrevention(Asrar)', onClick: () => { window.location.pathname = "/DataInformationLeakagePrevention"} },
+                      { label: 'Report Retention Policy(Asrar)', onClick: () => { window.location.pathname = "/Retention_Policy"} },
+                      { label: 'Report NonQualifiedEmails(Asrar)', onClick: () => { window.location.pathname = "/NonQualifiedEmails"} },
+                      { label: ' Report Purge_Policy(Asrar)', onClick: () => { window.location.pathname = "/Purge_Policy"} },
+
+                      ]}/>
+                      <Menu label="Setup Screens"
+                      items={[
+                     
                       { label: 'Email Server(Faizan)', onClick: () => { window.location.pathname = "settings/emailServer"} },
                       { label: 'Content Identification Policy(Faizan)', onClick: () => { window.location.pathname = "settings/contentIdentificationPolicy"} },
                       { label: 'Labeling Policy(Faizan)', onClick: () => { window.location.pathname = "settings/labelingPolicy" } },
@@ -125,7 +138,8 @@
                       { label: 'Purge Policy(Hafsa)', onClick: () => { window.location.pathname = "purgePolicy"} },
                       { label: 'Archival Policy(Hafsa)', onClick: () => { window.location.pathname = "settings/archivalPolicy"} },
                     ]}
-                  />
+                />
+                </Box>
                     <CircleInformation cursor="pointer" textDecoration="none" />
                 </Box>
               

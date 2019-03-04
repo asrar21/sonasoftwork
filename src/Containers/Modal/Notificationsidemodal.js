@@ -7,11 +7,13 @@ import {
     FormField,
     TextInput,
     Button,
-    Text,
+    Text
+    
 } from "grommet";
 
 import {  Close } from 'grommet-icons';
 import axios from 'axios'
+
 
 
 class NotificationSideModal extends Component {
@@ -22,7 +24,10 @@ class NotificationSideModal extends Component {
             Notification_type:"",           
              To:"",
             Cc:"",
-            error:""
+            errorNotification:"",
+            errorTo:"",
+            errorCc:"",
+            Data:this.props.Datum
         };
         this.submit = this.submit.bind(this)
         this.ssubmit = this.ssubmit.bind(this)
@@ -49,7 +54,23 @@ class NotificationSideModal extends Component {
             Cc:e.target.value
         })
     }
-    submit= () => {   
+    Validate=()=>{
+        let errorNotification="";
+        if(!this.state.Notification_type){
+            errorNotification="donot leave blank textfield";
+
+        }  
+        if(errorNotification){
+            this.setState({errorNotification})
+            return false;
+        }
+        return true;
+
+    }
+    ssubmit=()=>{
+        
+        const isValid=this.Validate();
+        if(isValid){
         axios({
             method: 'post',
             url: 'http://localhost:4001/notification',
@@ -59,19 +80,12 @@ class NotificationSideModal extends Component {
                Cc:this.state.Cc
             },
             header:{'Content-Type': 'application/json'}
-          })
-          
-    }
-
-    ssubmit = async () => {
-        this.submit()
-        .then( () => this.props.updateData())
-        .catch(error => {
-            console.log(error)
-        })
-    }
+          });
+        }
+        }
    
     render(){
+        const {Data}=this.state;
         return (
             <Layer
                 position="right"
@@ -91,24 +105,32 @@ class NotificationSideModal extends Component {
                         <Heading level={2} margin="none">
                             {this.props.header}
                         </Heading>
+                        
                         <Button icon={<Close />} onClick={this.props.close} />
                     </Box>
                     <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
                         <FormField label="Notification type">
-                            <TextInput  onChange={(e)=>this.changehandlernoti(e)}/>
+                            <TextInput   value={Data?Data.Notification_type:<TextInput onChange={(e)=>this.changehandlernoti(e)}/>} />
+                            
                         </FormField>
+                        <Text color="red">{this.state.errorNotification}</Text>
+                        
                         <FormField label="To">
-                            <TextInput onChange={(e)=>this.changehandlerTo(e)}/>
+                            <TextInput  value={Data?Data.To:<TextInput onChange={(e)=>this.changehandlerTo(e)}/>} />
                         </FormField>
+                        
                         <FormField label="Cc">
-                            <TextInput  onChange={(e)=>this.changehandlerCc(e)}/>
+                            <TextInput   value={Data?Data.Cc:<TextInput onChange={(e)=>this.changehandlerCc(e)} />}/>
+
                         </FormField>
+                        
                         
                         
                     </Box>
+                    
                    
                     <Box direction="row-responsive">
-                        <Box flex={false} as="footer" align="start">
+                        <Box  as="footer" align="start">
                             <Button
                                 type="save"
                                 label="Save"
@@ -116,7 +138,7 @@ class NotificationSideModal extends Component {
                                 primary
                             />
                         </Box>
-                        <Box flex={false} as="footer" align="start">
+                        <Box  as="footer" align="start">
                             <Button
                                 type="Cancel"
                                 label="Cancel"

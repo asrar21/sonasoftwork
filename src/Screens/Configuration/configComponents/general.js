@@ -37,34 +37,7 @@ export default class General extends Component {
 
     render() {
         const { collapsetemp, collapsedefault, collapseother } = this.state;
-        const Theme = {
-            button: {
-                border: {
-                    radius: undefined,
-                    color: "#2196f3"
-                },
-                primary: {
-                    color: "#2196f3"
-                },
-                extend: {
-                    color: "white"
-                }
-            }
-        }
-        //theme of Cancel button
-        const Theme1 = {
-            button: {
-                border: {
-                    radius: undefined,
-                    color: "dark-3"
-                },
-                primary: {
-                    color: "white"
-                },
-            }
-        }
-
-
+       
         return (
 
             <Grommet>

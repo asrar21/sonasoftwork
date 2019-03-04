@@ -1,52 +1,52 @@
 import React, { Component } from 'react'
 
 
-import SecondaryNavBar from '../../../Containers/SecondaryNavbar/secondaryNavbar'
+import SecondaryNavBar from '../../../Containers/SecondaryNavbar/SecondaryNavbar'
 import { Box, Text, Button, Grommet, TextArea, TextInput } from "grommet";
 import { FormUp, FormDown } from 'grommet-icons';
-export default class Compliance extends Component {
+export default class ReviewManagement extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            collapseCompliance: false,
+            collapseReviewManagement: false,
 
 
         }
 
     }
-    CollapseCompliance = () => {
-        let toggle = this.state.collapseCompliance
+    CollapseReviewManagement = () => {
+        let toggle = this.state.collapseReviewManagement
         this.setState({
-            collapseCompliance: !toggle
+            collapseReviewManagement: !toggle
         })
     }
 
     render() {
-        const { collapseCompliance } = this.state;
+        const { collapseReviewManagement } = this.state;
 
 
         return (
 
             <Grommet>
-                <SecondaryNavBar pageName="Compliance" pageIcon="Compliance" />
+                <SecondaryNavBar pageName="Review Management " pageIcon="ReviewMgmt.Report" />
 
                 {/* //   Search */}
                 <Box direction="column" >
                     <Box justify="between" direction="row" pad="small" margin="small" background="#d3d9e2">
                         <Text margin={{ left: "40%" }}>Search Criteria</Text>
                         <Box>
-                            {collapseCompliance && <FormUp onClick={() => this.CollapseCompliance()} />}
-                            {!collapseCompliance && <FormDown onClick={() => this.CollapseCompliance()} />}
+                            {collapseReviewManagement && <FormUp onClick={() => this.CollapseReviewManagement()} />}
+                            {!collapseReviewManagement && <FormDown onClick={() => this.CollapseReviewManagement()} />}
                         </Box>
                     </Box>
-                    {collapseCompliance &&
+                    {collapseReviewManagement &&
                         <Box>
                             <Box direction="row"
                             border={{ color: "light-3" }}>
                                 <Box width="large"
                                     border={{ color: "light-3" }} margin={{ left: "medium" }} direction="row-responsive" >
                                     <Box  justify="center" align="center">
-                                        <Text>Compliance Type:</Text>
+                                        <Text>User:</Text>
                                     </Box>
 
 
