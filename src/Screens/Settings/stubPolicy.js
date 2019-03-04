@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import SecondaryNavbar from "../../Containers/SecondaryNavbar/secondaryNavbar";
 import { Grommet, Box, CheckBox, DataTable, Button, Text, RadioButton, Paragraph } from "grommet";
 import { Close, Checkmark, Edit, FormUp, FormDown } from "grommet-icons";
+import SecondaryNavbar from "../../Containers/SecondaryNavbar/secondaryNavbar";
+import StubPolicyModal from "../../Containers/Modal/stubPolicyModal";
 
 const stubPolicyColumn = [
       {
@@ -59,15 +60,26 @@ class StubPolicy extends Component {
             })
       };
 
+      openStubPolicyModal(){
+            this.setState({
+                  stubPolicyModalOpen: true
+            })
+      }
+
+      closeStubPolicyModal(){
+            this.setState({
+                  stubPolicyModalOpen: false
+            })
+      }
 
       render() {
-            const { stubSettingsCollapsed, priority, maximumStubPeriod } = this.state
+            const { stubSettingsCollapsed, priority, maximumStubPeriod, stubPolicyModalOpen } = this.state
             return (
                   <Grommet>
                         <Box>
                               <SecondaryNavbar pageIcon="StubPolicy" pageName="Stub Policy" />
                         </Box>
-
+                        {stubPolicyModalOpen && <StubPolicyModal header="Add New Stub Policy" close={() => this.closeStubPolicyModal()} />}
                         <Box>
                               <DataTable
                                     margin="medium" 
@@ -96,7 +108,7 @@ class StubPolicy extends Component {
                                     // data={}
                               />
                               <Box direction="row" gap="medium" justify="center" margin="small">
-                                    <Button label="Add" />
+                                    <Button label="Add" onClick={() => this.openStubPolicyModal()}/>
                                     <Button label="Enable"  />
                                     <Button label="Disable"  />
                                     <Button label="Delete"  />

@@ -34,6 +34,7 @@ export default class Routers extends Component {
       <Route path="/settings/retentionPolicy" component={settings.RetentionPolicy} />
       <Route path="/settings/archiveStore" component={settings.ArchiveStore} />
       <Route path="/settings/stubPolicy" component={settings.StubPolicy} />
+      <Route path="/settings/userManagement" component={settings.UserManagement} />
     </div>
   </Router>
     )
