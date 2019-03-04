@@ -18,7 +18,7 @@ import { grommet } from "grommet/themes";
 //importing grommet icons
 import { Edit, } from 'grommet-icons';
 import Ssosetting from './configComponents/SsoSetting'
-import ADSettingsModal from '../../Containers/Modal/ADSettingsmodal';
+import ADSettingsModal from '../../Containers/Modal/ADSettingsModal';
 import Deploymentsetting from '../Configuration/configComponents/Deploymentsetting';
 import SMTPConfiguration from './configComponents/Smtpconfiguration';
 import General from './configComponents/general'
