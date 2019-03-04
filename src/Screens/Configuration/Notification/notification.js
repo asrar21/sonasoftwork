@@ -124,6 +124,20 @@ class Notification extends Component {
             console.log("error",error)
         })
     }
+    componentDidUpdate(){
+        axios.get("http://localhost:4001/notification")
+        .then(response=>{
+            console.log("AD response",response.data.Data)
+             this.setState({
+                 data:response.data.Data
+             })
+
+        })
+        
+        .catch(error=>{
+            console.log("error",error)
+        })
+    }
 
 
 

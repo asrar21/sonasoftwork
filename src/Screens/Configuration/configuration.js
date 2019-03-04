@@ -129,6 +129,21 @@ class Configuration extends Component {
         })
     }
     
+    componentDidUpdate(){
+        axios.get("http://localhost:4001/adsettings")
+        .then(response=>{
+            console.log("AD response",response.data.Data)
+             this.setState({
+                 data:response.data.Data
+             })
+
+        })
+        
+        .catch(error=>{
+            console.log("error",error)
+        })
+    }
+    
 
     render() {
         //calling all the variables of state

@@ -1,13 +1,42 @@
 import React, { Component } from 'react'
 import SecondaryNavbar from "../../Containers/SecondaryNavbar/SecondaryNavbar";
 import { Grommet, Box, DataTable, CheckBox, Image, Button, Text, Paragraph, RadioButton } from 'grommet';
-import { Edit } from "grommet-icons";
-import Tick from "../../assets/Icons/submit_purple.png";
-import Cross from "../../assets/Icons/cancel_purple.png";
+
+import { Edit ,Checkmark,Close} from "grommet-icons";
 import { FormDown, FormUp } from "grommet-icons";
 import ContentPageModal from "../../Containers/Modal/contentIdentificationModal";
 import axios from 'axios';
+const columns=[
+     
+      {
+            property: "name",
+            header: "Name"
+      },
+      {
+            property: "notificationType",
+            header: "Notification Type"
+      },
+      {
+            property: "notificationDelay",
+            header: "Notification Delay (Minutes)"
+      },
+      {
+            property: "enabled",
+            header: "Enabled",
+            render: datum => (
+                  datum.enabled ? 
+                        <Box>
+                              <Checkmark />
+                        </Box>
+                  :
+                        <Box>
+                              <Close />
+                        </Box>
 
+            )
+      },
+
+]
 
 const ContentPageData = [{
       name: "Act-On",
@@ -44,6 +73,8 @@ const ContentPageData = [{
 
 }
 ]
+const controlledColumns = columns.map(col => Object.assign({}, col));
+
 
 class contentIdentificationPolicy extends Component {
       constructor(props) {
@@ -109,16 +140,23 @@ class contentIdentificationPolicy extends Component {
                   .catch(error => {
                         console.log("error", error)
                   })
-            data1.map(value => {
-                  data.push({
-                        checkBox: <CheckBox checked={this.state.checkBox} name={value.emailServer} onChange={(e) => this.toggleCheckBox(e)} />,
-                        edit: <Edit cursor="pointer" onClick={this.openNewPolicyForm} />,
-                        name: value.PolicyName,
-                        notificationType: value.notificationType,
-                        notificationDelay: value.notificationDelay,
-                        enabled: value.Enable ? <Image src={Tick} width="25px" height="25px" /> : <Image src={Cross} width="25px" height="25px" />
+            
+      }
+      componentDidUpdate() {
+            const { data ,data1} = this.state
+            axios.get("http://localhost:4001/ContentIdentification")
+                  .then(response => {
+                        console.log("AD response", response.data.Data)
+                        this.setState({
+                              data1: response.data.Data
+                        })
+
                   })
-            })
+
+                  .catch(error => {
+                        console.log("error", error)
+                  })
+            
       }
       render() {
             const { activeStoreOnly, allStores, collapse, addPolicyModal } = this.state
@@ -142,26 +180,20 @@ class contentIdentificationPolicy extends Component {
                                           },
                                           {
                                                 property: "edit",
-                                                header: "Edit"
+                                                header: "Edit",
+                                                render: (datum) => (
+                                                      <Box>
+                                                            <Edit cursor="pointer"  onClick={()=>this.EditForm(datum)}/>
+                                                      </Box>
+                                                )
                                           },
-                                          {
-                                                property: "name",
-                                                header: "Name"
-                                          },
-                                          {
-                                                property: "notificationType",
-                                                header: "Notification Type"
-                                          },
-                                          {
-                                                property: "notificationDelay",
-                                                header: "Notification Delay (Minutes)"
-                                          },
-                                          {
-                                                property: "enabled",
-                                                header: "Enabled"
-                                          },
-                                    ]}
-                                    data={this.state.data}
+                                         
+                                 
+                                    ...controlledColumns
+                              ].map(col => ({ ...col }))}
+                              data={this.state.data1}
+                              sortable
+                        
                               />
 
 

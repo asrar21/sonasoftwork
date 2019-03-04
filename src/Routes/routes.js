@@ -19,8 +19,11 @@ import Purge_Policy from '../Screens/Report/PurgePolicy/PurgePolicy';
 import Retention_Policy from '../Screens/Report/RetentionPolicy/RetentionPolicy'
 import ActivateProduct from '../Screens/Maintenance/activateProduct';
 import NonQualifiedEmails  from '../Screens/Report/Non-QualifiedEmails/Non-QualifiedEmails'
-import PurgePolicy from '../Screens/Maintenance/purgePolicy'
+import PurgePolicy from '../Screens/Maintenance/purgePolicy';
+import GeneralEmailStatistics from '../Screens/Report/GeneralEmailStatistics/GeneralEmailStatistics';
+import AttachmentTypeStatsReport from '../Screens/Report/AttachmentTypeStatistics/AttachmentTypeStatistics'
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import AttachmentTypeStatistics from '../Screens/Report/AttachmentTypeStatistics/AttachmentTypeStatistics';
 
 
 export default class Routers extends Component {
@@ -53,6 +56,8 @@ export default class Routers extends Component {
       <Route path="/Purge_Policy" component={Purge_Policy}/>
       <Route path="/Retention_Policy" component={Retention_Policy}/>
       <Route path="/NonQualifiedEmails" component={NonQualifiedEmails}/>
+      <Route path="/GeneralEmail" component={GeneralEmailStatistics}/>
+      <Route path="/AttachmentStatistics" component={AttachmentTypeStatistics}/>
 
 
       <Route path="/settings/retentionPolicy" component={settings.retentionPolicy} />

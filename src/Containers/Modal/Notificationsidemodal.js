@@ -7,12 +7,13 @@ import {
     FormField,
     TextInput,
     Button,
+    Text
     
 } from "grommet";
 
 import {  Close } from 'grommet-icons';
 import axios from 'axios'
-import { Z_DEFAULT_COMPRESSION } from 'zlib';
+
 
 
 class NotificationSideModal extends Component {
@@ -23,7 +24,10 @@ class NotificationSideModal extends Component {
             Notification_type:"",           
              To:"",
             Cc:"",
-            error:""
+            errorNotification:"",
+            errorTo:"",
+            errorCc:"",
+            Data:this.props.Datum
         };
     }
 
@@ -48,9 +52,23 @@ class NotificationSideModal extends Component {
             Cc:e.target.value
         })
     }
+    Validate=()=>{
+        let errorNotification="";
+        if(!this.state.Notification_type){
+            errorNotification="donot leave blank textfield";
+
+        }  
+        if(errorNotification){
+            this.setState({errorNotification})
+            return false;
+        }
+        return true;
+
+    }
     ssubmit=()=>{
         
-        
+        const isValid=this.Validate();
+        if(isValid){
         axios({
             method: 'post',
             url: 'http://localhost:4001/notification',
@@ -62,8 +80,10 @@ class NotificationSideModal extends Component {
             header:{'Content-Type': 'application/json'}
           });
         }
+        }
    
     render(){
+        const {Data}=this.state;
         return (
             <Layer
                 position="right"
@@ -88,21 +108,27 @@ class NotificationSideModal extends Component {
                     </Box>
                     <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
                         <FormField label="Notification type">
-                            <TextInput  onChange={(e)=>this.changehandlernoti(e)} value={this.props.Datum.Notification_type}/>
+                            <TextInput   value={Data?Data.Notification_type:<TextInput onChange={(e)=>this.changehandlernoti(e)}/>} />
+                            
                         </FormField>
+                        <Text color="red">{this.state.errorNotification}</Text>
+                        
                         <FormField label="To">
-                            <TextInput onChange={(e)=>this.changehandlerTo(e)} value={this.props.Datum.To}/>
+                            <TextInput  value={Data?Data.To:<TextInput onChange={(e)=>this.changehandlerTo(e)}/>} />
                         </FormField>
+                        
                         <FormField label="Cc">
-                            <TextInput  onChange={(e)=>this.changehandlerCc(e)} value={this.props.Datum.Cc}/>
+                            <TextInput   value={Data?Data.Cc:<TextInput onChange={(e)=>this.changehandlerCc(e)} />}/>
+
                         </FormField>
+                        
                         
                         
                     </Box>
                     
                    
                     <Box direction="row-responsive">
-                        <Box flex={false} as="footer" align="start">
+                        <Box  as="footer" align="start">
                             <Button
                                 type="save"
                                 label="Save"
@@ -110,7 +136,7 @@ class NotificationSideModal extends Component {
                                 primary
                             />
                         </Box>
-                        <Box flex={false} as="footer" align="start">
+                        <Box  as="footer" align="start">
                             <Button
                                 type="Cancel"
                                 label="Cancel"

@@ -22,15 +22,15 @@ class emailServerModal extends Component {
             domainName: "Domain Name",
             exchangeVersion: "Exchange Version",
             exchangeServicePack: "Exchange Service Pack",
-            EmailServer: "",
+            emailServer: "",
             JournalMailbox: "",
             JournalLogin: "",
             JournalPassword: "",
             Frequency: "",
-            Enable: false,
-            Archive: false,
-            EnableStub: false,
-            Exclude: false,
+            stubEnabled: false,
+            archivepublicFolder: false,
+           
+            excludeHours: false,
             status:true
         }
     }
@@ -62,15 +62,15 @@ class emailServerModal extends Component {
                 domainName: this.state.domainName,
                 exchangeVersion: this.state.exchangeVersion,
                 exchangeServicePack: this.state.exchangeServicePack,
-                EmailServer: this.state.EmailServer,
+                emailServer: this.state.emailServer,
                 JournalMailbox: this.state.JournalMailbox,
                 
                 JournalPassword: this.state.JournalPassword,
                 Frequency: this.state.Frequency,
                 Enable: this.state.Enable,
-                Archive: this.state.Archive,
-                EnableStub: this.state.EnableStub,
-                Exclude: this.state.Exclude,
+                archivepublicFolder: this.state.archivepublicFolder,
+                stubEnabled: this.state.stubEnabled,
+                excludeHours: this.state.excludeHours,
                 emailServer: this.state.domainName,
                 journalLogon: this.state.JournalLogin,
                status:this.state.status

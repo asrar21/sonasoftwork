@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { Grommet, Box, DataTable, CheckBox, Image, Button } from "grommet";
 import SecondaryNavbar from "../../Containers/SecondaryNavbar/SecondaryNavbar";
-import { Edit } from "grommet-icons";
-import Tick from "../../assets/Icons/submit_purple.png";
-import Cross from "../../assets/Icons/cancel_purple.png";
+import { Edit ,Checkmark,Close} from "grommet-icons";
+
 import LabelingPolicyModal from "../../Containers/Modal/labelingPolicyModal";
 import axios from 'axios'
 
@@ -30,6 +29,33 @@ import axios from 'axios'
 //       }
 // ]
 
+const columns=[
+      
+      {
+            property: 'policyName',
+            header: 'Policy Name',
+      },
+      {
+            property: 'LabelName',
+            header: 'Label Name',
+      },
+      {
+            property: 'status',
+            header: 'Status',
+            render: datum => (
+                  datum.status ? 
+                        <Box>
+                              <Checkmark />
+                        </Box>
+                  :
+                        <Box>
+                              <Close />
+                        </Box>
+            
+            )
+      },
+]
+const controlledColumns = columns.map(col => Object.assign({}, col));
 class labelingPolicy extends Component {
       constructor(props) {
             super(props)
@@ -48,7 +74,7 @@ class labelingPolicy extends Component {
 
 
       componentDidMount() {
-            const { data,data1 } = this.state
+            const { } = this.state
             axios.get("http://localhost:4001/LabelingPolicy")
                   .then(response => {
                         console.log("AD response", response.data.Data)
@@ -61,20 +87,29 @@ class labelingPolicy extends Component {
                   .catch(error => {
                         console.log("error", error)
                   })
-            data1.map(value => {
-                  data.push({
-                        checkBox: <CheckBox />,
-                        edit: <Edit cursor="pointer" onClick={this.openLabelingPolicyModal} />,
-                        policyName: value.policyName,
-                        LabelName: value.LabelName,
-                        status: value.status ? <Image src={Tick} width="25px" height="25px" /> : <Image src={Cross} width="25px" height="25px" />
+            
+            
+
+            
+      }
+      componentDidUpdate() {
+            const {  } = this.state
+            axios.get("http://localhost:4001/LabelingPolicy")
+                  .then(response => {
+                        console.log("AD response", response.data.Data)
+                        this.setState({
+                              data1: response.data.Data
+                        })
 
                   })
-            })
 
-            this.setState({
-                  data
-            })
+                  .catch(error => {
+                        console.log("error", error)
+                  })
+            
+            
+
+            
       }
 
       closeLabelingPolicyModal = () => {
@@ -99,36 +134,31 @@ class labelingPolicy extends Component {
                         {labelingPolicyModal && <LabelingPolicyModal header="Add New Labeling Policy" close={this.closeLabelingPolicyModal} />}
                         <Box margin="medium">
                               <DataTable
-                                    columns={[
+                                     columns={[
                                           {
                                                 property: 'checkBox',
                                                 header: <CheckBox
-                                                      checked={selectAll}
+                                                      checked={this.state.selectAll}
                                                       // label="interested?"
                                                       onChange={(event) => this.selectAllData(event)}
                                                 />,
-
+                          
                                           },
                                           {
-                                                property: 'edit',
-                                                header: 'Edit',
+                                                property: "edit",
+                                                header: "Edit",
+                                                render: (datum) => (
+                                                      <Box>
+                                                            <Edit cursor="pointer"  onClick={()=>this.EditForm(datum)}/>
+                                                      </Box>
+                                                )
                                           },
-                                          {
-                                                property: 'policyName',
-                                                header: 'Policy Name',
-                                          },
-                                          {
-                                                property: 'LabelName',
-                                                header: 'Label Name',
-                                          },
-                                          {
-                                                property: 'status',
-                                                header: 'Status',
-                                          },
-
-                                    ]}
-
-                                    data={data}
+                                         
+                                 
+                                    ...controlledColumns
+                              ].map(col => ({ ...col }))}
+                              data={this.state.data1}
+                              sortable
                               />
 
                               <Box direction="row" justify="center" margin="large" gap="medium">

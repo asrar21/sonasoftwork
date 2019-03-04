@@ -156,6 +156,17 @@ class retentionPolicy extends Component {
                   console.log(err)
             })
       }
+      componentDidUpdate(){
+            axios.get("http://localhost:4001/retentionPolicyData")
+            .then((res) => {
+                  this.setState({
+                        data: res.data.Data
+                  })
+            })
+            .catch(err => {
+                  console.log(err)
+            })
+      }
 
       render() {
             const { addRetentionPolicy, collapseDefaultPolicy, retentionPolicyEnable, 
