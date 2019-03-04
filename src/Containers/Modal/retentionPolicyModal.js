@@ -10,7 +10,8 @@ import {
     CheckBox,
     Menu,
     DataTable,
-    Text
+    Text,
+    Paragraph
 } from "grommet";
 
 import {  Close, FormUp, FormDown } from 'grommet-icons';
@@ -21,7 +22,7 @@ class RetentionPolicyModel extends Component {
         super(props)
         this.state = {
             notificationOption: "Notification Option",
-            conditionName: "Condition Name",
+            conditionName: "Select One",
             collapse: true
         }
     }
@@ -55,19 +56,21 @@ class RetentionPolicyModel extends Component {
         return (
             <Layer
                 position="center"
-                full
+                // full
                 modal
+                width="xlarge"
                 onClickOutside={this.props.close}
                 onEsc={this.props.close}
             >
                 <Box
                     as="form"
-                    fill="vertical"
+                    // fill
                     overflow="auto"
-                    pad={{left: "xlarge", right: "xlarge", top: "meium"}}
+                    width="xlarge"
+                    pad={{left: "large", right: "large", top: "meium"}}
                     onSubmit={this.props.close}
                 >
-                    <Box flex={false} direction="row" justify="between">
+                    <Box flex={false} direction="row" margin="small" justify="between">
                         <Heading level={2} margin="none">
                             {this.props.header}
                         </Heading>
@@ -92,7 +95,8 @@ class RetentionPolicyModel extends Component {
                               </Box>
                         </Box>
                         <Box border="all" pad={{top:"medium", left: "xlarge", right: "xlarge", bottom: "medium"}} margin={{top: 'medium'}} >
-                              <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
+                              <Box direction="row-responsive" justify="between" width="medium"  >
+                              <Paragraph>Condition Name:</Paragraph>
                               <Menu dropBackground={{color: "#f0f2f7"}} label={conditionName} items={[
                                           {label: "Sender", onClick: () => {this.changeConditionName("Sender")}},
                                           {label: "Sender Date", onClick: (e) => {this.changeConditionName("Sender Date")}},
@@ -117,60 +121,50 @@ class RetentionPolicyModel extends Component {
                                     ]} 
                               />
                               </Box>
-                              <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
-                              <Menu dropBackground={{color: "#f0f2f7"}}  label="Condition Type" items={[
+                              <Box  direction="row" justify="between" width="medium"  >
+                              <Paragraph>Condition Type</Paragraph>
+                              <Menu dropBackground={{color: "#f0f2f7"}}  label="Select One" items={[
                                           {label: "Select One", onClick: (e) => {this.changeNotificationOption("Select One")}},
                                     ]} />
                               </Box>
-                              <Box>
-                                    <FormField label="Condition Value">
-                                          <TextInput />
-                                    </FormField>
-                              </Box>
-                              
-                              <Box direction="row" justify="center">
-                                    <Box> 
-                                          <Box flex={false}  margin="small" align="start">
-                                                <Button
-                                                label="Add"
-                                                />
-                                          </Box>
-                                          <Box flex={false}  margin="small"  align="start">
-                                                <Button
-                                                label="Cancel"
-                                                onClick={() => this.props.close()}
-                                                
-                                                />
-                                          </Box>
+                            </Box>
+                              <Box direction="row" pad="small" margin="small" justify="around">
+                                    <Box flex={false}  margin="small" align="start">
+                                        <Button
+                                        label="Add"
+                                        />
                                     </Box>
-
-                              <Box > 
                                     <Box flex={false}  margin="small"  align="start">
-                                          <Button
-                                          label="And"
-                                          />
+                                        <Button
+                                        label="Cancel"
+                                        onClick={() => this.props.close()}
+                                        
+                                        />
+                                    </Box>
+                                    <Box flex={false}  margin="small"  align="start">
+                                        <Button
+                                        label="And"
+                                        />
                                     </Box>
                                     <Box flex={false}  margin="small" align="start">
-                                          <Button
-                                          label="OR"
-                                          />
+                                            <Button
+                                            label="OR"
+                                            />
                                     </Box>
-                              </Box>
-
-                              <Box > 
+                        
                                     <Box flex={false}  margin="small"  align="start">
-                                          <Button
-                                          label="("
-                                          />
+                                            <Button
+                                            label="("
+                                            />
                                     </Box>
                                     <Box flex={false}  margin="small" align="start">
-                                          <Button
-                                          label=")"
-                                          />
+                                            <Button
+                                            label=")"
+                                            />
                                     </Box>
+                            
                               </Box>
-                              </Box>
-                        </Box>
+                        
                         
                         <Box direction="column">
                             <Box justify="end" direction="row" pad="small" margin="small" background="#d3d9e2">    

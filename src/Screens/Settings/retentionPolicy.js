@@ -80,6 +80,8 @@ class retentionPolicy extends Component {
             this.setState({
                   collapseDefaultPolicy: !this.state.collapseDefaultPolicy
             })
+
+            this.cancelEditPolicy()
       } 
 
       collapseRetentionSettings(){
@@ -203,19 +205,14 @@ class retentionPolicy extends Component {
                                     <Box justify="between" direction="row" pad="small" margin="small" background="#d3d9e2">
                                           <Text margin={{left:"39%"}}>Default Retention Policy (Lowest Priority)</Text>
                                           <Box>
-                                                {collapseDefaultPolicy && <FormUp onClick={() => this.collapsePolicySettings()} />}
-                                                {!collapseDefaultPolicy && <FormDown onClick={() => this.collapsePolicySettings()} />}
+                                                {collapseDefaultPolicy && <FormUp cursor="pointer" onClick={() => this.collapsePolicySettings()} />}
+                                                {!collapseDefaultPolicy && <FormDown cursor="pointer" onClick={() => this.collapsePolicySettings()} />}
                                           </Box>
                                     </Box> 
                                     { collapseDefaultPolicy && 
                                           <div>
                                                 <Box margin={{left:"small", right: "small"}}>
                                                       <Box margin={{left: "small", right: "small"}} direction="column">
-                                                            {retentionPolicyEnable && 
-                                                                  <Box justify="center" align="center">
-                                                                        <Paragraph margin="none" color="neutral-1">Saved Succesfully</Paragraph>
-                                                                  </Box>
-                                                            }
                                                             <Box direction="row" margin={{bottom: "small"}} gap="small" >
                                                                   <RadioButton
                                                                         checked = {retentionPolicyEnable}
@@ -237,18 +234,18 @@ class retentionPolicy extends Component {
                                                                         <Box background="#d3d9e2" pad="small" align="end">
                                                                               <Edit cursor="pointer" onClick={() => this.editDefaultPolicy()} />
                                                                         </Box>
-                                                                        <Box justify="center" direction="row">
-                                                                              <Box direction="column" justify="between" height="200px">
-                                                                                    <Paragraph>Policy Name:</Paragraph>  
-                                                                                    <Paragraph>Retention Period(Days):</Paragraph>
-                                                                                    <Paragraph>Retention Grace Period(Days):</Paragraph>
+                                                                        <Box justify="center" margin="small" direction="row" >
+                                                                              <Box direction="column" justify={editPolicySettings && "around"} height={editPolicySettings && "165px"} >
+                                                                                    <Paragraph margin="xsmall">Policy Name:</Paragraph>  
+                                                                                    <Paragraph margin="xsmall">Retention Period(Days):</Paragraph>
+                                                                                    <Paragraph margin="xsmall">Retention Grace Period(Days):</Paragraph>
                                                                               </Box>
-                                                                              <Box direction="column" justify="between" margin={{left: "large"}} height="190px">
-                                                                                    <Paragraph>Default</Paragraph>
-                                                                                    {!editPolicySettings && <Paragraph margin={{top: "25px"}}>3650 Days</Paragraph>}
-                                                                                    {editPolicySettings && <Box width="small"><TextInput type="number"></TextInput></Box>}
-                                                                                    {!editPolicySettings && <Paragraph margin={{top: "25px"}}>7 Days</Paragraph>}
-                                                                                    {editPolicySettings && <Box width="small"><TextInput type="number"></TextInput></Box>}
+                                                                              <Box direction="column" justify={editPolicySettings && "between"}  margin={{left: "large"}}>
+                                                                                    <Paragraph margin="xsmall">Default</Paragraph>
+                                                                                    {!editPolicySettings && <Paragraph margin="xsmall">3650 Days</Paragraph>}
+                                                                                    {editPolicySettings && <Box width="small" margin="small"><TextInput type="number"></TextInput></Box>}
+                                                                                    {!editPolicySettings && <Paragraph margin="xsmall">7 Days</Paragraph>}
+                                                                                    {editPolicySettings && <Box width="small" margin="small"><TextInput type="number"></TextInput></Box>}
                                                                               </Box>
                                                                         </Box>
                                                                         {editPolicySettings && 
@@ -270,8 +267,8 @@ class retentionPolicy extends Component {
                                     <Box justify="between" direction="row" pad="small" margin="small" background="#d3d9e2">
                                           <Text margin={{left:"43%"}}>Retention Policy Settings</Text>
                                           <Box>
-                                                {collapseRetentionPolicy && <FormUp onClick={() => this.collapseRetentionSettings()} />}
-                                                {!collapseRetentionPolicy && <FormDown onClick={() => this.collapseRetentionSettings()} />}
+                                                {collapseRetentionPolicy && <FormUp cursor="pointer" onClick={() => this.collapseRetentionSettings()} />}
+                                                {!collapseRetentionPolicy && <FormDown cursor="pointer" onClick={() => this.collapseRetentionSettings()} />}
                                           </Box>
                                     </Box> 
                                     { collapseRetentionPolicy && 
