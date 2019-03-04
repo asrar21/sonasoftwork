@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
 
 
-<<<<<<< HEAD
 import SecondaryNavBar from '../../../Containers/SecondaryNavbar/secondaryNavbar'
-import { Box, Text, Button,  Grommet, TextInput, } from "grommet";
-=======
-import SecondaryNavBar from '../../../Containers/SecondaryNavbar/SecondaryNavbar'
 import { Box, Text, Button, Grommet, TextInput, Layer, Heading, Paragraph } from "grommet";
->>>>>>> 0f132a2d1c92f5bb7d80b48e342d7e98ef228bc2
 import { FormUp, FormDown } from 'grommet-icons';
 
 export default class AccessControl extends Component {

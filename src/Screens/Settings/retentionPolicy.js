@@ -42,7 +42,7 @@ const columns = [
 
 const controlledColumns = columns.map(col => Object.assign({}, col));
 
-class retentionPolicy extends Component {
+class RetentionPolicy extends Component {
       constructor(props){
             super(props)
             this.state= {
@@ -357,4 +357,4 @@ class retentionPolicy extends Component {
       }
 };
 
-export default retentionPolicy;
+export default RetentionPolicy;

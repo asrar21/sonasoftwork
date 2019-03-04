@@ -60,7 +60,7 @@ export default class Routers extends Component {
       <Route path="/AttachmentStatistics" component={AttachmentTypeStatistics}/>
 
 
-      <Route path="/settings/retentionPolicy" component={settings.retentionPolicy} />
+      <Route path="/settings/retentionPolicy" component={settings.RetentionPolicy} />
     </div>
   </Router>
     )

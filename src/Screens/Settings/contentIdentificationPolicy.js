@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SecondaryNavbar from "../../Containers/SecondaryNavbar/SecondaryNavbar";
+import SecondaryNavbar from "../../Containers/SecondaryNavbar/secondaryNavbar";
 import { Grommet, Box, DataTable, CheckBox, Image, Button, Text, Paragraph, RadioButton } from 'grommet';
 
 import { Edit ,Checkmark,Close} from "grommet-icons";

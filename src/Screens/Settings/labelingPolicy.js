@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Grommet, Box, DataTable, CheckBox, Image, Button } from "grommet";
-import SecondaryNavbar from "../../Containers/SecondaryNavbar/SecondaryNavbar";
+import SecondaryNavbar from "../../Containers/SecondaryNavbar/secondaryNavbar";
 import { Edit ,Checkmark,Close} from "grommet-icons";
 
 import LabelingPolicyModal from "../../Containers/Modal/labelingPolicyModal";
