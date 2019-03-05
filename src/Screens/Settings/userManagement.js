@@ -33,7 +33,8 @@ class userManagement extends Component {
       constructor(props){
             super(props)
             this.state = {
-                  AD: true
+                  AD: true,
+                  UserModalOpened: true   
             }
       }
 

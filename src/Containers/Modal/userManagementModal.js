@@ -8,17 +8,18 @@ import {
     TextInput,
     Button,
     Menu,
-    CheckBox
+    Text,
+    Paragraph
 } from "grommet";
 
-import {  Close } from 'grommet-icons';
+import {  Close, FormUp } from 'grommet-icons';
 
 
 class UserManagementModal extends Component {
     constructor(props){
         super(props)
         this.state = {
-            role: "Role",
+            role: "EAS General User",
             exchangeVersion: "Exchange Version",
             exchangeServicePack: "Exchange Service Pack"
         }
@@ -79,13 +80,23 @@ class UserManagementModal extends Component {
                         <FormField label="Email Address">
                             <TextInput />
                         </FormField>
-                        <Box margin="medium" border={{side: "all", size: "xsmall", color: "grey"}}>
-                                <Menu dropBackground={{color: "#f0f2f7"}} label={role} items={[
-                                        {label: "SONASOFT.ONMICROSOFT.COM", onClick: (e) => {this.changeDomainName("SONASOFT.ONMICROSOFT.COM")}},
-                                        {label: "SONASAFE", onClick: (e) => {this.changeDomainName("SONASAFE")}}
+                        
+                        <Box  justify="around" direction="row">
+                                <Paragraph>Role:</Paragraph>
+                                <Menu icon={<FormUp />} dropAlign={{"bottom": "bottom", "right": "right"}}dropBackground={{color: "#f0f2f7"}} label={role} items={[
+                                        {label: "EAS General User", onClick: (e) => {this.changeDomainName("EAS General User")}},
+                                        {label: "EAS Super Reviewer", onClick: (e) => {this.changeDomainName("EAS Super Reviewer")}},
+                                        {label: "EAS Reviewer", onClick: (e) => {this.changeDomainName("EAS Reviewer")}},
+                                        {label: "EAS Read Only Access", onClick: (e) => {this.changeDomainName("EAS Read Only Access")}},
+                                        {label: "EAS No UI Access", onClick: (e) => {this.changeDomainName("EAS No UI Access")}},
+                                        {label: "EAS Auditor", onClick: (e) => {this.changeDomainName("EAS Auditor")}},
+                                        {label: "EAS Administrator", onClick: (e) => {this.changeDomainName("EAS Administrator")}},
+                                        {label: "No Simple Search", onClick: (e) => {this.changeDomainName("No Simple Search")}},
+                                        {label: "No Public Folder", onClick: (e) => {this.changeDomainName("No Public Folder")}},
+                                        {label: "Search Export", onClick: (e) => {this.changeDomainName("Search Export")}},
                                 ]}/>
                         </Box>
-
+                        
                         <Box direction="row" justify="center" margin="small" align="center" gap="medium">                            
                             <Button
                                 label="Add"
