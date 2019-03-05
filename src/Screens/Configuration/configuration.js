@@ -35,7 +35,7 @@ const columns = [
 
     },
     {
-        property: "UserName",
+        property: "Username",
         header: "UserName"
     },
 

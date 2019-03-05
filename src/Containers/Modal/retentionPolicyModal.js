@@ -103,13 +103,13 @@ class RetentionPolicyModel extends Component {
                     <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
                         <Box border="all" pad={{ top: "medium", left: "xlarge", right: "xlarge", bottom: "medium" }} >
                             <FormField label="Policy Name">
-                                <TextInput onChange={(e) => { this.setState({ name: e.target.value }) }}  value={this.props.Datum.name}/>
+                                <TextInput onChange={(e) => { this.setState({ name: e.target.value }) }}  />
                             </FormField>
                             <FormField label="Retention Period (Days)">
-                                <TextInput type="number" onChange={(e) => { this.setState({ retentionPeriod: e.target.value }) }} value={this.props.Datum.retentionPeriod}></TextInput>
+                                <TextInput type="number" onChange={(e) => { this.setState({ retentionPeriod: e.target.value }) }} ></TextInput>
                             </FormField>
                             <FormField label="Retention Grace Period (Days)">
-                                <TextInput type="number" onChange={(e) => { this.setState({ retentionGracePeriod: e.target.value }) }} value={this.props.Datum.retentionGracePeriod}></TextInput>
+                                <TextInput type="number" onChange={(e) => { this.setState({ retentionGracePeriod: e.target.value }) }}></TextInput>
                             </FormField>
                             <Box margin="medium">
                                 <CheckBox checked={activeCheckbox} label="Active: " reverse={true} onChange={(e) => { this.toggleActiveCheckbox(e) }} />

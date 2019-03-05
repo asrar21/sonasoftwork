@@ -64,11 +64,12 @@ r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
     app.post('/adsettings', (req, res) => {
         let data = [
             {
-                Domain: req.body.Domain,
-                Username: req.body.UserName,
-                Password: req.body.Password,
                 Enable: req.body.Enable,
                 Azure: req.body.Azure,
+                Domain: req.body.Domain,
+                Username: req.body.Username,
+                Password: req.body.Password,
+
                 All: req.body.All,
                 Selected: req.body.Selected,
                 status: req.body.status
@@ -157,26 +158,27 @@ r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
             }
 
         })
-        app.get('/EmailServer', (req, res) => {
-            r.table('EmailServer').run(conn, (err, result) => {
-                if (err) throw err
-                result.toArray((err, Data) => {
-                    if (err) {
-                        res.status(404).json({
-                            error: "no data"
+    });
+    app.get('/EmailServer', (req, res) => {
+        r.table('EmailServer').run(conn, (err, result) => {
+            if (err) throw err
+            result.toArray((err, Data) => {
+                if (err) {
+                    res.status(404).json({
+                        error: "no data"
 
-                        })
-                    }
-                    if (Data) {
-                        res.status(200).json({
-                            Data
-                        })
-                    }
-                })
+                    })
+                }
+                if (Data) {
+                    res.status(200).json({
+                        Data
+                    })
+                }
             })
         })
+    })
 
-    });
+
 
 
 
@@ -210,53 +212,56 @@ r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
             }
 
         })
-        app.get('/ContentIdentification', (req, res) => {
-            r.table('ContentIdentification').run(conn, (err, result) => {
-                if (err) throw err
-                result.toArray((err, Data) => {
-                    if (err) {
-                        res.status(404).json({
-                            error: "no data"
+    })
+    app.get('/ContentIdentification', (req, res) => {
+        r.table('ContentIdentification').run(conn, (err, result) => {
+            if (err) throw err
+            result.toArray((err, Data) => {
+                if (err) {
+                    res.status(404).json({
+                        error: "no data"
 
-                        })
-                    }
-                    if (Data) {
-                        res.status(200).json({
-                            Data
-                        })
-                    }
-                })
+                    })
+                }
+                if (Data) {
+                    res.status(200).json({
+                        Data
+                    })
+                }
             })
         })
 
-  
 
 
 
-    //labeling policy
-    // r.db('test').tableCreate('LabelingPolicy').run(conn, (err,res)=>{
-    //     if(err) throw err;
-    //     console.log(res)
-    app.post('/LabelingPolicy', (req, res) => {
-        let data = [
-            {
-                policyName: req.body.policyName,
-                LabelName: req.body.LabelName,
-                status: req.body.status,
-                conditionName: req.body.conditionName,
-                Enable: req.body.Enable,
-                Conditionvalue: req.body.Conditionvalue
-            },
 
-        ]
-        r.table('LabelingPolicy').insert(data).run(conn, (err, result) => {
 
-            if (err) throw err;
-            if (result) {
-                console.log(" LabelingPolicy data is inserted")
-            }
+        //labeling policy
+        // r.db('test').tableCreate('LabelingPolicy').run(conn, (err,res)=>{
+        //     if(err) throw err;
+        //     console.log(res)
+        app.post('/LabelingPolicy', (req, res) => {
+            let data = [
+                {
+                    policyName: req.body.policyName,
+                    LabelName: req.body.LabelName,
+                    status: req.body.status,
+                    conditionName: req.body.conditionName,
+                    Enable: req.body.Enable,
+                    Conditionvalue: req.body.Conditionvalue
+                },
 
+            ]
+            r.table('LabelingPolicy').insert(data).run(conn, (err, result) => {
+
+                if (err) throw err;
+                if (result) {
+                    console.log(" LabelingPolicy data is inserted")
+                }
+
+            })
         })
+
         app.get('/LabelingPolicy', (req, res) => {
             r.table('LabelingPolicy').run(conn, (err, result) => {
                 if (err) throw err
@@ -274,203 +279,180 @@ r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
                     }
                 })
             })
+
+
+
+
+
+
+
+
+            //Retention Policy
+            // r.db('test').tableCreate('RetentionPolicy').run(conn, (err,res)=>{
+            //     if(err) throw err;
+            //     console.log(res)
+            app.post('/retentionPolicyData', (req, res) => {
+                let data = [
+                    {
+                        notificationOption: req.body.notificationOption,
+                        conditionName: req.body.conditionName,
+
+                        retentionPeriod: req.body.retentionPeriod,
+                        name: req.body.name,
+                        retentionGracePeriod: req.body.retentionGracePeriod,
+                        conditionValue: req.body.conditionValue,
+                        status: req.body.status
+                    },
+
+                ]
+                r.table('RetentionPolicy').insert(data).run(conn, (err, result) => {
+
+                    if (err) throw err;
+                    if (result) {
+                        console.log("Retention Policy data is inserted")
+                    }
+
+                })
+            })
+
+            app.get('/retentionPolicyData', (req, res) => {
+                r.table('RetentionPolicy').run(conn, (err, result) => {
+                    if (err) throw err
+                    result.toArray((err, Data) => {
+                        if (err) {
+                            res.status(404).json({
+                                error: "no data"
+
+                            })
+                        }
+                        if (Data) {
+                            res.status(200).json({
+                                Data
+                            })
+                        }
+                    })
+                })
+            })
         })
-
-    });
-
+    })
 
 
-    //Retention Policy
-    // r.db('test').tableCreate('RetentionPolicy').run(conn, (err,res)=>{
-    //     if(err) throw err;
-    //     console.log(res)
-    app.post('/retentionPolicyData', (req, res) => {
-        let data = [
-            {
-                notificationOption: req.body.notificationOption,
-                conditionName: req.body.conditionName,
 
-                retentionPeriod: req.body.retentionPeriod,
-                name: req.body.name,
-                retentionGracePeriod: req.body.retentionGracePeriod,
-                conditionValue: req.body.conditionValue,
-                status: req.body.status
-            },
+
+
+
+
+    app.get('/archiveStore2', (req, res) => {
+        r.table('ArchiveStore2').run(conn, (err, result) => {
+            if (err) throw err
+            result.toArray((err, Data) => {
+                if (err) {
+                    res.status(404).json({
+                        error: "no data"
+
+                    })
+                }
+                if (Data) {
+                    res.status(200).json({
+                        Data
+                    })
+                }
+            })
+        })
+    })
+
+    app.get("/archiveStore", (req, res) => {
+        r.table('ArchiveStore').run(conn, (err, response) => {
+            if (err) throw err
+            response.toArray((err, data) => {
+                res.status(200).json({
+                    data
+                })
+            })
+        })
+    })
+
+    //Stub Policy
+    app.post("/stubpolicy", (req, res) => {
+        let data = [{
+            name: req.body.name,
+            description: req.body.description,
+            stubPeriod: req.body.stubPeriod,
+            priority: req.body.priority,
+            activeCheckbox: req.body.activeCheckbox
+        }
+
 
         ]
-        r.table('RetentionPolicy').insert(data).run(conn, (err, result) => {
-
-            if (err) throw err;
-            if (result) {
-                console.log("Retention Policy data is inserted")
-            }
+        r.table("StubPolicy").insert(data).run(conn, (err, res) => {
+            if (err) throw err
+            console.log("stubPolicy data inserted");
 
         })
-        app.get('/retentionPolicyData', (req, res) => {
-            r.table('RetentionPolicy').run(conn, (err, result) => {
-                if (err) throw err
-                result.toArray((err, Data) => {
-                    if (err) {
-                        res.status(404).json({
-                            error: "no data"
+    })
+    app.get("/stubpolicy", (req, res) => {
+        r.table("StubPolicy").run(conn, (err, response) => {
+            if (err) throw err
+            response.toArray((err, Data) => {
+                res.status(200).json({
+                    Data
 
-                        })
-                    }
-                    if (Data) {
-                        res.status(200).json({
-                            Data
-                        })
-                    }
                 })
             })
         })
-
-
-
-
     })
-    // r.db('test').tableCreate('ArchiveStore').run(conn, (err, res) => {
-    //     if (err) throw err;
-    //     console.log(res);
-        // let data = [
-        //     {
-        //         archiveStore: "SNS_ARCHDB_00012",
-        //         database: "SNS_ARCHDB_00012",
-        //         from: "8/21/2018 12:00:00AM",
-        //         to: "8/21/2018 12:00:00AM",
-        //         searchable: true,
-        //         archiveable: false,
-        //         status: true
-        //     },
-        //     {
-        //         archiveStore: "SNS_ARCHDB_00012",
-        //         database: "SNS_ARCHDB_00012",
-        //         from: "8/21/2018 12:00:00AM",
-        //         to: "8/21/2018 12:00:00AM",
-        //         searchable: true,
-        //         archiveable: false,
-        //         status: true
-        //     },
-        //     {
-        //         archiveStore: "SNS_ARCHDB_00012",
-        //         database: "SNS_ARCHDB_00012",
-        //         from: "8/21/2018 12:00:00AM",
-        //         to: "8/21/2018 12:00:00AM",
-        //         searchable: true,
-        //         archiveable: true,
-        //         status: true
-        //     },
-        //     {
-        //         archiveStore: "SNS_ARCHDB_00012",
-        //         database: "SNS_ARCHDB_00012",
-        //         from: "8/21/2018 12:00:00AM",
-        //         to: "8/21/2018 12:00:00AM",
-        //         searchable: true,
-        //         archiveable: true,
-        //         status: false
-        //     },
-
-        // ]
-        // r.table('ArchiveStore').insert(data).run(conn, (err, result) => {
-
-        //     if (err) throw err;
-        //     if (result) {
-        //         console.log("Retention Policy data is inserted")
-        //     }
-        // })
-        app.get('/archiveStore', (req, res) => {
-            r.table('ArchiveStore').run(conn, (err, result) => {
-                if (err) throw err
-                result.toArray((err, Data) => {
-                    if (err) {
-                        res.status(404).json({
-                            error: "no data"
-
-                        })
-                    }
-                    if (Data) {
-                        res.status(200).json({
-                            Data
-                        })
-                    }
-                })
-            })
-        })
-
-
-
-
-    })
-    r.db('test').tableCreate('ArchiveStore2').run(conn, (err,res)=>{
-        if(err) throw err;
-        console.log(res)
-        let data2 = [
-            {
-                type: "SIZE",
-                   size: "10240.00",
-                period: "0",
-                createdOn: "25-MAY-2018 9:06",
-                createdBy: "SONASOFTARC",
-               
-            },
-            {
-                type: "SIZE",
-                   size: "10240.00",
-                period: "0",
-                createdOn: "28-MAY-2018 9:06",
-                createdBy: "SONASOFTARC",
-               
-            },
-            {
-                type: "SIZE",
-                   size: "10240.00",
-                period: "0",
-                createdOn: "28-june-2018 8:06",
-                createdBy: "SONASOFTARC",
-               
-            },
-
-        ]
-        r.table('ArchiveStore2').insert(data2).run(conn, (err, result) => {
-
-            if (err) throw err;
-            if (result) {
-                console.log("Retention Policy data is inserted")
-            }
-        })
-        app.get('/archiveStore2', (req, res) => {
-            r.table('ArchiveStore2').run(conn, (err, result) => {
-                if (err) throw err
-                result.toArray((err, Data) => {
-                    if (err) {
-                        res.status(404).json({
-                            error: "no data"
-
-                        })
-                    }
-                    if (Data) {
-                        res.status(200).json({
-                            Data
-                        })
-                    }
-                })
-            })
-        })
-
-
-
-
-    })
-
-    // r.db('test').tableCreate('Notification').run(conn, (err,res)=>{
-    //     if(err) throw err;
-    //     console.log(res)
-    // })
-
 
 
 
 })
+
+
+// r.db('test').tableCreate('ArchiveStore2').run(conn, (err,res)=>{
+//     if(err) throw err;
+//     console.log(res)
+//     let data2 = [
+//         {
+//             type: "SIZE",
+//                size: "10240.00",
+//             period: "0",
+//             createdOn: "25-MAY-2018 9:06",
+//             createdBy: "SONASOFTARC",
+
+//         },
+//         {
+//             type: "SIZE",
+//                size: "10240.00",
+//             period: "0",
+//             createdOn: "28-MAY-2018 9:06",
+//             createdBy: "SONASOFTARC",
+
+//         },
+//         {
+//             type: "SIZE",
+//                size: "10240.00",
+//             period: "0",
+//             createdOn: "28-june-2018 8:06",
+//             createdBy: "SONASOFTARC",
+
+//         },
+
+//     ]
+//     r.table('ArchiveStore2').insert(data2).run(conn, (err, result) => {
+
+//         if (err) throw err;
+//         if (result) {
+//             console.log("Retention Policy data is inserted")
+//         }
+//     })
+
+// r.db('test').tableCreate('Notification').run(conn, (err,res)=>{
+//     if(err) throw err;
+//     console.log(res)
+// })
+
+
+
+
 
 
 

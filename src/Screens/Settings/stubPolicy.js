@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import SecondaryNavbar from "../../Containers/SecondaryNavbar/SecondaryNavbar";
 import { Grommet, Box, CheckBox, DataTable, Button, Text, RadioButton, Paragraph } from "grommet";
 import { Close, Checkmark, Edit, FormUp, FormDown } from "grommet-icons";
+import SecondaryNavbar from "../../Containers/SecondaryNavbar/SecondaryNavbar";
+import StubPolicyModal from "../../Containers/Modal/stubPolicyModal";
+import axios from 'axios'
 
 const stubPolicyColumn = [
       {
@@ -37,7 +39,8 @@ class StubPolicy extends Component {
       constructor(props){
             super(props)
             this.state = {
-                  priority: true
+                  priority: true,
+                  data1:[]
             }
       }
 
@@ -59,15 +62,57 @@ class StubPolicy extends Component {
             })
       };
 
+      openStubPolicyModal(){
+            this.setState({
+                  stubPolicyModalOpen: true
+            })
+      }
+
+      closeStubPolicyModal(){
+            this.setState({
+                  stubPolicyModalOpen: false
+            })
+      }
+      componentDidMount(){
+            axios.get("http://localhost:4001/stubpolicy")
+            
+              .then(response=>{
+                  console.log("AD response",response.data.Data)
+                   this.setState({
+                    data1:response.data.Data
+                   })
+          
+              })
+              
+              .catch(error=>{
+                  console.log("error",error)
+              })
+          }
+          componentDidUpdate(){
+            axios.get("http://localhost:4001/stubpolicy")
+            
+              .then(response=>{
+                  console.log("AD response",response.data.Data)
+                   this.setState({
+                    data1:response.data.Data
+                   })
+          
+              })
+              
+              .catch(error=>{
+                  console.log("error",error)
+              })
+          }
+          
 
       render() {
-            const { stubSettingsCollapsed, priority, maximumStubPeriod } = this.state
+            const { stubSettingsCollapsed, priority, maximumStubPeriod, stubPolicyModalOpen } = this.state
             return (
                   <Grommet>
                         <Box>
-                              <SecondaryNavbar pageIcon="StubPolicy" pageName="Stub Policy" />
+                              <SecondaryNavbar pageIcon="StubPolicy" pageName="StubPolicy" />
                         </Box>
-
+                        {stubPolicyModalOpen && <StubPolicyModal header="Add New Stub Policy" close={() => this.closeStubPolicyModal()} />}
                         <Box>
                               <DataTable
                                     margin="medium" 
@@ -93,10 +138,10 @@ class StubPolicy extends Component {
                                           ...controlledstubPolicyColumn
                                     ].map(col => ({ ...col }))}
                                     sortable
-                                    // data={}
+                                    data={this.state.data1}
                               />
                               <Box direction="row" gap="medium" justify="center" margin="small">
-                                    <Button label="Add" />
+                                    <Button label="Add" onClick={() => this.openStubPolicyModal()}/>
                                     <Button label="Enable"  />
                                     <Button label="Disable"  />
                                     <Button label="Delete"  />

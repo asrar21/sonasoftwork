@@ -136,20 +136,7 @@ class archiveStore extends Component {
                   [event.target.value] : true
             })
       };
-      componentWillMount(){
-        axios.get("http://localhost:4001/archiveStore")
-        .then(response=>{
-            console.log("AD response",response.data.Data)
-             this.setState({
-                 data:response.data.Data
-             })
-
-        })
-        
-        .catch(error=>{
-            console.log("error",error)
-        })
-      }
+      
       componentDidMount(){
         
         axios.get("http://localhost:4001/archiveStore2")
@@ -164,6 +151,19 @@ class archiveStore extends Component {
         .catch(error=>{
             console.log("error",error)
         })
+        axios.get("http://localhost:4001/archiveStore")
+        .then(response=>{
+            console.log("Archive Store",response.data.data)
+             this.setState({
+                 data:response.data.data
+             })
+
+        })
+        
+        .catch(error=>{
+            console.log("error",error)
+        })
+        
     }
 
       render() {

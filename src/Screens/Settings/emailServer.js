@@ -186,6 +186,7 @@ componentDidUpdate(){
 
 
 
+
   AddServerModalClose = () => {
     this.setState({
       AddServerModal : false
@@ -196,6 +197,7 @@ componentDidUpdate(){
 
 
   render(){
+    
     const { AddServerModal } = this.state
     return (
       <Grommet>
