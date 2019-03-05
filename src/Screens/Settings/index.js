@@ -3,7 +3,9 @@ import ContentIdentificationPolicy from "./contentIdentificationPolicy";
 import ArchivalPolicy from "./archivalPolicy"
 import LabelingPolicy from "./labelingPolicy";
 import RetentionPolicy from "./retentionPolicy";
-import ArchiveStore from "./archiveStore";
+import StubPolicy from './stubPolicy';
+import ArchiveStore from './archiveStore';
+import RoleMangement from './roleManagement';
 
 export {
       EmailServer,
@@ -11,5 +13,7 @@ export {
       ArchivalPolicy,
       LabelingPolicy,
       RetentionPolicy,
-      ArchiveStore
+      StubPolicy,
+      ArchiveStore,
+      RoleMangement
 }

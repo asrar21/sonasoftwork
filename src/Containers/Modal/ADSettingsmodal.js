@@ -12,68 +12,49 @@ import {
     Text
 } from "grommet";
 
-import {  Close } from 'grommet-icons';
-import axios from 'axios';
+import { Close } from 'grommet-icons';
+import axios from 'axios'
 
 
 class ADSettingsModal extends Component {
+
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
+
+            Enable: false,
+            Azure: false,
+            Domain:"",
+            Username: "",
+            Password: "",
             
-           Domain:"",
-           UserName:"",
-           Password:"",
-           Enable:false,
-           Azure:false,
-           All:false,
-           Selected:false,
-           status:true,
-           Data:this.props.Datum
-        };
+            All: false,
+            Selected: false,
+            status: true
+
+        }
+
     }
 
-    changehandlernoti=(e)=>{
-        e.preventDefault();
-        console.log("notification",e.target.value)
-        this.setState({
-            Notification_type:e.target.value
-        })
-    }
-    changehandlerTo=(e)=>{
-        e.preventDefault();
-        console.log("To",e.target.value)
-        this.setState({
-            To:e.target.value
-        })
-    }
-    changehandlerCc=(e)=>{
-        e.preventDefault();
-        console.log("Cc",e.target.value)
-        this.setState({
-            Cc:e.target.value
-        })
-    }
-    onsubmit=()=>{
+    onsubmit = () => {
         axios({
             method: 'post',
             url: 'http://localhost:4001/adsettings',
             data: {
+                Enable: this.state.Enable,
+                Azure: this.state.Azure,
                 Domain:this.state.Domain,
-           UserName:this.state.UserName,
-           Password:this.state.Password,
-           Enable:this.state.Enable,
-           Azure:this.state.Azure,
-           All:this.state.All,
-           Selected:this.state.Selected,
-           status:this.state.status
+                Username: this.state.Username,
+                Password: this.state.Password,
+                
+                All: this.state.All,
+                Selected: this.state.Selected,
+                status: this.state.status
             },
-            header:{'Content-Type': 'application/json'}
-          });
-        }
- 
+            header: { 'Content-Type': 'application/json' }
+        });
+    }
     render() {
-        const {Data} =this.state;
         return (
             <Layer
                 position="right"
@@ -96,44 +77,70 @@ class ADSettingsModal extends Component {
                     </Box>
                     <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
                         <FormField label="Domain">
-                            <TextInput  value={Data?Data.Domain:<TextInput onChange={(e)=>this.setState({Domain:e.target.value})}/>}/>
+                            <TextInput  onChange={(e)=>this.setState({Domain:e.target.value})}/>
                         </FormField>
                         <FormField label="UserName">
-                            <TextInput  value={Data?Data.Username:<TextInput onChange={(e)=>this.setState({UserName:e.target.value})}/>}/>
+                            <TextInput  onChange={(e)=>this.setState({Username:e.target.value})} />
                         </FormField>
                         <FormField label="Password">
-                            <TextInput type="password" onChange={(e)=>this.setState({Password:e.target.value})} value={Data?Data.Password:<TextInput onChange={(e)=>this.setState({Password:e.target.value})}/>}  />
+                            <TextInput  onChange={(e)=>this.setState({Password:e.target.value})}/>
                         </FormField>
-                        <Box direction="row-responsive">
-                        <Text>Enable Sync:</Text>
-
-                        
-                            <CheckBox  checked={this.state.Enable}
-                                   value={Data?Data.Enable:<TextInput onChange={(event) => this.setState({ Enable:true ,  })}/>}/>
+                        <Box direction="row"
+                        >
+                            <Box width="small"
+                                margin={{ left: "small" }}>
+                                <Text>
+                                    Enable Sync:
+                                         </Text>
                             </Box>
-                           < Box direction="row-responsive">
-                        <Text>Azure Users?:</Text>
+                            <Box direction="row">
+                                <Box >
+                                    <CheckBox
+                                        checked={this.state.Enable}
+                                        onChange={(event) => this.setState({ Enable: true })} />
+                                </Box>
 
-                        
-                            <CheckBox checked={this.state.Azure}
-                                  onChange={(event) => this.setState({ Azure:'Azure user' ,  })} value={Data}/>
                             </Box>
-                        <Box> 
+                        </Box>
+                        <Box direction="row"
+                            margin={{ top: "small" }}>
+                            <Box width="small"
+                                margin={{ left: "small" }}>
+                                <Text>
+                                    Azure Users? :
+                                         </Text>
+                            </Box>
+                            <Box direction="row">
+                                <Box >
+                                    <CheckBox
+                                        checked={this.state.Azure}
+                                        onChange={(event) => this.setState({ Azure: true })} />
+                                </Box>
+
+                            </Box>
+                        </Box>
+
+                        <Box margin={{ top: "medium" }}>
                             <Text>Discover Organizational units</Text>
-                            <Box align="" pad="" >
-                                <RadioButton
-                                    label="All"
-                                    name="radio"
-                                    checked={this.state.All}
-                                  onChange={(event) => this.setState({ All:'All' ,  })}
-                                />
-                                <RadioButton
-                                    label="Selected"
-                                    checked={this.state.Seleted}
-                                   onChange={(event) => this.setState({ Selected: 'Selected',  })}
-                                />
-                            </Box>
-                            </Box>
+                        </Box>
+                        <Box align="" pad="" direction="row-responsive" gap="small">
+
+                            <RadioButton
+
+                           
+                                label="All"
+                                name="radio"
+                                checked={this.state.All}
+                                onChange={(event) => this.setState({ All: true })} />
+                            
+                            <RadioButton
+                                label="Selected"
+                                name="radio"
+                                checked={this.state.Selected}
+                                onChange={(event) => this.setState({ Selected: true })} />
+                           
+                        </Box>
+
                     </Box>
                     <Box direction="row-responsive">
                         <Box flex={false} as="footer" align="start">
@@ -158,5 +165,5 @@ class ADSettingsModal extends Component {
         )
     }
 };
-  
+
 export default ADSettingsModal;
