@@ -30,33 +30,6 @@ class PurgePolicy extends Component {
   
   render()
   {
-    //theme of save button
-    const Theme = {
-      button: {
-        border:  {
-          radius: undefined,
-          color: "#2196f3"
-        },
-        primary: {
-          color: "#2196f3"
-        },
-        extend:  {
-          color: "white"
-      }
-    }
-    }
-    //theme of run button
-    const Theme1 = {
-      button: {
-        border:  {
-          radius: undefined,
-          color: "dark-3"
-        },
-        primary: {
-          color: "white"
-        },
-      }
-    }
       return(
         <div>
         <Grommet>
@@ -66,11 +39,10 @@ class PurgePolicy extends Component {
                 
                 <Box 
                 direction="row"
-                border={{color:"light-3"}}
-                
+                pad="medium"
+                border
                 >
-                    <Box width="medium" 
-                         border={{color:"light-3"}}
+                    <Box width="medium"
                     >
                       {/*radio buttons*/}
                       <RadioButton 
@@ -87,7 +59,7 @@ class PurgePolicy extends Component {
                       />
                     </Box>
                     {/*if grace period is selected*/}
-                    <Box>  
+                    <Box >  
                       {this.state.selectperiod==="grace period"?
                         <Box direction="row">
                         <Box>
@@ -118,10 +90,10 @@ class PurgePolicy extends Component {
 
                 <Box 
                 direction="row" 
-                border={{color:"light-3"}}
+                pad="medium"
+                border
                 >
                     <Box width="medium" 
-                         border={{color:"light-3"}}
                     >
                       <Text size="medium">Schedule:</Text>
                       <br/>
@@ -137,10 +109,10 @@ class PurgePolicy extends Component {
 
                 <Box 
                 direction="row"
-                border={{color:"light-3"}}
+                pad="medium"
+                border
                 >
-                    <Box width="medium" 
-                         border={{ color:"light-3"}}>
+                    <Box width="medium">
                         <Text size="medium">Enabled:</Text>
                     </Box>
                     <CheckBox
@@ -149,31 +121,25 @@ class PurgePolicy extends Component {
                     />
                 </Box>
 
-                <Box 
-                border={{color:"light-4"}} 
+                <Box  
                 align="center"
+                border
                 >
                   <Box  direction="row" >
                     {/*save button*/}
-                    <Grommet theme={Theme}>
                     <Box margin="small"  >
                         <Button
                         primary
                         label="Save" 
                         onClick={() => {}} />
                     </Box>
-                    </Grommet>
 
                     {/*run button*/}
-                    <Grommet theme={Theme1}>
                     <Box margin="small" >
                      <Button
-                     primary
                      label="Run" 
                      onClick={() => {}} />
                     </Box>
-                    </Grommet>
-
                   </Box>
                 <Box/>
               </Box>

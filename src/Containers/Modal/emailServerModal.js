@@ -13,7 +13,6 @@ import {
 
 import {  Close } from 'grommet-icons';
 
-
 class emailServerModal extends Component {
     constructor(props){
         super(props)

@@ -42,33 +42,6 @@ class ArchivalPolicy extends Component
       {
             const { collapsetemp } = this.state
 
-            //theme of save button
-            const Theme = {
-                  button: {
-                  border:  {
-                  radius: undefined,
-                  color: "#2196f3"
-                  },
-                  primary: {
-                  color: "#2196f3"
-                  },
-                  extend:  {
-                  color: "white"
-                  }
-                  }
-            }
-            //theme of run button
-            const Theme1 = {
-                  button: {
-                  border:  {
-                  radius: undefined,
-                  color: "dark-3"
-                  },
-                  primary: {
-                  color: "white"
-                  },
-                  }
-            }
             return(
                   <div>
                   <Grommet>
@@ -78,15 +51,18 @@ class ArchivalPolicy extends Component
                         
                               <Box 
                               direction="row"
-                              pad="10px"
-                              border={{color:"light-5"}}
+                              pad="small"
                               >
+                                    <Box
+                                    pad="small"
+                                    >
                                     <RadioButton 
                                     label="All" 
                                     value="all" 
                                     checked={this.state.isAllorSelected==="all"}
                                     onChange={(event)=>this.setState({isAllorSelected:event.target.value})}
                                     />
+                                    </Box>
                                     <RadioButton 
                                     label="Selected" 
                                     value="selected" 
@@ -99,15 +75,18 @@ class ArchivalPolicy extends Component
                               <div>
                               <Box 
                               direction="row"
-                              pad="7px"
-                              border={{color:"light-5"}}
+                              pad="small"
                               >     
+                                    <Box
+                                    pad="small"
+                                    >
                                     <RadioButton 
                                     label="Include" 
                                     value="include" 
                                     checked={this.state.isIncludedorExcluded==="include"}
                                     onChange={(event)=>this.setState({isIncludedorExcluded:event.target.value})}
                                     />
+                                    </Box>
                                     <RadioButton 
                                     label="Exclude" 
                                     value="exclude" 
@@ -118,11 +97,10 @@ class ArchivalPolicy extends Component
 
                               <Box 
                               direction="row"
-                              border={{color:"light-5"}}
+                              pad="small"
                               >
                                     <Box  
                                     width="large" 
-                                    border={{color:"light-5"}}
                                     >
                                     Server:
                                     </Box>
@@ -138,11 +116,10 @@ class ArchivalPolicy extends Component
 
                               <Box 
                               direction="row"
-                              border={{color:"light-5"}}
+                              pad="small"
                               >
                                     <Box  
                                     width="large" 
-                                    border={{color:"light-5"}}
                                     >
                                     Storage:
                                     </Box>
@@ -158,11 +135,10 @@ class ArchivalPolicy extends Component
 
                               <Box 
                               direction="row"
-                              border={{color:"light-5"}}
+                              pad="small"
                               >
                                     <Box  
                                     width="large"
-                                    border={{color:"light-5"}}
                                     >
                                     MailBox Store:
                                     </Box>
@@ -178,16 +154,16 @@ class ArchivalPolicy extends Component
 
                               <Box 
                               direction="row"
-                              border={{color:"light-5"}}
+                              pad="small"
                               >
                                     <Box 
+                                    
                                     width="large"
-                                    border={{color:"light-5"}}
                                     >Mailbox(es):</Box>
 
                                     <Box fill>
                                     <Box direction="row">
-                                    <Box height="xsmall" width="large"overflow="auto" background="light-2" border={{color:"dark-5"}}>
+                                    <Box height="xsmall" width="large"overflow="auto" border={{color:"dark-5"}}>
                                     <Box pad="xlarge"></Box>
                                     <Box pad="xlarge"></Box>
                                     </Box>
@@ -201,14 +177,12 @@ class ArchivalPolicy extends Component
                                     />
                                     </Box>
                                     {/*add button*/}
-                                    <Grommet theme={Theme}>
                                     <Box margin="small"  >
                                           <Button
                                           primary
                                           label="Add" 
                                           onClick={() => {}} />
                                     </Box>
-                                    </Grommet>
                                     </Box>
                                     </Box>
                                     <div>Total</div>
@@ -217,85 +191,69 @@ class ArchivalPolicy extends Component
 
                               <Box 
                               direction="row"
-                              border={{color:"light-5"}}
+                              pad="small"
                               >
                                     <Box 
                                     width="large"
-                                    border={{color:"light-5"}}
                                     >Included MailBox(es):</Box>
 
                                     <Box fill >
                                     <Box direction="row">
-                                    <Box height="xsmall" width="large" overflow="auto" background="light-2" border={{color:"dark-5"}} >
+                                    <Box height="xsmall" width="large" overflow="auto" border={{color:"dark-5"}} >
                                     <Box pad="xlarge" ></Box>
                                     <Box pad="xlarge"></Box>
                                     </Box>
                                     {/*remove button*/}
-                                    <Grommet theme={Theme1}>
                                     <Box margin="small"  >
                                           <Button
-                                          primary
                                           label="Remove" 
                                           onClick={() => {}} />
                                     </Box>
-                                    </Grommet>
                                     </Box>
                                     <div>Total</div>
                                     </Box>
                               </Box>
                               
                               <Box 
-                              border={{color:"light-5"}} 
                               align="center"
                               >
                                     <Box  direction="row" >
                                     {/*save button*/}
-                                    <Grommet theme={Theme}>
                                     <Box margin="small"  >
                                           <Button
                                           primary
                                           label="Save" 
                                           onClick={() => {}} />
                                     </Box>
-                                    </Grommet>
 
                                     {/*cancel button*/}
-                                    <Grommet theme={Theme1}>
                                     <Box margin="small" >
-                                    <Button
-                                    primary
-                                    label="Cancel" 
-                                    onClick={() => {}} />
+                                          <Button
+                                          label="Cancel" 
+                                          onClick={() => {}} />
                                     </Box>
-                                    </Grommet>
                                     </Box>
                               </Box>
                               </div>
                               :
                               <Box 
-                              border={{color:"light-5"}} 
                               align="center"
                               >
                                     <Box direction="row" >
                                     {/*save button*/}
-                                    <Grommet theme={Theme}>
                                     <Box margin="small"  >
                                           <Button
                                           primary
                                           label="Save" 
                                           onClick={() => {}} />
                                     </Box>
-                                    </Grommet>
 
-                                    {/*run button*/}
-                                    <Grommet theme={Theme1}>
+                                    {/*cancel button*/}
                                     <Box margin="small" >
                                     <Button
-                                    primary
                                     label="Cancel" 
                                     onClick={() => {}} />
                                     </Box>
-                                    </Grommet>
                                     </Box>
                               </Box>}
                               
@@ -315,11 +273,10 @@ class ArchivalPolicy extends Component
                               <div>
                               <Box 
                               direction="row"
-                              border={{color:"light-5"}}
+                              pad="small"
                               >
                                     <Box  
                                     width="large"
-                                    border={{color:"light-5"}}
                                     >
                                     Email Id:
                                     </Box>
@@ -333,25 +290,22 @@ class ArchivalPolicy extends Component
                                           />
                                           </Box>
                                     {/*add button*/}
-                                    <Grommet theme={Theme}>
                                     <Box margin="small"  >
                                           <Button
                                           primary
                                           label="Add" 
                                           onClick={() => {}} />
                                     </Box>
-                                    </Grommet>
                                     </Box>
                                     </Box>
                               </Box>
                               
                               <Box 
                               direction="row"
-                              border={{color:"light-5"}}
+                              pad="small"
                               >
                                     <Box 
                                     width="large"
-                                    border={{color:"light-5"}}
                                     >Selected Email Id:</Box>
 
                                     <Box fill>
@@ -364,14 +318,11 @@ class ArchivalPolicy extends Component
                                     <div>Total</div>
                                     </Box>
                                     {/*remove button*/}
-                                    <Grommet theme={Theme1}>
                                     <Box margin="small"  >
                                           <Button
-                                          primary
                                           label="Remove" 
                                           onClick={() => {}} />
                                     </Box>
-                                    </Grommet>
                                     </Box>
                                     </Box>
                               </Box>
@@ -380,7 +331,6 @@ class ArchivalPolicy extends Component
                         </Box>
                   </Grommet>
                   </div>
-
             )
       }
 }

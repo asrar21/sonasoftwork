@@ -114,9 +114,12 @@
                       { label: 'Email Server(Faizan)', onClick: () => { window.location.pathname = "settings/emailServer"} },
                       { label: 'Content Identification Policy(Faizan)', onClick: () => { window.location.pathname = "settings/contentIdentificationPolicy"} },
                       { label: 'Labeling Policy(Faizan)', onClick: () => { window.location.pathname = "settings/labelingPolicy" } },
-                      { label: 'Activate Product(Hafsa)', onClick: () => { window.location.pathname = "activateProduct"} },
-                      { label: 'Purge Policy(Hafsa)', onClick: () => { window.location.pathname = "purgePolicy"} },
+                      { label: 'Activate Product(Hafsa)', onClick: () => { window.location.pathname = "maintenance/activateProduct"} },
+                      { label: 'Purge Policy(Hafsa)', onClick: () => { window.location.pathname = "maintenance/purgePolicy"} },
                       { label: 'Archival Policy(Hafsa)', onClick: () => { window.location.pathname = "settings/archivalPolicy"} },
+                      {label: 'Mailbox Access(Hafsa)', onClick: ()=>{window.location.pathname="settings/mailboxAccess"} },
+                      {label: 'Old Domain Settings(Hafsa)', onClick:()=>{window.location.pathname="settings/oldDomainSettings"}},
+                      {label: 'Folder Sync Policy(Hafsa)', onClick:()=>{window.location.pathname="settings/folderSyncPolicy"}}
                     ]}
                   />
                     <CircleInformation cursor="pointer" textDecoration="none" />
