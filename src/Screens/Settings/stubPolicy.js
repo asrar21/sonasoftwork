@@ -10,12 +10,13 @@ const stubPolicyColumn = [
       {
             property: "name",
             header: "Name",
-            search: "name"
+            search: "name",
+            
       },
       {
             property: "description",
             header: "Description",
-            search: "description" || "name"
+            search: "description"
       },
       {
             property: "priority",

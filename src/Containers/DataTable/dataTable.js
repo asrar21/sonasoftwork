@@ -91,7 +91,7 @@ class CustomDataTable extends Component {
                           ...this.props.columns
                   ].map(col => ({ ...col }))}
                   
-                  resizeable
+                  // resizeable in the docs it is written resizeable shoud not be used with size prop,you can se one at a time
                   data = {this.state.data}
                   onSearch = {this.onSearch}
                   sortable
