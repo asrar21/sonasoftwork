@@ -21,7 +21,7 @@ r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
     console.log(conn);
 
 
-
+//userapi
     app.post("/getuser", (req, res) => {
         console.log("email req", req.body)
         r.table('user').filter(r.row('Email').eq(req.body.Email)).run(conn, (err, result) => {
@@ -42,7 +42,7 @@ r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
         })
 
     })
-
+//ADSetting api
     app.get('/adsettings', (req, res) => {
         r.table('AD_setting').run(conn, (err, result) => {
             if (err) throw err
@@ -88,7 +88,7 @@ r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
 
 
 
-
+//Notification api
     app.get('/notification', (req, res) => {
         r.table('Notification').run(conn, (err, result) => {
             if (err) throw err
@@ -120,7 +120,9 @@ r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
 
             if (err) throw err;
             if (result) {
-                console.log("data is inserted")
+                res.status(200).json({
+                    result
+                })
             }
 
         })
@@ -154,7 +156,9 @@ r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
 
             if (err) throw err;
             if (result) {
-                console.log(" Email server data is inserted")
+                res.status(200).json({
+                    result
+                })
             }
 
         })
@@ -208,7 +212,9 @@ r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
 
             if (err) throw err;
             if (result) {
-                console.log(" Contentidentification data is inserted")
+                res.status(200).json({
+                    result
+                })
             }
 
         })
@@ -236,10 +242,7 @@ r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
 
 
 
-        //labeling policy
-        // r.db('test').tableCreate('LabelingPolicy').run(conn, (err,res)=>{
-        //     if(err) throw err;
-        //     console.log(res)
+        
         app.post('/LabelingPolicy', (req, res) => {
             let data = [
                 {
@@ -256,7 +259,9 @@ r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
 
                 if (err) throw err;
                 if (result) {
-                    console.log(" LabelingPolicy data is inserted")
+                   res.status(200).json({
+                       result
+                   })
                 }
 
             })
@@ -287,10 +292,7 @@ r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
 
 
 
-            //Retention Policy
-            // r.db('test').tableCreate('RetentionPolicy').run(conn, (err,res)=>{
-            //     if(err) throw err;
-            //     console.log(res)
+            
             app.post('/retentionPolicyData', (req, res) => {
                 let data = [
                     {
@@ -309,7 +311,9 @@ r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
 
                     if (err) throw err;
                     if (result) {
-                        console.log("Retention Policy data is inserted")
+                       res.status(200).json({
+                           result
+                       })
                     }
 
                 })
@@ -340,10 +344,10 @@ r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
 
 
 
+//archiveHistory api
 
-
-    app.get('/archiveStore2', (req, res) => {
-        r.table('ArchiveStore2').run(conn, (err, result) => {
+    app.get('/archivehistory', (req, res) => {
+        r.table('ArchiveHistory').run(conn, (err, result) => {
             if (err) throw err
             result.toArray((err, Data) => {
                 if (err) {
@@ -360,7 +364,7 @@ r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
             })
         })
     })
-
+//archive Store api
     app.get("/archiveStore", (req, res) => {
         r.table('ArchiveStore').run(conn, (err, response) => {
             if (err) throw err
@@ -384,9 +388,11 @@ r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
 
 
         ]
-        r.table("StubPolicy").insert(data).run(conn, (err, res) => {
+        r.table("StubPolicy").insert(data).run(conn, (err, result) => {
             if (err) throw err
-            console.log("stubPolicy data inserted");
+           res.status(200).json({
+               result
+           })
 
         })
     })
@@ -401,54 +407,61 @@ r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
             })
         })
     })
+    //StubPolicyAvailableMailbox
+
+
+        
+      
+    app.get("/stubpolicyavailablemailbox", (req, res) => {
+        r.table("StubPolicyAvailableMailbox").run(conn, (err, response) => {
+            if (err) throw err
+            response.toArray((err, Data) => {
+                res.status(200).json({
+                    Data
+
+                })
+            })
+        })
+    })
+    //usermanagement
+    app.post("/usermanagement", (req, res) => {
+        let data = [{
+            role:req.body.role ,
+           
+            userName:req.body.userName,
+            displayName:req.body.displayName,
+            userType:req.body.userType,
+            mailbox:req.body.mailbox
+        }
+
+
+        ]
+        r.table("UserManagement").insert(data).run(conn, (err, result) => {
+            if (err) throw err
+           res.status(200).json({
+               result
+           })
+
+        })
+    })
+    app.get("/usermanagement", (req, res) => {
+        r.table("UserManagement").run(conn, (err, response) => {
+            if (err) throw err
+            response.toArray((err, Data) => {
+                res.status(200).json({
+                    Data
+
+                })
+            })
+        })
+    })
+
+
 
 
 
 })
 
-
-// r.db('test').tableCreate('ArchiveStore2').run(conn, (err,res)=>{
-//     if(err) throw err;
-//     console.log(res)
-//     let data2 = [
-//         {
-//             type: "SIZE",
-//                size: "10240.00",
-//             period: "0",
-//             createdOn: "25-MAY-2018 9:06",
-//             createdBy: "SONASOFTARC",
-
-//         },
-//         {
-//             type: "SIZE",
-//                size: "10240.00",
-//             period: "0",
-//             createdOn: "28-MAY-2018 9:06",
-//             createdBy: "SONASOFTARC",
-
-//         },
-//         {
-//             type: "SIZE",
-//                size: "10240.00",
-//             period: "0",
-//             createdOn: "28-june-2018 8:06",
-//             createdBy: "SONASOFTARC",
-
-//         },
-
-//     ]
-//     r.table('ArchiveStore2').insert(data2).run(conn, (err, result) => {
-
-//         if (err) throw err;
-//         if (result) {
-//             console.log("Retention Policy data is inserted")
-//         }
-//     })
-
-// r.db('test').tableCreate('Notification').run(conn, (err,res)=>{
-//     if(err) throw err;
-//     console.log(res)
-// })
 
 
 

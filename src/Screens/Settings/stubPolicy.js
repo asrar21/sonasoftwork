@@ -73,11 +73,11 @@ class StubPolicy extends Component {
                   stubPolicyModalOpen: false
             })
       }
-      componentDidMount(){
+      fetchData(){
             axios.get("http://localhost:4001/stubpolicy")
             
               .then(response=>{
-                  console.log("AD response",response.data.Data)
+                  
                    this.setState({
                     data1:response.data.Data
                    })
@@ -88,20 +88,8 @@ class StubPolicy extends Component {
                   console.log("error",error)
               })
           }
-          componentDidUpdate(){
-            axios.get("http://localhost:4001/stubpolicy")
-            
-              .then(response=>{
-                  console.log("AD response",response.data.Data)
-                   this.setState({
-                    data1:response.data.Data
-                   })
-          
-              })
-              
-              .catch(error=>{
-                  console.log("error",error)
-              })
+          componentDidMount(){
+            this.fetchData()
           }
           
 
@@ -112,7 +100,7 @@ class StubPolicy extends Component {
                         <Box>
                               <SecondaryNavbar pageIcon="StubPolicy" pageName="StubPolicy" />
                         </Box>
-                        {stubPolicyModalOpen && <StubPolicyModal header="Add New Stub Policy" close={() => this.closeStubPolicyModal()} />}
+                        {stubPolicyModalOpen && <StubPolicyModal header="Add New Stub Policy" update={this.fetchData()} close={() => this.closeStubPolicyModal()} />}
                         <Box>
                               <DataTable
                                     margin="medium" 

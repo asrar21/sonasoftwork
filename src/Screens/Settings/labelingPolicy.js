@@ -73,11 +73,11 @@ class labelingPolicy extends Component {
       }
 
 
-      componentDidMount() {
+      fetchData() {
             const { } = this.state
             axios.get("http://localhost:4001/LabelingPolicy")
                   .then(response => {
-                        console.log("AD response", response.data.Data)
+                       
                         this.setState({
                               data1: response.data.Data
                         })
@@ -92,21 +92,8 @@ class labelingPolicy extends Component {
 
             
       }
-      componentDidUpdate() {
-            const {  } = this.state
-            axios.get("http://localhost:4001/LabelingPolicy")
-                  .then(response => {
-                        console.log("AD response", response.data.Data)
-                        this.setState({
-                              data1: response.data.Data
-                        })
-
-                  })
-
-                  .catch(error => {
-                        console.log("error", error)
-                  })
-            
+      componentDidMount() {
+           this.fetchData()
             
 
             
@@ -131,7 +118,7 @@ class labelingPolicy extends Component {
                         <Box>
                               <SecondaryNavbar pageName="Labelling Policy" pageIcon="LabellingPolicy" />
                         </Box>
-                        {labelingPolicyModal && <LabelingPolicyModal header="Add New Labeling Policy" close={this.closeLabelingPolicyModal} />}
+                        {labelingPolicyModal && <LabelingPolicyModal header="Add New Labeling Policy" update={this.fetchData()} close={this.closeLabelingPolicyModal} />}
                         <Box margin="medium">
                               <DataTable
                                      columns={[

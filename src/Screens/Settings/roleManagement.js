@@ -90,37 +90,7 @@ class RoleManagement extends Component {
                 roleManagementModalopen: false
             })
       }
-    //   componentDidMount(){
-    //         axios.get("http://localhost:4001/stubpolicy")
-            
-    //           .then(response=>{
-    //               console.log("AD response",response.data.Data)
-    //                this.setState({
-    //                 data1:response.data.Data
-    //                })
-          
-    //           })
-              
-    //           .catch(error=>{
-    //               console.log("error",error)
-    //           })
-    //       }
-    //       componentDidUpdate(){
-    //         axios.get("http://localhost:4001/stubpolicy")
-            
-    //           .then(response=>{
-    //               console.log("AD response",response.data.Data)
-    //                this.setState({
-    //                 data1:response.data.Data
-    //                })
-          
-    //           })
-              
-    //           .catch(error=>{
-    //               console.log("error",error)
-    //           })
-    //       }
-          
+    
 
       render() {
             const { assignRole, priority, maximumStubPeriod, roleManagementModalopen ,userRole} = this.state

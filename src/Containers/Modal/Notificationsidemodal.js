@@ -21,35 +21,20 @@ class NotificationSideModal extends Component {
         super(props);
         this.state = {
             
-            Notification_type:"",           
-             To:"",
-            Cc:"",
+            Notification_type: this.props.Datum ? this.props.Datum.Notification_type : "",           
+            To: this.props.Datum ? this.props.Datum.To : "",
+            Cc: this.props.Datum ? this.props.Datum.Cc : "",
             errorNotification:"",
             errorTo:"",
             errorCc:"",
-            Data:this.props.Datum
+            
         };
     }
 
-    changehandlernoti=(e)=>{
+    changehandler=(e)=>{
         e.preventDefault();
-        console.log("notification",e.target.value)
         this.setState({
-            Notification_type:e.target.value
-        })
-    }
-    changehandlerTo=(e)=>{
-        e.preventDefault();
-        console.log("To",e.target.value)
-        this.setState({
-            To:e.target.value
-        })
-    }
-    changehandlerCc=(e)=>{
-        e.preventDefault();
-        console.log("Cc",e.target.value)
-        this.setState({
-            Cc:e.target.value
+            [e.target.name]: e.target.value
         })
     }
     Validate=()=>{
@@ -65,25 +50,47 @@ class NotificationSideModal extends Component {
         return true;
 
     }
-    ssubmit=()=>{
+
+    postData = () => {
         
-        const isValid=this.Validate();
-        if(isValid){
-        axios({
-            method: 'post',
-            url: 'http://localhost:4001/notification',
-            data: {
+            axios({
+                method: 'post',
+                url: 'http://localhost:4001/notification',
+                data: {
+                    Notification_type:this.state.Notification_type ,
+                    To:this.state.To,
+                   Cc:this.state.Cc
+                },
+                header:{'Content-Type': 'application/json'}
+              });
+       
+        
+
+    }
+    async onsubmit(){
+        
+        
+        try{
+            const respose = await axios.post('http://localhost:4001/notification', {
                 Notification_type:this.state.Notification_type ,
-                To:this.state.To,
-               Cc:this.state.Cc
-            },
-            header:{'Content-Type': 'application/json'}
-          });
+                    To:this.state.To,
+                   Cc:this.state.Cc
+              });
+
+              if(respose){
+                  this.props.update();
+              }
+          
+           
+        }
+        catch (e){
+            console.log(e)
+
         }
         }
    
     render(){
-        const {Data}=this.state;
+        const { Notification_type, To, Cc } = this.state;
         return (
             <Layer
                 position="right"
@@ -99,7 +106,7 @@ class NotificationSideModal extends Component {
                     pad="medium"
                     onSubmit={this.props.close}
                 >
-                    <Box flex={false} direction="row" justify="between">
+                <Box><Box flex={false} direction="row" justify="between">
                         <Heading level={2} margin="none">
                             {this.props.header}
                         </Heading>
@@ -108,31 +115,32 @@ class NotificationSideModal extends Component {
                     </Box>
                     <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
                         <FormField label="Notification type">
-                            <TextInput   value={Data?Data.Notification_type:<TextInput onChange={(e)=>this.changehandlernoti(e)}/>} />
+                            <TextInput   value={ Notification_type} name="Notification_type" onChange={(e)=>this.changehandler(e)} />
                             
                         </FormField>
                         <Text color="red">{this.state.errorNotification}</Text>
                         
                         <FormField label="To">
-                            <TextInput  value={Data?Data.To:<TextInput onChange={(e)=>this.changehandlerTo(e)}/>} />
+                            <TextInput  value={To} name="To" onChange={(e)=>this.changehandler(e)}/>
                         </FormField>
                         
                         <FormField label="Cc">
-                            <TextInput   value={Data?Data.Cc:<TextInput onChange={(e)=>this.changehandlerCc(e)} />}/>
+                            <TextInput   value={Cc} name="Cc" onChange={(e)=>this.changehandler(e)} />
 
                         </FormField>
                         
-                        
+                        </Box>
                         
                     </Box>
                     
+                    
                    
-                    <Box direction="row-responsive">
-                        <Box  as="footer" align="start">
+                    <Box direction="row-responsive" gap="small">
+                        <Box  as="footer" align="start" gap="small">
                             <Button
                                 type="save"
                                 label="Save"
-                                onClick={this.ssubmit}
+                                onClick={()=>this.onsubmit()}
                                 primary
                             />
                         </Box>

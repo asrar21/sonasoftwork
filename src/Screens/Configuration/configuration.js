@@ -117,7 +117,7 @@ class Configuration extends Component {
     componentWillMount(){
         axios.get("http://localhost:4001/adsettings")
         .then(response=>{
-            console.log("AD response",response.data.Data)
+            
              this.setState({
                  data:response.data.Data
              })
@@ -132,7 +132,7 @@ class Configuration extends Component {
     componentDidUpdate(){
         axios.get("http://localhost:4001/adsettings")
         .then(response=>{
-            console.log("AD response",response.data.Data)
+            
              this.setState({
                  data:response.data.Data
              })
@@ -150,7 +150,7 @@ class Configuration extends Component {
         const { checked, } = this.state;
         const { open, Editopen } = this.state;
         const { selected } = this.state;
-
+        this.state.AD && console.log("this.state.AD", this.state.AD)
 
         return (
             <Grommet theme={grommet} full>

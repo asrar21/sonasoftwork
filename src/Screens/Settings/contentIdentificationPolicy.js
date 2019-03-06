@@ -126,11 +126,11 @@ class contentIdentificationPolicy extends Component {
             })
       };
 
-      componentWillMount() {
+      fetchData() {
             const { data ,data1} = this.state
             axios.get("http://localhost:4001/ContentIdentification")
                   .then(response => {
-                        console.log("AD response", response.data.Data)
+                        
                         this.setState({
                               data1: response.data.Data
                         })
@@ -142,20 +142,8 @@ class contentIdentificationPolicy extends Component {
                   })
             
       }
-      componentDidUpdate() {
-            const { data ,data1} = this.state
-            axios.get("http://localhost:4001/ContentIdentification")
-                  .then(response => {
-                        console.log("AD response", response.data.Data)
-                        this.setState({
-                              data1: response.data.Data
-                        })
-
-                  })
-
-                  .catch(error => {
-                        console.log("error", error)
-                  })
+      componentDidMount() {
+            this.fetchData()
             
       }
       render() {
@@ -165,7 +153,7 @@ class contentIdentificationPolicy extends Component {
                         <Box>
                               <SecondaryNavbar pageName="Conent Identification Policy" pageIcon="FlagPolicy" />
                         </Box>
-                        {addPolicyModal && <ContentPageModal header="Add New Content Identification Policy" close={this.closeAddPolicyModal} />}
+                        {addPolicyModal && <ContentPageModal header="Add New Content Identification Policy"  update={this.fetchData()}close={this.closeAddPolicyModal} />}
                         <Box>
                               <DataTable
                                     columns={[

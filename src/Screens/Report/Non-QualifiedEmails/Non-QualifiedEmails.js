@@ -35,12 +35,12 @@ export default class NonQualifiedEmails extends Component {
                     <Box justify="between" direction="row" pad="small" margin="small" background="#d3d9e2">
                         <Text margin={{ left: "40%" }}>Search Criteria</Text>
                         <Box>
-                            {collapseNonQualifiedEmails && <FormUp onClick={() => this.CollapseNonQualifiedEmails()} />}
+                            {!collapseNonQualifiedEmails && <FormUp onClick={() => this.CollapseNonQualifiedEmails()} />}
            
-                            {!collapseNonQualifiedEmails && <FormDown onClick={() => this.CollapseNonQualifiedEmails()} />}
+                            {collapseNonQualifiedEmails && <FormDown onClick={() => this.CollapseNonQualifiedEmails()} />}
                         </Box>
                     </Box>
-                    {collapseNonQualifiedEmails &&
+                    {!collapseNonQualifiedEmails &&
                         <Box>
                              <Box direction="row"
                                 >

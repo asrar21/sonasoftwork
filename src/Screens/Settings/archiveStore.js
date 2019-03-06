@@ -139,9 +139,9 @@ class archiveStore extends Component {
       
       componentDidMount(){
         
-        axios.get("http://localhost:4001/archiveStore2")
+        axios.get("http://localhost:4001/archivehistory")
         .then(response=>{
-            console.log("AD response",response.data.Data)
+            
              this.setState({
                  data2:response.data.Data
              })
@@ -153,7 +153,7 @@ class archiveStore extends Component {
         })
         axios.get("http://localhost:4001/archiveStore")
         .then(response=>{
-            console.log("Archive Store",response.data.data)
+            
              this.setState({
                  data:response.data.data
              })
