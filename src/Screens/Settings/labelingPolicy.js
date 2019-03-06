@@ -1,66 +1,102 @@
 import React, { Component } from 'react'
 import { Grommet, Box, DataTable, CheckBox, Image, Button } from "grommet";
 import SecondaryNavbar from "../../Containers/SecondaryNavbar/secondaryNavbar";
-import { Edit } from "grommet-icons";
-import  Tick from "../../assets/Icons/submit_purple.png";
-import Cross from "../../assets/Icons/cancel_purple.png";
+import { Edit ,Checkmark,Close} from "grommet-icons";
+
 import LabelingPolicyModal from "../../Containers/Modal/labelingPolicyModal";
+import axios from 'axios'
 
-const labelingPolicyData = [
+// const labelingPolicyData = [
+//       {
+//             policyName: "Policy 1",
+//             LabelName: "Crowdfunder",
+//             status: true
+//       },
+//       {
+//             policyName: "ActOn Policy",
+//             LabelName: "ActOn",
+//             status: true
+//       },
+//       {
+//             policyName: "Dell Policy",
+//             LabelName: "Dell",
+//             status: true
+//       },
+//       {
+//             policyName: "Daily Inspiration",
+//             LabelName: "Daily Inspiration",
+//             status: true
+//       }
+// ]
+
+const columns=[
+      
       {
-            policyName: "Policy 1",
-            LabelName: "Crowdfunder",
-            status: true
+            property: 'policyName',
+            header: 'Policy Name',
       },
       {
-            policyName: "ActOn Policy",
-            LabelName: "ActOn",
-            status: true
+            property: 'LabelName',
+            header: 'Label Name',
       },
       {
-            policyName: "Dell Policy",
-            LabelName: "Dell",
-            status: true
+            property: 'status',
+            header: 'Status',
+            render: datum => (
+                  datum.status ? 
+                        <Box>
+                              <Checkmark />
+                        </Box>
+                  :
+                        <Box>
+                              <Close />
+                        </Box>
+            
+            )
       },
-      {
-            policyName: "Daily Inspiration",
-            LabelName: "Daily Inspiration",
-            status: true
-      }
 ]
-
+const controlledColumns = columns.map(col => Object.assign({}, col));
 class labelingPolicy extends Component {
-      constructor(props){
+      constructor(props) {
             super(props)
             this.state = {
                   selectAll: false,
-                  data : [],
-                  
+                  data: [],
+                  data1:[]
+
             }
       }
-      selectAllData(e){
+      selectAllData(e) {
             this.setState({
                   selectAll: !this.state.selectAll
             })
       }
 
 
-      componentDidMount(){
-            const { data } = this.state
-            labelingPolicyData.map(value => {
-                  data.push({
-                        checkBox: <CheckBox />,
-                        edit: <Edit cursor="pointer" onClick={this.openLabelingPolicyModal} />,
-                        policyName: value.policyName,
-                        LabelName: value.LabelName,
-                        status: value.status ? <Image src={Tick}  width="25px" height="25px" />: <Image src={Cross} width="25px" height="25px"  />
+      fetchData() {
+            const { } = this.state
+            axios.get("http://localhost:4001/LabelingPolicy")
+                  .then(response => {
+                       
+                        this.setState({
+                              data1: response.data.Data
+                        })
 
                   })
-            })
 
-            this.setState({
-                  data
-            })
+                  .catch(error => {
+                        console.log("error", error)
+                  })
+            
+            
+
+            
+      }
+      componentDidMount() {
+           this.fetchData()
+            
+
+            
       }
 
       closeLabelingPolicyModal = () => {
@@ -76,56 +112,51 @@ class labelingPolicy extends Component {
       }
 
       render() {
-            const { selectAll, data, labelingPolicyModal} = this.state
-      return (
-            <Grommet>
-                  <Box>
-                        <SecondaryNavbar pageName="Labelling Policy" pageIcon="LabellingPolicy" />
-                  </Box>
-                  {labelingPolicyModal && <LabelingPolicyModal header="Add New Labeling Policy" close={this.closeLabelingPolicyModal} />}
-                  <Box margin="medium">
-                        <DataTable 
-                              columns={[
-                                    {
-                                    property: 'checkBox',
-                                    header: <CheckBox
-                                                checked={selectAll}
-                                                // label="interested?"
-                                                onChange={(event) =>  this.selectAllData(event)}
-                                          />,
-                                    
-                                    },
-                                    {
-                                          property: 'edit',
-                                          header: 'Edit',
-                                    },
-                                    {
-                                          property: 'policyName',
-                                          header: 'Policy Name',
-                                    },
-                                    {
-                                          property: 'LabelName',
-                                          header: 'Label Name',
-                                    },
-                                    {
-                                          property: 'status',
-                                          header: 'Status',
-                                    },
-
-                              ]}
-
-                              data = {data}
-                        />
-
-                        <Box direction="row" justify="center" margin="large" gap="medium">
-                              <Button label="Add" onClick={this.openLabelingPolicyModal}/>
-                              <Button label="Enable" />
-                              <Button label="Disable" />
-                              <Button label="Delete" />
+            const { selectAll, data, labelingPolicyModal } = this.state
+            return (
+                  <Grommet>
+                        <Box>
+                              <SecondaryNavbar pageName="Labelling Policy" pageIcon="LabellingPolicy" />
                         </Box>
-                  </Box>
-            </Grommet>
-      )
+                        {labelingPolicyModal && <LabelingPolicyModal header="Add New Labeling Policy" update={this.fetchData()} close={this.closeLabelingPolicyModal} />}
+                        <Box margin="medium">
+                              <DataTable
+                                     columns={[
+                                          {
+                                                property: 'checkBox',
+                                                header: <CheckBox
+                                                      checked={this.state.selectAll}
+                                                      // label="interested?"
+                                                      onChange={(event) => this.selectAllData(event)}
+                                                />,
+                          
+                                          },
+                                          {
+                                                property: "edit",
+                                                header: "Edit",
+                                                render: (datum) => (
+                                                      <Box>
+                                                            <Edit cursor="pointer"  onClick={()=>this.EditForm(datum)}/>
+                                                      </Box>
+                                                )
+                                          },
+                                         
+                                 
+                                    ...controlledColumns
+                              ].map(col => ({ ...col }))}
+                              data={this.state.data1}
+                              sortable
+                              />
+
+                              <Box direction="row" justify="center" margin="large" gap="medium">
+                                    <Button label="Add" onClick={this.openLabelingPolicyModal} />
+                                    <Button label="Enable" />
+                                    <Button label="Disable" />
+                                    <Button label="Delete" />
+                              </Box>
+                        </Box>
+                  </Grommet>
+            )
       }
 };
 

@@ -104,14 +104,32 @@
                     justify="between"
                     align="start"
                     width={"100%"}
-                    direction="row"
+                    direction="row-responsive"
                 >
-                
-                  <Menu
-                    label="Screens Links"
-                    items={[
-                      { label: 'configuration(Asrar)', onClick: () => {window.location.pathname = "/configuration"} },
+                  
+                   <Box  justify="between"
+                    align="start"
+                    
+                    direction="column">
+                      <Menu label="Report screens (Asrar)" items={[
+                        { label: 'configuration(Asrar)', onClick: () => {window.location.pathname = "/configuration"} },
                       { label: 'notification(Asrar)', onClick: () => { window.location.pathname = "/notification"} },
+                      { label: 'ArchivalEmail(Asrar)', onClick: () => { window.location.pathname = "/ArchivalEmail"} },
+                      { label: 'EmailStatistics(Asrar)', onClick: () => { window.location.pathname = "/EmailStatistic"} },
+                      { label: 'Attachment(Asrar)', onClick: () => { window.location.pathname = "/Attachments"} },
+                      { label: 'Compliance(Asrar)', onClick: () => { window.location.pathname = "/Compliances"} },
+                      { label: 'AccessControl(Asrar)', onClick: () => { window.location.pathname = "/AccessControls"} },
+                      { label: 'ArchiveStoreStatistics(Asrar)', onClick: () => { window.location.pathname = "/ArchiveStore"} },
+                      { label: 'ConfigurationManagemnt(Asrar)', onClick: () => { window.location.pathname = "/ConfigurationManagemnt"} },
+                      { label: 'DataInformationLeakagePrevention(Asrar)', onClick: () => { window.location.pathname = "/DataInformationLeakagePrevention"} },
+                      { label: 'Report Retention Policy(Asrar)', onClick: () => { window.location.pathname = "/Retention_Policy"} },
+                      { label: 'Report NonQualifiedEmails(Asrar)', onClick: () => { window.location.pathname = "/NonQualifiedEmails"} },
+                      { label: ' Report Purge_Policy(Asrar)', onClick: () => { window.location.pathname = "/Purge_Policy"} },
+
+                      ]}/>
+                      <Menu label="Setup Screens"
+                      items={[
+                     
                       { label: 'Email Server(Faizan)', onClick: () => { window.location.pathname = "settings/emailServer"} },
                       { label: 'Content Identification Policy(Faizan)', onClick: () => { window.location.pathname = "settings/contentIdentificationPolicy"} },
                       { label: 'Labeling Policy(Faizan)', onClick: () => { window.location.pathname = "settings/labelingPolicy" } },
@@ -120,11 +138,15 @@
                       { label: 'Stub Policy(Faizan)', onClick: () => { window.location.pathname = "settings/stubPolicy" } },
                       { label: 'User Management(Faizan)', onClick: () => { window.location.pathname = "settings/userManagement" } },
                       { label: 'Role Management(Faizan)', onClick: () => { window.location.pathname = "settings/roleManagement" } },
-                      { label: 'Activate Product(Hafsa)', onClick: () => { window.location.pathname = "activateProduct"} },
-                      { label: 'Purge Policy(Hafsa)', onClick: () => { window.location.pathname = "purgePolicy"} },
+                      { label: 'Activate Product(Hafsa)', onClick: () => { window.location.pathname = "maintenance/activateProduct"} },
+                      { label: 'Purge Policy(Hafsa)', onClick: () => { window.location.pathname = "maintenance/purgePolicy"} },
                       { label: 'Archival Policy(Hafsa)', onClick: () => { window.location.pathname = "settings/archivalPolicy"} },
+                      {label: 'Mailbox Access(Hafsa)', onClick: ()=>{window.location.pathname="settings/mailboxAccess"} },
+                      {label: 'Old Domain Settings(Hafsa)', onClick:()=>{window.location.pathname="settings/oldDomainSettings"}},
+                      {label: 'Folder Sync Policy(Hafsa)', onClick:()=>{window.location.pathname="settings/folderSyncPolicy"}}
                     ]}
-                  />
+                />
+                </Box>
                     <CircleInformation cursor="pointer" textDecoration="none" />
                 </Box>
               

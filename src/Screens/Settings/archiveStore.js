@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Grommet, Box, DataTable, Text, Paragraph, TextInput, Button, RadioButton } from "grommet";
-import { Edit, FormUp, FormDown } from "grommet-icons";
+import { Edit, FormUp, FormDown,Checkmark,Close } from "grommet-icons";
 import SecondaryNavbar from "../../Containers/SecondaryNavbar/secondaryNavbar";
+import axios from 'axios'
 
 const archiveStoreColumns = [
       {
@@ -22,15 +23,48 @@ const archiveStoreColumns = [
       },
       {
             property: "searchable",
-            header: "Searchable ?"
+            header: "Searchable ?",
+            render:datum=>(
+                datum.seachable?
+                <Box>
+                    <Checkmark/>
+
+                </Box>
+                :
+                <Box>
+                    <Close/>
+                </Box>
+            )
       },
       {
             property: "archiveable",
-            header: "Archiveable ?"
+            header: "Archiveable ?",
+            render:datum=>(
+                datum.archiveable?
+                <Box>
+                    <Checkmark/>
+
+                </Box>
+                :
+                <Box>
+                    <Close/>
+                </Box>
+            )
       },
       {
             property: "status",
-            header: "Status"
+            header: "Status",
+            render:datum=>(               
+                 datum.status?
+                <Box>
+                    <Checkmark/>
+
+                </Box>
+                :
+                <Box>
+                    <Close/>
+                </Box>
+            )
       }
 ]
 
@@ -67,7 +101,9 @@ class archiveStore extends Component {
       constructor(props){
             super(props)
             this.state = {
-                  policyTypeSize: true
+                  policyTypeSize: true,
+                  data:[],
+                  data2:[]
             }
       }
 
@@ -100,13 +136,42 @@ class archiveStore extends Component {
                   [event.target.value] : true
             })
       };
+      
+      componentDidMount(){
+        
+        axios.get("http://localhost:4001/archivehistory")
+        .then(response=>{
+            
+             this.setState({
+                 data2:response.data.Data
+             })
+
+        })
+        
+        .catch(error=>{
+            console.log("error",error)
+        })
+        axios.get("http://localhost:4001/archiveStore")
+        .then(response=>{
+            
+             this.setState({
+                 data:response.data.data
+             })
+
+        })
+        
+        .catch(error=>{
+            console.log("error",error)
+        })
+        
+    }
 
       render() {
             const { locationInfoCollapsed, rolloverPolicyCollapsed, viewHistoryCollapsed, policyTypeSize, policyTypePeriod } = this.state
             return (
                   <Grommet>
                         <Box>
-                              <SecondaryNavbar pageName="Archive Store" pageIcon="ArchiveStore" />
+                              <SecondaryNavbar pageName="Archive Store" pageIcon="ArchiveStore1" />
                         </Box>
                         <Box>
                               <DataTable
@@ -124,7 +189,7 @@ class archiveStore extends Component {
                                           ...controlledarchiveStoreColumns
                                     ].map(col => ({ ...col }))}
                                     sortable
-                                    // data={}
+                                    data={this.state.data}
                               />
 
 
@@ -238,7 +303,7 @@ class archiveStore extends Component {
                                                       ...controlledviewHistoryColumns
                                                 ].map(col => ({ ...col }))}
                                                 sortable
-                                                // data={}
+                                                data={this.state.data2}
                                           />
                                           
                                     }

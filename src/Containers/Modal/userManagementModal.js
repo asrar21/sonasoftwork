@@ -13,6 +13,7 @@ import {
 } from "grommet";
 
 import {  Close, FormUp } from 'grommet-icons';
+import axios from 'axios'
 
 
 class UserManagementModal extends Component {
@@ -21,7 +22,11 @@ class UserManagementModal extends Component {
         this.state = {
             role: "EAS General User",
             exchangeVersion: "Exchange Version",
-            exchangeServicePack: "Exchange Service Pack"
+            exchangeServicePack: "Exchange Service Pack",
+            userName:"",
+            displayName:"",
+            userType:"",
+            mailbox:""
         }
     }
 
@@ -42,7 +47,30 @@ class UserManagementModal extends Component {
             exchangeServicePack: value
         })
     }
-    
+    async onsubmit()  {
+        const {role,userName,displayName,userType,mailbox}=this.state
+        try{
+        const response=await axios({
+            method: 'post',
+            url: 'http://localhost:4001/usermanagement',
+            data: {
+                role:role ,
+           
+            userName:userName,
+            displayName:displayName,
+            userType:userType,
+            mailbox:mailbox
+            },
+            header: { 'Content-Type': 'application/json' }
+        });
+        if(response){
+            this.props.update();
+        }
+    }
+    catch(e){
+        console.log(e)
+    }
+    }
  
     render() {
         const { role, exchangeVersion, exchangeServicePack } = this.state;
@@ -69,21 +97,21 @@ class UserManagementModal extends Component {
                     </Box>
                     <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
                         <FormField label="User Type">
-                            <TextInput />
+                            <TextInput onChange={(e)=>this.setState({userType:e.target.value})}/>
                         </FormField>
                         <FormField label="User Name">
-                            <TextInput />
+                            <TextInput onChange={(e)=>this.setState({userName:e.target.value})}/>
                         </FormField>
                         <FormField label="Display Name">
-                            <TextInput />
+                            <TextInput onChange={(e)=>this.setState({displayName:e.target.value})}/>
                         </FormField>
                         <FormField label="Email Address">
-                            <TextInput />
+                            <TextInput onChange={(e)=>this.setState({mailbox:e.target.value})} />
                         </FormField>
                         
                         <Box  justify="around" direction="row">
                                 <Paragraph>Role:</Paragraph>
-                                <Menu icon={<FormUp />} dropAlign={{"bottom": "bottom", "right": "right"}}dropBackground={{color: "#f0f2f7"}} label={role} items={[
+                                <Menu icon={<FormUp />} dropAlign={{"bottom": "bottom", "right": "right"}} dropBackground={{color: "#f0f2f7"}} label={role} items={[
                                         {label: "EAS General User", onClick: (e) => {this.changeDomainName("EAS General User")}},
                                         {label: "EAS Super Reviewer", onClick: (e) => {this.changeDomainName("EAS Super Reviewer")}},
                                         {label: "EAS Reviewer", onClick: (e) => {this.changeDomainName("EAS Reviewer")}},
@@ -100,6 +128,7 @@ class UserManagementModal extends Component {
                         <Box direction="row" justify="center" margin="small" align="center" gap="medium">                            
                             <Button
                                 label="Add"
+                                onClick={()=>this.onsubmit()}
                             />
                             <Button
                                 label="Cancel"
@@ -116,4 +145,3 @@ class UserManagementModal extends Component {
 };
 
 export default UserManagementModal;
-  

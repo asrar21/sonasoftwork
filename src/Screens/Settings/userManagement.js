@@ -3,6 +3,7 @@ import { Grommet, Box, DataTable, Text, Paragraph, Button, RadioButton } from "g
 import { Edit, FormUp, FormDown } from "grommet-icons";
 import SecondaryNavbar from "../../Containers/SecondaryNavbar/secondaryNavbar";
 import UserManagementModal from "../../Containers/Modal/userManagementModal";
+import axios from 'axios';
 
 const userManagementColumn = [
       {
@@ -29,12 +30,13 @@ const userManagementColumn = [
 
 const controlleduserManagementColumn = userManagementColumn.map(col => Object.assign({}, col));
 
-class userManagement extends Component {
+class UserManagement extends Component {
       constructor(props){
             super(props)
             this.state = {
                   AD: true,
-                  UserModalOpened: true   
+                  UserModalOpened: true,
+                  data1:[]   
             }
       }
 
@@ -68,6 +70,26 @@ class userManagement extends Component {
             })
       }
 
+      fetchData(){
+        axios.get("http://localhost:4001/usermanagement")
+        
+          .then(response=>{
+              
+               this.setState({
+                data1:response.data.Data
+               })
+      
+          })
+          
+          .catch(error=>{
+              console.log("error",error)
+          })
+      }
+      componentDidMount(){
+        this.fetchData()
+      }
+      
+
       render() {
             const { userManagementCollapsed, UserModalOpened, local, AD } = this.state
             return (
@@ -75,7 +97,7 @@ class userManagement extends Component {
                         <Box>
                               <SecondaryNavbar pageName="User Management" pageIcon="UserManagement" />
                         </Box>
-                        {UserModalOpened && <UserManagementModal header="Add User" close={() => this.closeModal()} />}
+                        {UserModalOpened && <UserManagementModal header="Add User"  update={this.fetchData()}close={() => this.closeModal()} />}
                         <Box>
                               <DataTable
                                     margin="medium" 
@@ -92,7 +114,7 @@ class userManagement extends Component {
                                           ...controlleduserManagementColumn
                                     ].map(col => ({ ...col }))}
                                     sortable
-                                    // data={}
+                                    data={this.state.data1}
                               />
                               <Box direction="row" justify="center">
                                     <Button label="Add" onClick={() => this.openModal()} />
@@ -145,4 +167,4 @@ class userManagement extends Component {
       }
 };
 
-export default userManagement;
+export default UserManagement;

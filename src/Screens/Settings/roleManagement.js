@@ -52,7 +52,7 @@ class RoleManagement extends Component {
                   userRoleCollapsed: true,
                   role: "EAS SUPER REVIEWER",
                   accessAllMailboxes: false,      
-                  roleManagementModalopen:false
+                  roleManagementModalopen:false, 
 
             }
       }
@@ -91,40 +91,10 @@ class RoleManagement extends Component {
                 roleManagementModalopen: false
             })
       }
-    //   componentDidMount(){
-    //         axios.get("http://localhost:4001/stubpolicy")
-            
-    //           .then(response=>{
-    //               console.log("AD response",response.data.Data)
-    //                this.setState({
-    //                 roleManagementData:response.data.Data
-    //                })
-          
-    //           })
-              
-    //           .catch(error=>{
-    //               console.log("error",error)
-    //           })
-    //       }
-    //       componentDidUpdate(){
-    //         axios.get("http://localhost:4001/stubpolicy")
-            
-    //           .then(response=>{
-    //               console.log("AD response",response.data.Data)
-    //                this.setState({
-    //                 roleManagementData:response.data.Data
-    //                })
-          
-    //           })
-              
-    //           .catch(error=>{
-    //               console.log("error",error)
-    //           })
-    //       }
-          
+    
 
       render() {
-            const { assignRoleCollapsed, roleManagementModalopen ,userRoleCollapsed, role, accessAllMailboxes} = this.state
+            const { userRoleCollapsed, role, accessAllMailboxes, roleManagementModalopen , assignRoleCollapsed} = this.state
             return (
                   <Grommet>
                         <Box>

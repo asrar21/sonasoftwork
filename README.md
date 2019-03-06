@@ -1,11 +1,15 @@
 
 
-Do the following steps to run the project otherwise you may not be able to run it.
-1) from root directory delete node modules folder if exist 
-2) in project root folder open cmd and run<br>
- npm run help
-3) let the magic done
-4) once all are dependencies are installed run npm start
+#For Rethinkdb Connection Create "test" Database and init put THese Tables(user,AD_setting,Notification,UserManagement,StubPolicyAvailableMailbox,StubPolicy,ArchiveStore,ArchiveHistory,RetentionPolicy,LabelingPolicy,ContentIdentification,EmailServer)
+#PLz Donot use any other name for Rethinkdb table
+#than cd backend
+#than cd Server
+#than npm install
+#than node app.js
+#this will start the server
+#go back to the folder in which you have your project than start it by npm start
+
+
 
 
 # sv-ui2.0

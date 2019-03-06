@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 //importing components from grommet
 import {
-RadioButton,
-Text,
-Box,
-TextInput,
-Button,
-CheckBox,
-DataTable
+    RadioButton,
+    Text,
+    Box,
+    TextInput,
+    Button,
+    CheckBox,
+    DataTable,
+    Heading
 } from "grommet";
 
 
@@ -30,7 +31,6 @@ const column = [
 const DATA = [
 
 
-
 ];
 
 
@@ -39,12 +39,11 @@ export default class Deploymentsetting extends Component {
         super(props);
         this.state = {
 
-
+            ischecked:false,
             centralArchive: true,
             multiArchive: false
         };
     }
-
 
     Show = (e) => {
         const options = ['multiArchive', 'centralArchive']
@@ -62,24 +61,41 @@ export default class Deploymentsetting extends Component {
 
 
     render() {
-        const { centralArchive, multiArchive } = this.state
+        const { centralArchive, multiArchive } = this.state;
+        
 
         return (
             <div>
-                <Box border={{side:"all",color:"black"}}>
-                    <Box direction="row-responsive" justify="center">
+                <Box direction="row"
+                    >
+                    <Box width="medium"
+                         margin={{ left: "medium" }}>
+                         <Box margin={{top:"small"}}>
                         <Text>
                             Site prefix:
                                     </Text>
-                        <Box width={"70%"} margin={{ left: "large" }}>
+                                    </Box>
+                    </Box>
+                    <Box direction="row">
+                        <Box margin={{top:"small"}}>
                             <TextInput></TextInput>
                         </Box>
+
                     </Box>
-                    <Box direction="row-responsive" margin={{ top: "large" }} justify="center" >
+                </Box>
+
+                <Box direction="row"
+                   >
+                    <Box width="medium"
+                         margin={{ left: "medium" }}>
+                         <Box margin={{top:"small"}}>
                         <Text>
-                            Archival topology:
+                            Archival Topology:
                                     </Text>
-                        <Box direction="row-responsive" width={"70%"} margin={{ left: "small" }} >
+                                    </Box>
+                    </Box>
+                    <Box direction="row">
+                        <Box direction="row-responsive" margin={{top:"small"}} gap="small">
                             <RadioButton label="central Archive" value="centralArchive" checked={centralArchive} name="archiveOptions" onChange={(e) => this.Show(e)}>
 
                             </RadioButton>
@@ -89,59 +105,92 @@ export default class Deploymentsetting extends Component {
                         </Box>
 
                     </Box>
-                    {this.state.multiArchive ?
-                        <Box>
-                            <Box margin={{ top: "large" }} border={{ side: "all", color: "black" }}>
-                                <Box pad="medium" margin="medium" border={{ side: "all", color: "black" }}>
-                                    <Text>Add other sites</Text>
-                                </Box>
-
-                                <Box direction="row-responsive" justify="center">
-                                    <Text>
-                                        Site URL:
-                                    </Text>
-                                    <Box width={"70%"} margin={{ left: "large" }}>
-                                        <TextInput></TextInput>
-                                    </Box>
-                                </Box>
-                                <Box direction="row-responsive" margin={{ top: "large" }} justify="center">
-
-                                    <Text>AuthorizedKey:  </Text>
-                                    <Box width={"70%"} margin={{ left: "large" }} justify="center">
-                                        <TextInput></TextInput>
-                                    </Box>
-
-
-                                </Box>
-                                <Box direction="row-responsive" margin={{ top: "large" }} justify="center">
-
-                                    <Text>AuthenthicationRequired:  </Text>
-                                    <Box width={"70%"} margin={{ left: "large" }} direction="row-responsive">
-                                        <CheckBox></CheckBox>
-                                        <Button label="Add"></Button>
-                                    </Box>
-
-                                </Box>
-                                <DataTable
-                                    columns={column.map(c => ({
-                                        ...c,
-                                        search: c.property === "SiteName" || c.property === "SearchUrl" || c.property === "Remove"
-                                    }))}
-                                    data={DATA}
-                                    sortable
-                                    resizeable
-                                />
-
-
-
+                </Box>
+                {this.state.multiArchive ?
+                    <Box>
+                        <Box >
+                            <Box >
+                                <Heading size="small">Add other sites</Heading>
                             </Box>
+
+                            <Box direction="row"
+                                >
+                                <Box width="medium"
+                                     margin={{ left: "medium" }}>
+                                     <Box margin={{top:"small"}}>
+                                    <Text>
+                                        Site Url:
+                                    </Text>
+                                    </Box>
+                                </Box>
+                                <Box direction="row">
+                                    <Box margin={{top:"small"}}>
+                                        <TextInput></TextInput>
+                                    </Box>
+
+                                </Box>
+                            </Box>
+                            <Box direction="row"
+                                >
+                                <Box width="medium"
+                                     margin={{ left: "medium" }}>
+                                     <Box>
+                                    <Text margin={{top:"small"}}>
+                                        Authorization Key:
+                                    </Text>
+                                    </Box>
+                                </Box>
+                                <Box direction="row">
+                                    <Box margin={{top:"small"}}>
+                                        <TextInput></TextInput>
+                                    </Box>
+
+                                </Box>
+                            </Box>
+                            <Box direction="row"
+                                >
+                                <Box width="medium"
+                                    margin={{ left: "medium" }}>
+                                    <Box margin={{top:"small"}}>
+                                    <Text>
+                                        Authenthication Required:
+                                    </Text>
+                                    </Box>
+                                </Box>
+                                <Box direction="row">
+                                    <Box margin={{top:"small"}}>
+                                        <CheckBox 
+                                          checked={this.state.ischecked}
+                                          onChange={(event) => this.setState({ischecked:event.target.checked})}/>
+                                    </Box>
+
+                                </Box>
+                            </Box>
+                            <Box direction="row"
+                                >
+                                <Box >
+                            <DataTable
+                                columns={column.map(c => ({
+                                    ...c,
+                                    search: c.property === "SiteName" || c.property === "SearchUrl" || c.property === "Remove"
+                                }))}
+                                data={DATA}
+                                sortable
+                                resizeable
+                            />
+                            </Box>
+                            </Box>
+
+
 
                         </Box>
 
-                        : null
-                    }
+                    </Box>
 
-                </Box>
+                    : null
+                }
+
+
 
                 <Box align="center" justify="center" direction="row-responsive" gap="medium" pad="medium">
                     <Button label="save" /> <Button label="cancel" />
@@ -153,3 +202,5 @@ export default class Deploymentsetting extends Component {
         )
     }
 }
+
+
