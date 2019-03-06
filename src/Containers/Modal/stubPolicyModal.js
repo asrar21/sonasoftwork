@@ -125,7 +125,7 @@ class StubPolicyModal extends Component {
                         <Button icon={<Close />} onClick={this.props.close} />
                     </Box>
                     <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
-                        <Box border="all" pad={{top:"medium", left: "xlarge", right: "xlarge", bottom: "medium"}} >
+                        <Box border="all" pad="small" >
                               <FormField label="Stub Policy Name">
                                     <TextInput  onChange={(e)=>this.setState({name:e.target.value})}/>
                               </FormField>
