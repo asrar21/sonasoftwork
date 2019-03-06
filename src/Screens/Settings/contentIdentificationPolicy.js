@@ -1,69 +1,102 @@
 import React, { Component } from 'react'
 import SecondaryNavbar from "../../Containers/SecondaryNavbar/secondaryNavbar";
-import { Grommet, Box, DataTable, CheckBox,Image, Button, Text, Paragraph, RadioButton } from 'grommet';
-import { Edit } from "grommet-icons";
-import Tick from "../../assets/Icons/submit_purple.png";
-import Cross from "../../assets/Icons/cancel_purple.png";
+import { Grommet, Box, DataTable, CheckBox, Image, Button, Text, Paragraph, RadioButton } from 'grommet';
+
+import { Edit ,Checkmark,Close} from "grommet-icons";
 import { FormDown, FormUp } from "grommet-icons";
 import ContentPageModal from "../../Containers/Modal/contentIdentificationModal";
-
-
-const ContentPageData = [{
-            name : "Act-On",
-            notificationType: "Notify Immediately",
-            notificationDelay: "-",
-            enabled: true
+import axios from 'axios';
+const columns=[
+     
+      {
+            property: "name",
+            header: "Name"
       },
       {
-            name: "IPO",
-            notificationType: "Delayed Notification",
-            notificationDelay: "60",
-            enabled: false, 
-
+            property: "notificationType",
+            header: "Notification Type"
       },
       {
-            name: "Profanity",
-            notificationType: "Notify Immediately",
-            notificationDelay: "-",
-            enabled: true, 
-
+            property: "notificationDelay",
+            header: "Notification Delay (Minutes)"
       },
       {
-            name: "Personal Info",
-            notificationType: "Don't Notify",
-            notificationDelay: "-",
-            enabled: true, 
+            property: "enabled",
+            header: "Enabled",
+            render: datum => (
+                  datum.enabled ? 
+                        <Box>
+                              <Checkmark />
+                        </Box>
+                  :
+                        <Box>
+                              <Close />
+                        </Box>
 
+            )
       },
-      {
-            name: "Job Hunting",
-            notificationType: "Notify Immediately",
-            notificationDelay: "-",
-            enabled: true, 
 
-      }
 ]
 
+const ContentPageData = [{
+      name: "Act-On",
+      notificationType: "Notify Immediately",
+      notificationDelay: "-",
+      enabled: true
+},
+{
+      name: "IPO",
+      notificationType: "Delayed Notification",
+      notificationDelay: "60",
+      enabled: false,
+
+},
+{
+      name: "Profanity",
+      notificationType: "Notify Immediately",
+      notificationDelay: "-",
+      enabled: true,
+
+},
+{
+      name: "Personal Info",
+      notificationType: "Don't Notify",
+      notificationDelay: "-",
+      enabled: true,
+
+},
+{
+      name: "Job Hunting",
+      notificationType: "Notify Immediately",
+      notificationDelay: "-",
+      enabled: true,
+
+}
+]
+const controlledColumns = columns.map(col => Object.assign({}, col));
+
+
 class contentIdentificationPolicy extends Component {
-      constructor(props){
+      constructor(props) {
             super(props)
             this.state = {
-                  selectAll : false,
+                  selectAll: false,
                   data: [],
                   allStores: false,
                   activeStoreOnly: true,
-                  
-                  
+                  data1:[]
+
+
             }
       }
 
-      selectAllData(e){
+      selectAllData(e) {
             this.setState({
-              selectAll: !this.state.selectAll
-            })     
+                  selectAll: !this.state.selectAll
+            })
       }
 
-      collapsePolicySettings(){
+      collapsePolicySettings() {
             this.setState({
                   collapse: !this.state.collapse
             })
@@ -85,123 +118,124 @@ class contentIdentificationPolicy extends Component {
             const options = ['allStores', 'activeStoreOnly']
             options.map(value => {
                   this.setState({
-                        [value] : false
+                        [value]: false
                   })
             })
             this.setState({
-                  [event.target.value] : true
+                  [event.target.value]: true
             })
       };
 
-      componentWillMount(){
-            const { data } = this.state 
-            ContentPageData.map(value => {
-              data.push({
-                checkBox: <CheckBox checked={this.state.checkBox}  name={value.emailServer} onChange={(e) => this.toggleCheckBox(e)} />,
-                edit: <Edit cursor="pointer" onClick={this.openNewPolicyForm} />,
-                name: value.name,
-                notificationType: value.notificationType,
-                notificationDelay: value.notificationDelay,
-                enabled: value.enabled ? <Image src={Tick} width="25px" height="25px" />: <Image src={Cross} width="25px" height="25px" />
-              })
-            })
+      fetchData() {
+            const { data ,data1} = this.state
+            axios.get("http://localhost:4001/ContentIdentification")
+                  .then(response => {
+                        
+                        this.setState({
+                              data1: response.data.Data
+                        })
+
+                  })
+
+                  .catch(error => {
+                        console.log("error", error)
+                  })
+            
       }
-  render() {
-        const {activeStoreOnly, allStores, collapse, addPolicyModal} = this.state
-    return (
-      <Grommet>
-            <Box>
-                  <SecondaryNavbar pageName="Conent Identification Policy" pageIcon="FlagPolicy"  />
-            </Box>
-            {addPolicyModal && <ContentPageModal header="Add New Content Identification Policy" close={this.closeAddPolicyModal}/>}
-            <Box>
-                  <DataTable 
-                        columns={[
-                              {
-                                property: 'checkBox',
-                                header: <CheckBox
-                                            checked={this.state.selectAll}
-                                            // label="interested?"
-                                            onChange={(event) =>  this.selectAllData(event)}
-                                        />,
-                                
-                              },
-                              {
-                                    property: "edit",
-                                    header: "Edit"
-                              },
-                              {
-                                    property: "name",
-                                    header: "Name"
-                              },
-                              {
-                                    property: "notificationType",
-                                    header: "Notification Type"
-                              },
-                              {
-                                    property: "notificationDelay",
-                                    header: "Notification Delay (Minutes)"
-                              },
-                              {
-                                    property: "enabled",
-                                    header: "Enabled"
-                              },
-                        ]}
-                        data = {this.state.data}
-                  />
+      componentDidMount() {
+            this.fetchData()
+            
+      }
+      render() {
+            const { activeStoreOnly, allStores, collapse, addPolicyModal } = this.state
+            return (
+                  <Grommet>
+                        <Box>
+                              <SecondaryNavbar pageName="Conent Identification Policy" pageIcon="FlagPolicy" />
+                        </Box>
+                        {addPolicyModal && <ContentPageModal header="Add New Content Identification Policy"  update={this.fetchData()}close={this.closeAddPolicyModal} />}
+                        <Box>
+                              <DataTable
+                                    columns={[
+                                          {
+                                                property: 'checkBox',
+                                                header: <CheckBox
+                                                      checked={this.state.selectAll}
+                                                      // label="interested?"
+                                                      onChange={(event) => this.selectAllData(event)}
+                                                />,
 
-                  
-                  <Box direction="row" justify="center" margin="large" gap="medium">
+                                          },
+                                          {
+                                                property: "edit",
+                                                header: "Edit",
+                                                render: (datum) => (
+                                                      <Box>
+                                                            <Edit cursor="pointer"  onClick={()=>this.EditForm(datum)}/>
+                                                      </Box>
+                                                )
+                                          },
+                                         
+                                 
+                                    ...controlledColumns
+                              ].map(col => ({ ...col }))}
+                              data={this.state.data1}
+                              sortable
+                        
+                              />
 
-                        <Button label="Add" onClick={this.openNewPolicyForm}/>
-                        <Button label="Enable" />
-                        <Button label="Disable" />
-                        <Button label="Delete" />
-                  </Box>
-                  <Box direction="column" >
-                       <Box justify="between" direction="row" pad="small" margin="small" background="#d3d9e2">
-                              <Text margin={{left:"40%"}}>Content Identification Policy Settings</Text>
-                              <Box>
-                                    {collapse && <FormUp onClick={() => this.collapsePolicySettings()} />}
-                                    {!collapse && <FormDown onClick={() => this.collapsePolicySettings()} />}
+
+                              <Box direction="row" justify="center" margin="large" gap="medium">
+
+                                    <Button label="Add" onClick={this.openNewPolicyForm} />
+                                    <Button label="Enable" />
+                                    <Button label="Disable" />
+                                    <Button label="Delete" />
                               </Box>
-                        </Box> 
-                        { collapse && 
-                              <div>
-                                    <Box margin={{left:"small", right: "small"}}>
-                                          <Box margin={{left: "small", right: "small"}} justify="between" direction="row">
-                                                <Paragraph margin="none">Apply Content Identification Policy To :</Paragraph>
-                                                <Box direction="row" gap="small" >
-                                                      <RadioButton
-                                                            checked = {activeStoreOnly}
-                                                            name="storeOptions"
-                                                            label= "Active Store Only"
-                                                            value= "activeStoreOnly" 
-                                                            onChange={(e) => this.storeOptionsChanged(e)}
-                                                      />
-                                                      <RadioButton
-                                                            checked = {allStores}
-                                                            name="storeOptions"
-                                                            label= "All Stores"
-                                                            value= "allStores" 
-                                                            onChange={(e) => this.storeOptionsChanged(e)}
-                                                      />
-                                                </Box>
-                                          </Box> 
-                                          <Box direction="row" gap="medium" justify="center" margin="medium">
-                                                <Button label="Save" />
-                                                <Button label="Cancel" />
+                              <Box direction="column" >
+                                    <Box justify="between" direction="row" pad="small" margin="small" background="#d3d9e2">
+                                          <Text margin={{ left: "40%" }}>Content Identification Policy Settings</Text>
+                                          <Box>
+                                                {collapse && <FormUp onClick={() => this.collapsePolicySettings()} />}
+                                                {!collapse && <FormDown onClick={() => this.collapsePolicySettings()} />}
                                           </Box>
                                     </Box>
-                              </div>
-                        }
+                                    {collapse &&
+                                          <div>
+                                                <Box margin={{ left: "small", right: "small" }}>
+                                                      <Box margin={{ left: "small", right: "small" }} justify="between" direction="row">
+                                                            <Paragraph margin="none">Apply Content Identification Policy To :</Paragraph>
+                                                            <Box direction="row" gap="small" >
+                                                                  <RadioButton
+                                                                        checked={activeStoreOnly}
+                                                                        name="storeOptions"
+                                                                        label="Active Store Only"
+                                                                        value="activeStoreOnly"
+                                                                        onChange={(e) => this.storeOptionsChanged(e)}
+                                                                  />
+                                                                  <RadioButton
+                                                                        checked={allStores}
+                                                                        name="storeOptions"
+                                                                        label="All Stores"
+                                                                        value="allStores"
+                                                                        onChange={(e) => this.storeOptionsChanged(e)}
+                                                                  />
+                                                            </Box>
+                                                      </Box>
+                                                      <Box direction="row" gap="medium" justify="center" margin="medium">
+                                                            <Button label="Save" />
+                                                            <Button label="Cancel" />
+                                                      </Box>
+                                                </Box>
+                                          </div>
+                                    }
 
-                  </Box>
-                  
-            </Box>
-      </Grommet>
-    )
-  }
+                              </Box>
+
+                        </Box>
+                  </Grommet>
+            )
+      }
 };
 
 export default contentIdentificationPolicy;

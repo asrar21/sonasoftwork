@@ -1,0 +1,20 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "FileReader": "^0.10.2",
+    "body-parser": "^1.18.3",
+    "eml-format": "^0.5.0",
+    "express": "^4.16.4",
+    "fs": "0.0.1-security",
+    "read-last-lines": "^1.6.0",
+    "rethinkdb": "^2.3.3"
+  }
+}

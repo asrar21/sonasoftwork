@@ -12,10 +12,11 @@ import {
 } from "grommet";
 
 import {  Close, FormUp, FormDown } from 'grommet-icons';
+import axios from 'axios'
 
 const mailBoxes = [
       {
-            property: "availableMailboxes",
+            property: "name",
             header: "Available Mailboxes"
       }
 ]
@@ -28,7 +29,13 @@ class StubPolicyModal extends Component {
         this.state = {
             notificationOption: "Notification Option",
             conditionName: "Select One",
-            collapse: true
+            collapse: true,
+            name:"",
+            description:"",
+            stubPeriod:"",
+            priority:"",
+            activeCheckbox:false,
+            data1:[]
         }
     }
 
@@ -52,9 +59,49 @@ class StubPolicyModal extends Component {
 
     toggleActiveCheckbox(){
         this.setState({
-            activeCheckbox: !this.state.activeCheckbox
+            activeCheckbox: !this.state.activeCheckbox,
+            activeCheckbox:true
         })
+    } 
+    async onsubmit() {
+        try{
+            
+        const response=await axios({
+            method: 'post',
+            url: 'http://localhost:4001/stubpolicy',
+            data: {
+                name:this.state.name,
+                description:this.state.description,
+                stubPeriod:this.state.stubPeriod,
+                priority:this.state.priority,
+                activeCheckbox:this.state.activeCheckbox
+            },
+            header: { 'Content-Type': 'application/json' }
+        });
+        if(response){
+            this.props.update()
+        }
     }
+    catch(e){
+        console.log(e)
+    }
+    }
+    componentDidMount(){
+        axios.get("http://localhost:4001/stubpolicyavailablemailbox")
+        .then(response => {
+            console.log("data1",response.data.Data)
+              this.setState({
+                    data1: response.data.Data
+              })
+
+        })
+
+        .catch(error => {
+              console.log("error", error)
+        })
+
+    }
+
  
     render() {
         const { notificationOption, conditionName, collapse, activeCheckbox } = this.state
@@ -82,13 +129,13 @@ class StubPolicyModal extends Component {
                     <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
                         <Box border="all" pad={{top:"medium", left: "xlarge", right: "xlarge", bottom: "medium"}} >
                               <FormField label="Stub Policy Name">
-                                    <TextInput />
+                                    <TextInput  onChange={(e)=>this.setState({name:e.target.value})}/>
                               </FormField>
                               <FormField label="Stub Policy Description">
-                                    <TextInput></TextInput>
+                                    <TextInput onChange={(e)=>this.setState({description:e.target.value})}/>
                               </FormField>
                               <FormField label="Stub Period">
-                                    <TextInput type="number"></TextInput>
+                                    <TextInput type="number" onChange={(e)=>this.setState({stubPeriod:e.target.value})}/>
                               </FormField>
                               <Box margin="medium">
                                     <CheckBox checked={activeCheckbox} label="Enable: " reverse={true} onChange={(e) => { this.toggleActiveCheckbox(e) }}/>
@@ -96,6 +143,7 @@ class StubPolicyModal extends Component {
                         </Box>
                         <Box>
                               <DataTable 
+                                overflow="scroll"
                                           columns={[
                                                 {
                                                       property: 'checkBox',
@@ -111,7 +159,8 @@ class StubPolicyModal extends Component {
                                                 },
                                                 ...controlledColumns
                                           ].map(col => ({ ...col }))}
-                                          data={this.state.data}
+                                          size="small"
+                                          data={this.state.data1}
                                           sortable
                                     />
                         </Box>
@@ -119,6 +168,7 @@ class StubPolicyModal extends Component {
                               <Box flex={false}  margin="small" align="start">
                                     <Button
                                     label="Save"
+                                    onClick={()=>this.onsubmit()}
                                     />
                               </Box>
                               <Box flex={false}  margin="small"  align="start">
@@ -137,5 +187,3 @@ class StubPolicyModal extends Component {
 };
 
 export default StubPolicyModal;
-  
-  
