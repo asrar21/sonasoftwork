@@ -40,7 +40,7 @@ class PurgePolicy extends Component {
                 <Box 
                 direction="row"
                 pad="medium"
-                border
+                
                 >
                     <Box width="medium"
                     >
@@ -91,7 +91,7 @@ class PurgePolicy extends Component {
                 <Box 
                 direction="row" 
                 pad="medium"
-                border
+                
                 >
                     <Box width="medium" 
                     >
@@ -110,7 +110,7 @@ class PurgePolicy extends Component {
                 <Box 
                 direction="row"
                 pad="medium"
-                border
+                
                 >
                     <Box width="medium">
                         <Text size="medium">Enabled:</Text>
@@ -123,7 +123,7 @@ class PurgePolicy extends Component {
 
                 <Box  
                 align="center"
-                border
+                
                 >
                   <Box  direction="row" >
                     {/*save button*/}
