@@ -14,7 +14,6 @@ import {
 import { Close } from 'grommet-icons';
 import axios from 'axios'
 
-
 class emailServerModal extends Component {
     constructor(props) {
         super(props)

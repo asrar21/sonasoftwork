@@ -9,7 +9,6 @@ import {
     Tabs,
     CheckBox,
     DataTable,
-    
 } from "grommet";
 //importing grommet themes 
 import { grommet } from "grommet/themes";
@@ -147,15 +146,13 @@ class Configuration extends Component {
 
     render() {
         //calling all the variables of state
-        const { checked, } = this.state;
+        const { checked, multiArchive, centralArchive } = this.state;
         const { open, Editopen } = this.state;
         const { selected } = this.state;
         this.state.AD && console.log("this.state.AD", this.state.AD)
 
         return (
             <Grommet theme={grommet} full>
-             <SecondaryNavBar pageName="Configuration" pageIcon="configuration"/>
-
                 <Box fill>
                     {/* using tabs component of groommet to to show different forms in different tabs */}
                     <Tabs flex>

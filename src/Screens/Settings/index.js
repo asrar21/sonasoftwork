@@ -7,6 +7,9 @@ import StubPolicy from './stubPolicy';
 import ArchiveStore from './archiveStore';
 import RoleMangement from './roleManagement';
 import userManagement from './userManagement'
+import MailboxAccess from "./mailboxAccess"
+import OldDomainSettings from './oldDomainSettings'
+import FolderSyncPolicy from './folderSyncPolicy'
 
 export {
       EmailServer,
@@ -17,5 +20,9 @@ export {
       StubPolicy,
       ArchiveStore,
       RoleMangement,
-      userManagement
+      userManagement,
+      MailboxAccess,
+      OldDomainSettings,
+      FolderSyncPolicy
+
 }

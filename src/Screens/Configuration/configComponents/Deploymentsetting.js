@@ -31,7 +31,6 @@ const column = [
 const DATA = [
 
 
-
 ];
 
 
@@ -45,7 +44,6 @@ export default class Deploymentsetting extends Component {
             multiArchive: false
         };
     }
-
 
     Show = (e) => {
         const options = ['multiArchive', 'centralArchive']

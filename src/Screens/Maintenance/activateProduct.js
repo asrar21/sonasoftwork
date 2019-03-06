@@ -12,58 +12,39 @@ class ActivateProduct extends Component {
   
   constructor(props){
     super(props)
-    this.state = {}
+    this.state = {date:"31-Dec-2019",
+                  authKey:"3pHYITTOXCcJV8I7hbo11A==",
+                  licensedto:"Sonasoft Corp",
+                  expire:"31-Dec-2019",
+                  mailboxes:"5500",
+                  activeDirectories:"10",
+                  emailServer:"10"
+
+                }
                     }
   
-  render() {
-    //theme of choose file button
-    const Theme = {
-      button: {
-        border: {
-          radius: undefined,
-          color: "light-4"
-        },
-        primary: {
-          color: "light-4"
-        }
-      }
-    }
-    //theme of upload license button
-    const Theme1 = {
-      button: {
-        border:  {
-          radius: undefined,
-          color: "#2196f3"
-        },
-        primary: {
-          color: "#2196f3"
-        },
-        extend:  {
-          color: "white"
-      }
-    }
-  }
-    
+  render() {    
         return(
             <div>
                 <Grommet>
                 <Heading size ="small">Activate Product</Heading>
                 <Box
                     border={{color:"light-4"}}
+                    pad="small"
                 >
                     <Text size="large">Warning :</Text>
                     <br/>
-                    <Text >License will Expire On 31-Dec-2019.</Text>
+                    <Text >License will Expire On {this.state.date}.</Text>
                     <br/>
                     <Text size="large">Authorization Key :</Text>
-                    <Text >3pHYITTOXCcJV8I7hbo11A==</Text>
+                    <Text >{this.state.authKey}</Text>
                     <Text size="large">License Information :</Text>
                     <br/>
-                    <Text>Licensed To=Sonasoft Corp</Text>
-                    <Text>Expiry Date=31-Dec-2019</Text>
-                    <Text>Mailbox(es)=5500</Text>
-                    <Text>Active Directories=10</Text>
-                    <Text>Email Server(s)=10</Text>
+                    <Text>Licensed To={this.state.licensedto}</Text>
+                    <Text>Expiry Date={this.state.expire}</Text>
+                    <Text>Mailbox(es)={this.state.mailboxes}</Text>
+                    <Text>Active Directories={this.state.activeDirectories}</Text>
+                    <Text>Email Server(s)={this.state.emailServer}</Text>
                     <br/>
 
                     <Box margin="xsmall" 
@@ -76,7 +57,6 @@ class ActivateProduct extends Component {
               
                             <Box gap="xsmall" >
 
-                            <Grommet theme={Theme}>
                             {/*choose file button*/}
                             <Box width="small" margin="small">
                             <Button
@@ -85,18 +65,14 @@ class ActivateProduct extends Component {
                             onClick={() => {}}
                             />
                             </Box>
-                            </Grommet>
 
-                            <Grommet theme={Theme1}>
                             {/*upload license key button*/}
-                            <Box width="300px">
+                            <Box width="small">
                             <Button 
                             primary
                             label="Upload License Key"
                             onClick={() => {}} />
                             </Box>
-                            </Grommet>
-
                             </Box>
                         </Box>
                      </Box>

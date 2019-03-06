@@ -22,6 +22,7 @@ import NonQualifiedEmails  from '../Screens/Report/Non-QualifiedEmails/Non-Quali
 import PurgePolicy from '../Screens/Maintenance/purgePolicy';
 import GeneralEmailStatistics from '../Screens/Report/GeneralEmailStatistics/GeneralEmailStatistics';
 
+import * as maintenance from '../Screens/Maintenance'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import AttachmentTypeStatistics from '../Screens/Report/AttachmentTypeStatistics/AttachmentTypeStatistics';
 
@@ -42,8 +43,6 @@ export default class Routers extends Component {
       <Route path="/settings/emailServer" component={settings.EmailServer} />
       <Route path="/settings/archivalPolicy" component={settings.ArchivalPolicy} />
       <Route path="/settings/contentIdentificationPolicy" component={settings.ContentIdentificationPolicy} />
-      <Route path="/activateProduct" component={ActivateProduct} />
-      <Route path="/purgePolicy" component={PurgePolicy} />
       <Route path="/settings/labelingPolicy" component={settings.LabelingPolicy} />
       <Route path="/ArchivalEmail" component={ArchivalEmail} />
       <Route path="/EmailStatistic" component={EmailStatistic} />
@@ -53,18 +52,20 @@ export default class Routers extends Component {
       <Route path="/AccessControls" component={AccessControl} />
       <Route path="/ConfigurationManagemnt" component={ConfigurationManagemnt}/>
       <Route path="/DataInformationLeakagePrevention" component={DataInformationLeakagePrevention}/>
-      <Route path="/Purge_Policy" component={Purge_Policy}/>
       <Route path="/Retention_Policy" component={Retention_Policy}/>
       <Route path="/NonQualifiedEmails" component={NonQualifiedEmails}/>
       <Route path="/GeneralEmail" component={GeneralEmailStatistics}/>
       <Route path="/AttachmentStatistics" component={AttachmentTypeStatistics}/>
-
-
       <Route path="/settings/retentionPolicy" component={settings.RetentionPolicy} />
       <Route path="/settings/StubPolicy" component={settings.StubPolicy} />
       <Route path="/settings/ArchiveStore" component={settings.ArchiveStore} />
       <Route path="/settings/roleManagement" component={settings.RoleMangement} />
       <Route path="/settings/userManagement" component={settings.userManagement} />
+      <Route path="/maintenance/activateProduct" component={maintenance.ActivateProduct} />
+      <Route path="/maintenance/purgePolicy" component={maintenance.PurgePolicy} />
+      <Route path="/settings/mailboxAccess" component={settings.MailboxAccess}/>
+      <Route path="/settings/oldDomainSettings" component={settings.OldDomainSettings}/>
+      <Route path="/settings/folderSyncPolicy" component={settings.FolderSyncPolicy}/>
     </div>
   </Router>
     )
