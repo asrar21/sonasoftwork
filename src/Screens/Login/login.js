@@ -119,6 +119,7 @@
                       { label: 'Archive Store(Faizan)', onClick: () => { window.location.pathname = "settings/archiveStore" } },
                       { label: 'Stub Policy(Faizan)', onClick: () => { window.location.pathname = "settings/stubPolicy" } },
                       { label: 'User Management(Faizan)', onClick: () => { window.location.pathname = "settings/userManagement" } },
+                      { label: 'Role Management(Faizan)', onClick: () => { window.location.pathname = "settings/roleManagement" } },
                       { label: 'Activate Product(Hafsa)', onClick: () => { window.location.pathname = "activateProduct"} },
                       { label: 'Purge Policy(Hafsa)', onClick: () => { window.location.pathname = "purgePolicy"} },
                       { label: 'Archival Policy(Hafsa)', onClick: () => { window.location.pathname = "settings/archivalPolicy"} },
