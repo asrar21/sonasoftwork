@@ -8,17 +8,20 @@ import {
     TextInput,
     Button,
     CheckBox,
-    DataTable,
+    
 } from "grommet";
 
 import {  Close, FormUp, FormDown } from 'grommet-icons';
-import axios from 'axios'
+import axios from 'axios';
+import CustomDataTable from "../DataTable/dataTable";
 
 const mailBoxes = [
-      {
-            property: "name",
-            header: "Available Mailboxes"
-      }
+    
+    {
+        property: "name",
+        header: "Available Mailboxes",
+        search: "name"
+    }
 ]
 
 const controlledColumns = mailBoxes.map(col => Object.assign({}, col));
@@ -34,7 +37,7 @@ class StubPolicyModal extends Component {
             description:"",
             stubPeriod:"",
             priority:"",
-            activeCheckbox:false,
+            activeCheckbox:true,
             data1:[]
         }
     }
@@ -57,16 +60,10 @@ class StubPolicyModal extends Component {
         })
     }
 
-    toggleActiveCheckbox(){
-        this.setState({
-            activeCheckbox: !this.state.activeCheckbox,
-            activeCheckbox:true
-        })
-    } 
     async onsubmit() {
         try{
             
-        const response=await axios({
+        const response = await axios({
             method: 'post',
             url: 'http://localhost:4001/stubpolicy',
             data: {
@@ -79,6 +76,7 @@ class StubPolicyModal extends Component {
             header: { 'Content-Type': 'application/json' }
         });
         if(response){
+            this.props.close()
             this.props.update()
         }
     }
@@ -138,40 +136,23 @@ class StubPolicyModal extends Component {
                                     <TextInput type="number" onChange={(e)=>this.setState({stubPeriod:e.target.value})}/>
                               </FormField>
                               <Box margin="medium">
-                                    <CheckBox checked={activeCheckbox} label="Enable: " reverse={true} onChange={(e) => { this.toggleActiveCheckbox(e) }}/>
+                                    <CheckBox checked={activeCheckbox} label="Enable: " reverse={true} onChange={() => { this.setState({ activeCheckbox: !this.state.activeCheckbox}) }}/>
                               </Box>
                         </Box>
                         <Box>
-                              <DataTable 
-                                overflow="scroll"
-                                          columns={[
-                                                {
-                                                      property: 'checkBox',
-                                                      header: <CheckBox
-                                                                  checked={this.state.selectAll}
-                                                                  onChange={(event) =>  this.selectAllData(event)}
-                                                            />,
-                                                      render: () => (
-                                                            <Box>
-                                                                  <CheckBox />
-                                                            </Box>
-                                                      )
-                                                },
-                                                ...controlledColumns
-                                          ].map(col => ({ ...col }))}
-                                          size="small"
-                                          data={this.state.data1}
-                                          sortable
-                                    />
+                            {/*instructions to use CustomDataTable as dataselector */}
+                            {/* use it same as used for Datatable except don't pass editOpen function, but just pass selector={true} prop */}
+                            <CustomDataTable  columns={controlledColumns} checkBox data={this.state.data1} selector={true} />
                         </Box>
-                        <Box direction="row" pad="small" margin="medium" gap="small" justify="center">
-                              <Box flex={false}  margin="small" align="start">
+                        <Box direction="row" margin="medium" gap="small" justify="center">
+                              <Box flex={false}  align="start">
                                     <Button
                                     label="Save"
+                                    primary
                                     onClick={()=>this.onsubmit()}
                                     />
                               </Box>
-                              <Box flex={false}  margin="small"  align="start">
+                              <Box flex={false} align="start">
                                     <Button
                                     label="Cancel"
                                     onClick={() => this.props.close()}
