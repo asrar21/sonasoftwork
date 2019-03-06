@@ -131,7 +131,7 @@ export default class ArchivalEmail extends Component {
                                 }
                             </Box>
 
-                            <Box align="center" justify="center" direction="row-responsive" gap="medium" pad="medium">
+                            <Box align="center" justify="center" direction="row-responsive" gap="small" pad="medium">
                                 <Button label="Submit" /> <Button label="Clear" />
                             </Box>
 

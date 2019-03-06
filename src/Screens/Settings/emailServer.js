@@ -153,11 +153,11 @@ toggleCheckBox(e){
     checkBox: !this.state.checkBox
   })
 }
-componentDidMount(){
+fetchData(){
   axios.get("http://localhost:4001/EmailServer")
   
     .then(response=>{
-        console.log("AD response",response.data.Data)
+       
          this.setState({
           data1:response.data.Data
          })
@@ -168,20 +168,8 @@ componentDidMount(){
         console.log("error",error)
     })
 }
-componentDidUpdate(){
-  axios.get("http://localhost:4001/EmailServer")
-  
-    .then(response=>{
-        console.log("AD response",response.data.Data)
-         this.setState({
-          data1:response.data.Data
-         })
-
-    })
-    
-    .catch(error=>{
-        console.log("error",error)
-    })
+componentDidMount(){
+  this.fetchData()
 }
 
 
@@ -204,7 +192,7 @@ componentDidUpdate(){
         <Box>
           <SecondaryNavbar pageName="Email Server" pageIcon="emailServer" />   
         </Box>
-        { AddServerModal && <EmailServerModal header="Add New" close={() => this.AddServerModalClose()} /> }
+        { AddServerModal && <EmailServerModal header="Add New" update={this.fetchData()} close={() => this.AddServerModalClose()} /> }
         <Box margin="small">
             <DataTable
                columns={[
@@ -236,7 +224,7 @@ componentDidUpdate(){
             />  
 
             <Box direction="row" justify="center" margin="large" gap="medium">
-              <Button label="Add" onClick={this.openAddServerModal}/>
+              <Button label="Add" primary onClick={this.openAddServerModal}/>
               <Button label="Enable" />
               <Button label="Disable" />
               

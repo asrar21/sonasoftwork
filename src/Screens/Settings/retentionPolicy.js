@@ -145,7 +145,7 @@ class RetentionPolicy extends Component {
             })
       }
 
-      componentDidMount(){
+      fetchData(){
             axios.get("http://localhost:4001/retentionPolicyData")
             .then((res) => {
                   this.setState({
@@ -156,16 +156,8 @@ class RetentionPolicy extends Component {
                   console.log(err)
             })
       }
-      componentDidUpdate(){
-            axios.get("http://localhost:4001/retentionPolicyData")
-            .then((res) => {
-                  this.setState({
-                        data: res.data.Data
-                  })
-            })
-            .catch(err => {
-                  console.log(err)
-            })
+      componentDidMount(){
+           this.fetchData()
       }
 
       render() {
@@ -179,7 +171,7 @@ class RetentionPolicy extends Component {
                         <Box>
                               <SecondaryNavbar pageName="Retention Policy" pageIcon="RetentionPolicy" />
                         </Box>
-                        {addRetentionPolicy && <RetentionPolicyModel header="Add New Content Identification Policy" close={this.closeAddRetentionModal}/>}
+                        {addRetentionPolicy && <RetentionPolicyModel header="Add New Content Identification Policy" update={this.fetchData()} close={this.closeAddRetentionModal}/>}
                         {EditRetentionPolicy && <RetentionPolicyModel header="Edit New Content Identification Policy" close={this.closeAddRetentionModal} Datum={this.state.retention}/>}
                         <Box>
                               <DataTable 

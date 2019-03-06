@@ -52,10 +52,10 @@ class emailServerModal extends Component {
             exchangeServicePack: value
         })
     }
-    onsubmit = () => {
+  async  onsubmit()  {
 
-
-        axios({
+    try{
+       const response=await axios({
             method: 'post',
             url: 'http://localhost:4001/EmailServer',
             data: {
@@ -77,6 +77,13 @@ class emailServerModal extends Component {
             },
             header: { 'Content-Type': 'application/json' }
         });
+        if(response){
+            this.props.update()
+        }
+    }
+    catch (e){
+        console.log(e)
+    }
     }
 
 
@@ -157,7 +164,7 @@ class emailServerModal extends Component {
                             <Box flex={false} as="footer" margin="small" align="start">
                                 <Button
                                     label="Add"
-                                    onClick={this.onsubmit}
+                                    onClick={()=>this.onsubmit()}
                                 />
                             </Box>
                             <Box flex={false} as="footer" margin="small" align="start">

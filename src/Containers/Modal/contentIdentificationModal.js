@@ -48,10 +48,10 @@ class contentPageModal extends Component {
               collapse: !this.state.collapse
         })
   }
-  add=()=>{
+  async add(){
         
-        
-    axios({
+        try{
+    const response=await axios({
         method: 'post',
         url: 'http://localhost:4001/ContentIdentification',
         data: {
@@ -71,6 +71,13 @@ class contentPageModal extends Component {
         },
         header:{'Content-Type': 'application/json'}
       });
+      if(response){
+          this.props.update()
+      }
+    }
+    catch (e){
+        console.log(e)
+    }
     }
     render() {
         const { notificationOption, conditionName, collapse } = this.state
@@ -153,7 +160,7 @@ class contentPageModal extends Component {
                                 <Box flex={false}  margin="small" align="start">
                                     <Button
                                         label="Add"
-                                        onClick={this.add}
+                                        onClick={()=>this.add()}
                                     />
                                 </Box>
                                 <Box flex={false}  margin="small"  align="start">

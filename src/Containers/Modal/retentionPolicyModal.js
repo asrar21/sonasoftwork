@@ -56,8 +56,9 @@ class RetentionPolicyModel extends Component {
             activeCheckbox: !this.state.activeCheckbox
         })
     }
-    onsubmit = () => {
-        axios({
+    async onsubmit(){
+        try{
+     const response=await   axios({
             method: 'post',
             url: 'http://localhost:4001/retentionPolicyData',
             data: {
@@ -72,6 +73,14 @@ class RetentionPolicyModel extends Component {
             },
             header: { 'Content-Type': 'application/json' }
         });
+        if(response){
+            this.props.update();
+        }
+        
+    }
+    catch (e){
+        console.log(e);
+    }
     }
 
     render() {
@@ -157,7 +166,7 @@ class RetentionPolicyModel extends Component {
                                     <Box flex={false} margin="small" align="start">
                                         <Button
                                             label="Add"
-                                            onClick={this.onsubmit}
+                                            onClick={()=>this.onsubmit()}
                                         />
                                     </Box>
                                     <Box flex={false} margin="small" align="start">

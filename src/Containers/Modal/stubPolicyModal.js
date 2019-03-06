@@ -16,7 +16,7 @@ import axios from 'axios'
 
 const mailBoxes = [
       {
-            property: "availableMailboxes",
+            property: "name",
             header: "Available Mailboxes"
       }
 ]
@@ -34,7 +34,8 @@ class StubPolicyModal extends Component {
             description:"",
             stubPeriod:"",
             priority:"",
-            activeCheckbox:false
+            activeCheckbox:false,
+            data1:[]
         }
     }
 
@@ -62,8 +63,10 @@ class StubPolicyModal extends Component {
             activeCheckbox:true
         })
     } 
-    onsubmit = () => {
-        axios({
+    async onsubmit() {
+        try{
+            
+        const response=await axios({
             method: 'post',
             url: 'http://localhost:4001/stubpolicy',
             data: {
@@ -75,6 +78,28 @@ class StubPolicyModal extends Component {
             },
             header: { 'Content-Type': 'application/json' }
         });
+        if(response){
+            this.props.update()
+        }
+    }
+    catch(e){
+        console.log(e)
+    }
+    }
+    componentDidMount(){
+        axios.get("http://localhost:4001/stubpolicyavailablemailbox")
+        .then(response => {
+            console.log("data1",response.data.Data)
+              this.setState({
+                    data1: response.data.Data
+              })
+
+        })
+
+        .catch(error => {
+              console.log("error", error)
+        })
+
     }
 
  
@@ -118,6 +143,7 @@ class StubPolicyModal extends Component {
                         </Box>
                         <Box>
                               <DataTable 
+                                overflow="scroll"
                                           columns={[
                                                 {
                                                       property: 'checkBox',
@@ -133,7 +159,8 @@ class StubPolicyModal extends Component {
                                                 },
                                                 ...controlledColumns
                                           ].map(col => ({ ...col }))}
-                                          data={this.state.data}
+                                          size="small"
+                                          data={this.state.data1}
                                           sortable
                                     />
                         </Box>
@@ -141,7 +168,7 @@ class StubPolicyModal extends Component {
                               <Box flex={false}  margin="small" align="start">
                                     <Button
                                     label="Save"
-                                    onClick={this.onsubmit}
+                                    onClick={()=>this.onsubmit()}
                                     />
                               </Box>
                               <Box flex={false}  margin="small"  align="start">

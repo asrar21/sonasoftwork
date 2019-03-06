@@ -47,10 +47,10 @@ class labelingPolicyModal extends Component {
               collapse: !this.state.collapse
         })
   }
-  onsubmit=()=>{
+  async onsubmit(){
+        try{
         
-        
-    axios({
+    const response =await axios({
         method: 'post',
         url: 'http://localhost:4001/LabelingPolicy',
         data: {
@@ -63,6 +63,13 @@ class labelingPolicyModal extends Component {
         },
         header:{'Content-Type': 'application/json'}
       });
+      if(response){
+          this.props.update();
+      }
+    }
+    catch(e){
+        console.log(e)
+    }
     }
 
  
@@ -148,7 +155,7 @@ class labelingPolicyModal extends Component {
                                 <Box flex={false}  margin="small" align="start">
                                     <Button
                                         label="Add"
-                                        onClick={this.onsubmit}
+                                        onClick={()=>this.onsubmit()}
                                     />
                                 </Box>
                                 <Box flex={false}  margin="small"  align="start">

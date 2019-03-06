@@ -110,60 +110,31 @@ class Notification extends Component {
         this.setState({ Editopen: true ,Notify:data});
 }
 
-    
-
-    componentDidMount(){
-        console.log("5 seconds")
+    fetchData(){
+        
         axios.get("http://localhost:4001/notification")
         .then(response=>{
-            // console.log("AD response",response.data.Data)
-                this.setState({
-                    data:response.data.Data
-                })
+            
+             this.setState({
+                 data:response.data.Data
+             })
 
-        })
-        
-        .catch(error=>{
-            console.log("error",error)
-        })
-    }
-    
-    update(){
-        console.log("update running")
-        this.setState({
-            open: true
-        })
-    }
-    
-    componentDidUpdate(nextProps, nextState){
-        axios.get("http://localhost:4001/notification")
-        .then(response => {
-            console.log("this.state.data.length", this.state.data.length, "response.data.Data", response.data.Data)
-            this.setState({ data: response.data.Data })
         })
         .catch(error => {
             console.log("error",error)
         })
     }
 
-    shouldComponentUpdate(nextProps, nextState){
-        if(this.state.data.length != nextState.data.length){
-            return true
-        }
-        if(this.state.open != nextState.open || this.state.Editopen != nextState.Editopen){
-            return true
-        }
-        return false;
+    componentDidMount(){
+        this.fetchData()
     }
-
-
 
     render() {
         //calling all the variables of state
         const { checked } = this.state;
         const { open, Editopen } = this.state;
         const { selected } = this.state;
-        console.log("render running", this.state.data)
+        
 
         return (
             <Grommet theme={grommet} full>
@@ -174,7 +145,7 @@ class Notification extends Component {
                             <Box align="center" justify="center" pad="medium" size="small">
                                 {/* using flag and layer component of to open Add form on the rightside */}
                                 {open && (
-                                    <NotificationSideModal header="Add Notification" update={() => this.update()} close={this.onClose}/>
+                                    <NotificationSideModal header="Add Notification" update={() => this.fetchData()} close={this.onClose}/>
                                 )}
 
                                 {/* using flag and layer component to open edit Form on the rigth side */}

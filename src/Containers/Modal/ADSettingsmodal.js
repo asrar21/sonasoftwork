@@ -22,15 +22,15 @@ class ADSettingsModal extends Component {
         super(props)
         this.state = {
 
-            Enable: false,
-            Azure: false,
-            Domain:"",
-            Username: "",
-            Password: "",
+            Enable: props.Datum ? props.Datum.Enable:false,
+            Azure: props.Datum ? props.Datum.Azure:false,
+            Domain:props.Datum ? props.Datum.Domain:"",
+            Username: props.Datum ? props.Datum.Username:"",
+            Password: props.Datum ? props.Datum.Password:"",
             
-            All: false,
-            Selected: false,
-            status: true
+            All: props.Datum ? props.Datum.All:false,
+            Selected: props.Datum ? props.Datum.Selected:false,
+            status: props.Datum ? props.Datum.status:true
 
         }
 
@@ -54,7 +54,14 @@ class ADSettingsModal extends Component {
             header: { 'Content-Type': 'application/json' }
         });
     }
+    changehandler=(e)=>{
+        e.preventDefault();
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
     render() {
+        const {Enable,Azure,Domain,Username,Password,All,Selected,status}=this.state
         return (
             <Layer
                 position="right"
@@ -77,13 +84,13 @@ class ADSettingsModal extends Component {
                     </Box>
                     <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
                         <FormField label="Domain">
-                            <TextInput  onChange={(e)=>this.setState({Domain:e.target.value})}/>
+                            <TextInput value={Domain} name="Domain" onChange={(e)=>{this.changehandler(e)}}/>
                         </FormField>
                         <FormField label="UserName">
-                            <TextInput  onChange={(e)=>this.setState({Username:e.target.value})} />
+                            <TextInput value={Username} name="Username" onChange={(e)=>{this.changehandler(e)}} />
                         </FormField>
                         <FormField label="Password">
-                            <TextInput  onChange={(e)=>this.setState({Password:e.target.value})}/>
+                            <TextInput   value={Password}  name="Password" onChange={(e)=>{this.changehandler(e)}}/>
                         </FormField>
                         <Box direction="row"
                         >
@@ -96,8 +103,10 @@ class ADSettingsModal extends Component {
                             <Box direction="row">
                                 <Box >
                                     <CheckBox
+                                    value={Enable}
                                         checked={this.state.Enable}
-                                        onChange={(event) => this.setState({ Enable: true })} />
+                                        name="Enable"
+                                        onChange={(e)=>{this.changehandler(e)}} />
                                 </Box>
 
                             </Box>
@@ -113,8 +122,10 @@ class ADSettingsModal extends Component {
                             <Box direction="row">
                                 <Box >
                                     <CheckBox
+                                    value={Azure}
                                         checked={this.state.Azure}
-                                        onChange={(event) => this.setState({ Azure: true })} />
+                                        name="Azure"
+                                        onChange={(e)=>{this.changehandler(e)}} />
                                 </Box>
 
                             </Box>
@@ -126,18 +137,23 @@ class ADSettingsModal extends Component {
                         <Box align="" pad="" direction="row-responsive" gap="small">
 
                             <RadioButton
+                            value={All}
 
                            
                                 label="All"
                                 name="radio"
                                 checked={this.state.All}
-                                onChange={(event) => this.setState({ All: true })} />
+                                name="All"
+                                onChange={(e)=>{this.changehandler(e)}} />
                             
                             <RadioButton
+                            value={Selected}
                                 label="Selected"
                                 name="radio"
                                 checked={this.state.Selected}
-                                onChange={(event) => this.setState({ Selected: true })} />
+                                name="Selected"
+
+                                onChange={(e)=>{this.changehandler(e)}} />
                            
                         </Box>
 

@@ -64,6 +64,7 @@ export default class Routers extends Component {
       <Route path="/settings/StubPolicy" component={settings.StubPolicy} />
       <Route path="/settings/ArchiveStore" component={settings.ArchiveStore} />
       <Route path="/settings/roleManagement" component={settings.RoleMangement} />
+      <Route path="/settings/userManagement" component={settings.userManagement} />
     </div>
   </Router>
     )
