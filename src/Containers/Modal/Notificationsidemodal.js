@@ -29,14 +29,12 @@ class NotificationSideModal extends Component {
             errorCc:"",
             Data:this.props.Datum
         };
-        this.submit = this.submit.bind(this)
-        this.ssubmit = this.ssubmit.bind(this)
     }
 
     changehandlernoti=(e)=>{
         e.preventDefault();
         console.log("notification",e.target.value)
-        this.setState({
+         this.setState({
             Notification_type:e.target.value
         })
     }
@@ -67,22 +65,22 @@ class NotificationSideModal extends Component {
         return true;
 
     }
-    ssubmit=()=>{
-        
-        const isValid=this.Validate();
-        if(isValid){
-        axios({
+
+    
+
+    async onsubmit(){
+         axios({
             method: 'post',
             url: 'http://localhost:4001/notification',
             data: {
                 Notification_type:this.state.Notification_type ,
                 To:this.state.To,
-               Cc:this.state.Cc
+                Cc:this.state.Cc
             },
             header:{'Content-Type': 'application/json'}
-          });
-        }
-        }
+        });  
+        this.props.update()
+    }
    
     render(){
         const {Data}=this.state;
@@ -110,17 +108,17 @@ class NotificationSideModal extends Component {
                     </Box>
                     <Box flex="grow" overflow="auto" pad={{ vertical: "medium" }}>
                         <FormField label="Notification type">
-                            <TextInput   value={Data?Data.Notification_type:<TextInput onChange={(e)=>this.changehandlernoti(e)}/>} />
+                            <TextInput   value={Data && Data.Notification_type} onChange={(e)=>this.changehandlernoti(e)} />
                             
                         </FormField>
                         <Text color="red">{this.state.errorNotification}</Text>
                         
                         <FormField label="To">
-                            <TextInput  value={Data?Data.To:<TextInput onChange={(e)=>this.changehandlerTo(e)}/>} />
+                            <TextInput   onChange={(e)=>this.changehandlerTo(e)}/>
                         </FormField>
                         
                         <FormField label="Cc">
-                            <TextInput   value={Data?Data.Cc:<TextInput onChange={(e)=>this.changehandlerCc(e)} />}/>
+                            <TextInput    onChange={(e)=>this.changehandlerCc(e)} />
 
                         </FormField>
                         
@@ -134,7 +132,7 @@ class NotificationSideModal extends Component {
                             <Button
                                 type="save"
                                 label="Save"
-                                onClick={this.ssubmit}
+                                onClick={() => this.onsubmit()}
                                 primary
                             />
                         </Box>

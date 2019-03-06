@@ -120,7 +120,7 @@ r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
 
             if (err) throw err;
             if (result) {
-                console.log("data is inserted")
+                res.send("data is inserted")
             }
 
         })

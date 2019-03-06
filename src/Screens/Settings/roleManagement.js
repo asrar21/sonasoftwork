@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Grommet, Box, CheckBox, DataTable, Button, Text, RadioButton, Paragraph,Select, TextInput } from "grommet";
 import { Close, Checkmark, Edit, FormUp, FormDown } from "grommet-icons";
-import SecondaryNavbar from "../../Containers/SecondaryNavbar/SecondaryNavbar";
+import SecondaryNavbar from "../../Containers/SecondaryNavbar/secondaryNavbar";
 import StubPolicyModal from "../../Containers/Modal/stubPolicyModal";
 import axios from 'axios'
 
@@ -48,7 +48,7 @@ class RoleManagement extends Component {
             this.state = {
                   
                   data1:[],
-                 assignRole:true,
+                 assignRole:false,
                  userRole:true,
 
                  roleManagementModalopen:false
@@ -167,50 +167,45 @@ class RoleManagement extends Component {
 
                               <Box direction="column" margin="medium" >
                                     <Box justify="between" direction="row" pad="small" margin="small" background="#d3d9e2">
-                                          <Text margin={{left:"39%"}}>Assign Role</Text>
+                                          <Text margin={{left:"45%"}}>Assign Role</Text>
                                           <Box>
-                                                {! assignRole && <FormUp onClick={() => this.collapseassign()} />}
+                                                {!assignRole && <FormUp onClick={() => this.collapseassign()} />}
                                                 {assignRole && <FormDown onClick={() => this.collapseassign()} />}
                                           </Box>
                                     </Box>
                                     { !assignRole &&
-                                          <Box>
-                                               <Box direction="row"
-                                >
-                                <Box width="medium"
-                                     margin={{ left: "medium" }}>
-                                    <Text>
-                                    Role :
-                                         </Text>
-                                </Box>
-                                <Box direction="column">
-                                    <Box width="200%">
-                                        <Select
-                                            options={['EAS USER ONLY ACCESS', 'EAS NO UI ACCESS', 'EAS GENERAL USERS', 'NO simple Search', 'No Public Folder', 'Search Exports']}
-                                            
-                                            onChange={({ option }) => { }}
+                                          <Box align="center" direction="column">
+                                               <Box direction="row-responsive" gap="large" margin={{ left: "medium" }}>
+                                                      <Box justify="center" margin={{bottom : "medium"}}>
+                                                            <Text>Role :</Text>
+                                                      </Box>
+                                                      <Box direction="column" gap="small">
+                                                            
+                                                            <Select
+                                                                  options={['EAS USER ONLY ACCESS', 'EAS NO UI ACCESS', 'EAS GENERAL USERS', 'NO simple Search', 'No Public Folder', 'Search Exports']}
+                                                                  onChange={({ option }) => { }}
+                                                            />
+                                                            <CheckBox label="Access all Mailboxes"/>
+                                                      </Box>        
+                                                </Box>
+                                                <Box direction="row-responsive" gap="large">     
+                                                      
+                                                            <Text>
+                                                            Assign to (User Logon) :
+                                                            </Text>
+                                                      
+                                                      <Box direction="row">
+                                                            <Box width="200%"direction="row" gap="small">
+                                                                  <TextInput/>
+                                                                  <Button label="Add"/>
+                                                            </Box>
 
-                                        />
-                                        <CheckBox/>
-                                    </Box>
-
-                                </Box>
-                            </Box>
-                            <Box direction="row"
-                                >
-                                <Box width="medium"
-                                     margin={{ left: "medium" }}>
-                                    <Text>
-                                    Assign to (User Logon) :
-                                         </Text>
-                                </Box>
-                                <Box direction="row">
-                                    <Box width="200%"direction="row" gap="small">
-                                        <TextInput/>
-                                        <Button label="Add"/>
-                                    </Box>
-
-                                </Box>
+                                                      </Box> 
+                                                </Box>
+                                                
+                            {/* <Box direction="row" */}
+                                
+                                {/*
                             </Box>
                             <Box direction="row"
                                 >
@@ -234,8 +229,8 @@ class RoleManagement extends Component {
                                         </Box>
                                     </Box>
 
-                                </Box>
-                            </Box>
+                                </Box> */}
+                            
                             <Box direction="row-responsive" align="center" justify="center" margin={{top:"small"}}>
                                 <Button label="Assign"
                                 primary={true}/>
@@ -250,7 +245,7 @@ class RoleManagement extends Component {
 
                               <Box direction="column" margin="medium" >
                                     <Box justify="between" direction="row" pad="small" margin="small" background="#d3d9e2">
-                                          <Text margin={{left:"39%"}}>user list for EAS SUPER REVIEWER Role</Text>
+                                          <Text margin={{left:"37%"}}>User List for EAS Super Reveiwer Role.</Text>
                                           <Box>
                                                 {! userRole && <FormUp onClick={() => this.collapseUserRole()} />}
                                                 {userRole && <FormDown onClick={() => this.collapseUserRole()} />}

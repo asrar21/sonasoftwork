@@ -110,49 +110,60 @@ class Notification extends Component {
         this.setState({ Editopen: true ,Notify:data});
 }
 
-    fetchData(){
-        console.log("data fetched")
-        axios.get("http://localhost:4001/notification")
-        .then(response=>{
-            console.log("AD response",response.data.Data)
-             this.setState({
-                 data:response.data.Data
-             })
-
-        })
-        
-        .catch(error=>{
-            console.log("error",error)
-        })
-    }
-    componentDidUpdate(){
-        axios.get("http://localhost:4001/notification")
-        .then(response=>{
-            console.log("AD response",response.data.Data)
-             this.setState({
-                 data:response.data.Data
-             })
-
-        })
-        
-        .catch(error=>{
-            console.log("error",error)
-        })
-    }
-
+    
 
     componentDidMount(){
-        this.fetchData()
+        console.log("5 seconds")
+        axios.get("http://localhost:4001/notification")
+        .then(response=>{
+            // console.log("AD response",response.data.Data)
+                this.setState({
+                    data:response.data.Data
+                })
+
+        })
+        
+        .catch(error=>{
+            console.log("error",error)
+        })
+    }
+    
+    update(){
+        console.log("update running")
+        this.setState({
+            open: true
+        })
+    }
+    
+    componentDidUpdate(nextProps, nextState){
+        axios.get("http://localhost:4001/notification")
+        .then(response => {
+            console.log("this.state.data.length", this.state.data.length, "response.data.Data", response.data.Data)
+            this.setState({ data: response.data.Data })
+        })
+        .catch(error => {
+            console.log("error",error)
+        })
+    }
+
+    shouldComponentUpdate(nextProps, nextState){
+        if(this.state.data.length != nextState.data.length){
+            return true
+        }
+        if(this.state.open != nextState.open || this.state.Editopen != nextState.Editopen){
+            return true
+        }
+        return false;
     }
 
 
 
     render() {
         //calling all the variables of state
-        const { checked, data } = this.state;
+        const { checked } = this.state;
         const { open, Editopen } = this.state;
         const { selected } = this.state;
-
+        console.log("render running", this.state.data)
 
         return (
             <Grommet theme={grommet} full>
@@ -163,7 +174,7 @@ class Notification extends Component {
                             <Box align="center" justify="center" pad="medium" size="small">
                                 {/* using flag and layer component of to open Add form on the rightside */}
                                 {open && (
-                                    <NotificationSideModal header="Add Notification" updateData={() => this.fetchData()} close={this.onClose}/>
+                                    <NotificationSideModal header="Add Notification" update={() => this.update()} close={this.onClose}/>
                                 )}
 
                                 {/* using flag and layer component to open edit Form on the rigth side */}
@@ -171,7 +182,7 @@ class Notification extends Component {
                                    <NotificationSideModal header="Edit Notification" close={this.onClose} Datum={this.state.Notify}/>
                                 )}
                                 {/* using datatable component of groommet to show datalist */}
-                                {data && <DataTable
+                                <DataTable
                                     columns={[
 
 
@@ -210,17 +221,18 @@ class Notification extends Component {
                                         },
                                         ...controlledColumns
                                     ].map(col => ({ ...col }))}
-                                    data={data}
+                                    data={this.state.data}
                                     sortable
                                     size="medium"
                                   
-                                />}
-                            </Box>
-                            <Box direction="row-responsive" justify="center" gap="medium">
+                                />
+                                <Box direction="row-responsive" gap="medium">
                                     <Button label="Add" onClick={this.onOpen} />
                                     
                                     <Button label="Delete" />
                                 </Box>
+
+                            </Box>
                         
                         
                         
@@ -231,5 +243,3 @@ class Notification extends Component {
 }
 
 export default Notification;
-
-

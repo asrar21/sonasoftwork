@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Grommet, Box, CheckBox, DataTable, Button, Text, RadioButton, Paragraph } from "grommet";
 import { Close, Checkmark, Edit, FormUp, FormDown } from "grommet-icons";
-import SecondaryNavbar from "../../Containers/SecondaryNavbar/SecondaryNavbar";
+import SecondaryNavbar from "../../Containers/SecondaryNavbar/secondaryNavbar";
 import StubPolicyModal from "../../Containers/Modal/stubPolicyModal";
 import axios from 'axios'
 
