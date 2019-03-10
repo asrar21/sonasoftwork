@@ -46,14 +46,14 @@ export default class General extends Component {
                     <Box justify="between" direction="row" pad="small" margin="small" background="#d3d9e2">
                         <Text margin={{ left: "40%" }}>Temporary Storage</Text>
                         <Box>
-                            {collapsetemp && <FormUp onClick={() => this.collapseTempSettings()} />}
-                            {!collapsetemp && <FormDown onClick={() => this.collapseTempSettings()} />}
+                            {!collapsetemp && <FormUp onClick={() => this.collapseTempSettings()} />}
+                            {collapsetemp && <FormDown onClick={() => this.collapseTempSettings()} />}
                         </Box>
                     </Box>
-                    {collapsetemp &&
+                    {!collapsetemp &&
                         <Box>
                             <Box direction="row"
-                                >
+                                 margin={{top:"small"}}>
                                 <Box width="medium"
                                      margin={{ left: "medium" }}>
                                     <Text>
@@ -68,7 +68,7 @@ export default class General extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                >
+                                 margin={{top:"small"}}>
                                 <Box width="medium"
                                      margin={{ left: "medium" }}>
                                     <Text>
@@ -82,8 +82,8 @@ export default class General extends Component {
 
                                 </Box>
                             </Box>
-                            <Box align="center" justify="center" direction="row-responsive" gap="medium" pad="medium">
-                                <Button label="save" /> <Button label="cancel" />
+                            <Box align="center" justify="center" direction="row-responsive" gap="small" pad="medium">
+                                <Button label="save" primary={true}/> <Button label="cancel" />
                             </Box>
 
 
@@ -94,11 +94,11 @@ export default class General extends Component {
                     <Box justify="between" direction="row" pad="small" margin="small" background="#d3d9e2">
                         <Text margin={{ left: "40%" }}>Default Role Settings</Text>
                         <Box>
-                            {collapsedefault && <FormUp onClick={() => this.collapsedefaultSettings()} />}
-                            {!collapsedefault && <FormDown onClick={() => this.collapsedefaultSettings()} />}
+                            {!collapsedefault && <FormUp onClick={() => this.collapsedefaultSettings()} />}
+                            {collapsedefault && <FormDown onClick={() => this.collapsedefaultSettings()} />}
                         </Box>
                     </Box>
-                    {collapsedefault &&
+                    {!collapsedefault &&
                         <Box>
                             <Box direction="row"
                                 >
@@ -120,8 +120,8 @@ export default class General extends Component {
 
                                 </Box>
                             </Box>
-                            <Box align="center" justify="center" direction="row-responsive" gap="medium" pad="medium">
-                                <Button label="save" /> <Button label="cancel" />
+                            <Box align="center" justify="center" direction="row-responsive" gap="small" pad="medium">
+                                <Button label="save" primary={true} /> <Button label="cancel" />
                             </Box>
 
 
@@ -133,14 +133,14 @@ export default class General extends Component {
                     <Box justify="between" direction="row" pad="small" margin="small" background="#d3d9e2">
                         <Text margin={{ left: "40%" }}>Others Setting</Text>
                         <Box>
-                            {collapseother && <FormUp onClick={() => this.collapseotherSettings()} />}
-                            {!collapseother && <FormDown onClick={() => this.collapseotherSettings()} />}
+                            {!collapseother && <FormUp onClick={() => this.collapseotherSettings()} />}
+                            {collapseother && <FormDown onClick={() => this.collapseotherSettings()} />}
                         </Box>
                     </Box>
-                    {collapseother &&
+                    {!collapseother &&
                         <Box>
                             <Box direction="row"
-                                >
+                              >
                                 <Box width="medium"
                                      margin={{ left: "medium" }}>
                                     <Text>
@@ -160,7 +160,7 @@ export default class General extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                >
+                               margin={{top:"small"}} >
                                 <Box width="medium"
                                      margin={{ left: "medium" }}>
                                     <Text>
@@ -168,14 +168,14 @@ export default class General extends Component {
                                          </Text>
                                 </Box>
                                 <Box direction="row">
-                                    <Box width="200%">
+                                    <Box>
                                         <TextInput type="number"></TextInput>
                                     </Box>
 
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                >
+                                  margin={{top:"small"}}>
                                 <Box width="medium"
                                      margin={{ left: "medium" }}>
                                     <Text>
@@ -183,14 +183,14 @@ export default class General extends Component {
                                          </Text>
                                 </Box>
                                 <Box direction="row">
-                                    <Box width="200%">
+                                    <Box >
                                         <TextInput type="number"></TextInput>
                                     </Box>
 
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                >
+                               margin={{top:"small"}} >
                                 <Box width="medium"
                                      margin={{ left: "medium" }}>
                                     <Text>
@@ -198,14 +198,14 @@ export default class General extends Component {
                                          </Text>
                                 </Box>
                                 <Box direction="row">
-                                    <Box width="200%">
+                                    <Box >
                                         <TextInput type="number"></TextInput>
                                     </Box>
 
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                >
+                                 margin={{top:"small"}}>
                                 <Box width="medium"
                                      margin={{ left: "medium" }}>
                                     <Text>
@@ -220,7 +220,7 @@ export default class General extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                >
+                                 margin={{top:"small"}} >
                                 <Box width="medium"
                                      margin={{ left: "medium" }}>
                                     <Text>
@@ -235,7 +235,7 @@ export default class General extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                >
+                                  margin={{top:"small"}}>
                                 <Box width="medium"
                                      margin={{ left: "medium" }}>
                                     <Text>
@@ -253,7 +253,7 @@ export default class General extends Component {
                             </Box>
 
                             <Box direction="row"
-                                >
+                               margin={{top:"small"}} >
                                 <Box width="medium"
                                      margin={{ left: "medium" }}>
                                     <Text>
@@ -268,7 +268,7 @@ export default class General extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                >
+                                  margin={{top:"small"}}>
                                 <Box width="medium"
                                      margin={{ left: "medium" }}>
                                     <Text>
@@ -283,7 +283,7 @@ export default class General extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                >
+                                  margin={{top:"small"}}>
                                 <Box width="medium"
                                      margin={{ left: "medium" }}>
                                     <Text>
@@ -298,7 +298,7 @@ export default class General extends Component {
                                 </Box>
                             </Box>
 
-                            <Box direction="row">
+                            <Box direction="row"   margin={{top:"small"}}>
                                 
                                 <Box width="medium"
                                  margin={{ left: "medium" }}>
@@ -315,7 +315,7 @@ export default class General extends Component {
                             </Box>
 
                             <Box direction="row"
-                                >
+                                 margin={{top:"small"}} >
                                 <Box width="medium"
                                      margin={{ left: "medium" }}>
                                     <Text>
@@ -330,7 +330,7 @@ export default class General extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                >
+                                  margin={{top:"small"}}>
                                 <Box width="medium"
                                      margin={{ left: "medium" }}>
                                     <Text>
@@ -345,7 +345,7 @@ export default class General extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                >
+                                 margin={{top:"small"}}>
                                 <Box width="medium"
                                      margin={{ left: "medium" }}>
                                     <Text>
@@ -353,7 +353,7 @@ export default class General extends Component {
                                          </Text>
                                 </Box>
                                 <Box direction="row">
-                                    <Box >
+                                    <Box width="medium" >
                                     <CheckBox 
                                     checked={this.state.check}
                                     onChange={(event) => this.setState({check:event.target.checked})}/>
@@ -361,8 +361,8 @@ export default class General extends Component {
 
                                 </Box>
                             </Box>
-                            <Box align="center" justify="center" direction="row-responsive" gap="medium" pad="medium">
-                                <Button label="save" /> <Button label="cancel" />
+                            <Box align="center" justify="center" direction="row-responsive" gap="small"  margin={{top:"small"}} >
+                                <Button label="save" primary={true}/> <Button label="cancel" />
                             </Box>
                             
                             

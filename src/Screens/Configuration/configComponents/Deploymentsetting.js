@@ -114,51 +114,51 @@ export default class Deploymentsetting extends Component {
                             </Box>
 
                             <Box direction="row"
-                                >
+                                margin={{top:"small"}}>
                                 <Box width="medium"
                                      margin={{ left: "medium" }}>
-                                     <Box margin={{top:"small"}}>
+                                     <Box >
                                     <Text>
                                         Site Url:
                                     </Text>
                                     </Box>
                                 </Box>
                                 <Box direction="row">
-                                    <Box margin={{top:"small"}}>
+                                    <Box >
                                         <TextInput></TextInput>
                                     </Box>
 
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                >
+                                margin={{top:"small"}}>
                                 <Box width="medium"
                                      margin={{ left: "medium" }}>
                                      <Box>
-                                    <Text margin={{top:"small"}}>
+                                    <Text >
                                         Authorization Key:
                                     </Text>
                                     </Box>
                                 </Box>
                                 <Box direction="row">
-                                    <Box margin={{top:"small"}}>
+                                    <Box>
                                         <TextInput></TextInput>
                                     </Box>
 
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                >
+                                margin={{top:"small"}}>
                                 <Box width="medium"
                                     margin={{ left: "medium" }}>
-                                    <Box margin={{top:"small"}}>
+                                    <Box >
                                     <Text>
                                         Authenthication Required:
                                     </Text>
                                     </Box>
                                 </Box>
                                 <Box direction="row">
-                                    <Box margin={{top:"small"}}>
+                                    <Box >
                                         <CheckBox 
                                           checked={this.state.ischecked}
                                           onChange={(event) => this.setState({ischecked:event.target.checked})}/>
@@ -167,8 +167,8 @@ export default class Deploymentsetting extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                >
-                                <Box >
+                                margin={{top:"small"}} width="large">
+                                <Box width="xlarge">
                             <DataTable
                                 columns={column.map(c => ({
                                     ...c,
@@ -192,8 +192,8 @@ export default class Deploymentsetting extends Component {
 
 
 
-                <Box align="center" justify="center" direction="row-responsive" gap="medium" pad="medium">
-                    <Button label="save" /> <Button label="cancel" />
+                <Box align="center" justify="center" direction="row-responsive" gap="small" pad="medium">
+                    <Button label="save" primary={true} /> <Button label="cancel" />
                 </Box>
 
 

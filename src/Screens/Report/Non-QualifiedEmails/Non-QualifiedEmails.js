@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 
-import SecondaryNavBar from '../../../Containers/SecondaryNavbar/secondaryNavbar'
+import SecondaryNavBar from '../../../Containers/SecondaryNavbar/SecondaryNavbar'
 import { Box, Text, Button,  Grommet, TextInput,Select } from "grommet";
 import { FormUp, FormDown } from 'grommet-icons';
 export default class NonQualifiedEmails extends Component {
@@ -43,68 +43,68 @@ export default class NonQualifiedEmails extends Component {
                     {!collapseNonQualifiedEmails &&
                         <Box>
                              <Box direction="row"
-                                >
-                                <Box width="large"
+                               justify="center" margin={{top:"small"}} >
+                                <Box width="small"
                                      margin={{ left: "xlarge" }}>
-                                     <Box margin={{top:"small"}}>
+                                     <Box >
                                     <Text>
                                     Sender :
                                          </Text>
                                          </Box>
                                 </Box>
                                 <Box direction="row" >
-                                    <Box margin={{top:"small"}} width="medium">
+                                    <Box  width="medium">
                                         <TextInput></TextInput>
                                     </Box>
 
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                >
-                                <Box width="large"
+                                justify="center" margin={{top:"small"}}>
+                                <Box width="small"
                                      margin={{ left: "xlarge" }}>
-                                     <Box margin={{top:"small"}}>
+                                     <Box >
                                     <Text>
                                     Recipients : 
                                          </Text>
                                          </Box>
                                 </Box>
                                 <Box direction="row" >
-                                    <Box margin={{top:"small"}} width="medium">
+                                    <Box width="medium">
                                         <TextInput></TextInput>
                                     </Box>
 
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                >
-                                <Box width="large"
+                                justify="center" margin={{top:"small"}}>
+                                <Box width="small"
                                      margin={{ left: "xlarge" }}>
-                                     <Box margin={{top:"small"}}>
+                                     <Box>
                                     <Text>
                                     Subject : 
                                          </Text>
                                          </Box>
                                 </Box>
                                 <Box direction="row" >
-                                    <Box margin={{top:"small"}} width="medium">
+                                    <Box width="medium">
                                         <TextInput></TextInput>
                                     </Box>
 
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                >
-                                <Box width="large"
+                                justify="center" margin={{top:"small"}}>
+                                <Box width="small"
                                      margin={{ left: "xlarge" }}>
-                                     <Box margin={{top:"small"}}>
+                                     <Box >
                                     <Text>
                                     Sent Between : 
                                          </Text>
                                          </Box>
                                 </Box>
                                 <Box direction="row" >
-                                    <Box margin={{top:"small"}} direction="row-responsive">
+                                    <Box  direction="row-responsive" gap="small" margin={{left:"xxlarge"}} width="medium">
                                     <Box><TextInput type="date"></TextInput>
                                     </Box>
                                         <Box justify="center" align="center">
@@ -118,17 +118,17 @@ export default class NonQualifiedEmails extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                >
-                                <Box width="large"
+                               justify="center" margin={{top:"small"}} >
+                                <Box width="small"
                                      margin={{ left: "xlarge" }}>
-                                     <Box margin={{top:"small"}}>
+                                     <Box >
                                     <Text>
                                     Received Between  : 
                                          </Text>
                                          </Box>
                                 </Box>
-                                <Box direction="row" >
-                                    <Box margin={{top:"small"}} direction="row-responsive">
+                                <Box direction="row"justify="center"  >
+                                    <Box  direction="row-responsive"gap="small" margin={{left:"xxlarge"}} width="medium">
                                     <Box><TextInput type="date"></TextInput>
                                     </Box>
                                         <Box justify="center" align="center">
@@ -142,17 +142,17 @@ export default class NonQualifiedEmails extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                >
-                                <Box width="large"
+                                justify="center" margin={{top:"small"}}>
+                                <Box width="small"
                                      margin={{ left: "xlarge" }}>
-                                     <Box margin={{top:"small"}}>
+                                     <Box >
                                     <Text>
                                     Audited Between : 
                                          </Text>
                                          </Box>
                                 </Box>
-                                <Box direction="row" >
-                                    <Box margin={{top:"small"}} direction="row-responsive">
+                                <Box direction="row"  >
+                                    <Box  direction="row-responsive" gap="small" margin={{left:"xxlarge"}} width="medium">
                                     <Box><TextInput type="date"></TextInput>
                                     </Box>
                                         <Box justify="center" align="center">
@@ -166,21 +166,22 @@ export default class NonQualifiedEmails extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                >
-                                <Box width="large"
+                               justify="center" margin={{top:"small"}} >
+                                <Box width="small"
                                      margin={{ left: "xlarge" }}>
-                                     <Box margin={{top:"small"}}>
+                                     <Box >
                                     <Text>
                                     Agent Type : 
                                          </Text>
                                          </Box>
                                 </Box>
                                 <Box direction="row" >
-                                    <Box margin={{top:"small"}} direction="row-responsive">
+                                    <Box  direction="row-responsive">
                                     
                                         <Box>
                                         <Select size="large"
                                             options={["Journal","Pst"]}
+                                            value="journal"
                                            
                                             onChange={({ option }) => { }}
 
@@ -191,22 +192,22 @@ export default class NonQualifiedEmails extends Component {
                                 </Box>
                             </Box>
                             <Box direction="row"
-                                >
-                                <Box width="large"
+                                justify="center" margin={{top:"small"}}>
+                                <Box width="small"
                                      margin={{ left: "xlarge" }}>
-                                     <Box margin={{top:"small"}}>
+                                     <Box >
                                     <Text>
                                     Agent Name : 
                                          </Text>
                                          </Box>
                                 </Box>
                                 <Box direction="row" >
-                                    <Box margin={{top:"small"}} direction="row-responsive">
+                                    <Box  direction="row-responsive">
                                     
                                         <Box>
                                         <Select size="large"
                                             options={["mail2010","outlook.office365.com","HQEXCH16"]}
-                                           
+                                           value="mail2010"
                                             onChange={({ option }) => { }}
 
                                         />
@@ -219,6 +220,7 @@ export default class NonQualifiedEmails extends Component {
 
                                 <Button
                                 label="Submit"
+                                primary={true}
                                 />
                                 <Button
                                 label="Clear"

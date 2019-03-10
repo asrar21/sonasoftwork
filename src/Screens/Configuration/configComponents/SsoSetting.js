@@ -1,6 +1,3 @@
-
-  
-
 import React, { Component } from 'react';
 //import components from grommet
 import{ Box, 
@@ -12,7 +9,8 @@ import{ Box,
         CheckBox,
         
       } 
-from "grommet"
+from "grommet";
+import SecondaryNavbar from '../../../Containers/SecondaryNavbar/SecondaryNavbar'
 
 class SSOSetting extends Component {
   
@@ -55,6 +53,7 @@ class SSOSetting extends Component {
       return(
         <div>
         <Grommet>
+        <SecondaryNavbar pageName="SSO Setting" pageIcon="configuration" />
             <Heading size ="small"></Heading>
             <Box  
             >
@@ -231,5 +230,3 @@ class SSOSetting extends Component {
   }
 }
 export default SSOSetting
-
-

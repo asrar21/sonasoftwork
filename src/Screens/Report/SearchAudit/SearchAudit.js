@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 
-import SecondaryNavBar from '../../../Containers/SecondaryNavbar/secondaryNavbar'
+import SecondaryNavBar from '../../../Containers/SecondaryNavbar/SecondaryNavbar'
 import { Box, Text, Button,  Grommet, TextInput, } from "grommet";
 import { FormUp, FormDown } from 'grommet-icons';
 export default class SearchAudit extends Component {

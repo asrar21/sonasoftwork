@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Grommet, Box, DataTable, Text, Paragraph, TextInput, Button, RadioButton } from "grommet";
 import { Edit, FormUp, FormDown,Checkmark,Close } from "grommet-icons";
-import SecondaryNavbar from "../../Containers/SecondaryNavbar/secondaryNavbar";
+import SecondaryNavbar from "../../Containers/SecondaryNavbar/SecondaryNavbar";
 import axios from 'axios'
 
 const archiveStoreColumns = [

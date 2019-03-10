@@ -61,17 +61,17 @@ export default class SMTPconfiguration extends Component {
         return (
             <div>
                 <Box direction="row"
-                    >
+                    margin={{top:"small"}}>
                     <Box width="medium"
                          margin={{ left: "medium" }}>
-                         <Box margin={{top:"small"}}>
+                         <Box >
                         <Text>
                             Senders Email:
                                     </Text>
                                     </Box>
                     </Box>
                     <Box direction="row">
-                        <Box margin={{top:"small"}}>
+                        <Box >
                             <TextInput ></TextInput>
                         </Box>
 
@@ -79,7 +79,7 @@ export default class SMTPconfiguration extends Component {
                     </Box>
 
                     <Box direction="row"
-                    >
+                   margin={{top:"small"}} >
                     <Box width="medium"
                          margin={{ left: "medium" }}>
                          <Box margin={{top:"small"}}>
@@ -96,7 +96,7 @@ export default class SMTPconfiguration extends Component {
                     </Box>
                     </Box>
                     <Box direction="row"
-                    >
+                    margin={{top:"small"}}>
                     <Box width="medium"
                          margin={{ left: "medium" }}>
                          <Box margin={{top:"small"}}>
@@ -113,7 +113,7 @@ export default class SMTPconfiguration extends Component {
                     </Box>
                     </Box>
                     <Box direction="row"
-                    >
+                    margin={{top:"small"}}>
                     <Box width="medium"
                          margin={{ left: "medium" }}>
                          <Box margin={{top:"small"}}>
@@ -136,7 +136,7 @@ export default class SMTPconfiguration extends Component {
                             </Box>
 
                             <Box direction="row"
-                    >
+                    margin={{top:"small"}}>
                     <Box width="medium"
                          margin={{ left: "medium" }}>
                          <Box margin={{top:"small"}}>
@@ -153,7 +153,7 @@ export default class SMTPconfiguration extends Component {
                     </Box>
                     </Box>
                     <Box direction="row"
-                    >
+                    margin={{top:"small"}}>
                     <Box width="medium"
                          margin={{ left: "medium" }}>
                          <Box margin={{top:"small"}}>
